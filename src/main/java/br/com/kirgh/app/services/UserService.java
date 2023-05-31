@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @SuppressWarnings("unused")
 public class UserService {
@@ -14,11 +16,11 @@ public class UserService {
     private UserRepository userRepository;
 
     @Transactional
-    public User createUser(UserDTO userDTO) {
+    public Optional<User> createUser(UserDTO userDTO) {
         if (userRepository.existsById(userDTO.cpf())) {
-            return null;
+            return Optional.empty();
         } else {
-            return userRepository.save(new User(userDTO));
+            return Optional.of(userRepository.save(new User(userDTO)));
         }
     }
 }

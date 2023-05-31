@@ -14,20 +14,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping(path = "/api/v1/users", produces = MediaType.APPLICATION_JSON_VALUE)
 @SuppressWarnings("unused")
 public class UserController {
-
     @Autowired
     private UserService userService;
 
     @PostMapping
     public ResponseEntity<?> userRegister(@RequestBody @Valid UserDTO userDTO) {
-        User user = userService.createUser(userDTO);
+        Optional<User> user = userService.createUser(userDTO);
         JSONObject response = new JSONObject();
 
-        if (user == null) {
+        if (user.isEmpty()) {
             response.put("message", "user already registered");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response.toString());
         } else {
