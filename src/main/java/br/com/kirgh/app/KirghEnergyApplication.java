@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class KirghEnergyApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(KirghEnergyApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(KirghEnergyApplication.class, args);
+    }
 }

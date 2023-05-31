@@ -1,23 +1,19 @@
 package br.com.kirgh.app.entities;
 
-import java.util.Date;
-
 import br.com.kirgh.app.dtos.UserDTO;
 import br.com.kirgh.app.enums.UserGender;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
-import lombok.EqualsAndHashCode;
+import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.Hibernate;
+
+import java.util.Date;
+import java.util.Objects;
 
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(of = "cpf")
 @Entity(name = "users")
 public class User {
     @Id
@@ -46,5 +42,18 @@ public class User {
         birthDate = userDTO.birthDate();
         gender = userDTO.userGender();
         // relation = userDTO.relation();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        User user = (User) o;
+        return cpf != null && Objects.equals(cpf, user.cpf);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }
