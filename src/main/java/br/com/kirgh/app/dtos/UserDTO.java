@@ -17,7 +17,7 @@ public record UserDTO(
         Date birthDate,
 
         @NotNull(message = "cannot be null or empty")
-        UserGender userGender,
+        UserGender gender,
 
         @NotEmpty(message = "cannot be null or empty")
         @Size(min = 11, max = 11, message = "must have {min} characters")

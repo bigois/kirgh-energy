@@ -40,7 +40,7 @@ public class User {
         name = userDTO.name();
         email = userDTO.email();
         birthDate = userDTO.birthDate();
-        gender = userDTO.userGender();
+        gender = userDTO.gender();
         // relation = userDTO.relation();
     }
 
