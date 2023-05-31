@@ -1,3 +1,3 @@
-# fantastic-alpha-tiger
+# KIRGH Energy
 
-Conjunto de APIs consumidas por um portal de apresentação do consumo de energia de cada eletrodoméstico
+Solution for tracking appliance and home electronic energy use
