@@ -23,7 +23,7 @@ public class User {
     @Column(nullable = false, length = 150)
     private String name;
 
-    @Column(nullable = false, length = 80)
+    @Column(nullable = false, length = 80, unique = true)
     private String email;
 
     @Column(nullable = false, columnDefinition = "date")
@@ -34,15 +34,6 @@ public class User {
     private UserGender gender;
 
     // private UserRelation relation;
-
-    public User(UserDTO userDTO) {
-        cpf = userDTO.cpf();
-        name = userDTO.name();
-        email = userDTO.email();
-        birthDate = userDTO.birthDate();
-        gender = userDTO.gender();
-        // relation = userDTO.relation();
-    }
 
     @Override
     public boolean equals(Object o) {

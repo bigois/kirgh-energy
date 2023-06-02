@@ -20,8 +20,8 @@ public class UserService {
     public Optional<User> createUser(UserDTO userDTO) {
         if (userRepository.existsById(userDTO.cpf()) || userRepository.existsByEmail(userDTO.email())) {
             return Optional.empty();
-        } else {
-            return Optional.of(userRepository.save(UserMapper.userDTOToUser(userDTO)));
         }
+
+        return Optional.of(userRepository.save(UserMapper.userDTOToUser(userDTO)));
     }
 }
