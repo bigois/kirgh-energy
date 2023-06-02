@@ -15,7 +15,7 @@ import java.util.Map;
 @RestControllerAdvice
 @SuppressWarnings("unused")
 public class HandleErrors {
-    private final String timeStamp = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(new Date().getTime());
+    private final String timestamp = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(new Date().getTime());
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -29,7 +29,18 @@ public class HandleErrors {
             errors.put(fieldName, errorMessage);
         });
 
-        errors.put("timeStamp", timeStamp);
+        errors.put("timestamp", timestamp);
+
+        return errors;
+    }
+
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(Exception.class)
+    public Map<String, String> handle(Exception ex) {
+        Map<String, String> errors = new HashMap<>();
+
+        errors.put("timestamp", timestamp);
+        errors.put("message", "something goes wrong");
 
         return errors;
     }
