@@ -18,7 +18,7 @@ public class UserService {
 
     @Transactional
     public Optional<User> createUser(UserDTO userDTO) {
-        if (userRepository.existsById(userDTO.cpf())) {
+        if (userRepository.existsById(userDTO.cpf()) || userRepository.existsByEmail(userDTO.email())) {
             return Optional.empty();
         } else {
             return Optional.of(userRepository.save(UserMapper.userDTOToUser(userDTO)));
