@@ -17,7 +17,7 @@ import java.util.Objects;
 @Table(name = "users")
 public class User {
     @Id
-    @Column(length = 11, unique = true)
+    @Column(name = "id", length = 11, unique = true)
     private String cpf;
 
     @Column(nullable = false, length = 150)
