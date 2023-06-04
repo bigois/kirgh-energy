@@ -33,8 +33,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserGender gender;
 
-    // private UserRelation relation;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
