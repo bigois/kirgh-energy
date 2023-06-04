@@ -42,6 +42,7 @@ public class HandleErrors {
         errors.put("timestamp", timestamp);
         errors.put("message", "something goes wrong");
 
+        ex.printStackTrace();
         return errors;
     }
 }
