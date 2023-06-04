@@ -1,6 +1,5 @@
 package br.com.kirgh.app.entities;
 
-import br.com.kirgh.app.dtos.UserDTO;
 import br.com.kirgh.app.enums.UserGender;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -14,7 +13,8 @@ import java.util.Objects;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity(name = "users")
+@Entity
+@Table(name = "users")
 public class User {
     @Id
     @Column(length = 11, unique = true)
