@@ -1,6 +1,7 @@
 package br.com.kirgh.app.dtos;
 
 import br.com.kirgh.app.enums.UserGender;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -16,7 +17,7 @@ public record UserDTO(
         @Past(message = "must be before the current date")
         Date birthDate,
 
-        @NotBlank(message = "cannot be null or empty")
+        @NotNull(message = "cannot be null or empty")
         UserGender gender,
 
         @NotBlank(message = "cannot be null or empty")
@@ -26,6 +27,9 @@ public record UserDTO(
 
         @NotBlank(message = "cannot be null or empty")
         @Email(message = "is invalid")
-        String email
+        String email,
+
+        @Valid
+        UserRelationDTO relation
 ) {
 }

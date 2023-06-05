@@ -2,7 +2,9 @@ package br.com.kirgh.app.services;
 
 import br.com.kirgh.app.dtos.UserDTO;
 import br.com.kirgh.app.entities.User;
+import br.com.kirgh.app.entities.UserRelation;
 import br.com.kirgh.app.mapper.UserMapper;
+import br.com.kirgh.app.repositories.UserRelationRepository;
 import br.com.kirgh.app.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,12 +18,31 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserRelationRepository userRelationRepository;
+
     @Transactional
     public Optional<User> createUser(UserDTO userDTO) {
         if (userRepository.existsById(userDTO.cpf()) || userRepository.existsByEmail(userDTO.email())) {
             return Optional.empty();
         }
 
-        return Optional.of(userRepository.save(UserMapper.userDTOToUser(userDTO)));
+        if (userDTO.relation() != null && !userRepository.existsById(userDTO.relation().ownerId())) {
+            return Optional.empty();
+        }
+
+        User user = userRepository.save(UserMapper.userDTOToUser(userDTO));
+
+        if (userDTO.relation() != null) {
+            UserRelation userRelation = new UserRelation();
+
+            userRelation.setRelationType(userDTO.relation().relationType());
+            userRelation.getUserRelationPK().setChild(user);
+            userRelation.getUserRelationPK().setOwner(userRepository.findById(userDTO.relation().ownerId()).orElse(null));
+
+            userRelationRepository.save(userRelation);
+        }
+
+        return Optional.of(user);
     }
 }
