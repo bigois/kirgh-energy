@@ -5,9 +5,8 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-    
-public record AddressDTO(
 
+public record AddressDTO(
     @NotBlank(message = "cannot be null or empty")
     String street,
 
@@ -28,6 +27,4 @@ public record AddressDTO(
     @NotNull(message = "cannot be null or empty")
     AddressRelationDTO relation
 ) {
-    
 }
-

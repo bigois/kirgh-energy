@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Objects;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -23,4 +25,17 @@ public class UserRelation {
 
     @Column(length = 30, nullable = false)
     private String relationType;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserRelation that = (UserRelation) o;
+        return userRelationPK.equals(that.userRelationPK);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userRelationPK);
+    }
 }
