@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import jakarta.persistence.EntityNotFoundException;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -41,6 +43,30 @@ public class HandleErrors {
 
         errors.put("timestamp", timestamp);
         errors.put("message", "something goes wrong");
+
+        ex.printStackTrace();
+        return errors;
+    }
+
+    @ResponseStatus(HttpStatus.CONFLICT)
+    @ExceptionHandler(IllegalArgumentException.class)
+    public Map<String, String> handleConflit(IllegalArgumentException ex) {
+        Map<String, String> errors = new HashMap<>();
+
+        errors.put("timestamp", timestamp);
+        errors.put("message", ex.getMessage());
+
+        ex.printStackTrace();
+        return errors;
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(EntityNotFoundException.class)
+    public Map<String, String> handleNotFound(EntityNotFoundException ex) {
+        Map<String, String> errors = new HashMap<>();
+
+        errors.put("timestamp", timestamp);
+        errors.put("message", ex.getMessage());
 
         ex.printStackTrace();
         return errors;

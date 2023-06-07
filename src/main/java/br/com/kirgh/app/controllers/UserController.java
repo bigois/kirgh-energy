@@ -25,15 +25,7 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<?> userRegister(@RequestBody @Valid UserDTO userDTO) {
-        Optional<User> user = userService.createUser(userDTO);
-        JSONObject response = new JSONObject();
-
-        if (user.isEmpty()) {
-            response.put("message", "user already registered");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response.toString());
-        } else {
-            response.put("message", "user successfully registered");
-            return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
-        }
+        ResponseEntity<?> user = userService.createUser(userDTO);
+        return user;
     }
 }
