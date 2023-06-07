@@ -14,5 +14,5 @@ public abstract class AddressMapper {
 
         return address;
     }
-    
+
 }
