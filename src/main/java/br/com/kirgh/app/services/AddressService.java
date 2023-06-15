@@ -1,5 +1,11 @@
 package br.com.kirgh.app.services;
 
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
 import br.com.kirgh.app.dtos.AddressDTO;
 import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.entities.AddressRelation;
@@ -8,15 +14,10 @@ import br.com.kirgh.app.repositories.AddressRelationRepository;
 import br.com.kirgh.app.repositories.AddressRepository;
 import br.com.kirgh.app.repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 
 @Service
-@SuppressWarnings("unused")
 public class AddressService {
+
     @Autowired
     private AddressRepository addressRepository;
 
@@ -26,7 +27,7 @@ public class AddressService {
     @Autowired
     private AddressRelationRepository addressRelationRepository;
 
-    public ResponseEntity<?> createAddress(AddressDTO addressDTO) {
+    public ResponseEntity<?> createAddress(AddressDTO addressDTO){
         JSONObject response = new JSONObject();
 
         if (!userRepository.existsById(addressDTO.relation().parentId())) {
@@ -40,6 +41,7 @@ public class AddressService {
         Address address = addressRepository.save(AddressMapper.addressTOToAddress(addressDTO));
 
         AddressRelation addressRelation = new AddressRelation();
+
         addressRelation.getAddressRelationPK().setAddress(address);
         addressRelation.getAddressRelationPK().setParent(userRepository.findById(addressDTO.relation().parentId()).orElse(null));
 

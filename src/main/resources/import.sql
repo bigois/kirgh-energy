@@ -22,3 +22,25 @@ insert into user_relations (child_id, owner_id, relation_type) values ('29081928
 insert into user_relations (child_id, owner_id, relation_type) values ('03979611701', '05088017294', 'Wife');
 insert into user_relations (child_id, owner_id, relation_type) values ('03979611701', '58802370605', 'Son');
 insert into user_relations (child_id, owner_id, relation_type) values ('36927710612', '01201028116', 'Cousin');
+
+-- Database seeding for ADDRESSES
+insert into addresses (zip_code, street, number, city, state) values ('03701010', 'Avenida Gabriela Mistral', '670', 'São Paulo', 'SP');
+insert into addresses (zip_code, street, number, city, state) values ('03654010', 'Rua Alicante', '966', 'São Paulo', 'SP');
+insert into addresses (zip_code, street, number, city, state) values ('03642000', 'Rua José Fláviol', '268', 'São Paulo', 'SP');
+
+
+-- Database seeding for ADDRESS_RELATIONS
+insert into address_relations (parent_id, address_id) values ('29436331002', 1);
+insert into address_relations (parent_id, address_id) values ('58009452335', 2);
+insert into address_relations (parent_id, address_id) values ('36927710612', 3);
+
+-- Database seeding for APPLIANCES
+insert into appliances (name, brand, model, power) values ('Ar Condicionado', 'Samsung', 'AR12BVHZCWK', 'V110');
+insert into appliances (name, brand, model, power) values ('Geladeira', 'Electrolux', 'TF39S', 'V220');
+insert into appliances (name, brand, model, power) values ('Fogão', 'Atlas', 'Mônaco', 'V110');
+
+-- Database seeding for APPLIANCE_RELATIONS
+insert into appliance_relations (address_id, appliance_id) values (1, 3);
+insert into appliance_relations (address_id, appliance_id) values (2, 2);
+insert into appliance_relations (address_id, appliance_id) values (3, 1);
+
