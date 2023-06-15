@@ -31,7 +31,7 @@ public class UserService {
             throw new IllegalArgumentException("user already exists");
         }
 
-        if (userDTO.relation() != null && !userRepository.existsById(userDTO.relation().parentId())) {
+        if (userDTO.relation() != null && !userRepository.existsById(userDTO.relation().ownerId())) {
             throw new EntityNotFoundException("owner id not found");
         }
 
@@ -42,7 +42,7 @@ public class UserService {
 
             userRelation.setRelationType(userDTO.relation().relationType());
             userRelation.getUserRelationPK().setChild(user);
-            userRelation.getUserRelationPK().setOwner(userRepository.findById(userDTO.relation().parentId()).orElse(null));
+            userRelation.getUserRelationPK().setOwner(userRepository.findById(userDTO.relation().ownerId()).orElse(null));
 
             userRelationRepository.save(userRelation);
         }

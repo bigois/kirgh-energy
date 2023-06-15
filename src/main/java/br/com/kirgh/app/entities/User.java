@@ -31,7 +31,7 @@ public class User {
     @Column(nullable = false, columnDefinition = "date")
     private Date birthDate;
 
-    @Column(nullable = false, length = 150, columnDefinition = "varchar(1)")
+    @Column(nullable = false, length = 10, columnDefinition = "varchar(1)")
     @Enumerated(EnumType.STRING)
     private UserGender gender;
 
