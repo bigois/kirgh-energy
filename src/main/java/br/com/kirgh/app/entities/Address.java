@@ -7,8 +7,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Objects;
-
+/**
+ * The Address class is a Java entity that represents a physical address with properties such as zip code, street, number,
+ * city, and state, and includes methods for checking equality and generating hash codes.
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -18,7 +20,7 @@ import java.util.Objects;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
     @Column(nullable = false, length = 8)
     private String zipCode;
@@ -36,16 +38,35 @@ public class Address {
     @Enumerated(EnumType.STRING)
     private State state;
 
+    /**
+     * This is an implementation of the equals method in Java that checks if two Address objects are equal based on their
+     * id field.
+     *
+     * @param o The parameter "o" is an object of type Object, which is the superclass of all other classes in Java. It is
+     *          used to compare the equality of two Address objects in the equals() method.
+     * @return The {@code equals} method is returning a boolean value that indicates whether the current {@code Address} object is
+     * equal to the object passed as an argument. It checks if the argument is null or not an instance of {@code Address} class,
+     * and then compares the {@code id} field of both objects to determine their equality. If the {@code id} fields are equal, it
+     * returns {@code true}, otherwise it returns {@code}
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Address address = (Address) o;
+
         return id.equals(address.id);
     }
 
+    /**
+     * This function returns the hash code of the "id" attribute.
+     *
+     * @return The {@code hashCode()} method is returning the hash code of the {@code id} object. The hash code is an integer value
+     * that is used to identify objects in hash-based data structures such as hash tables.
+     */
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return id.hashCode();
     }
 }
