@@ -1,65 +1,66 @@
 package br.com.kirgh.app.entities;
 
 import br.com.kirgh.app.enums.Power;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * The {@code Appliance} class is a Java entity that represents an appliance with attributes such as name, brand, model, and
+ * power.
+ */
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
 @Table(name = "appliances")
 public class Appliance {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, length = 150)
     private String name;
-    
+
     @Column(nullable = false, length = 150)
     private String brand;
 
     @Column(nullable = false, length = 150)
     private String model;
-    
+
     @Column(nullable = false, length = 10, columnDefinition = "varchar(4)")
     @Enumerated(EnumType.STRING)
     private Power power;
 
-
+    /**
+     * This is an implementation of the equals method in Java that checks if two objects are equal based on their ID.
+     *
+     * @param o The parameter "o" is an object of type Object, which is the superclass of all Java classes. It is used to
+     *          compare the equality of the current object with another object.
+     * @return The {@code equals} method is returning a boolean value that indicates whether the current {@code Appliance} object is
+     * equal to the object passed as an argument. It checks if the argument is null, if it is of the same class as the
+     * current object, and if their {@code id} fields are equal. If all these conditions are met, it returns {@code true}, otherwise it
+     * returns {@code false}.
+     */
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Appliance appliance = (Appliance) o;
+
+        return id.equals(appliance.id);
     }
 
+    /**
+     * This function returns the hash code of the "id" attribute.
+     *
+     * @return The {@code hashCode()} method is returning the hash code of the {@code id} object. The hash code is an integer value
+     * that is used to identify objects in hash-based data structures such as hash tables.
+     */
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Appliance other = (Appliance) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
+    public int hashCode() {
+        return id.hashCode();
     }
 }

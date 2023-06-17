@@ -3,6 +3,9 @@ package br.com.kirgh.app.enums;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/**
+ * This is a Java enum class called {@code State} that represents the states of Brazil.
+ */
 @AllArgsConstructor
 @Getter
 public enum State {

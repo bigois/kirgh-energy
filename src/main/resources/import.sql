@@ -28,7 +28,6 @@ insert into addresses (zip_code, street, number, city, state) values ('03701010'
 insert into addresses (zip_code, street, number, city, state) values ('03654010', 'Rua Alicante', '966', 'São Paulo', 'SP');
 insert into addresses (zip_code, street, number, city, state) values ('03642000', 'Rua José Fláviol', '268', 'São Paulo', 'SP');
 
-
 -- Database seeding for ADDRESS_RELATIONS
 insert into address_relations (parent_id, address_id) values ('29436331002', 1);
 insert into address_relations (parent_id, address_id) values ('58009452335', 2);
@@ -43,4 +42,3 @@ insert into appliances (name, brand, model, power) values ('Fogão', 'Atlas', 'M
 insert into appliance_relations (address_id, appliance_id) values (1, 3);
 insert into appliance_relations (address_id, appliance_id) values (2, 2);
 insert into appliance_relations (address_id, appliance_id) values (3, 1);
-
