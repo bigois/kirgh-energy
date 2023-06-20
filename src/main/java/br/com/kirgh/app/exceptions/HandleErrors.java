@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +19,7 @@ import java.util.Map;
 @RestControllerAdvice
 @SuppressWarnings("unused")
 public class HandleErrors {
-    private final String timestamp = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(new Date().getTime());
+    private final Instant timestamp = Instant.now();
 
     /**
      * This Java function handles validation exceptions by creating a map of field names and error messages.
@@ -44,7 +43,7 @@ public class HandleErrors {
             errors.put(fieldName, errorMessage);
         });
 
-        errors.put("timestamp", timestamp);
+        errors.put("timestamp", timestamp.toString());
         return errors;
     }
 
@@ -63,7 +62,7 @@ public class HandleErrors {
     public Map<String, String> handle(Exception ex) {
         Map<String, String> errors = new HashMap<>();
 
-        errors.put("timestamp", timestamp);
+        errors.put("timestamp", timestamp.toString());
         errors.put("message", "something goes wrong");
 
         ex.printStackTrace();
@@ -84,7 +83,7 @@ public class HandleErrors {
     public Map<String, String> handleConflit(IllegalArgumentException ex) {
         Map<String, String> errors = new HashMap<>();
 
-        errors.put("timestamp", timestamp);
+        errors.put("timestamp", timestamp.toString());
         errors.put("message", ex.getMessage());
 
         ex.printStackTrace();
@@ -104,7 +103,7 @@ public class HandleErrors {
     public Map<String, String> handleNotFound(EntityNotFoundException ex) {
         Map<String, String> errors = new HashMap<>();
 
-        errors.put("timestamp", timestamp);
+        errors.put("timestamp", timestamp.toString());
         errors.put("message", ex.getMessage());
 
         ex.printStackTrace();
