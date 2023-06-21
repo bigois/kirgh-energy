@@ -7,12 +7,11 @@ import br.com.kirgh.app.mappers.UserMapper;
 import br.com.kirgh.app.repositories.UserRelationRepository;
 import br.com.kirgh.app.repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.UUID;
 
 /**
  * The UserService class creates a new user and saves it to the database, along with a user relation if specified, and
@@ -38,14 +37,12 @@ public class UserService {
      * successfully registered, and an HTTP status code of 201 (CREATED).
      */
     @Transactional
-    public ResponseEntity<?> createUser(UserDTO userDTO) {
-        JSONObject response = new JSONObject();
-
-        if (userRepository.existsById(userDTO.cpf()) || userRepository.existsByEmail(userDTO.email())) {
+    public User createUser(UserDTO userDTO) {
+        if (userRepository.existsByCpf(userDTO.cpf()) || userRepository.existsByEmail(userDTO.email())) {
             throw new IllegalArgumentException("user already exists");
         }
 
-        if (userDTO.relation() != null && !userRepository.existsById(userDTO.relation().ownerId())) {
+        if (userDTO.relation() != null && !userRepository.existsById(UUID.fromString(userDTO.relation().ownerId()))) {
             throw new EntityNotFoundException("owner id not found");
         }
 
@@ -53,15 +50,12 @@ public class UserService {
 
         if (userDTO.relation() != null) {
             UserRelation userRelation = new UserRelation();
-
             userRelation.setRelationType(userDTO.relation().relationType());
             userRelation.getUserRelationPK().setChild(user);
-            userRelation.getUserRelationPK().setOwner(userRepository.findById(userDTO.relation().ownerId()).orElse(null));
-
+            userRelation.getUserRelationPK().setOwner(userRepository.findById(UUID.fromString(userDTO.relation().ownerId())).orElseThrow(() -> new EntityNotFoundException()));
             userRelationRepository.save(userRelation);
         }
 
-        response.put("message", "user successfully registered");
-        return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
+        return user;
     }
 }

@@ -1,9 +1,12 @@
 package br.com.kirgh.app.controllers;
 
 import br.com.kirgh.app.dtos.AddressDTO;
+import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.services.AddressService;
 import jakarta.validation.Valid;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +36,12 @@ public class AddressController {
      * {@code createAddress} method in the {@code addressService} object.
      */
     @PostMapping
-    public ResponseEntity<?> addressRegister(@RequestBody @Valid AddressDTO addressDTO) {
-        return addressService.createAddress(addressDTO);
+    public ResponseEntity<String> addressRegister(@RequestBody @Valid AddressDTO addressDTO) {
+        JSONObject response = new JSONObject();
+        Address address = addressService.createAddress(addressDTO);
+
+        response.put("resourceId", address.getId());
+        response.put("message", "address successfully registered");
+        return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
     }
 }

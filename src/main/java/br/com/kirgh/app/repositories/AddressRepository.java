@@ -5,13 +5,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.UUID;
+
 /**
  * This line of code is defining an interface called {@code AddressRepository} that extends the {@code JpaRepository} interface. The
  * {@code JpaRepository} interface is a Spring Data interface that provides methods for performing CRUD (Create, Read, Update,
  * Delete) operations on a specific entity type (}Address} in this case) in a database. The {@code Long} parameter specifies the
  * type of the primary key for the {@code Address} entity.
  */
-public interface AddressRepository extends JpaRepository<Address, Long> {
+public interface AddressRepository extends JpaRepository<Address, UUID> {
     /**
      * This is a Java function that checks if a specific address exists for a given user based on their ID, zip code, and
      * number.
@@ -42,5 +44,5 @@ public interface AddressRepository extends JpaRepository<Address, Long> {
                     parent_id = :userId
             """
     )
-    boolean existsToUserByUnique(@Param("userId") String userId, @Param("zipCode") String zipCode, @Param("number") String number);
+    boolean existsToUserByUnique(@Param("userId") UUID userId, @Param("zipCode") String zipCode, @Param("number") String number);
 }

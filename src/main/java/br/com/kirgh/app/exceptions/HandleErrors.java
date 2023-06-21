@@ -3,6 +3,7 @@ package br.com.kirgh.app.exceptions;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -44,26 +45,6 @@ public class HandleErrors {
         });
 
         errors.put("timestamp", timestamp.toString());
-        return errors;
-    }
-
-    /**
-     * This is a Java exception handler that returns a map of error details for internal server errors.
-     *
-     * @param ex "ex" is a variable representing the exception that was thrown. It is used in the method to catch any type
-     *           of exception that may occur during the execution of the code.
-     * @return A {@code Map} object containing the timestamp and an error message is being returned. This is the result of
-     * handling an exception of type {@code Exception} with the {@code @ExceptionHandler} annotation and the {@code @ResponseStatus}
-     * annotation indicating that the HTTP status code should be set to {@code INTERNAL_SERVER_ERROR}. The method logs the
-     * exception stack trace and returns a map with the timestamp and error message.
-     */
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler(Exception.class)
-    public Map<String, String> handle(Exception ex) {
-        Map<String, String> errors = new HashMap<>();
-
-        errors.put("timestamp", timestamp.toString());
-        errors.put("message", "something goes wrong");
 
         ex.printStackTrace();
         return errors;
@@ -90,6 +71,18 @@ public class HandleErrors {
         return errors;
     }
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+    public Map<String, String> handleConflit(HttpMediaTypeNotSupportedException ex) {
+        Map<String, String> errors = new HashMap<>();
+
+        errors.put("timestamp", timestamp.toString());
+        errors.put("message", "invalid body content");
+
+        ex.printStackTrace();
+        return errors;
+    }
+
     /**
      * This Java function handles the exception thrown when an entity is not found and returns a map of error details.
      *
@@ -105,6 +98,28 @@ public class HandleErrors {
 
         errors.put("timestamp", timestamp.toString());
         errors.put("message", ex.getMessage());
+
+        ex.printStackTrace();
+        return errors;
+    }
+
+    /**
+     * This is a Java exception handler that returns a map of error details for internal server errors.
+     *
+     * @param ex "ex" is a variable representing the exception that was thrown. It is used in the method to catch any type
+     *           of exception that may occur during the execution of the code.
+     * @return A {@code Map} object containing the timestamp and an error message is being returned. This is the result of
+     * handling an exception of type {@code Exception} with the {@code @ExceptionHandler} annotation and the {@code @ResponseStatus}
+     * annotation indicating that the HTTP status code should be set to {@code INTERNAL_SERVER_ERROR}. The method logs the
+     * exception stack trace and returns a map with the timestamp and error message.
+     */
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(Exception.class)
+    public Map<String, String> handle(Exception ex) {
+        Map<String, String> errors = new HashMap<>();
+
+        errors.put("timestamp", timestamp.toString());
+        errors.put("message", "something goes wrong");
 
         ex.printStackTrace();
         return errors;

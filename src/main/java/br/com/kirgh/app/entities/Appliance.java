@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.UUID;
+
 /**
  * The {@code Appliance} class is a Java entity that represents an appliance with attributes such as name, brand, model, and
  * power.
@@ -17,8 +19,8 @@ import lombok.Setter;
 @Table(name = "appliances")
 public class Appliance {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @Column(nullable = false, length = 150)
     private String name;

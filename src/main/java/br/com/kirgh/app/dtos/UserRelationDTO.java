@@ -2,8 +2,6 @@ package br.com.kirgh.app.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
-import org.hibernate.validator.constraints.br.CPF;
 
 /**
  * This is a Java record class named {@code UserRelationDTO} that represents a data transfer object for a user relation. It has
@@ -11,8 +9,7 @@ import org.hibernate.validator.constraints.br.CPF;
  */
 public record UserRelationDTO(
     @NotBlank(message = "cannot be null or empty")
-    @Size(min = 11, max = 11, message = "must have {min} characters")
-    @CPF
+    @Pattern(regexp = "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$", message = "invalid parent id")
     String ownerId,
 
     @NotBlank(message = "cannot be null or empty")

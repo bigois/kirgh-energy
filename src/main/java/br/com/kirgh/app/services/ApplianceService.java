@@ -8,11 +8,11 @@ import br.com.kirgh.app.repositories.AddressRepository;
 import br.com.kirgh.app.repositories.ApplianceRelationRepository;
 import br.com.kirgh.app.repositories.ApplianceRepository;
 import jakarta.persistence.EntityNotFoundException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.UUID;
 
 /**
  * This is a Java class that creates an appliance and saves it to a repository, along with its relation to an address.
@@ -38,24 +38,19 @@ public class ApplianceService {
      * @return A ResponseEntity object is being returned, which contains a JSON response with the resource ID and a success
      * message.
      */
-    public ResponseEntity<?> createAppliance(ApplianceDTO applianceDTO) {
-        JSONObject response = new JSONObject();
-
-        if (!addressRepository.existsById(applianceDTO.addressId())) {
+    @Transactional
+    public Appliance createAppliance(ApplianceDTO applianceDTO) {
+        if (!addressRepository.existsById(UUID.fromString(applianceDTO.addressId()))) {
             throw new EntityNotFoundException("address id not found");
         }
 
         Appliance appliance = applianceRepository.save(ApplianceMapper.applianceDTOToAppliance(applianceDTO));
 
         ApplianceRelation applianceRelation = new ApplianceRelation();
-
         applianceRelation.getApplianceRelationPK().setAppliance(appliance);
-        applianceRelation.getApplianceRelationPK().setAddress(addressRepository.findById(applianceDTO.addressId()).orElse(null));
-
+        applianceRelation.getApplianceRelationPK().setAddress(addressRepository.findById(UUID.fromString(applianceDTO.addressId())).orElseThrow(() -> new EntityNotFoundException()));
         applianceRelationRepository.save(applianceRelation);
 
-        response.put("resourceId", appliance.getId());
-        response.put("message", "appliance successfully registered");
-        return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
+        return appliance;
     }
 }

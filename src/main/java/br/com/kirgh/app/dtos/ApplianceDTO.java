@@ -3,6 +3,7 @@ package br.com.kirgh.app.dtos;
 import br.com.kirgh.app.enums.Power;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 /**
  * This is a Java record class named {@code ApplianceDTO} that represents a data transfer object for an appliance. It has five
@@ -24,7 +25,8 @@ public record ApplianceDTO(
     @NotNull(message = "cannot be null or empty")
     Power power,
 
-    @NotNull(message = "cannot be null or empty")
-    Long addressId
+    @NotBlank(message = "cannot be null or empty")
+    @Pattern(regexp = "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$", message = "invalid address id")
+    String addressId
 ) {
 }

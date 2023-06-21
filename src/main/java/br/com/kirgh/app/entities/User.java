@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * This is a Java class representing a user with properties such as name, email, birth date, gender, and CPF, with
@@ -21,7 +22,10 @@ import java.util.Date;
 @Table(name = "users")
 public class User {
     @Id
-    @Column(name = "id", length = 11, unique = true)
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    @Column(name = "cpf", length = 11, unique = true)
     private String cpf;
 
     @Column(nullable = false, length = 150)
