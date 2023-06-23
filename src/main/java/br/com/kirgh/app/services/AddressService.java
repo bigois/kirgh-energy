@@ -45,7 +45,7 @@ public class AddressService {
         }
 
         if (addressRepository.existsToUserByUnique(UUID.fromString(addressDTO.parentId()), addressDTO.zipCode(), addressDTO.number())) {
-            throw new IllegalArgumentException("address already exist to user");
+            throw new IllegalArgumentException("address already exists to user");
         }
 
         Address address = addressRepository.save(AddressMapper.addressDTOToAddress(addressDTO));
