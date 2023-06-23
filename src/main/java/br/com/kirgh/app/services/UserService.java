@@ -27,14 +27,12 @@ public class UserService {
     private UserRelationRepository userRelationRepository;
 
     /**
-     * This Java function creates a new user and saves it to the database, along with a user relation if specified, and
-     * returns a success message.
+     * This Java function creates a new user and saves it to the database, along with a user relation
+     * if specified, while checking for existing users and owner IDs.
      *
-     * @param userDTO UserDTO is an object that contains the information of a user, such as their name, email, CPF
-     *                (Brazilian individual taxpayer registry number), and information about their relationship with another user (if
-     *                applicable).
-     * @return A ResponseEntity object with a JSON response body containing a message indicating that the user was
-     * successfully registered, and an HTTP status code of 201 (CREATED).
+     * @param userDTO A data transfer object (DTO) representing a user, containing fields such as name,
+     *                email, CPF (Brazilian tax ID), and a relation object (if applicable).
+     * @return The method is returning a User object.
      */
     @Transactional
     public User createUser(UserDTO userDTO) {

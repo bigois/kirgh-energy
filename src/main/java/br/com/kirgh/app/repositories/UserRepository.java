@@ -6,10 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
 /**
- * This interface called {@code UserRepository} that extends the {@code JpaRepository} interface. The {@code JpaRepository} interface is
- * a Spring Data interface that provides methods for performing common database operations on a specific entity type
- * (}User} in this case). The second parameter of {@code JpaRepository} (}String}) specifies the type of the primary key for
- * the {@code User} entity. Therefore, {@code UserRepository} inherits all the methods of {@code JpaRepository} and can also define
+ * This line of code is defining an interface called {@code UserRepository} that extends the {@code JpaRepository}
+ * interface. The {@code JpaRepository} interface is a Spring Data interface that provides methods for
+ * performing common database operations on a specific entity type ({@code User} in this case). The second
+ * parameter of {@code JpaRepository} ({@code UUID}) specifies the type of the primary key for the {@code User} entity.
+ * Therefore, {@code UserRepository} inherits all the methods of {@code JpaRepository} and can also define
  * additional methods specific to the {@code User} entity.
  */
 public interface UserRepository extends JpaRepository<User, UUID> {
@@ -24,5 +25,16 @@ public interface UserRepository extends JpaRepository<User, UUID> {
      */
     boolean existsByEmail(String email);
 
-    boolean existsByCpf(String email);
+
+    /**
+     * The function checks if a record exists in a database by its CPF (Brazilian ID) number.
+     *
+     * @param cpf The "cpf" parameter is a string representing a Brazilian individual taxpayer registry identification
+     * number, also known as "Cadastro de Pessoas Físicas" (CPF). It is a unique identifier assigned to each Brazilian
+     * citizen or resident for tax and administrative purposes. The method "existsByCpf" is
+     * @return A boolean value is being returned. The method name "existsByCpf" suggests that it checks whether a record
+     * exists in a database or collection based on a given CPF (Brazilian individual taxpayer registry identification)
+     * number. If a record with the given CPF exists, the method will return true, otherwise it will return false.
+     */
+    boolean existsByCpf(String cpf);
 }

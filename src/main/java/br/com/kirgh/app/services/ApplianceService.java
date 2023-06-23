@@ -30,13 +30,12 @@ public class ApplianceService {
     private ApplianceRelationRepository applianceRelationRepository;
 
     /**
-     * The function creates a new appliance and saves it to the database with a relation to an address, returning a
-     * response with the new appliance's ID and a success message.
+     * This Java function creates a new Appliance object and saves it to the database with a
+     * corresponding ApplianceRelation object.
      *
-     * @param applianceDTO An object of type ApplianceDTO which contains the information needed to create a new Appliance
-     *                     entity.
-     * @return A ResponseEntity object is being returned, which contains a JSON response with the resource ID and a success
-     * message.
+     * @param applianceDTO An object of type ApplianceDTO, which contains information about the
+     *                     appliance to be created.
+     * @return The method is returning an instance of the Appliance class.
      */
     @Transactional
     public Appliance createAppliance(ApplianceDTO applianceDTO) {

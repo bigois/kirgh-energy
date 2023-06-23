@@ -24,10 +24,18 @@ import java.util.Objects;
 @Setter
 @Embeddable
 public class AddressRelationPK implements Serializable {
+    /**
+     * This code is defining a many-to-one relationship between the {@code AddressRelationPK} entity and the
+     * {@code User} entity.
+     */
     @ManyToOne
     @JoinColumn(name = "parent_id", nullable = false, foreignKey = @ForeignKey(name = "address_relations_parent_id_users_id_fk"))
     private User parent;
 
+    /**
+     * This code is defining a many-to-one relationship between the {@code AddressRelationPK} entity and the
+     * {@code Address} entity.
+     */
     @ManyToOne
     @JoinColumn(name = "address_id", nullable = false, foreignKey = @ForeignKey(name = "address_relations_address_id_addresses_id_fk"))
     private Address address;

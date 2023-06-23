@@ -23,10 +23,18 @@ import java.util.Objects;
 @Setter
 @Embeddable
 public class UserRelationPK implements Serializable {
+    /**
+     * This code is defining a many-to-one relationship between the {@code UserRelationPK} entity and the
+     * {@code User} entity.
+     */
     @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false, foreignKey = @ForeignKey(name = "user_relations_owner_id_users_id_fk"))
     private User owner;
 
+    /**
+     * This code is defining a many-to-one relationship between the {@code UserRelationPK} entity and the
+     * {@code User} entity.
+     */
     @ManyToOne
     @JoinColumn(name = "child_id", nullable = false, foreignKey = @ForeignKey(name = "user_relations_child_id_users_id_fk"))
     private User child;

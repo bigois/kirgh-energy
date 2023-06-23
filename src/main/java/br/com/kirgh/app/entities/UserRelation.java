@@ -12,8 +12,8 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * This is a Java class representing a user relation entity with a primary key and methods for checking equality and
- * generating hash codes.
+ * This is a Java class representing a user relation entity with a primary key and methods for checking
+ * equality and generating hash codes.
  */
 @NoArgsConstructor
 @AllArgsConstructor

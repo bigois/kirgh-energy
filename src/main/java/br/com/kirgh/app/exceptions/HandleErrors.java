@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This Java class contains exception handlers for various types of exceptions and returns a map of error details for each
+ * This class contains exception handlers for various types of exceptions and returns a map of error details for each
  * exception.
  */
 @RestControllerAdvice
@@ -23,7 +23,7 @@ public class HandleErrors {
     private final Instant timestamp = Instant.now();
 
     /**
-     * This Java function handles validation exceptions by creating a map of field names and error messages.
+     * This function handles validation exceptions by creating a map of field names and error messages.
      *
      * @param ex "ex" is an instance of the "MethodArgumentNotValidException" class, which is thrown when the validation of
      *           a method argument fails. This exception contains information about the validation errors that occurred.
@@ -51,7 +51,7 @@ public class HandleErrors {
     }
 
     /**
-     * This Java function handles the IllegalArgumentException and returns a map of error messages.
+     * This function handles the IllegalArgumentException and returns a map of error messages.
      *
      * @param ex "ex" is the variable name for the IllegalArgumentException object that is being caught by this exception
      *           handler method. It is used to access the properties and methods of the exception object, such as the error message.
@@ -71,6 +71,16 @@ public class HandleErrors {
         return errors;
     }
 
+
+    /**
+     * This function handles the HttpMediaTypeNotSupportedException and returns a map of error messages.
+     *
+     * @param ex "ex" is the variable name for the HttpMediaTypeNotSupportedException object that is being caught by this exception
+     *           handler method. It is used to access the properties and methods of the exception object, such as the error message.
+     * @return A {@code Map<String, String>} containing the timestamp and error message is being returned. This is the result of
+     * handling a {@code HttpMediaTypeNotSupportedException} with a {@code @ResponseStatus} annotation that sets the HTTP status code to
+     * {@code BAD_REQUEST}. The method also prints the stack trace of the exception.
+     */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
     public Map<String, String> handleConflit(HttpMediaTypeNotSupportedException ex) {
@@ -104,7 +114,7 @@ public class HandleErrors {
     }
 
     /**
-     * This is a Java exception handler that returns a map of error details for internal server errors.
+     * This is a exception handler that returns a map of error details for internal server errors.
      *
      * @param ex "ex" is a variable representing the exception that was thrown. It is used in the method to catch any type
      *           of exception that may occur during the execution of the code.

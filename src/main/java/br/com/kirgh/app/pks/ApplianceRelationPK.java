@@ -23,10 +23,18 @@ import java.io.Serializable;
 @Setter
 @Embeddable
 public class ApplianceRelationPK implements Serializable {
+    /**
+     * This code is defining a many-to-one relationship between the {@code ApplianceRelationPK} entity and
+     * the {@code Address} entity.
+     */
     @ManyToOne
     @JoinColumn(name = "address_id", nullable = false, foreignKey = @ForeignKey(name = "appliance_relations_address_id_addresses_id_fk"))
     private Address address;
 
+    /**
+     * This code is defining a many-to-one relationship between the `ApplianceRelationPK` entity and
+     * the {@code Appliance} entity.
+     */
     @ManyToOne
     @JoinColumn(name = "appliance_id", nullable = false, foreignKey = @ForeignKey(name = "appliance_relations_appliance_id_appliances_id_fk"))
     private Appliance appliance;

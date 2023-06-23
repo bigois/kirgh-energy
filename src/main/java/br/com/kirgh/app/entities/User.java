@@ -11,8 +11,8 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
- * This is a Java class representing a user with properties such as name, email, birth date, gender, and CPF, with
- * overridden equals and hashCode methods.
+ * The User class represents a user with attributes such as name, email, birth date, gender, and CPF,
+ * and overrides the equals and hashCode methods to compare and hash based on the CPF attribute.
  */
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,6 +20,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "users")
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

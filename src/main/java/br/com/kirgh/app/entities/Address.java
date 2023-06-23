@@ -10,8 +10,8 @@ import lombok.Setter;
 import java.util.UUID;
 
 /**
- * The Address class is a Java entity that represents a physical address with properties such as zip code, street, number,
- * city, and state, and includes methods for checking equality and generating hash codes.
+ * The Address class represents a physical address with fields for zip code, street, number, city, and
+ * state, and includes methods for checking equality and generating hash codes based on the id field.
  */
 @NoArgsConstructor
 @AllArgsConstructor

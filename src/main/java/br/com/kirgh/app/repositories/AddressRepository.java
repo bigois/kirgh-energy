@@ -8,10 +8,11 @@ import org.springframework.data.repository.query.Param;
 import java.util.UUID;
 
 /**
- * This line of code is defining an interface called {@code AddressRepository} that extends the {@code JpaRepository} interface. The
- * {@code JpaRepository} interface is a Spring Data interface that provides methods for performing CRUD (Create, Read, Update,
- * Delete) operations on a specific entity type (}Address} in this case) in a database. The {@code Long} parameter specifies the
- * type of the primary key for the {@code Address} entity.
+ * This code is defining an interface called {@code AddressRepository} that extends the {@code JpaRepository}
+ * interface. The {@code JpaRepository} interface is a Spring Data interface that provides methods for
+ * performing CRUD (Create, Read, Update, Delete) operations on a specific entity type (`Address` in
+ * this case) in a database. The {@code UUID} parameter specifies the type of the primary key for the
+ * {@code Address} entity.
  */
 public interface AddressRepository extends JpaRepository<Address, UUID> {
     /**
