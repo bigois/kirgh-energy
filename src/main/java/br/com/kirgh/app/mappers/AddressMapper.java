@@ -4,7 +4,8 @@ import br.com.kirgh.app.dtos.AddressDTO;
 import br.com.kirgh.app.entities.Address;
 
 /**
- * The AddressMapper class provides a static method to convert an AddressDTO object to an Address object in Java.
+ * The AddressMapper class provides a static method to convert an AddressDTO object to an Address
+ * object in Java.
  */
 public abstract class AddressMapper {
     /**
@@ -16,13 +17,11 @@ public abstract class AddressMapper {
      */
     public static Address addressDTOToAddress(AddressDTO addressDTO) {
         Address address = new Address();
-
         address.setStreet(addressDTO.street());
         address.setZipCode(addressDTO.zipCode());
         address.setNumber(addressDTO.number());
         address.setCity(addressDTO.city());
         address.setState(addressDTO.state());
-
         return address;
     }
 }

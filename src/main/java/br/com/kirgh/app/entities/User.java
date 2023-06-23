@@ -8,10 +8,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.UUID;
 
 /**
- * This is a Java class representing a user with properties such as name, email, birth date, gender, and CPF, with
- * overridden equals and hashCode methods.
+ * The User class represents a user with attributes such as name, email, birth date, gender, and CPF,
+ * and overrides the equals and hashCode methods to compare and hash based on the CPF attribute.
  */
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,9 +20,13 @@ import java.util.Date;
 @Setter
 @Entity
 @Table(name = "users")
+
 public class User {
     @Id
-    @Column(name = "id", length = 11, unique = true)
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    @Column(name = "cpf", length = 11, unique = true)
     private String cpf;
 
     @Column(nullable = false, length = 150)

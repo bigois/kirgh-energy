@@ -1,9 +1,12 @@
 package br.com.kirgh.app.controllers;
 
 import br.com.kirgh.app.dtos.ApplianceDTO;
+import br.com.kirgh.app.entities.Appliance;
 import br.com.kirgh.app.services.ApplianceService;
 import jakarta.validation.Valid;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,7 +35,12 @@ public class ApplianceController {
      * of the {@code createAppliance} method in the {@code applianceService} class.
      */
     @PostMapping
-    public ResponseEntity<?> applianceRegister(@RequestBody @Valid ApplianceDTO applianceDTO) {
-        return applianceService.createAppliance(applianceDTO);
+    public ResponseEntity<String> applianceRegister(@RequestBody @Valid ApplianceDTO applianceDTO) {
+        JSONObject response = new JSONObject();
+        Appliance appliance = applianceService.createAppliance(applianceDTO);
+
+        response.put("resourceId", appliance.getId());
+        response.put("message", "appliance successfully registered");
+        return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
     }
 }

@@ -1,9 +1,12 @@
 package br.com.kirgh.app.controllers;
 
 import br.com.kirgh.app.dtos.UserDTO;
+import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.services.UserService;
 import jakarta.validation.Valid;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +37,12 @@ public class UserController {
      * {@code createUser} method in the {@code userService} object.
      */
     @PostMapping
-    public ResponseEntity<?> userRegister(@RequestBody @Valid UserDTO userDTO) {
-        return userService.createUser(userDTO);
+    public ResponseEntity<String> userRegister(@RequestBody @Valid UserDTO userDTO) {
+        JSONObject response = new JSONObject();
+        User user = userService.createUser(userDTO);
+
+        response.put("resourceId", user.getId());
+        response.put("message", "user successfully registered");
+        return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
     }
 }

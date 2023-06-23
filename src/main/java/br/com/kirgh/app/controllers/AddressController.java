@@ -1,9 +1,12 @@
 package br.com.kirgh.app.controllers;
 
 import br.com.kirgh.app.dtos.AddressDTO;
+import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.services.AddressService;
 import jakarta.validation.Valid;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,17 +26,21 @@ public class AddressController {
     private AddressService addressService;
 
     /**
-     * This is a Java function that creates a new address using the provided AddressDTO object.
+     * This function registers a new address by creating an Address object from the provided AddressDTO and returning a
+     * JSON response with the new address's ID and a success message.
      *
-     * @param addressDTO AddressDTO is a parameter of type AddressDTO that is annotated with @RequestBody and @Valid. It is
-     *                   used to receive the request body of a POST request that contains information about a new address to be registered.
-     *                   The @Valid annotation is used to validate the input data against any constraints specified in the Address
-     * @return The method {@code addressRegister} is returning a {@code ResponseEntity} object, which can contain any type of response
-     * data along with an HTTP status code. The specific response data being returned depends on the implementation of the
-     * {@code createAddress} method in the {@code addressService} object.
+     * @param addressDTO AddressDTO is an object that contains the details of an address such as street, city, state, and
+     *                   zip code. It is annotated with @Valid to ensure that the input data is valid and meets the required constraints. The
+     * @return A ResponseEntity object containing a JSON response with the resourceId and message of the newly created
+     * Address object. The HTTP status code of the response is set to 201 (CREATED).
      */
     @PostMapping
-    public ResponseEntity<?> addressRegister(@RequestBody @Valid AddressDTO addressDTO) {
-        return addressService.createAddress(addressDTO);
+    public ResponseEntity<String> addressRegister(@RequestBody @Valid AddressDTO addressDTO) {
+        JSONObject response = new JSONObject();
+        Address address = addressService.createAddress(addressDTO);
+
+        response.put("resourceId", address.getId());
+        response.put("message", "address successfully registered");
+        return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
     }
 }

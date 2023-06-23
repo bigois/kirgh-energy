@@ -8,11 +8,11 @@ import br.com.kirgh.app.repositories.AddressRelationRepository;
 import br.com.kirgh.app.repositories.AddressRepository;
 import br.com.kirgh.app.repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.UUID;
 
 /**
  * The AddressService class creates and saves a new address to the database, along with its relation to a parent user, and
@@ -31,35 +31,30 @@ public class AddressService {
     private AddressRelationRepository addressRelationRepository;
 
     /**
-     * The function creates a new address and saves it to the database, along with its relation to a parent user, and
-     * returns a response with the new address's ID and a success message.
+     * This function creates a new address and saves it to the database, while also checking if
+     * the parent user exists and if the address already exists for that user.
      *
-     * @param addressDTO An object that contains the details of the address to be created, such as zip code, number, and
-     *                   other relevant information.
-     * @return A ResponseEntity object is being returned.
+     * @param addressDTO An object of type AddressDTO that contains the information needed to create a
+     *                   new address.
+     * @return The method is returning an instance of the Address class.
      */
-    public ResponseEntity<?> createAddress(AddressDTO addressDTO) {
-        JSONObject response = new JSONObject();
-
-        if (!userRepository.existsById(addressDTO.relation().parentId())) {
+    @Transactional
+    public Address createAddress(AddressDTO addressDTO) {
+        if (!userRepository.existsById(UUID.fromString(addressDTO.parentId()))) {
             throw new EntityNotFoundException("parent id not found");
         }
 
-        if (addressRepository.existsToUserByUnique(addressDTO.relation().parentId(), addressDTO.zipCode(), addressDTO.number())) {
-            throw new IllegalArgumentException("address already exist to user");
+        if (addressRepository.existsToUserByUnique(UUID.fromString(addressDTO.parentId()), addressDTO.zipCode(), addressDTO.number())) {
+            throw new IllegalArgumentException("address already exists to user");
         }
 
         Address address = addressRepository.save(AddressMapper.addressDTOToAddress(addressDTO));
 
         AddressRelation addressRelation = new AddressRelation();
-
         addressRelation.getAddressRelationPK().setAddress(address);
-        addressRelation.getAddressRelationPK().setParent(userRepository.findById(addressDTO.relation().parentId()).orElse(null));
-
+        addressRelation.getAddressRelationPK().setParent(userRepository.findById(UUID.fromString(addressDTO.parentId())).orElseThrow(() -> new EntityNotFoundException()));
         addressRelationRepository.save(addressRelation);
 
-        response.put("resourceId", address.getId());
-        response.put("message", "address successfully registered");
-        return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
+        return address;
     }
 }
