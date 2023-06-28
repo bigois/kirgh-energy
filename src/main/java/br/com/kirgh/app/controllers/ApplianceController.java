@@ -3,6 +3,8 @@ package br.com.kirgh.app.controllers;
 import br.com.kirgh.app.dtos.ApplianceDTO;
 import br.com.kirgh.app.entities.Appliance;
 import br.com.kirgh.app.services.ApplianceService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(path = "/api/v1/appliances", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-@SuppressWarnings("unused")
+@Tag(name = "Appliances", description = "Set of API methods for appliance data manipulation")
+@SuppressWarnings({"unused", "SpringJavaAutowiredFieldsWarningInspection"})
 public class ApplianceController {
     @Autowired
     private ApplianceService applianceService;
@@ -34,6 +37,10 @@ public class ApplianceController {
      * response data along with an HTTP status code. The actual response data being returned depends on the implementation
      * of the {@code createAppliance} method in the {@code applianceService} class.
      */
+    @Operation(
+        summary = "Creates a new appliance to an existent address",
+        description = "Method for creating a new appliance to an existent user address and returning a JSON response with the new appliance's ID"
+    )
     @PostMapping
     public ResponseEntity<String> applianceRegister(@RequestBody @Valid ApplianceDTO applianceDTO) {
         JSONObject response = new JSONObject();

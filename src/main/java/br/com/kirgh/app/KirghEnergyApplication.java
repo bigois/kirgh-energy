@@ -1,5 +1,8 @@
 package br.com.kirgh.app;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.info.License;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -7,6 +10,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * This is the main class for running KIRGH Energy REST application in Java.
  */
 @SpringBootApplication
+@OpenAPIDefinition(
+    info = @Info(
+            title = "KIRGH Energy",
+            version = "0.0.1",
+            description = "Solution for tracking appliance and home electronic energy use",
+            license = @License(
+                    name = "MIT License",
+                    url = "https://github.com/bigois/kirgh-energy/blob/main/LICENSE"
+            )
+    )
+)
 public class KirghEnergyApplication {
     /**
      * This is the main function that runs KIRGH Energy REST application in Java.

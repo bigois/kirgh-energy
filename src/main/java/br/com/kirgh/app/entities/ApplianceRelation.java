@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Setter
 @Entity
 @Table(name = "appliance_relations")
+@SuppressWarnings({"JpaDataSourceORMInspection", "SpringJavaInjectionPointsAutowiringInspection"})
 public class ApplianceRelation {
     @Autowired
     @EmbeddedId

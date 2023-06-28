@@ -22,6 +22,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Embeddable
+@SuppressWarnings("JpaDataSourceORMInspection")
 public class ApplianceRelationPK implements Serializable {
     /**
      * This code is defining a many-to-one relationship between the {@code ApplianceRelationPK} entity and

@@ -18,7 +18,7 @@ import java.util.UUID;
  * returns a success message.
  */
 @Service
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "SpringJavaAutowiredFieldsWarningInspection"})
 public class UserService {
     @Autowired
     private UserRepository userRepository;
@@ -50,7 +50,7 @@ public class UserService {
             UserRelation userRelation = new UserRelation();
             userRelation.setRelationType(userDTO.relation().relationType());
             userRelation.getUserRelationPK().setChild(user);
-            userRelation.getUserRelationPK().setOwner(userRepository.findById(UUID.fromString(userDTO.relation().ownerId())).orElseThrow(() -> new EntityNotFoundException()));
+            userRelation.getUserRelationPK().setOwner(userRepository.findById(UUID.fromString(userDTO.relation().ownerId())).orElseThrow(EntityNotFoundException::new));
             userRelationRepository.save(userRelation);
         }
 

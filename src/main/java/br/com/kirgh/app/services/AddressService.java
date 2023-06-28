@@ -19,7 +19,7 @@ import java.util.UUID;
  * returns a response with the new address's ID and a success message.
  */
 @Service
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "SpringJavaAutowiredFieldsWarningInspection"})
 public class AddressService {
     @Autowired
     private AddressRepository addressRepository;
@@ -52,7 +52,7 @@ public class AddressService {
 
         AddressRelation addressRelation = new AddressRelation();
         addressRelation.getAddressRelationPK().setAddress(address);
-        addressRelation.getAddressRelationPK().setParent(userRepository.findById(UUID.fromString(addressDTO.parentId())).orElseThrow(() -> new EntityNotFoundException()));
+        addressRelation.getAddressRelationPK().setParent(userRepository.findById(UUID.fromString(addressDTO.parentId())).orElseThrow(EntityNotFoundException::new));
         addressRelationRepository.save(addressRelation);
 
         return address;
