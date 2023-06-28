@@ -3,6 +3,8 @@ package br.com.kirgh.app.controllers;
 import br.com.kirgh.app.dtos.AddressDTO;
 import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.services.AddressService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(path = "/api/v1/addresses", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-@SuppressWarnings("unused")
+@Tag(name = "Addresses", description = "Set of API methods for address data manipulation")
+@SuppressWarnings({"unused", "SpringJavaAutowiredFieldsWarningInspection"})
 public class AddressController {
     @Autowired
     private AddressService addressService;
@@ -34,6 +37,10 @@ public class AddressController {
      * @return A ResponseEntity object containing a JSON response with the resourceId and message of the newly created
      * Address object. The HTTP status code of the response is set to 201 (CREATED).
      */
+    @Operation(
+        summary = "Creates a new address to an existent user",
+        description = "Method for creating a new address to an existent user and returning a JSON response with the new address's ID"
+    )
     @PostMapping
     public ResponseEntity<String> addressRegister(@RequestBody @Valid AddressDTO addressDTO) {
         JSONObject response = new JSONObject();

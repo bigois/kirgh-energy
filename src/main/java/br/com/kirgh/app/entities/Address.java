@@ -1,6 +1,7 @@
 package br.com.kirgh.app.entities;
 
 import br.com.kirgh.app.enums.State;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +20,8 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "addresses")
+@Schema(title = "Address", description = "Object that represents a entity address")
+@SuppressWarnings("JpaDataSourceORMInspection")
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

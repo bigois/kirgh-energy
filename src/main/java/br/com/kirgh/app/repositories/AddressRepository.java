@@ -14,6 +14,7 @@ import java.util.UUID;
  * this case) in a database. The {@code UUID} parameter specifies the type of the primary key for the
  * {@code Address} entity.
  */
+@SuppressWarnings("SqlResolve")
 public interface AddressRepository extends JpaRepository<Address, UUID> {
     /**
      * This is a Java function that checks if a specific address exists for a given user based on their ID, zip code, and
@@ -25,25 +26,25 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
      * @return A boolean value is being returned.
      */
     @Query(nativeQuery = true,
-        value = """
-                SELECT
-                    CASE
-                        WHEN (COUNT(1) > 0) THEN
-                        true
-                    ELSE
-                        false
-                    END
-                FROM
-                    address_relations rel
-                    INNER JOIN
-                        addresses adr
-                        ON
-                            adr.id = rel.address_id
-                            AND zip_code = :zipCode
-                            AND number = :number
-                WHERE
-                    parent_id = :userId
-            """
+            value = """
+                        SELECT
+                            CASE
+                                WHEN (COUNT(1) > 0) THEN
+                                true
+                            ELSE
+                                false
+                            END
+                        FROM
+                            address_relations rel
+                            INNER JOIN
+                                addresses adr
+                                ON
+                                    adr.id = rel.address_id
+                                    AND zip_code = :zipCode
+                                    AND number = :number
+                        WHERE
+                            parent_id = :userId
+                    """
     )
     boolean existsToUserByUnique(@Param("userId") UUID userId, @Param("zipCode") String zipCode, @Param("number") String number);
 }

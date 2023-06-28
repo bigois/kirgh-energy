@@ -21,10 +21,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Setter
 @Entity
 @Table(name = "user_relations")
+@SuppressWarnings({"JpaDataSourceORMInspection", "SpringJavaInjectionPointsAutowiringInspection"})
 public class UserRelation {
     @Autowired
     @EmbeddedId
-    UserRelationPK userRelationPK = new UserRelationPK();
+    private UserRelationPK userRelationPK = new UserRelationPK();
 
     @Column(length = 30, nullable = false)
     private String relationType;

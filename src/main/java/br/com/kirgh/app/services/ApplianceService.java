@@ -18,7 +18,7 @@ import java.util.UUID;
  * This is a Java class that creates an appliance and saves it to a repository, along with its relation to an address.
  */
 @Service
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "SpringJavaAutowiredFieldsWarningInspection"})
 public class ApplianceService {
     @Autowired
     private ApplianceRepository applianceRepository;
@@ -47,7 +47,7 @@ public class ApplianceService {
 
         ApplianceRelation applianceRelation = new ApplianceRelation();
         applianceRelation.getApplianceRelationPK().setAppliance(appliance);
-        applianceRelation.getApplianceRelationPK().setAddress(addressRepository.findById(UUID.fromString(applianceDTO.addressId())).orElseThrow(() -> new EntityNotFoundException()));
+        applianceRelation.getApplianceRelationPK().setAddress(addressRepository.findById(UUID.fromString(applianceDTO.addressId())).orElseThrow(EntityNotFoundException::new));
         applianceRelationRepository.save(applianceRelation);
 
         return appliance;

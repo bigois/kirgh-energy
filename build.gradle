@@ -7,6 +7,7 @@ plugins {
 
 group = 'br.com.kirgh'
 version = '0.0.1'
+description = 'Solution for tracking appliance and home electronic energy use'
 sourceCompatibility = '17'
 
 configurations {
@@ -30,6 +31,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.json:json:20230227'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
 }
 
 tasks.named('test') {

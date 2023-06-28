@@ -30,8 +30,8 @@ public interface UserRepository extends JpaRepository<User, UUID> {
      * The function checks if a record exists in a database by its CPF (Brazilian ID) number.
      *
      * @param cpf The "cpf" parameter is a string representing a Brazilian individual taxpayer registry identification
-     * number, also known as "Cadastro de Pessoas Físicas" (CPF). It is a unique identifier assigned to each Brazilian
-     * citizen or resident for tax and administrative purposes. The method "existsByCpf" is
+     *            number, also known as "Cadastro de Pessoas Físicas" (CPF). It is a unique identifier assigned to each Brazilian
+     *            citizen or resident for tax and administrative purposes. The method "existsByCpf" is
      * @return A boolean value is being returned. The method name "existsByCpf" suggests that it checks whether a record
      * exists in a database or collection based on a given CPF (Brazilian individual taxpayer registry identification)
      * number. If a record with the given CPF exists, the method will return true, otherwise it will return false.

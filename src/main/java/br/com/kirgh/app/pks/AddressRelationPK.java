@@ -23,6 +23,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @Embeddable
+@SuppressWarnings("JpaDataSourceORMInspection")
 public class AddressRelationPK implements Serializable {
     /**
      * This code is defining a many-to-one relationship between the {@code AddressRelationPK} entity and the

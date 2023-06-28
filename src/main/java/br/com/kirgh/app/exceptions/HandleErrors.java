@@ -61,7 +61,7 @@ public class HandleErrors {
      */
     @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler(IllegalArgumentException.class)
-    public Map<String, String> handleConflit(IllegalArgumentException ex) {
+    public Map<String, String> handleConflict(IllegalArgumentException ex) {
         Map<String, String> errors = new HashMap<>();
 
         errors.put("timestamp", timestamp.toString());
@@ -83,7 +83,7 @@ public class HandleErrors {
      */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
-    public Map<String, String> handleConflit(HttpMediaTypeNotSupportedException ex) {
+    public Map<String, String> handleConflict(HttpMediaTypeNotSupportedException ex) {
         Map<String, String> errors = new HashMap<>();
 
         errors.put("timestamp", timestamp.toString());
@@ -114,7 +114,7 @@ public class HandleErrors {
     }
 
     /**
-     * This is a exception handler that returns a map of error details for internal server errors.
+     * This is an exception handler that returns a map of error details for internal server errors.
      *
      * @param ex "ex" is a variable representing the exception that was thrown. It is used in the method to catch any type
      *           of exception that may occur during the execution of the code.

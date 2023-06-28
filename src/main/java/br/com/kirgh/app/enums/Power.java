@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * This is a enum class that represents the power voltages from general appliances in Brazil.
+ * This is an enum class that represents the power voltages from general appliances in Brazil.
  */
 @AllArgsConstructor
 @Getter

@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * {@code JpaRepository} interface is a Spring Data JPA interface that provides methods for performing common database operations
  * on a specific entity. In this case, the {@code AddressRelationRepository} interface is specifying that it will be working with
  * the {@code AddressRelation} entity and its primary key {@code AddressRelationPK}. By extending the {@code JpaRepository} interface, the
- * {@code AddressRelationRepository} interface will inherit all of the methods provided by {@code JpaRepository} for working with the
+ * {@code AddressRelationRepository} interface will inherit all the methods provided by {@code JpaRepository} for working with the
  */
 public interface AddressRelationRepository extends JpaRepository<AddressRelation, AddressRelationPK> {
 }
