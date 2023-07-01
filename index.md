@@ -13,7 +13,7 @@ Don't waste time and start reaping the benefits of energy usage tracking. Our AP
 {: .fs-6 .fw-300 }
 
 [Get started now](#getting-started){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[View it on GitHub][KIRGH Energy repo]{: .btn .fs-5 .mb-4 .mb-md-0 }
+[View it on GitHub][KIRGH Energy repo]{: .btn .fs-5 .mb-4 .mb-md-0 }{:target="_blank"}
 
 ---
 
@@ -37,12 +37,12 @@ Just the Docs is &copy; 2023-{{ "now" | date: "%Y" }} by [Patrick Marsceill](htt
 
 ### License
 
-Just the Docs is distributed by an [MIT license](https://github.com/just-the-docs/just-the-docs/tree/main/LICENSE.txt).
+Just the Docs is distributed by an [MIT license](https://github.com/just-the-docs/just-the-docs/tree/main/LICENSE.txt){:target="_blank"}.
 
 ### Creators
 
 When contributing to this repository, please first discuss the change you wish to make via issue,
-email, or any other method with the owners of this repository before making a change. Read more about becoming a contributor in [our GitHub repo](https://github.com/just-the-docs/just-the-docs#contributing).
+email, or any other method with the owners of this repository before making a change. Read more about becoming a contributor in [our GitHub repo](https://github.com/just-the-docs/just-the-docs#contributing){:target="_blank"}.
 
 #### Thank you to the contributors of Just the Docs!
 
