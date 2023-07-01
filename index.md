@@ -9,7 +9,7 @@ permalink: /
 # Energy tracking easy to use
 {: .fs-9 }
 
-Don't waste your time and start reaping the benefits of energy usage tracking to understand, control, and save energy in your home or business.
+Don't waste time and start reaping the benefits of energy usage tracking to understand, control, and save energy in your home or business.
 {: .fs-6 .fw-300 }
 
 [Get started now](#getting-started){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
