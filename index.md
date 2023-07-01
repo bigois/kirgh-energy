@@ -25,7 +25,7 @@ To make it real, we developed three simple APIs that are prepared to receive JSO
 
 ## Name meaning
 
-K.I.R.G.H. is an acronym to the project core creators name (Kelvin, Igor, Ronilson, Guilherme, Hernandes), and also a [mountain name][Kirgh mountain]{:target="_blank"} in the [Baluchistan Mountains][Baluchistan Mountains]{:target="_blank"} in Pakistan.
+K.I.R.G.H. is an acronym to the project core creators name (Kelvin, Igor, Ronilson, Guilherme, and Hernandes), and also a [mountain name][Kirgh mountain]{:target="_blank"} in the [Baluchistan Mountains][Baluchistan Mountains]{:target="_blank"} in Pakistan.
 
 ## Getting started
 
