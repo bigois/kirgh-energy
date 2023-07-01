@@ -2,7 +2,7 @@
 title: User
 layout: default
 nav_order: 1
-has_children: false
+parent: Entities
 ---
 
 # Layout

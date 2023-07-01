@@ -2,7 +2,7 @@
 title: Difficulties
 layout: default
 nav_order: 2
-has_children: false
+parent: Timeline
 ---
 
 # Layout

@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Entities
+title: Technologies
 nav_order: 3
 has_children: true
-permalink: /docs/tecnologies
+permalink: /docs/technologies
 ---
 
 # UI Components

@@ -1,8 +1,8 @@
 ---
-title: User Related
+title: Code Related
 layout: default
 nav_order: 2
-has_children: false
+parent: Technologies
 ---
 
 # Layout
