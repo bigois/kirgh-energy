@@ -28,12 +28,12 @@ For make it real, we developed three APIs (users, addresses, appliances) that ar
 If you also believe that talking is cheap (so "show me the code"), click on link below to access our Swagger API docs:
 
 <span class="fs-3">
-[Show me the code!][Swagger API]{: .btn }
+[Show me the code!][Swagger API]{: .btn }{:target="_blank"}
 </span>
 
 ## About the project
 
-Just the Docs is &copy; 2017-{{ "now" | date: "%Y" }} by [Patrick Marsceill](http://patrickmarsceill.com).
+Just the Docs is &copy; 2023-{{ "now" | date: "%Y" }} by [Patrick Marsceill](http://patrickmarsceill.com).
 
 ### License
 
