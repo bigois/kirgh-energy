@@ -2,7 +2,7 @@
 title: Team Meetings
 layout: default
 nav_order: 1
-parent: Technologies
+parent: Timeline
 ---
 
 # Layout
