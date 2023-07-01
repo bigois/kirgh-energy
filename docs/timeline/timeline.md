@@ -6,7 +6,7 @@ has_children: true
 permalink: /docs/timeline
 ---
 
-# UI Components
+# Timeline
 
-To make it as easy as possible to write documentation in plain Markdown, most UI components are styled using default Markdown elements with few additional CSS classes needed.
+Timeline section describes the chronological process of creating this application, detailing meeting activities, team difficulties, and changes in plans during the development process.
 {: .fs-6 .fw-300 }

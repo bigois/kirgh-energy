@@ -6,7 +6,7 @@ has_children: true
 permalink: /docs/entities
 ---
 
-# UI Components
+# Entities
 
-To make it as easy as possible to write documentation in plain Markdown, most UI components are styled using default Markdown elements with few additional CSS classes needed.
+Entity classes that generate business tables, defining the data structure and relationships, and also facilitating data transportation between different layers (e.g., from repository to service and from service to controller).
 {: .fs-6 .fw-300 }

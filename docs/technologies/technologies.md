@@ -6,7 +6,7 @@ has_children: true
 permalink: /docs/technologies
 ---
 
-# UI Components
+# Technologies
 
-To make it as easy as possible to write documentation in plain Markdown, most UI components are styled using default Markdown elements with few additional CSS classes needed.
+This section describes the technologies directly focused on developing this application (e.g., frameworks, dependencies, IDEs, etc.), as well as technologies that assist in creating code documentation, code versioning, project documentation, team meeting minutes, and so on, not directly related to code development.
 {: .fs-6 .fw-300 }
