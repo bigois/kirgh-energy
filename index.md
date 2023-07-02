@@ -41,7 +41,7 @@ KIRGH Energy is a project developed as a final stage assigment of the 1<sup>st</
 
 ### License
 
-KIRGH Energy is distributed by an [MIT license](https://github.com/bigois/kirgh-energy/blob/main/LICENSE){:target="_blank"}.
+KIRGH Energy is distributed by an [MIT license][MIT license]{:target="_blank"}.
 
 ### Creators
 
@@ -65,3 +65,4 @@ KIRGH Energy is distributed by an [MIT license](https://github.com/bigois/kirgh-
 [Ronilson Botelho LinkedIn]: https://www.linkedin.com/in/ronilson-alves-63b57a138
 [Guilherme Franco LinkedIn]: https://www.linkedin.com/in/guilherme-franco-21792a135
 [Kelvin Natal LinkedIn]: https://www.linkedin.com/in/kelvin-natal-40ba681a1
+[MIT license]: https://github.com/bigois/kirgh-energy/blob/main/LICENSE
