@@ -18,7 +18,7 @@
 <p align="center">
 	<br/>
 	<a href="https://github.com/bigois/kirgh-energy" target="_blank">
-		<img src="https://raw.githubusercontent.com/bigois/kirgh-energy/main/docs/images/logo-kirgh.png?raw=true" alt="Logo" width="25%" height="25%">
+		<img src="https://github.com/bigois/kirgh-energy/blob/docs/docs/images/logo-kirgh.png?raw=true" alt="Logo" width="25%" height="25%">
 	</a>
 	<h2 align="center">KIRGH Energy</h2>
 	<p align="center">
