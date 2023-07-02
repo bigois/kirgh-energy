@@ -9,28 +9,28 @@ parent: Entities
 
 The user represents the main entity of the application. It can be associated with another or an independent user. This entity is mandatory for the existence of the others, since they are direct or indirectly associated with the principal.
 
-## Attribute Table
+## Attribute table
 
-| Attribute    | Type   | Description   | Required | Filter |
-|:-------------|:-------|:--------------|:---------|:-------|
-| cpf          | String | User's CPF    | Yes      |Yes     |
-| name         | String | Full name     | Yes      |Yes     |
-| email        | String | Valid e-mail  | Yes      |Yes     |
-| birthDate    | Date   | Date of birth | Yes      |Yes     |
-| gender       | String | User gender   | Yes      |Yes     |
-| ownerId      | String | User gender   | Yes      |Yes     |
-| relationType | String | User gender   | Yes      |Yes     |
+| Attribute    | Type   | Description           | Required | Filter |
+|:-------------|:-------|:----------------------|:---------|:-------|
+| cpf          | String | User's CPF            | Yes      | Yes    |
+| name         | String | Full name             | Yes      | Yes    |
+| email        | String | Valid e-mail          | Yes      | Yes    |
+| birthDate    | Date   | Date of birth         | Yes      | Yes    |
+| gender       | String | User gender           | Yes      | Yes    |
+| ownerId      | String | UUID from parent user | Yes      | Yes    |
+| relationType | String | Relation description  | Yes      | Yes    |
 
-## Supported Methods
+## Supported methods
 
 <span class="fs-5 lh-default">
 POST
+</span>
 {: .label .label-green }
-
 
 ## Request examples
 
-### Parent User
+### Parent user
 
 ```json
 {
@@ -42,7 +42,7 @@ POST
 }
 ```
 
-### Child User
+### Child user
 ```json
 {
 "name": "Victória Oliveira da Silva",
