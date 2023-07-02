@@ -54,7 +54,7 @@ POST
   }
 }
 ```
-### Parent User
+### Diagrams
 
 It is a *responsive* layout: on medium and larger width displays, it displays a sidebar, including a navigation panel; on smaller width displays, the sidebar is automatically hidden under a button.
 
@@ -62,15 +62,3 @@ Each child (and grandchild) page of a top-level page has so-called *breadcrumbs*
 
 Each page that has child pages generally has a list of links to those pages (you can suppress it by `has_toc: false` in the front matter). It shows the list as a *table of contents* below the main content.
 
-## The `minimal` layout
-
-A child and grandchild page of this page use the minimal layout. This differs from the default layout by omitting the sidebar -- and thereby also the navigation panel. To navigate between pages with the minimal layout, you can use the breadcrumbs and the tables of contents.
-
-## Other layouts
-
-Just the Docs has further layouts: `about`, `home`, `page`, and `post`. Currently, they are all based on the `default` layout. See the [Jekyll docs about inheritance] for how to customize them.
-
-[front matter]: https://jekyllrb.com/docs/front-matter/ "Jekyll docs about front matter"
-[Jekyll docs page about layouts]: https://jekyllrb.com/docs/layouts/ "Jekyll docs about layouts"
-[Jekyll's front matter defaults]: https://jekyllrb.com/docs/configuration/front-matter-defaults/ "Jekyll docs about front matter defaults"
-[Jekyll docs about inheritance]: https://jekyllrb.com/docs/layouts/#inheritance "Jekyll docs about inheritance"
