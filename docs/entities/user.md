@@ -11,15 +11,15 @@ The user represents the main entity of the application. It can be associated wit
 
 ## Attribute table
 
-| Attribute    | Type   | Description           | Required | Filter |
-|:-------------|:-------|:----------------------|:---------|:-------|
-| cpf          | String | User's CPF            | Yes      | Yes    |
-| name         | String | Full name             | Yes      | Yes    |
-| email        | String | Valid e-mail          | Yes      | Yes    |
-| birthDate    | Date   | Date of birth         | Yes      | Yes    |
-| gender       | String | User gender           | Yes      | Yes    |
-| ownerId      | String | UUID from parent user | Yes      | Yes    |
-| relationType | String | Relation description  | Yes      | Yes    |
+| Attribute             | Type   | Description           | Required |
+|:----------------------|:-------|:----------------------|:---------|
+| cpf                   | String | User's CPF            | Yes      |
+| name                  | String | Full name             | Yes      |
+| email                 | String | Valid e-mail          | Yes      |
+| birthDate             | Date   | Date of birth         | Yes      |
+| gender                | String | User gender           | Yes      |
+| relation/ownerId      | String | UUID from parent user | No       |
+| relation/relationType | String | Relation description  | No       |
 
 ## Supported methods
 
@@ -56,10 +56,6 @@ POST
   }
 }
 ```
-### Diagrams
+## Diagrams
 
-It is a *responsive* layout: on medium and larger width displays, it displays a sidebar, including a navigation panel; on smaller width displays, the sidebar is automatically hidden under a button.
-
-Each child (and grandchild) page of a top-level page has so-called *breadcrumbs*: links to its parent (and grandparent) pages. It shows the breadcrumbs above the main content of the page.
-Each child (and grandchild) page of a top-level page has so-called *breadcrumbs*: links to its parent (and grandparent) pages. It shows the breadcrumbs above the main content of the page.
-
+![img.png](../images/diagram-user.png)

@@ -1,40 +1,47 @@
 ---
 title: Address
 layout: default
-nav_order: 2
+nav_order: 1
 parent: Entities
 ---
 
-# Layout
-
-You specify the layout for a page in its [front matter]. Just the Docs has a `default` layout with a sidebar, used for almost all pages in the theme docs, and a `minimal` layout that omits the sidebar.
+# Address
+The address entity identifies a specific location, (e.g.: residence, building, or company) and must be associated with an already created user.
 {: .fs-6 .fw-300 }
 
-## The layout concept
+## Attributes table
 
-See the [Jekyll docs page about layouts] for an explanation of the general idea of layouts and how to specify them.
+| Attribute       | Type   | Description                                | Required |
+|:----------------|:-------|:-------------------------------------------|:---------|
+| zipCode         | String | Street ZIP code                            | Yes      |
+| street          | String | Street or avenue                           | Yes      |
+| number          | String | Númerical addresses assigned to properties | Yes      |
+| city            | String | City                                       | Yes      |
+| state           | String | State                                      | Yes      |
+| parentId        | String | UUID from parent user                      | Yes      |
 
-You can use [Jekyll's front matter defaults] to specify the same layout for many page.
+## Supported HTTP methods
 
-## The `default` layout
+<span class="fs-5 lh-default">
+POST
+</span>
+{: .label .label-green }
 
-This page uses the default layout.
+## Request examples
 
-It is a *responsive* layout: on medium and larger width displays, it displays a sidebar, including a navigation panel; on smaller width displays, the sidebar is automatically hidden under a button.
+Simple address creation linked to an existing user (parent or not):
 
-Each child (and grandchild) page of a top-level page has so-called *breadcrumbs*: links to its parent (and grandparent) pages. It shows the breadcrumbs above the main content of the page.
+```json
+{
+  "street": "Rua America Paulista",
+  "zipCode": "08421520",
+  "number": 185,
+  "city": "São Paulo",
+  "state": "SP",
+  "parentId": "6f007644-5bdf-4483-bf42-fb7412f66a45"
+}
+```
 
-Each page that has child pages generally has a list of links to those pages (you can suppress it by `has_toc: false` in the front matter). It shows the list as a *table of contents* below the main content.
+## Diagrams
 
-## The `minimal` layout
-
-A child and grandchild page of this page use the minimal layout. This differs from the default layout by omitting the sidebar -- and thereby also the navigation panel. To navigate between pages with the minimal layout, you can use the breadcrumbs and the tables of contents.
-
-## Other layouts
-
-Just the Docs has further layouts: `about`, `home`, `page`, and `post`. Currently, they are all based on the `default` layout. See the [Jekyll docs about inheritance] for how to customize them.
-
-[front matter]: https://jekyllrb.com/docs/front-matter/ "Jekyll docs about front matter"
-[Jekyll docs page about layouts]: https://jekyllrb.com/docs/layouts/ "Jekyll docs about layouts"
-[Jekyll's front matter defaults]: https://jekyllrb.com/docs/configuration/front-matter-defaults/ "Jekyll docs about front matter defaults"
-[Jekyll docs about inheritance]: https://jekyllrb.com/docs/layouts/#inheritance "Jekyll docs about inheritance"
+![img.png](../images/diagram-address.png)
