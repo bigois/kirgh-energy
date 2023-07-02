@@ -9,11 +9,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
-
 /**
  * The AddressRelation class in Java defines methods for checking equality and generating hash codes
  * based on its embedded ID field.
  */
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

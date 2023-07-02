@@ -3,6 +3,13 @@ package br.com.kirgh.app.controllers;
 import br.com.kirgh.app.dtos.ApplianceDTO;
 import br.com.kirgh.app.entities.Appliance;
 import br.com.kirgh.app.services.ApplianceService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/api/v1/appliances", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 @SuppressWarnings("unused")
+@Tag(name = "Appliances", description = "Set of API methods for appliance data manipulation")
 public class ApplianceController {
     @Autowired
     private ApplianceService applianceService;
@@ -34,6 +42,30 @@ public class ApplianceController {
      * response data along with an HTTP status code. The actual response data being returned depends on the implementation
      * of the {@code createAppliance} method in the {@code applianceService} class.
      */
+     @Operation(
+        summary = "Creates a new appliance to an existent address",
+        description = "Method for creating a new appliance to an existent user address and returning a JSON response with the new appliance's ID"
+    )
+
+     @ApiResponses(value = { 
+        @ApiResponse(responseCode = "201", description = "CREATED - Appliance successfully registered", content = @Content(examples = {
+          @ExampleObject(summary = "Create an Appliance",
+                         value = "{\"name\": \"Ar Condicionado\", \"brand\":\"Samsung\", \"model\": \"AR12BVHZCWK\", \"power\":\"V110\", \"addressId\":\"26ead1cd-c0d6-47bd-bb79-f0aeb4b897bb\"}")
+        }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+
+        @ApiResponse(responseCode = "400", description = "BAD REQUEST - Invalid body content", content = @Content(examples = {
+          @ExampleObject(summary = "Invalid content",
+                         value = "")
+        }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+        @ApiResponse(responseCode = "404", description = "NOT FOUND - Address id not found", content = @Content(examples = {
+          @ExampleObject(summary = "Invalid Address Id",
+                         value = "{\"name\": \"Ar Condicionado\", \"brand\":\"Samsung\", \"model\": \"AR12BVHZCWK\", \"power\":\"V110\", \"addressId\":\"26ead1cd-c0d6-47bd-bb79-f1aeb4b897bb\"}")
+        }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+        @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR - Something goes wrong", content = @Content(examples = {
+          @ExampleObject(summary = "Internal Server Error",
+                         value = "{\"name\": \"@\", \"brand\":\"@\", \"model\": \"@\", \"power\":\"@\", \"addressId\":\"@\"}")
+        }, mediaType = MediaType.APPLICATION_JSON_VALUE))
+    })
     @PostMapping
     public ResponseEntity<String> applianceRegister(@RequestBody @Valid ApplianceDTO applianceDTO) {
         JSONObject response = new JSONObject();
