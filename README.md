@@ -22,7 +22,7 @@
 	</a>
 	<h1 align="center">KIRGH Energy</h1>
 	<p align="center">
-		<h2 align="center">Solution for tracking appliance and home electronic energy use through web APIs</h2>
+		<h3 align="center">Solution for tracking appliance and home electronic energy use through web APIs</h3>
 		<h5 align="center">
             <a href="#" target="_blank">
                 <img src="https://img.shields.io/badge/Swagger-25D366?style=for-the-badge" alt="Swagger">
@@ -34,8 +34,8 @@
                 <img src="https://img.shields.io/badge/Javadocs-ED8B00?style=for-the-badge" alt="java">
             </a>
 		</h5>
-        <h4 align="center">Our API is a comprehensive and powerful solution for tracking and managing the energy usage of appliances and electronic devices in homes and businesses.</h4>
-        <h4 align="center">It offers advanced features that allow users to understand, monitor, and control energy consumption, providing savings and energy efficiency.</h4>
+        <p align="center">Our API is a comprehensive and powerful solution for tracking and managing the energy usage of appliances and electronic devices in homes and businesses.</p>
+        <p align="center">It offers advanced features that allow users to understand, monitor, and control energy consumption, providing savings and energy efficiency.</p>
 	</p>
     <br>
 </p>
