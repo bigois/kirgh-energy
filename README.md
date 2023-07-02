@@ -1,20 +1,51 @@
-# KIRGH Energy
-
-## Solution for tracking appliance and home electronic energy use
-
----
-
-Our API is a comprehensive and powerful solution for tracking and managing the energy usage of appliances and electronic devices in homes and businesses. It offers advanced features that allow users to understand, monitor, and control energy consumption, providing savings and energy efficiency.
+<p align="center">
+	<a href="https://github.com/bigois/kirgh-energy/graphs/contributors" target="_blank">
+		<img src="https://img.shields.io/github/contributors/bigois/kirgh-energy.svg?style=for-the-badge" alt="Contributors">
+	</a>
+	<a href="https://github.com/bigois/kirgh-energy/network/members" target="_blank">
+		<img src="https://img.shields.io/github/forks/bigois/kirgh-energy.svg?style=for-the-badge" alt="Forks">
+	</a>
+	<a href="https://github.com/bigois/kirgh-energy/stargazers" target="_blank">
+		<img src="https://img.shields.io/github/stars/bigois/kirgh-energy.svg?style=for-the-badge" alt="Stars">
+	</a>
+	<a href="https://github.com/bigois/kirgh-energy/issues" target="_blank">
+		<img src="https://img.shields.io/github/issues/bigois/kirgh-energy.svg?style=for-the-badge" alt="Issues">
+	</a>
+	<a href="https://github.com/bigois/kirgh-energy/blob/master/LICENSE.txt" target="_blank">
+		<img src="https://img.shields.io/github/contributors/bigois/kirgh-energy.svg?style=for-the-badge" alt="Licence">
+	</a>
+</p>
+<p align="center">
+	<br/>
+	<a href="https://github.com/bigois/kirgh-energy" target="_blank">
+		<img src="https://raw.githubusercontent.com/bigois/kirgh-energy/main/docs/images/logo-kirgh.png?raw=true" alt="Logo" width="25%" height="25%">
+	</a>
+	<h2 align="center">KIRGH Energy</h2>
+	<p align="center">
+		<h4 align="center">Solution for tracking appliance and home electronic energy use through web APIs</h4>
+		<h5 align="center">
+            <a href="#" target="_blank">
+                <img src="https://img.shields.io/badge/Swagger-25D366?style=for-the-badge" alt="Swagger">
+            </a>
+            <a href="https://bigois.github.io/kirgh-energy" target="_blank">
+                <img src="https://img.shields.io/badge/Wiki-5739CE?style=for-the-badge" alt="Wiki">
+            </a>
+            <a href="#" target="_blank">
+                <img src="https://img.shields.io/badge/Javadocs-ED8B00?style=for-the-badge" alt="java">
+            </a>
+		</h5>
+        <h6 align="center">Our API is a comprehensive and powerful solution for tracking and managing the energy usage of appliances and electronic devices in homes and businesses.</h6>
+        <h6 align="center">It offers advanced features that allow users to understand, monitor, and control energy consumption, providing savings and energy efficiency.</h6>
+	</p>
+</p>
 
 ## Methods
 
 The requests to an API should follow the standards:
 
-| Method  | Description                  |
-|:--------|:-----------------------------|
-| POST    | Used to create a new record. |
-
-
+| Method  | Description           |
+|:--------|:----------------------|
+| POST    | Creates a new record  |
 
 ## Responses
 
