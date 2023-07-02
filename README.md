@@ -11,7 +11,7 @@
 	<a href="https://github.com/bigois/kirgh-energy/issues" target="_blank">
 		<img src="https://img.shields.io/github/issues/bigois/kirgh-energy.svg?style=for-the-badge" alt="Issues">
 	</a>
-	<a href="https://github.com/bigois/kirgh-energy/blob/master/LICENSE.txt" target="_blank">
+	<a href="https://github.com/bigois/kirgh-energy/blob/master/LICENSE" target="_blank">
 		<img src="https://img.shields.io/github/license/bigois/kirgh-energy.svg?style=for-the-badge" alt="License">
 	</a>
 </p>
