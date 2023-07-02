@@ -11,8 +11,8 @@
 	<a href="https://github.com/bigois/kirgh-energy/issues" target="_blank">
 		<img src="https://img.shields.io/github/issues/bigois/kirgh-energy.svg?style=for-the-badge" alt="Issues">
 	</a>
-	<a href="https://github.com/bigois/kirgh-energy/blob/master/LICENSE.txt" target="_blank">
-		<img src="https://img.shields.io/github/contributors/bigois/kirgh-energy.svg?style=for-the-badge" alt="Licence">
+	<a href="https://github.com/bigois/kirgh-energy/blob/master/LICENSE" target="_blank">
+		<img src="https://img.shields.io/github/license/bigois/kirgh-energy.svg?style=for-the-badge" alt="License">
 	</a>
 </p>
 <p align="center">
@@ -24,7 +24,7 @@
 	<p align="center">
 		<h3 align="center">Solution for tracking appliance and home electronic energy use through web APIs</h3>
 		<h5 align="center">
-            <a href="#" target="_blank">
+            <a href="https://kirgh-energy.up.railway.app/swagger-ui/index.html" target="_blank">
                 <img src="https://img.shields.io/badge/Swagger-25D366?style=for-the-badge" alt="Swagger">
             </a>
             <a href="https://bigois.github.io/kirgh-energy" target="_blank">

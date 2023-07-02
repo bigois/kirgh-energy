@@ -41,7 +41,7 @@ KIRGH Energy is a project developed as a final stage assigment of the 1<sup>st</
 
 ### License
 
-KIRGH Energy is distributed by an [MIT license](https://github.com/just-the-docs/just-the-docs/tree/main/LICENSE.txt){:target="_blank"}.
+KIRGH Energy is distributed by an [MIT license][MIT license]{:target="_blank"}.
 
 ### Creators
 
@@ -52,7 +52,7 @@ KIRGH Energy is distributed by an [MIT license](https://github.com/just-the-docs
 
 
 [KIRGH Energy repo]: https://github.com/bigois/kirgh-energy
-[Swagger API]: https://petstore.swagger.io
+[Swagger API]: https://kirgh-energy.up.railway.app/swagger-ui/index.html
 [FIAP website]: https://www.fiap.com.br
 [FIAP course homepage]: https://postech.fiap.com.br/curso/arquitetura-desenvolvimento-java
 [Alura website]: https://www.alura.com.br/
@@ -65,3 +65,4 @@ KIRGH Energy is distributed by an [MIT license](https://github.com/just-the-docs
 [Ronilson Botelho LinkedIn]: https://www.linkedin.com/in/ronilson-alves-63b57a138
 [Guilherme Franco LinkedIn]: https://www.linkedin.com/in/guilherme-franco-21792a135
 [Kelvin Natal LinkedIn]: https://www.linkedin.com/in/kelvin-natal-40ba681a1
+[MIT license]: https://github.com/bigois/kirgh-energy/blob/main/LICENSE
