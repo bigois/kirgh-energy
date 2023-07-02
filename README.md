@@ -30,7 +30,7 @@
             <a href="https://bigois.github.io/kirgh-energy" target="_blank">
                 <img src="https://img.shields.io/badge/Wiki-5739CE?style=for-the-badge" alt="Wiki">
             </a>
-            <a href="#" target="_blank">
+            <a href="https://htmlpreview.github.io/?https://github.com/bigois/kirgh-energy/blob/main/docs/javadoc/index.html" target="_blank">
                 <img src="https://img.shields.io/badge/Javadocs-ED8B00?style=for-the-badge" alt="java">
             </a>
 		</h5>
