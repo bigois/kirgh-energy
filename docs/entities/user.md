@@ -27,7 +27,8 @@ The user represents the main entity of the application. It can be associated wit
 POST
 {: .label .label-green }
 
-</span>
+
+## Request examples
 
 ### Parent User
 
