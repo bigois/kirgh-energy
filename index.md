@@ -52,7 +52,7 @@ KIRGH Energy is distributed by an [MIT license](https://github.com/just-the-docs
 
 
 [KIRGH Energy repo]: https://github.com/bigois/kirgh-energy
-[Swagger API]: https://petstore.swagger.io
+[Swagger API]: https://kirgh-energy.up.railway.app/swagger-ui/index.html
 [FIAP website]: https://www.fiap.com.br
 [FIAP course homepage]: https://postech.fiap.com.br/curso/arquitetura-desenvolvimento-java
 [Alura website]: https://www.alura.com.br/
