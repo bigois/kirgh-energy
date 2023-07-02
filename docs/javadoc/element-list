@@ -1,0 +1,10 @@
+br.com.kirgh.app
+br.com.kirgh.app.controllers
+br.com.kirgh.app.dtos
+br.com.kirgh.app.entities
+br.com.kirgh.app.enums
+br.com.kirgh.app.exceptions
+br.com.kirgh.app.mappers
+br.com.kirgh.app.pks
+br.com.kirgh.app.repositories
+br.com.kirgh.app.services
