@@ -46,13 +46,6 @@ public class AddressController {
         description = "Method for creating a new address to an existent user and returning a JSON response with the new address's ID"
     )
 
-    //  @ApiResponse(responseCode = "200", content = @Content(examples = {
-    //       @ExampleObject(name = "getUserAttribute",
-    //                      summary = "Retrieves a User's attributes.",
-    //                      description = "Retrieves a User's attributes.",
-    //                      value = "{\"resourceId\": \"b823bcb6-3539-4e0e-a2b8-60ae59567e3b\", \"message\":\"address successfully registered\"}")
-    //   }, mediaType = MediaType.APPLICATION_JSON_VALUE))})
-
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "201", description = "CREATED - Address successfully registered", content = @Content(examples = {
           @ExampleObject(summary = "Create an Address.",
