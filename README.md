@@ -37,6 +37,7 @@
         <h4 align="center">Our API is a comprehensive and powerful solution for tracking and managing the energy usage of appliances and electronic devices in homes and businesses.</h4>
         <h4 align="center">It offers advanced features that allow users to understand, monitor, and control energy consumption, providing savings and energy efficiency.</h4>
 	</p>
+    <br>
 </p>
 
 ## Methods
