@@ -24,7 +24,8 @@ The user represents the main entity of the application. It can be associated wit
 ## Supported Methods
 
 <span class="fs-5 lh-default">
-POST {: .label .label-green }
+POST
+{: .label .label-green }
 </span>
 
 ### Parent User
