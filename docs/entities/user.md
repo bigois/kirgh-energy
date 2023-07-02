@@ -11,9 +11,15 @@ The user represents the main entity of the application. It can be associated wit
 
 ## Attribute Table
 
-See the [Jekyll docs page about layouts] for an explanation of the general idea of layouts and how to specify them.
-
-You can use [Jekyll's front matter defaults] to specify the same layout for many pages.
+| Attribute    | Type             | Description      | Required        | Filter |
+|:-------------|:-----------------|:-----------------|:----------------|:-------|
+| cpf          | String           | User's CPF valid | Yes             |Yes     |
+| name         | String           | Full name        | Yes             |Yes     |
+| email        | String           | Valid email      | Yes             |Yes     |
+| birthDate    | Date             | Date of birth    | Yes             |Yes     |
+| gender       | String           | User gender      | Yes             |Yes     |
+| ownerId      | String           | User gender      | Yes             |Yes     |
+| relationType | String           | User gender      | Yes             |Yes     |
 
 ## Supported Methods
 
