@@ -20,9 +20,9 @@
 	<a href="https://github.com/bigois/kirgh-energy" target="_blank">
 		<img src="https://github.com/bigois/kirgh-energy/blob/docs/docs/images/logo-kirgh.png?raw=true" alt="Logo" width="25%" height="25%">
 	</a>
-	<h2 align="center">KIRGH Energy</h2>
+	<h1 align="center">KIRGH Energy</h1>
 	<p align="center">
-		<h4 align="center">Solution for tracking appliance and home electronic energy use through web APIs</h4>
+		<h2 align="center">Solution for tracking appliance and home electronic energy use through web APIs</h2>
 		<h5 align="center">
             <a href="#" target="_blank">
                 <img src="https://img.shields.io/badge/Swagger-25D366?style=for-the-badge" alt="Swagger">
@@ -34,8 +34,8 @@
                 <img src="https://img.shields.io/badge/Javadocs-ED8B00?style=for-the-badge" alt="java">
             </a>
 		</h5>
-        <h6 align="center">Our API is a comprehensive and powerful solution for tracking and managing the energy usage of appliances and electronic devices in homes and businesses.</h6>
-        <h6 align="center">It offers advanced features that allow users to understand, monitor, and control energy consumption, providing savings and energy efficiency.</h6>
+        <h3 align="center">Our API is a comprehensive and powerful solution for tracking and managing the energy usage of appliances and electronic devices in homes and businesses.</h3>
+        <h3 align="center">It offers advanced features that allow users to understand, monitor, and control energy consumption, providing savings and energy efficiency.</h3>
 	</p>
 </p>
 
