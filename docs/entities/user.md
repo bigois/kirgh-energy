@@ -64,4 +64,4 @@ User related to other existing one (makes possible to extend parent user's addre
 ```
 ## Diagrams
 
-![diagram-user.png](https://github.com/bigois/kirgh-energy/blob/docs/docs/images/diagram-user.png)
+![diagram-user.png](https://github.com/bigois/kirgh-energy/blob/docs/docs/images/diagram-user.png?raw=true)
