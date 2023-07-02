@@ -41,7 +41,7 @@ KIRGH Energy is a project developed as a final stage assigment of the 1<sup>st</
 
 ### License
 
-KIRGH Energy is distributed by an [MIT license](https://github.com/just-the-docs/just-the-docs/tree/main/LICENSE.txt){:target="_blank"}.
+KIRGH Energy is distributed by an [MIT license](https://github.com/bigois/kirgh-energy/blob/main/LICENSE){:target="_blank"}.
 
 ### Creators
 
