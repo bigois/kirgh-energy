@@ -44,4 +44,4 @@ Simple address creation linked to an existing user (parent or not):
 
 ## Diagrams
 
-![img.png](../images/diagram-address.png)
+![diagram-address.png](https://github.com/bigois/kirgh-energy/blob/docs/docs/images/diagram-address.png?raw=true)

@@ -44,4 +44,4 @@ Simple appliance creation linked to an existing address:
 
 ## Diagrams
 
-![img.png](../images/diagram-appliance.png)
+![diagram-appliance.png](https://github.com/bigois/kirgh-energy/blob/docs/docs/images/diagram-appliance.png?raw=true)
