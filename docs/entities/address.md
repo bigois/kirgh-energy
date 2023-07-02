@@ -14,7 +14,7 @@ You specify the layout for a page in its [front matter]. Just the Docs has a `de
 
 See the [Jekyll docs page about layouts] for an explanation of the general idea of layouts and how to specify them.
 
-You can use [Jekyll's front matter defaults] to specify the same layout for many pages.
+You can use [Jekyll's front matter defaults] to specify the same layout for many page.
 
 ## The `default` layout
 
