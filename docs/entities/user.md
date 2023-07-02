@@ -11,15 +11,15 @@ The user represents the main entity of the application. It can be associated wit
 
 ## Attribute Table
 
-| Attribute    | Type             | Description      | Required        | Filter |
-|:-------------|:-----------------|:-----------------|:----------------|:-------|
-| cpf          | String           | User's CPF valid | Yes             |Yes     |
-| name         | String           | Full name        | Yes             |Yes     |
-| email        | String           | Valid email      | Yes             |Yes     |
-| birthDate    | Date             | Date of birth    | Yes             |Yes     |
-| gender       | String           | User gender      | Yes             |Yes     |
-| ownerId      | String           | User gender      | Yes             |Yes     |
-| relationType | String           | User gender      | Yes             |Yes     |
+| Attribute    | Type   | Description   | Required | Filter |
+|:-------------|:-------|:--------------|:---------|:-------|
+| cpf          | String | User's CPF    | Yes      |Yes     |
+| name         | String | Full name     | Yes      |Yes     |
+| email        | String | Valid e-mail  | Yes      |Yes     |
+| birthDate    | Date   | Date of birth | Yes      |Yes     |
+| gender       | String | User gender   | Yes      |Yes     |
+| ownerId      | String | User gender   | Yes      |Yes     |
+| relationType | String | User gender   | Yes      |Yes     |
 
 ## Supported Methods
 
