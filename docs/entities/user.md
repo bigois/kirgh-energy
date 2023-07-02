@@ -5,20 +5,49 @@ nav_order: 1
 parent: Entities
 ---
 
-# Layout
+# User
 
-You specify the layout for a page in its [front matter]. Just the Docs has a `default` layout with a sidebar, used for almost all pages in the theme docs, and a `minimal` layout that omits the sidebar.
-{: .fs-6 .fw-300 }
+The user represents the main entity of the application. It can be associated with another or an independent user. This entity is mandatory for the existence of the others, since they are direct or indirectly associated with the principal.
 
-## The layout concept
+## Attribute Table
 
 See the [Jekyll docs page about layouts] for an explanation of the general idea of layouts and how to specify them.
 
 You can use [Jekyll's front matter defaults] to specify the same layout for many pages.
 
-## The `default` layout
+## Supported Methods
 
-This page uses the default layout.
+
+POST
+{: .label .label-green }
+
+### Parent User
+
+```json
+{
+  "name": "João Ferreira da Silva",
+  "birthDate": "2001-11-10",
+  "gender": "M",
+  "cpf": "39917627065",
+  "email": "joao.ferreira@gmail.com"
+}
+```
+
+### Child User
+```json
+{
+"name": "Victória Oliveira da Silva",
+"birthDate": "2008-11-10",
+"gender": "F",
+"cpf": "54793753000",
+"email": "victoria.oliviera@outlook.com",
+"relation": {
+    "ownerId": "26ead1cd-c0d6-47bd-bb79-f0aeb4b897bb",
+    "relationType": "Daughter"
+  }
+}
+```
+### Parent User
 
 It is a *responsive* layout: on medium and larger width displays, it displays a sidebar, including a navigation panel; on smaller width displays, the sidebar is automatically hidden under a button.
 
