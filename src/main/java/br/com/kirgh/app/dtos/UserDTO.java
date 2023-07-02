@@ -19,35 +19,34 @@ import java.util.Date;
  */
 @Schema(title = "User", description = "Object that represents a data transfer object for a user")
 public record UserDTO(
-    @NotBlank(message = "cannot be null or empty")
-    @Size(min = 2, max = 150, message = "size must be between {min} and {max}")
-    @Pattern(regexp = "[A-zÀ-ú\\s]+", message = "must contain only letters")
-    @Schema(description = "Name to identify an user")
-    String name,
+        @NotBlank(message = "cannot be null or empty")
+        @Size(min = 2, max = 150, message = "size must be between {min} and {max}")
+        @Pattern(regexp = "[A-zÀ-ú\s]+", message = "must contain only letters")
+        @Schema(description = "Name to identify an user", example = "Renata Luzia Francisca Porto")
+        String name,
 
-    @NotNull(message = "cannot be null or empty")
-    @Past(message = "must be before the current date")
-    @Schema(description = "The date on which the person was born")
-    Date birthDate,
+        @NotNull(message = "cannot be null or empty")
+        @Past(message = "must be before the current date")
+        @Schema(description = "The date on which the person was born", example = "1957-04-08")
+        Date birthDate,
 
-    @NotNull(message = "cannot be null or empty")
-    @Size(min = 1, max = 1, message = "size must be {max}")
-    @Schema(description = "Biological human genders based on chromosome")
-    UserGender gender,
+        @NotNull(message = "cannot be null or empty")
+        @Schema(description = "Biological human genders based on chromosome", example = "F")
+        UserGender gender,
 
-    @NotBlank(message = "cannot be null or empty")
-    @Size(min = 11, max = 11, message = "must have {min} characters")
-    @CPF
-    @Schema(description = "Brazilian individual taxpayer registry number (CPF)")
-    String cpf,
+        @NotBlank(message = "cannot be null or empty")
+        @Size(min = 11, max = 11, message = "must have {min} characters")
+        @CPF
+        @Schema(description = "Brazilian individual taxpayer registry number (CPF)", example = "29081928619")
+        String cpf,
 
-    @NotBlank(message = "cannot be null or empty")
-    @Email(message = "is invalid")
-    @Size(min = 1, max = 80, message = "size must be between {min} and {max}")
-    @Schema(description = "Field used to define the customer's email")
-    String email,
+        @NotBlank(message = "cannot be null or empty")
+        @Email(message = "is invalid")
+        @Size(min = 1, max = 80, message = "size must be between {min} and {max}")
+        @Schema(description = "Field used to define the customer's email", example = "renataluziaporto@asconinternet.com.br")
+        String email,
 
-    @Valid
-    UserRelationDTO relation
+        @Valid
+        UserRelationDTO relation
 ) {
 }
