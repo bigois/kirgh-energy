@@ -17,19 +17,20 @@ You can use [Jekyll's front matter defaults] to specify the same layout for many
 
 ## Supported Methods
 
-
+<span class="fs-8">
 POST
 {: .label .label-green }
+</span>
 
 ### Parent User
 
 ```json
 {
-  "name": "João Ferreira da Silva",
-  "birthDate": "2001-11-10",
-  "gender": "M",
-  "cpf": "39917627065",
-  "email": "joao.ferreira@gmail.com"
+    "name": "João Ferreira da Silva",
+    "birthDate": "2001-11-10",
+    "gender": "M",
+    "cpf": "39917627065",
+    "email": "joao.ferreira@gmail.com"
 }
 ```
 
