@@ -4,6 +4,10 @@ import br.com.kirgh.app.dtos.UserDTO;
 import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.services.UserService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.json.JSONObject;
@@ -39,10 +43,36 @@ public class UserController {
      * data along with an HTTP status code. The actual response data being returned depends on the implementation of the
      * {@code createUser} method in the {@code userService} object.
      */
+
     @Operation(
-        summary = "Creates a new user (with or without parent relation)",
-        description = "Method for creating a new user with an optional user parent relation and returning a JSON response with the new user's ID"
+            summary = "Creates a new user (with or without parent relation)",
+            description = "Method for creating a new user with an optional user parent relation and returning a JSON response with the new user's ID"
     )
+
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "CREATED - Address successfully registered", content = @Content(examples = {
+                    @ExampleObject(summary = "Create an User.",
+                            value = "{\"name\": \"Renata Luzia Francisca Porto\", \"birthDate\": \"2002-06-30\", \"gender\": \"F\", \"cpf\": \"29081928619\", \"email\": \"renataluziaporto@asconinternet.com.br\", \"relation\": { \"ownerId\": \"67459848-3af5-4c99-9276-543c331adcc1\", \"relaionType\": \"Daughter\"} }")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+
+            @ApiResponse(responseCode = "400", description = "BAD REQUEST - Invalid body content", content = @Content(examples = {
+                    @ExampleObject(summary = "Invalid content",
+                            value = "")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(responseCode = "404", description = "NOT FOUND - Owner id not found", content = @Content(examples = {
+                    @ExampleObject(summary = "Invalid Parent Id",
+                            value = "{\"name\": \"Renata Luzia Francisca Porto\", \"birthDate\": \"2002-06-30\", \"gender\": \"F\", \"cpf\": \"29081928619\", \"email\": \"renataluziaporto@asconinternet.com.br\", \"relation\": { \"ownerId\": \"b1f6147e-4c1f-4362-930e-a77a7ee707fd\", \"relaionType\": \"Daughter\"} }")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(responseCode = "409", description = "CONFLICT - address already exists to user", content = @Content(examples = {
+                    @ExampleObject(summary = "Conflict user id",
+                            value = "{\"name\": \"Renata Luzia Francisca Porto\", \"birthDate\": \"2002-06-30\", \"gender\": \"F\", \"cpf\": \"29081928619\", \"email\": \"renataluziaporto@asconinternet.com.br\", \"relation\": { \"ownerId\": \"67459848-3af5-4c99-9276-543c331adcc1\", \"relaionType\": \"Daughter\"} }")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR - Something goes wrong", content = @Content(examples = {
+                    @ExampleObject(summary = "Internal Server Error",
+                            value = "{\"name\": \"@\", \"birthDate\": \"@\", \"gender\": \"@\", \"cpf\": \"@\", \"email\": \"@\", \"relation\": { \"ownerId\": \"@\", \"relaionType\": \"@\"} }")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE))
+    })
+
     @PostMapping
     public ResponseEntity<String> userRegister(@RequestBody @Valid UserDTO userDTO) {
         JSONObject response = new JSONObject();

@@ -11,19 +11,20 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @OpenAPIDefinition(
-    info = @Info(
-            title = "KIRGH Energy",
-            version = "0.0.1",
-            description = "Solution for tracking appliance and home electronic energy use",
-            license = @License(
-                    name = "MIT License",
-                    url = "https://github.com/bigois/kirgh-energy/blob/main/LICENSE"
-            )
-    )
+        info = @Info(
+                title = "KIRGH Energy",
+                version = "0.0.1",
+                description = "Solution for tracking appliance and home electronic energy use",
+                license = @License(
+                        name = "MIT License",
+                        url = "https://github.com/bigois/kirgh-energy/blob/main/LICENSE"
+                )
+        )
 )
 public class KirghEnergyApplication {
     /**
      * This is the main function that runs KIRGH Energy REST application in Java.
+     *
      * @param args Array of type java.lang.String class that stores java command line arguments.
      */
     public static void main(String[] args) {
