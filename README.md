@@ -34,8 +34,8 @@
                 <img src="https://img.shields.io/badge/Javadocs-ED8B00?style=for-the-badge" alt="java">
             </a>
 		</h5>
-        <h3 align="center">Our API is a comprehensive and powerful solution for tracking and managing the energy usage of appliances and electronic devices in homes and businesses.</h3>
-        <h3 align="center">It offers advanced features that allow users to understand, monitor, and control energy consumption, providing savings and energy efficiency.</h3>
+        <h4 align="center">Our API is a comprehensive and powerful solution for tracking and managing the energy usage of appliances and electronic devices in homes and businesses.</h4>
+        <h4 align="center">It offers advanced features that allow users to understand, monitor, and control energy consumption, providing savings and energy efficiency.</h4>
 	</p>
 </p>
 
