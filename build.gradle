@@ -7,7 +7,7 @@ plugins {
 
 group = 'br.com.kirgh'
 version = '0.0.1'
-description = 'Solution for tracking appliance and home electronic energy use'
+description = 'Solution for tracking appliance and home electronic energy use through web APIs'
 sourceCompatibility = '17'
 
 configurations {
