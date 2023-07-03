@@ -15,7 +15,7 @@ The address entity identifies a specific location, (e.g.: residence, building, o
 |:----------------|:-------|:-------------------------------------------|:---------|
 | zipCode         | String | Street ZIP code                            | Yes      |
 | street          | String | Street or avenue                           | Yes      |
-| number          | String | Númerical addresses assigned to properties | Yes      |
+| number          | String | Numerical addresses assigned to properties | Yes      |
 | city            | String | City                                       | Yes      |
 | state           | String | State                                      | Yes      |
 | parentId        | String | UUID from parent user                      | Yes      |
