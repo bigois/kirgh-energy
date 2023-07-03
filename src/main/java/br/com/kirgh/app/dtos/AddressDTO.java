@@ -43,7 +43,7 @@ public record AddressDTO(
         @NotNull(message = "cannot be null or empty")
         State state,
 
-        @Schema(description = "UUID from an existent user", example = "26ead1cd-c0d6-47bd-bb79-f0aeb4b897bb")
+        @Schema(description = "UUID from an existent user", example = "7049f9a7-05ec-4c4f-9bbf-44648d87e7a8")
         @NotBlank(message = "cannot be null or empty")
         @Pattern(regexp = "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$", message = "invalid parent id")
         @Size(min = 36, max = 36, message = "size must be {max}")
