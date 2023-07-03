@@ -33,12 +33,12 @@ Simple address creation linked to an existing user (parent or not):
 
 ```json
 {
-  "street": "Rua America Paulista",
-  "zipCode": "08421520",
-  "number": 185,
-  "city": "São Paulo",
-  "state": "SP",
-  "parentId": "6f007644-5bdf-4483-bf42-fb7412f66a45"
+    "street": "Rua America Paulista",
+    "zipCode": "08421520",
+    "number": 185,
+    "city": "São Paulo",
+    "state": "SP",
+    "parentId": "6f007644-5bdf-4483-bf42-fb7412f66a45"
 }
 ```
 
