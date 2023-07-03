@@ -8,3 +8,4 @@ br.com.kirgh.app.mappers
 br.com.kirgh.app.pks
 br.com.kirgh.app.repositories
 br.com.kirgh.app.services
+br.com.kirgh.app.settings
