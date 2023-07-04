@@ -1,4 +1,12 @@
 @charset "UTF-8";
+
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+    transition: all 750ms !important;
+    transition-delay: 0 !important;
+}
 pre.highlight  {
     line-height: 1;
 }
