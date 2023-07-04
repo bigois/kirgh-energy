@@ -7,6 +7,9 @@ parent: Timeline
 
 # Difficulties
 
+This is a document that describes the obstacles encountered in the project, providing detailed information about the problems encountered and possible solutions.
+{: .fs-6 .fw-300 }
+
 1. The development meeting had to be rescheduled from Wednesdays to Tuesdays and Thursdays due a scheduling conflict with the "Coda Comigo" live sessions;
 
 2. We encountered problems with the Live Share extension while using Visual Studio Code for group coding, leading us to switch to the paid version of IntelliJ provided by FIAP for using Code With Me" service;
