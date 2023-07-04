@@ -1,0 +1,33 @@
+// Print-only styles.
+@media print {
+  .side-bar,
+  .page-header {
+    display: none;
+  }
+  .main-content {
+    max-width: auto;
+    margin: 1em;
+  }
+}
+
+// Code block style.
+.highlight {
+  .n {
+    color: #525151;
+  }
+  .o {
+    color: #660707;
+  }
+  .nl {
+    color: darkgreen;
+  }
+  .kt {
+    color: darkblue;
+  }
+  .fm {
+    color: blue;
+  }
+  .sb {
+    color: darkcyan;
+  }
+}
