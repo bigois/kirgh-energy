@@ -8847,8 +8847,8 @@ html.dark-mode .site-title {
 
 @media (min-width: 50rem) {
 	html.dark-mode .site-title {
-		padding-right: 2rem;
-		padding-left: 2rem;
+		padding-right: 1.7rem;
+		padding-left: 1.7rem;
 	}
 }
 
