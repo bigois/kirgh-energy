@@ -34,6 +34,7 @@ This section describes the technologies directly focused on developing this appl
 - GitHub
 - AWS
 - Google Docs
+- Stack Overflow
 
 ### Plugins
 
