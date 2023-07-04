@@ -4,6 +4,7 @@
 
   <script>
     if (localStorage.getItem('theme') === null) {
+      localStorage.setItem('theme', 'dark');
       document.documentElement.classList.add('dark-mode');
       document.documentElement.classList.remove('light-mode');
     }
