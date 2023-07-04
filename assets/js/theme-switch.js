@@ -1,10 +1,16 @@
 window.addEventListener("DOMContentLoaded", function() {
   const toggleDarkMode = document.getElementById("theme-toggle");
 
-  if (localStorage.getItem('theme') === 'light') {
-    setTheme('light');
+  if (localStorage.getItem('theme') === null) {
+    document.documentElement.classList.add('dark-mode');
+    document.documentElement.classList.remove('light-mode');
+    localStorage.setItem('theme', 'dark');
   } else {
-    setTheme('dark');
+    if (localStorage.getItem('theme') === 'light') {
+      setTheme('light');
+    } else {
+      setTheme('dark');
+    }  
   }
 
   jtd.addEvent(toggleDarkMode, 'click', function(){
