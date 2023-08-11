@@ -1,6 +1,6 @@
 <p align="center">
 	<a href="https://github.com/bigois/kirgh-energy/graphs/contributors" target="_blank">
-		<img src="https://img.shields.io/github/contributors/bigois/kirgh-energy.svg?style=for-the-badge" alt="Contributors">
+		<img src="https://img.shields.io/badge/CONTRIBUTORS-5-orange.svg?style=for-the-badge" alt="Contributors">
 	</a>
 	<a href="https://github.com/bigois/kirgh-energy/network/members" target="_blank">
 		<img src="https://img.shields.io/github/forks/bigois/kirgh-energy.svg?style=for-the-badge" alt="Forks">
