@@ -1,7 +1,10 @@
 package br.com.kirgh.app.repositories;
 
 import br.com.kirgh.app.entities.User;
+import br.com.kirgh.app.projections.UserCompleteProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.UUID;
 
@@ -37,4 +40,17 @@ public interface UserRepository extends JpaRepository<User, UUID> {
      * number. If a record with the given CPF exists, the method will return true, otherwise it will return false.
      */
     boolean existsByCpf(String cpf);
+
+    @Query(nativeQuery = true,
+            value = """
+                        SELECT
+                            id,
+                            name
+                        FROM
+                            users
+                        WHERE
+                            id = :id
+                    """
+    )
+    UserCompleteProjection getAllUserInfoById(@Param("id") UUID id);
 }

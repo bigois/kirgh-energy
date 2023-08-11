@@ -1,9 +1,11 @@
 package br.com.kirgh.app.services;
 
+import br.com.kirgh.app.dtos.UserCompleteDTO;
 import br.com.kirgh.app.dtos.UserDTO;
 import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.entities.UserRelation;
 import br.com.kirgh.app.mappers.UserMapper;
+import br.com.kirgh.app.projections.UserCompleteProjection;
 import br.com.kirgh.app.repositories.UserRelationRepository;
 import br.com.kirgh.app.repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -55,5 +57,14 @@ public class UserService {
         }
 
         return user;
+    }
+
+    public UserCompleteDTO getAllUserInfoById(UUID id) {
+        if (!userRepository.existsById(id)) {
+            throw new EntityNotFoundException("user not found");
+        }
+
+        UserCompleteProjection userCompleteProjection = userRepository.getAllUserInfoById(id);
+        return UserMapper.userCompleteProjectionToUserCompleteDTO(userCompleteProjection);
     }
 }

@@ -1,7 +1,10 @@
 package br.com.kirgh.app.mappers;
 
+import br.com.kirgh.app.dtos.UserCompleteDTO;
 import br.com.kirgh.app.dtos.UserDTO;
 import br.com.kirgh.app.entities.User;
+import br.com.kirgh.app.projections.UserCompleteProjection;
+import br.com.kirgh.app.utils.Utils;
 
 /**
  * The {@code UserMapper} class provides a static method to convert a {@code UserDTO} object to a {@code User} object in Java.
@@ -25,5 +28,10 @@ public abstract class UserMapper {
         user.setBirthDate(userDTO.birthDate());
 
         return user;
+    }
+
+    public static UserCompleteDTO userCompleteProjectionToUserCompleteDTO(UserCompleteProjection userCompleteProjection) {
+        return new UserCompleteDTO(Utils.convertBytesToUUID(userCompleteProjection.getId()),
+                userCompleteProjection.getName());
     }
 }

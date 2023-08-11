@@ -1,5 +1,6 @@
 package br.com.kirgh.app.controllers;
 
+import br.com.kirgh.app.dtos.UserCompleteDTO;
 import br.com.kirgh.app.dtos.UserDTO;
 import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.services.UserService;
@@ -15,10 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 /**
  * The UserController class defines a REST API endpoint for creating a new user by taking in a validated userDTO object and
@@ -48,7 +48,6 @@ public class UserController {
             summary = "Creates a new user (with or without parent relation)",
             description = "Method for creating a new user with an optional user parent relation and returning a JSON response with the new user's ID"
     )
-
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "CREATED - Address successfully registered", content = @Content(examples = {
                     @ExampleObject(summary = "Create an User.",
@@ -72,7 +71,6 @@ public class UserController {
                             value = "{\"name\": \"@\", \"birthDate\": \"@\", \"gender\": \"@\", \"cpf\": \"@\", \"email\": \"@\", \"relation\": { \"ownerId\": \"@\", \"relaionType\": \"@\"} }")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-
     @PostMapping
     public ResponseEntity<String> userRegister(@RequestBody @Valid UserDTO userDTO) {
         JSONObject response = new JSONObject();
@@ -81,5 +79,11 @@ public class UserController {
         response.put("resourceId", user.getId());
         response.put("message", "user successfully registered");
         return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserCompleteDTO> getAllUserInfoById(@PathVariable UUID id) {
+        UserCompleteDTO userCompleteDTO = userService.getAllUserInfoById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(userCompleteDTO);
     }
 }

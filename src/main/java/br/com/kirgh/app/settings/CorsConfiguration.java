@@ -15,7 +15,7 @@ public class CorsConfiguration implements WebMvcConfigurer {
      * POST methods.
      *
      * @param registry The registry parameter is an instance of the CorsRegistry class. It is used to configure
-     * Cross-Origin Resource Sharing (CORS) for the application.
+     *                 Cross-Origin Resource Sharing (CORS) for the application.
      */
     @Override
     public void addCorsMappings(CorsRegistry registry) {
