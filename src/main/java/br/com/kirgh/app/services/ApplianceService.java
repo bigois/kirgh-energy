@@ -1,9 +1,11 @@
 package br.com.kirgh.app.services;
 
+import br.com.kirgh.app.dtos.ApplianceCompleteDTO;
 import br.com.kirgh.app.dtos.ApplianceDTO;
 import br.com.kirgh.app.entities.Appliance;
 import br.com.kirgh.app.entities.ApplianceRelation;
 import br.com.kirgh.app.mappers.ApplianceMapper;
+import br.com.kirgh.app.projections.ApplianceProjection;
 import br.com.kirgh.app.repositories.AddressRepository;
 import br.com.kirgh.app.repositories.ApplianceRelationRepository;
 import br.com.kirgh.app.repositories.ApplianceRepository;
@@ -51,5 +53,11 @@ public class ApplianceService {
         applianceRelationRepository.save(applianceRelation);
 
         return appliance;
+    }
+
+    @Transactional(readOnly = true)
+    public ApplianceCompleteDTO getAllApplianceInfoById(UUID id){
+        ApplianceProjection applianceProjection = applianceRepository.getAllApplianceInfoById(id);
+        return ApplianceMapper.applianceCompleteProjectionToApplianceCompleteDTO(applianceProjection);
     }
 }

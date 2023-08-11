@@ -1,5 +1,6 @@
 package br.com.kirgh.app.controllers;
 
+import br.com.kirgh.app.dtos.UserCompDTO;
 import br.com.kirgh.app.dtos.UserCompleteDTO;
 import br.com.kirgh.app.dtos.UserDTO;
 import br.com.kirgh.app.entities.User;
@@ -25,7 +26,7 @@ import java.util.UUID;
  * returning a ResponseEntity.
  */
 @RestController
-@RequestMapping(path = "/api/v1/users", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/api/v1/users", produces = MediaType.APPLICATION_JSON_VALUE)
 @Tag(name = "Users", description = "Set of API methods for user data manipulation")
 @SuppressWarnings({"unused", "SpringJavaAutowiredFieldsWarningInspection"})
 public class UserController {
@@ -81,9 +82,15 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
     }
 
+//     @GetMapping("/{id}")
+//     public ResponseEntity<UserCompleteDTO> getAllUserInfoById(@PathVariable UUID id) {
+//         UserCompleteDTO userCompleteDTO = userService.getAllUserInfoById(id);
+//         return ResponseEntity.status(HttpStatus.OK).body(userCompleteDTO);
+//     }
+
     @GetMapping("/{id}")
-    public ResponseEntity<UserCompleteDTO> getAllUserInfoById(@PathVariable UUID id) {
-        UserCompleteDTO userCompleteDTO = userService.getAllUserInfoById(id);
-        return ResponseEntity.status(HttpStatus.OK).body(userCompleteDTO);
+    public ResponseEntity<UserCompDTO> getAllAddressesBoundUser(@PathVariable UUID id) {
+        UserCompDTO userCompDTO = userService.getAllAddressesBoundUser(id);
+        return ResponseEntity.status(HttpStatus.OK).body(userCompDTO);
     }
 }

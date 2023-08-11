@@ -1,18 +1,31 @@
 package br.com.kirgh.app.services;
 
+import br.com.kirgh.app.dtos.AddressCompDTO;
+import br.com.kirgh.app.dtos.AddressCompleteDTO;
+import br.com.kirgh.app.dtos.ApplianceCompleteDTO;
+import br.com.kirgh.app.dtos.UserCompDTO;
 import br.com.kirgh.app.dtos.UserCompleteDTO;
 import br.com.kirgh.app.dtos.UserDTO;
 import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.entities.UserRelation;
+import br.com.kirgh.app.mappers.AddressMapper;
+import br.com.kirgh.app.mappers.ApplianceMapper;
 import br.com.kirgh.app.mappers.UserMapper;
+import br.com.kirgh.app.projections.AddressProjection;
+import br.com.kirgh.app.projections.ApplianceProjection;
 import br.com.kirgh.app.projections.UserCompleteProjection;
+import br.com.kirgh.app.repositories.AddressRepository;
+import br.com.kirgh.app.repositories.ApplianceRepository;
 import br.com.kirgh.app.repositories.UserRelationRepository;
 import br.com.kirgh.app.repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -24,6 +37,12 @@ import java.util.UUID;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private AddressRepository addressRepository;
+
+    @Autowired
+    private ApplianceRepository applianceRepository;
 
     @Autowired
     private UserRelationRepository userRelationRepository;
@@ -59,12 +78,39 @@ public class UserService {
         return user;
     }
 
-    public UserCompleteDTO getAllUserInfoById(UUID id) {
-        if (!userRepository.existsById(id)) {
-            throw new EntityNotFoundException("user not found");
+    // @Transactional(readOnly = true)
+    // public UserCompleteDTO getAllUserInfoById(UUID id) {
+    //     if (!userRepository.existsById(id)) {
+    //         throw new EntityNotFoundException("user not found");
+    //     }
+
+    //     UserCompleteProjection userCompleteProjection = userRepository.getAllUserInfoById(id);
+    //     return UserMapper.userCompleteProjectionToUserCompleteDTO(userCompleteProjection);
+    // }
+
+    @Transactional(readOnly = true)
+    public UserCompDTO getAllAddressesBoundUser(UUID id){
+        UserCompleteProjection userCompleteProjection = userRepository.getAllUserInfoById(id);
+        List<AddressProjection> addressProjection = addressRepository.getAllAddressesBoundUser(id);
+        List<ApplianceProjection> applianceProjections = applianceRepository.getAllAppliancesBoundUser(id);
+
+        List<AddressCompleteDTO> addressList = new ArrayList<>();
+        List<ApplianceCompleteDTO> applianceList = new ArrayList<>();
+
+        UserCompDTO userCompDTO = new UserCompDTO();
+        AddressCompDTO addressCompDTO = new AddressCompDTO();
+
+        for (AddressProjection addressItem : addressProjection) {
+            addressList.add(AddressMapper.addressCompleteProjectionToAddressCompleteDTO(addressItem));
         }
 
-        UserCompleteProjection userCompleteProjection = userRepository.getAllUserInfoById(id);
-        return UserMapper.userCompleteProjectionToUserCompleteDTO(userCompleteProjection);
+        for (ApplianceProjection applianceItem : applianceProjections) {
+            applianceList.add(ApplianceMapper.applianceCompleteProjectionToApplianceCompleteDTO(applianceItem));
+        }
+        userCompDTO.setUserData(UserMapper.userCompleteProjectionToUserCompleteDTO(userCompleteProjection));
+        userCompDTO.setAddresses(addressList);
+   
+        return userCompDTO;
     }
+    
 }

@@ -1,9 +1,12 @@
 package br.com.kirgh.app.services;
 
+import br.com.kirgh.app.dtos.AddressCompleteDTO;
 import br.com.kirgh.app.dtos.AddressDTO;
+import br.com.kirgh.app.dtos.UserCompDTO;
 import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.entities.AddressRelation;
 import br.com.kirgh.app.mappers.AddressMapper;
+import br.com.kirgh.app.projections.AddressProjection;
 import br.com.kirgh.app.repositories.AddressRelationRepository;
 import br.com.kirgh.app.repositories.AddressRepository;
 import br.com.kirgh.app.repositories.UserRepository;
@@ -57,4 +60,14 @@ public class AddressService {
 
         return address;
     }
+
+    @Transactional(readOnly = true)
+    public AddressCompleteDTO getAllAddressInfoById(UUID id){
+
+        AddressProjection addressProjection = addressRepository.getAllAddressInfoById(id);
+        return AddressMapper.addressCompleteProjectionToAddressCompleteDTO(addressProjection);
+    }
+
+
+
 }

@@ -1,5 +1,6 @@
 package br.com.kirgh.app.mappers;
 
+import br.com.kirgh.app.dtos.UserCompDTO;
 import br.com.kirgh.app.dtos.UserCompleteDTO;
 import br.com.kirgh.app.dtos.UserDTO;
 import br.com.kirgh.app.entities.User;
@@ -32,6 +33,7 @@ public abstract class UserMapper {
 
     public static UserCompleteDTO userCompleteProjectionToUserCompleteDTO(UserCompleteProjection userCompleteProjection) {
         return new UserCompleteDTO(Utils.convertBytesToUUID(userCompleteProjection.getId()),
-                userCompleteProjection.getName());
+                userCompleteProjection.getName(), userCompleteProjection.getBirthDate(), userCompleteProjection.getGender(), userCompleteProjection.getCpf(), userCompleteProjection.getEmail());
     }
+
 }

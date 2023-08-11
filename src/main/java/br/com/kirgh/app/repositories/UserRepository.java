@@ -1,11 +1,13 @@
 package br.com.kirgh.app.repositories;
 
 import br.com.kirgh.app.entities.User;
+import br.com.kirgh.app.projections.AddressProjection;
 import br.com.kirgh.app.projections.UserCompleteProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -45,7 +47,11 @@ public interface UserRepository extends JpaRepository<User, UUID> {
             value = """
                         SELECT
                             id,
-                            name
+                            name,
+                            birth_date,
+                            gender,
+                            cpf,
+                            email
                         FROM
                             users
                         WHERE
@@ -53,4 +59,5 @@ public interface UserRepository extends JpaRepository<User, UUID> {
                     """
     )
     UserCompleteProjection getAllUserInfoById(@Param("id") UUID id);
+
 }

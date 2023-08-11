@@ -1,7 +1,12 @@
 package br.com.kirgh.app.mappers;
 
+import br.com.kirgh.app.dtos.AddressCompleteDTO;
+import br.com.kirgh.app.dtos.ApplianceCompleteDTO;
 import br.com.kirgh.app.dtos.ApplianceDTO;
 import br.com.kirgh.app.entities.Appliance;
+import br.com.kirgh.app.projections.AddressProjection;
+import br.com.kirgh.app.projections.ApplianceProjection;
+import br.com.kirgh.app.utils.Utils;
 
 /**
  * The ApplianceMapper class converts an ApplianceDTO object to an Appliance object by setting the corresponding
@@ -24,5 +29,10 @@ public abstract class ApplianceMapper {
         appliance.setPower(applianceDTO.power());
 
         return appliance;
+    }
+
+    public static ApplianceCompleteDTO applianceCompleteProjectionToApplianceCompleteDTO(ApplianceProjection applianceProjection) {
+        return new ApplianceCompleteDTO(Utils.convertBytesToUUID(applianceProjection.getId()),
+                applianceProjection.getName(), applianceProjection.getBrand(), applianceProjection.getModel(), applianceProjection.getPower());
     }
 }
