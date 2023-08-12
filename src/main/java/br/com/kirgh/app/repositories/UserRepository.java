@@ -2,6 +2,7 @@ package br.com.kirgh.app.repositories;
 
 import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.projections.AddressProjection;
+import br.com.kirgh.app.projections.ApplianceProjection;
 import br.com.kirgh.app.projections.UserCompleteProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -59,5 +60,21 @@ public interface UserRepository extends JpaRepository<User, UUID> {
                     """
     )
     UserCompleteProjection getAllUserInfoById(@Param("id") UUID id);
+
+    @Query(nativeQuery = true,
+            value = """
+                    SELECT 
+                         appliances.id, appliances.name, appliances.brand, appliances.model, appliances.power
+                    FROM 
+                         appliances 
+                    INNER JOIN 
+                         appliance_relations 
+                    ON 
+                         appliances.id = appliance_relations.appliance_id 
+                    WHERE  
+                         appliance_relations.address_id = :addressId
+                    """
+    )
+    List<ApplianceProjection> getAllAppliancesBoundAddress(@Param("addressId") UUID addressId);
 
 }

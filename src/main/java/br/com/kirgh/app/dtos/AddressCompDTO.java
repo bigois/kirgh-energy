@@ -13,9 +13,9 @@ import lombok.Setter;
 public class AddressCompDTO {
     
         private AddressCompleteDTO addressData;
-        private List<ApplianceProjection> appliances;
+        private List<ApplianceCompleteDTO> appliances;
 
-        public AddressCompDTO(AddressCompleteDTO address, List<ApplianceProjection> appliance){
+        public AddressCompDTO(AddressCompleteDTO address, List<ApplianceCompleteDTO> appliance){
             addressData = address;
             appliances = appliance;
         } 

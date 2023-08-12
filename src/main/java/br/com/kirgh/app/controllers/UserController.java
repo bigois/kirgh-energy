@@ -82,13 +82,13 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
     }
 
-//     @GetMapping("/{id}")
-//     public ResponseEntity<UserCompleteDTO> getAllUserInfoById(@PathVariable UUID id) {
-//         UserCompleteDTO userCompleteDTO = userService.getAllUserInfoById(id);
-//         return ResponseEntity.status(HttpStatus.OK).body(userCompleteDTO);
-//     }
+     @GetMapping("/{id}")
+     public ResponseEntity<UserCompleteDTO> getAllUserInfoById(@PathVariable UUID id) {
+         UserCompleteDTO userCompleteDTO = userService.getAllUserInfoById(id);
+         return ResponseEntity.status(HttpStatus.OK).body(userCompleteDTO);
+     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/addresses")
     public ResponseEntity<UserCompDTO> getAllAddressesBoundUser(@PathVariable UUID id) {
         UserCompDTO userCompDTO = userService.getAllAddressesBoundUser(id);
         return ResponseEntity.status(HttpStatus.OK).body(userCompDTO);

@@ -11,9 +11,9 @@ import lombok.Setter;
 public class UserCompDTO {
     
     private UserCompleteDTO userData;
-    private List<AddressCompleteDTO> addresses;
+    private List<AddressCompDTO> addresses;
 
-    public UserCompDTO(UserCompleteDTO userDTO, List<AddressCompleteDTO> address){
+    public UserCompDTO(UserCompleteDTO userDTO, List<AddressCompDTO> address){
         userData = userDTO;
         addresses = address;
     }

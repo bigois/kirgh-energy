@@ -1,20 +1,25 @@
 package br.com.kirgh.app.services;
 
-import br.com.kirgh.app.dtos.AddressCompleteDTO;
-import br.com.kirgh.app.dtos.AddressDTO;
-import br.com.kirgh.app.dtos.UserCompDTO;
+import br.com.kirgh.app.dtos.*;
 import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.entities.AddressRelation;
 import br.com.kirgh.app.mappers.AddressMapper;
+import br.com.kirgh.app.mappers.ApplianceMapper;
+import br.com.kirgh.app.mappers.UserMapper;
 import br.com.kirgh.app.projections.AddressProjection;
+import br.com.kirgh.app.projections.ApplianceProjection;
+import br.com.kirgh.app.projections.UserCompleteProjection;
 import br.com.kirgh.app.repositories.AddressRelationRepository;
 import br.com.kirgh.app.repositories.AddressRepository;
+import br.com.kirgh.app.repositories.ApplianceRepository;
 import br.com.kirgh.app.repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -26,6 +31,9 @@ import java.util.UUID;
 public class AddressService {
     @Autowired
     private AddressRepository addressRepository;
+
+    @Autowired
+    private ApplianceRepository applianceRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -63,11 +71,35 @@ public class AddressService {
 
     @Transactional(readOnly = true)
     public AddressCompleteDTO getAllAddressInfoById(UUID id){
-
+        if (!addressRepository.existsById(id)) {
+            throw new EntityNotFoundException("address not found");
+        }
         AddressProjection addressProjection = addressRepository.getAllAddressInfoById(id);
         return AddressMapper.addressCompleteProjectionToAddressCompleteDTO(addressProjection);
     }
 
+    @Transactional(readOnly = true)
+    public AddressCompDTO getAllAppliancesBoundAddress(UUID id){
+        if (!addressRepository.existsById(id)) {
+            throw new EntityNotFoundException("address not found");
+        }
+
+        AddressProjection addressProjection = addressRepository.getAllAddressInfoById(id);
+        List<ApplianceProjection> applianceProjection = applianceRepository.getAllAppliancesBoundAddress(id);
+
+        List<ApplianceCompleteDTO> applianceList = new ArrayList<>();
+
+        AddressCompDTO addressCompDTO = new AddressCompDTO();
+
+        for (ApplianceProjection applianceItem : applianceProjection) {
+            applianceList.add(ApplianceMapper.applianceCompleteProjectionToApplianceCompleteDTO(applianceItem));
+        }
+
+        addressCompDTO.setAddressData(AddressMapper.addressCompleteProjectionToAddressCompleteDTO(addressProjection));
+        addressCompDTO.setAppliances(applianceList);
+
+        return addressCompDTO;
+    }
 
 
 }

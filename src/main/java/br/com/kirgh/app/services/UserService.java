@@ -18,6 +18,7 @@ import br.com.kirgh.app.repositories.AddressRepository;
 import br.com.kirgh.app.repositories.ApplianceRepository;
 import br.com.kirgh.app.repositories.UserRelationRepository;
 import br.com.kirgh.app.repositories.UserRepository;
+import br.com.kirgh.app.utils.Utils;
 import jakarta.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,9 @@ public class UserService {
 
     @Autowired
     private UserRelationRepository userRelationRepository;
+
+    @Autowired
+    private AddressService addressService;
 
     /**
      * This Java function creates a new user and saves it to the database, along with a user relation
@@ -78,38 +82,37 @@ public class UserService {
         return user;
     }
 
-    // @Transactional(readOnly = true)
-    // public UserCompleteDTO getAllUserInfoById(UUID id) {
-    //     if (!userRepository.existsById(id)) {
-    //         throw new EntityNotFoundException("user not found");
-    //     }
+    @Transactional(readOnly = true)
+     public UserCompleteDTO getAllUserInfoById(UUID id) {
+         if (!userRepository.existsById(id)) {
+             throw new EntityNotFoundException("user not found");
+         }
 
-    //     UserCompleteProjection userCompleteProjection = userRepository.getAllUserInfoById(id);
-    //     return UserMapper.userCompleteProjectionToUserCompleteDTO(userCompleteProjection);
-    // }
+         UserCompleteProjection userCompleteProjection = userRepository.getAllUserInfoById(id);
+       return UserMapper.userCompleteProjectionToUserCompleteDTO(userCompleteProjection);
+    }
 
     @Transactional(readOnly = true)
     public UserCompDTO getAllAddressesBoundUser(UUID id){
+
+        if (!userRepository.existsById(id)) {
+            throw new EntityNotFoundException("user not found");
+        }
+
         UserCompleteProjection userCompleteProjection = userRepository.getAllUserInfoById(id);
         List<AddressProjection> addressProjection = addressRepository.getAllAddressesBoundUser(id);
-        List<ApplianceProjection> applianceProjections = applianceRepository.getAllAppliancesBoundUser(id);
 
-        List<AddressCompleteDTO> addressList = new ArrayList<>();
-        List<ApplianceCompleteDTO> applianceList = new ArrayList<>();
+        List<AddressCompDTO> addressList = new ArrayList<>();
 
         UserCompDTO userCompDTO = new UserCompDTO();
-        AddressCompDTO addressCompDTO = new AddressCompDTO();
+        userCompDTO.setUserData(UserMapper.userCompleteProjectionToUserCompleteDTO(userCompleteProjection));
 
         for (AddressProjection addressItem : addressProjection) {
-            addressList.add(AddressMapper.addressCompleteProjectionToAddressCompleteDTO(addressItem));
+             addressList.add(addressService.getAllAppliancesBoundAddress(Utils.convertBytesToUUID(addressItem.getId())));
         }
 
-        for (ApplianceProjection applianceItem : applianceProjections) {
-            applianceList.add(ApplianceMapper.applianceCompleteProjectionToApplianceCompleteDTO(applianceItem));
-        }
-        userCompDTO.setUserData(UserMapper.userCompleteProjectionToUserCompleteDTO(userCompleteProjection));
         userCompDTO.setAddresses(addressList);
-   
+
         return userCompDTO;
     }
     

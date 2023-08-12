@@ -1,5 +1,6 @@
 package br.com.kirgh.app.controllers;
 
+import br.com.kirgh.app.dtos.AddressCompDTO;
 import br.com.kirgh.app.dtos.AddressCompleteDTO;
 import br.com.kirgh.app.dtos.AddressDTO;
 import br.com.kirgh.app.dtos.UserCompleteDTO;
@@ -89,5 +90,11 @@ public class AddressController {
     public ResponseEntity<AddressCompleteDTO> getAllAddressInfoById(@PathVariable UUID id) {
         AddressCompleteDTO addressCompleteDTO = addressService.getAllAddressInfoById(id);
         return ResponseEntity.status(HttpStatus.OK).body(addressCompleteDTO);
+    }
+
+    @GetMapping("/{id}/appliances")
+    public ResponseEntity<AddressCompDTO> getAllAppliancesBoundAddress(@PathVariable UUID id) {
+        AddressCompDTO addressCompDTO = addressService.getAllAppliancesBoundAddress(id);
+        return ResponseEntity.status(HttpStatus.OK).body(addressCompDTO);
     }
 }

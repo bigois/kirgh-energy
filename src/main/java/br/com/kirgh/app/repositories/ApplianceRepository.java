@@ -51,5 +51,5 @@ public interface ApplianceRepository extends JpaRepository<Appliance, UUID> {
                          appliance_relations.address_id = :addressId
                     """
     )
-    List<ApplianceProjection> getAllAppliancesBoundUser(@Param("addressId") UUID addressId);
+    List<ApplianceProjection> getAllAppliancesBoundAddress(@Param("addressId") UUID addressId);
 }
