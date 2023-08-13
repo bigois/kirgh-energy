@@ -1,8 +1,7 @@
 package br.com.kirgh.app.controllers;
 
-import br.com.kirgh.app.dtos.UserCompDTO;
-import br.com.kirgh.app.dtos.UserCompleteDTO;
-import br.com.kirgh.app.dtos.UserDTO;
+import br.com.kirgh.app.dtos.*;
+import br.com.kirgh.app.entities.Appliance;
 import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.services.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,6 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.NonNull;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -92,5 +92,20 @@ public class UserController {
     public ResponseEntity<UserCompDTO> getAllAddressesBoundUser(@PathVariable UUID id) {
         UserCompDTO userCompDTO = userService.getAllAddressesBoundUser(id);
         return ResponseEntity.status(HttpStatus.OK).body(userCompDTO);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUserInfoById(@PathVariable UUID id, @RequestBody @Valid UserUpdateDTO userUpdateDTO) {
+        User user = userService.updateUserInfoById(id, userUpdateDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(user);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUserById(@NonNull @PathVariable UUID id) {
+        JSONObject response = new JSONObject();
+        userService.deleteUserById(id);
+
+        response.put("message", "user successfully deleted");
+        return ResponseEntity.status(HttpStatus.OK).body(response.toString());
     }
 }

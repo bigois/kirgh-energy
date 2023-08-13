@@ -1,11 +1,7 @@
 package br.com.kirgh.app.services;
 
-import br.com.kirgh.app.dtos.AddressCompDTO;
-import br.com.kirgh.app.dtos.AddressCompleteDTO;
-import br.com.kirgh.app.dtos.ApplianceCompleteDTO;
-import br.com.kirgh.app.dtos.UserCompDTO;
-import br.com.kirgh.app.dtos.UserCompleteDTO;
-import br.com.kirgh.app.dtos.UserDTO;
+import br.com.kirgh.app.dtos.*;
+import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.entities.UserRelation;
 import br.com.kirgh.app.mappers.AddressMapper;
@@ -114,6 +110,24 @@ public class UserService {
         userCompDTO.setAddresses(addressList);
 
         return userCompDTO;
+    }
+
+    @Transactional
+    public User updateUserInfoById(UUID id, UserUpdateDTO userUpdateDTO){
+        User updateUser = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found"));;
+        userRepository.save(UserMapper.userUpdateDTOToUser(userUpdateDTO, updateUser));
+        return updateUser;
+    }
+
+    @Transactional
+    public void deleteUserById(UUID id){
+        if(!userRepository.existsById(id)){
+            throw new EntityNotFoundException("user not found");
+        }
+
+        userRepository.deleteParentRelationById(id);
+        userRepository.deleteAddressRelationById(id);
+        userRepository.deleteUserById(id);
     }
     
 }

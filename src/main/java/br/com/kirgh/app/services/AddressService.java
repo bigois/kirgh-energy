@@ -5,10 +5,8 @@ import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.entities.AddressRelation;
 import br.com.kirgh.app.mappers.AddressMapper;
 import br.com.kirgh.app.mappers.ApplianceMapper;
-import br.com.kirgh.app.mappers.UserMapper;
 import br.com.kirgh.app.projections.AddressProjection;
 import br.com.kirgh.app.projections.ApplianceProjection;
-import br.com.kirgh.app.projections.UserCompleteProjection;
 import br.com.kirgh.app.repositories.AddressRelationRepository;
 import br.com.kirgh.app.repositories.AddressRepository;
 import br.com.kirgh.app.repositories.ApplianceRepository;
@@ -101,5 +99,22 @@ public class AddressService {
         return addressCompDTO;
     }
 
+    @Transactional
+    public Address updateAddressInfoById(UUID id, AddressUpdateDTO addressUpdateDTO){
+        Address updateAddress = addressRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("address not found"));;
+        addressRepository.save(AddressMapper.addressUpdateDTOToAddress(addressUpdateDTO, updateAddress));
+        return updateAddress;
+    }
 
+    @Transactional
+    public void deleteAddressById(UUID id){
+        if(!addressRepository.existsById(id)){
+            throw new EntityNotFoundException("address not found");
+        }
+
+
+        addressRepository.deleteAddressRelationById(id);
+        addressRepository.deleteApplianceRelationById(id);
+        addressRepository.deleteAddressById(id);
+    }
 }

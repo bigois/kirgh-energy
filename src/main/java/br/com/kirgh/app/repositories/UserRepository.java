@@ -5,8 +5,10 @@ import br.com.kirgh.app.projections.AddressProjection;
 import br.com.kirgh.app.projections.ApplianceProjection;
 import br.com.kirgh.app.projections.UserCompleteProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -76,5 +78,41 @@ public interface UserRepository extends JpaRepository<User, UUID> {
                     """
     )
     List<ApplianceProjection> getAllAppliancesBoundAddress(@Param("addressId") UUID addressId);
+
+    @Transactional
+    @Modifying
+    @Query(nativeQuery = true,
+            value = """
+                DELETE FROM 
+                    user_relations
+                WHERE 
+                    owner_id = :ownerId
+                    """
+    )
+    void deleteParentRelationById(@Param("ownerId") UUID ownerId);
+
+    @Transactional
+    @Modifying
+    @Query(nativeQuery = true,
+            value = """
+                DELETE FROM 
+                    address_relations
+                WHERE 
+                    parent_id = :parentId
+                    """
+    )
+    void deleteAddressRelationById(@Param("parentId") UUID parentId);
+
+    @Transactional
+    @Modifying
+    @Query(nativeQuery = true,
+            value = """
+                DELETE FROM 
+                    users
+                WHERE 
+                    id  = :userId
+                    """
+    )
+    void deleteUserById(@Param("userId") UUID userId);
 
 }

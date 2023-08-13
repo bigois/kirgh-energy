@@ -1,8 +1,7 @@
 package br.com.kirgh.app.mappers;
 
-import br.com.kirgh.app.dtos.AddressCompleteDTO;
-import br.com.kirgh.app.dtos.ApplianceCompleteDTO;
-import br.com.kirgh.app.dtos.ApplianceDTO;
+import br.com.kirgh.app.dtos.*;
+import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.entities.Appliance;
 import br.com.kirgh.app.projections.AddressProjection;
 import br.com.kirgh.app.projections.ApplianceProjection;
@@ -29,6 +28,14 @@ public abstract class ApplianceMapper {
         appliance.setPower(applianceDTO.power());
 
         return appliance;
+    }
+
+    public static Appliance applianceUpdateDTOToAppliance(ApplianceUpdateDTO ApplianceUpdateDTO, Appliance updateAppliance) {
+        updateAppliance.setName(ApplianceUpdateDTO.name());
+        updateAppliance.setBrand(ApplianceUpdateDTO.brand());
+        updateAppliance.setModel(ApplianceUpdateDTO.model());
+        updateAppliance.setPower(ApplianceUpdateDTO.power());
+        return updateAppliance;
     }
 
     public static ApplianceCompleteDTO applianceCompleteProjectionToApplianceCompleteDTO(ApplianceProjection applianceProjection) {

@@ -1,9 +1,13 @@
 package br.com.kirgh.app.services;
 
+import br.com.kirgh.app.dtos.AddressUpdateDTO;
 import br.com.kirgh.app.dtos.ApplianceCompleteDTO;
 import br.com.kirgh.app.dtos.ApplianceDTO;
+import br.com.kirgh.app.dtos.ApplianceUpdateDTO;
+import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.entities.Appliance;
 import br.com.kirgh.app.entities.ApplianceRelation;
+import br.com.kirgh.app.mappers.AddressMapper;
 import br.com.kirgh.app.mappers.ApplianceMapper;
 import br.com.kirgh.app.projections.ApplianceProjection;
 import br.com.kirgh.app.repositories.AddressRepository;
@@ -59,5 +63,22 @@ public class ApplianceService {
     public ApplianceCompleteDTO getAllApplianceInfoById(UUID id){
         ApplianceProjection applianceProjection = applianceRepository.getAllApplianceInfoById(id);
         return ApplianceMapper.applianceCompleteProjectionToApplianceCompleteDTO(applianceProjection);
+    }
+
+    @Transactional
+    public Appliance updateApplianceInfoById(UUID id, ApplianceUpdateDTO applianceUpdateDTO){
+        Appliance updateAppliance = applianceRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("appliance not found"));;
+        applianceRepository.save(ApplianceMapper.applianceUpdateDTOToAppliance(applianceUpdateDTO, updateAppliance));
+        return updateAppliance;
+    }
+
+    @Transactional
+    public void deleteApplianceById(UUID id){
+        if(!applianceRepository.existsById(id)){
+            throw new EntityNotFoundException("appliance not found");
+        }
+
+        applianceRepository.deleteApplianceRelationById(id);
+        applianceRepository.deleteApplianceById(id);
     }
 }

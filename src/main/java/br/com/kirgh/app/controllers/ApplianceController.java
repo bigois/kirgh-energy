@@ -1,8 +1,7 @@
 package br.com.kirgh.app.controllers;
 
-import br.com.kirgh.app.dtos.ApplianceCompleteDTO;
-import br.com.kirgh.app.dtos.ApplianceDTO;
-import br.com.kirgh.app.dtos.UserCompleteDTO;
+import br.com.kirgh.app.dtos.*;
+import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.entities.Appliance;
 import br.com.kirgh.app.services.ApplianceService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -15,17 +14,13 @@ import jakarta.validation.Valid;
 
 import java.util.UUID;
 
+import lombok.NonNull;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * The ApplianceController class is a Java REST controller that handles requests related to creating new appliances.
@@ -84,5 +79,20 @@ public class ApplianceController {
     public ResponseEntity<ApplianceCompleteDTO> getAllUserInfoById(@PathVariable UUID id) {
         ApplianceCompleteDTO applianceCompleteDTO = applianceService.getAllApplianceInfoById(id);
         return ResponseEntity.status(HttpStatus.OK).body(applianceCompleteDTO);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Appliance> updateApplianceInfoById(@PathVariable UUID id, @RequestBody @Valid ApplianceUpdateDTO applianceUpdateDTO) {
+        Appliance appliance = applianceService.updateApplianceInfoById(id, applianceUpdateDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(appliance);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteApplianceById(@NonNull @PathVariable UUID id) {
+        JSONObject response = new JSONObject();
+        applianceService.deleteApplianceById(id);
+
+        response.put("message", "address successfully deleted");
+        return ResponseEntity.status(HttpStatus.OK).body(response.toString());
     }
 }

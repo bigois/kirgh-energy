@@ -5,14 +5,10 @@ import br.com.kirgh.app.enums.State;
 public interface AddressProjection {
     
     byte[] getId();
-
-    String getZipCode();
-
     String getStreet();
-
     String getNumber();
-
+    String getZipCode();
     String getCity();
-
     State getState();
+
 }
