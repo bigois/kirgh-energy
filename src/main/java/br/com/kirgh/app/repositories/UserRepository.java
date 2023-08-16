@@ -1,11 +1,16 @@
 package br.com.kirgh.app.repositories;
 
 import br.com.kirgh.app.entities.User;
+import br.com.kirgh.app.projections.AddressProjection;
+import br.com.kirgh.app.projections.ApplianceProjection;
 import br.com.kirgh.app.projections.UserCompleteProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -45,7 +50,11 @@ public interface UserRepository extends JpaRepository<User, UUID> {
             value = """
                         SELECT
                             id,
-                            name
+                            name,
+                            birth_date,
+                            gender,
+                            cpf,
+                            email
                         FROM
                             users
                         WHERE
@@ -53,4 +62,57 @@ public interface UserRepository extends JpaRepository<User, UUID> {
                     """
     )
     UserCompleteProjection getAllUserInfoById(@Param("id") UUID id);
+
+    @Query(nativeQuery = true,
+            value = """
+                    SELECT 
+                         appliances.id, appliances.name, appliances.brand, appliances.model, appliances.power
+                    FROM 
+                         appliances 
+                    INNER JOIN 
+                         appliance_relations 
+                    ON 
+                         appliances.id = appliance_relations.appliance_id 
+                    WHERE  
+                         appliance_relations.address_id = :addressId
+                    """
+    )
+    List<ApplianceProjection> getAllAppliancesBoundAddress(@Param("addressId") UUID addressId);
+
+    @Transactional
+    @Modifying
+    @Query(nativeQuery = true,
+            value = """
+                DELETE FROM 
+                    user_relations
+                WHERE 
+                    owner_id = :ownerId
+                    """
+    )
+    void deleteParentRelationById(@Param("ownerId") UUID ownerId);
+
+    @Transactional
+    @Modifying
+    @Query(nativeQuery = true,
+            value = """
+                DELETE FROM 
+                    address_relations
+                WHERE 
+                    parent_id = :parentId
+                    """
+    )
+    void deleteAddressRelationById(@Param("parentId") UUID parentId);
+
+    @Transactional
+    @Modifying
+    @Query(nativeQuery = true,
+            value = """
+                DELETE FROM 
+                    users
+                WHERE 
+                    id  = :userId
+                    """
+    )
+    void deleteUserById(@Param("userId") UUID userId);
+
 }

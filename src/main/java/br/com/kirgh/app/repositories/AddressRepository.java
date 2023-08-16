@@ -1,10 +1,17 @@
 package br.com.kirgh.app.repositories;
 
+import br.com.kirgh.app.dtos.AddressCompleteDTO;
 import br.com.kirgh.app.entities.Address;
+import br.com.kirgh.app.projections.AddressProjection;
+import br.com.kirgh.app.projections.UserCompleteProjection;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -47,4 +54,73 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
                     """
     )
     boolean existsToUserByUnique(@Param("userId") UUID userId, @Param("zipCode") String zipCode, @Param("number") String number);
+
+    @Query(nativeQuery = true,
+            value = """
+                        SELECT
+                            id,
+                            street,
+                            number,
+                            zip_code,
+                            city,
+                            state
+                        FROM
+                            addresses
+                        WHERE
+                            id = :id
+                    """
+    )
+    AddressProjection getAllAddressInfoById(@Param("id") UUID id);
+
+    @Query(nativeQuery = true,
+            value = """
+                    SELECT 
+                         addresses.id, addresses.zip_code, addresses.street, addresses.number, addresses.city, addresses.state
+                    FROM 
+                         addresses 
+                    INNER JOIN 
+                         address_relations 
+                    ON 
+                         addresses.id = address_relations.address_id 
+                    WHERE  
+                         address_relations.parent_id = :parentId
+                    """
+    )
+    List<AddressProjection> getAllAddressesBoundUser(@Param("parentId") UUID parentId);
+
+    @Transactional
+    @Modifying
+    @Query(nativeQuery = true,
+            value = """
+                DELETE FROM 
+                    address_relations
+                WHERE 
+                    address_id = :addressId
+                    """
+    )
+    void deleteAddressRelationById(@Param("addressId") UUID addressId);
+
+    @Transactional
+    @Modifying
+    @Query(nativeQuery = true,
+            value = """
+                DELETE FROM 
+                    appliance_relations
+                WHERE 
+                    address_id = :addressId
+                    """
+    )
+    void deleteApplianceRelationById(@Param("addressId") UUID addressId);
+
+    @Transactional
+    @Modifying
+    @Query(nativeQuery = true,
+            value = """
+                DELETE FROM 
+                    addresses
+                WHERE 
+                    id  = :addressId
+                    """
+    )
+    void deleteAddressById(@Param("addressId") UUID addressId);
 }
