@@ -68,7 +68,7 @@ public class AddressService {
     }
 
     @Transactional(readOnly = true)
-    public AddressCompleteDTO getAllAddressInfoById(UUID id){
+    public AddressCompleteDTO getAllAddressInfoById(UUID id) {
         if (!addressRepository.existsById(id)) {
             throw new EntityNotFoundException("address not found");
         }
@@ -77,7 +77,7 @@ public class AddressService {
     }
 
     @Transactional(readOnly = true)
-    public AddressCompDTO getAllAppliancesBoundAddress(UUID id){
+    public AddressCompDTO getAllAppliancesBoundAddress(UUID id) {
         if (!addressRepository.existsById(id)) {
             throw new EntityNotFoundException("address not found");
         }
@@ -100,15 +100,15 @@ public class AddressService {
     }
 
     @Transactional
-    public Address updateAddressInfoById(UUID id, AddressUpdateDTO addressUpdateDTO){
-        Address updateAddress = addressRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("address not found"));;
+    public Address updateAddressInfoById(UUID id, AddressUpdateDTO addressUpdateDTO) {
+        Address updateAddress = addressRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("address not found"));
         addressRepository.save(AddressMapper.addressUpdateDTOToAddress(addressUpdateDTO, updateAddress));
         return updateAddress;
     }
 
     @Transactional
-    public void deleteAddressById(UUID id){
-        if(!addressRepository.existsById(id)){
+    public void deleteAddressById(UUID id) {
+        if (!addressRepository.existsById(id)) {
             throw new EntityNotFoundException("address not found");
         }
 

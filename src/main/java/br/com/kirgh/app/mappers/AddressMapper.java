@@ -1,14 +1,10 @@
 package br.com.kirgh.app.mappers;
 
-import java.util.List;
-
 import br.com.kirgh.app.dtos.AddressCompleteDTO;
 import br.com.kirgh.app.dtos.AddressDTO;
 import br.com.kirgh.app.dtos.AddressUpdateDTO;
-import br.com.kirgh.app.dtos.UserCompleteDTO;
 import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.projections.AddressProjection;
-import br.com.kirgh.app.projections.UserCompleteProjection;
 import br.com.kirgh.app.utils.Utils;
 
 /**

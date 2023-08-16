@@ -1,9 +1,9 @@
 package br.com.kirgh.app.mappers;
 
-import br.com.kirgh.app.dtos.*;
-import br.com.kirgh.app.entities.Address;
+import br.com.kirgh.app.dtos.ApplianceCompleteDTO;
+import br.com.kirgh.app.dtos.ApplianceDTO;
+import br.com.kirgh.app.dtos.ApplianceUpdateDTO;
 import br.com.kirgh.app.entities.Appliance;
-import br.com.kirgh.app.projections.AddressProjection;
 import br.com.kirgh.app.projections.ApplianceProjection;
 import br.com.kirgh.app.utils.Utils;
 

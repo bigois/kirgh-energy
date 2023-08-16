@@ -1,7 +1,8 @@
 package br.com.kirgh.app.mappers;
 
-import br.com.kirgh.app.dtos.*;
-import br.com.kirgh.app.entities.Address;
+import br.com.kirgh.app.dtos.UserCompleteDTO;
+import br.com.kirgh.app.dtos.UserDTO;
+import br.com.kirgh.app.dtos.UserUpdateDTO;
 import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.enums.UserGender;
 import br.com.kirgh.app.projections.UserCompleteProjection;
@@ -9,7 +10,6 @@ import br.com.kirgh.app.utils.Utils;
 import lombok.SneakyThrows;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 /**

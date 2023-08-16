@@ -1,10 +1,7 @@
 package br.com.kirgh.app.repositories;
 
-import br.com.kirgh.app.dtos.AddressCompleteDTO;
 import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.projections.AddressProjection;
-import br.com.kirgh.app.projections.UserCompleteProjection;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -74,16 +71,16 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
 
     @Query(nativeQuery = true,
             value = """
-                    SELECT 
-                         addresses.id, addresses.zip_code, addresses.street, addresses.number, addresses.city, addresses.state
-                    FROM 
-                         addresses 
-                    INNER JOIN 
-                         address_relations 
-                    ON 
-                         addresses.id = address_relations.address_id 
-                    WHERE  
-                         address_relations.parent_id = :parentId
+                        SELECT
+                            addresses.id, addresses.zip_code, addresses.street, addresses.number, addresses.city, addresses.state
+                        FROM
+                            addresses
+                        INNER JOIN
+                            address_relations
+                        ON
+                            addresses.id = address_relations.address_id
+                        WHERE
+                            address_relations.parent_id = :parentId
                     """
     )
     List<AddressProjection> getAllAddressesBoundUser(@Param("parentId") UUID parentId);
@@ -92,10 +89,10 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
     @Modifying
     @Query(nativeQuery = true,
             value = """
-                DELETE FROM 
-                    address_relations
-                WHERE 
-                    address_id = :addressId
+                        DELETE FROM
+                            address_relations
+                        WHERE
+                            address_id = :addressId
                     """
     )
     void deleteAddressRelationById(@Param("addressId") UUID addressId);
@@ -104,10 +101,10 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
     @Modifying
     @Query(nativeQuery = true,
             value = """
-                DELETE FROM 
-                    appliance_relations
-                WHERE 
-                    address_id = :addressId
+                        DELETE FROM
+                            appliance_relations
+                        WHERE
+                            address_id = :addressId
                     """
     )
     void deleteApplianceRelationById(@Param("addressId") UUID addressId);
@@ -116,10 +113,10 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
     @Modifying
     @Query(nativeQuery = true,
             value = """
-                DELETE FROM 
-                    addresses
-                WHERE 
-                    id  = :addressId
+                        DELETE FROM
+                            addresses
+                        WHERE
+                            id  = :addressId
                     """
     )
     void deleteAddressById(@Param("addressId") UUID addressId);

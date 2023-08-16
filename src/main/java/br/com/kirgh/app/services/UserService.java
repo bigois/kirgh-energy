@@ -1,14 +1,10 @@
 package br.com.kirgh.app.services;
 
 import br.com.kirgh.app.dtos.*;
-import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.entities.UserRelation;
-import br.com.kirgh.app.mappers.AddressMapper;
-import br.com.kirgh.app.mappers.ApplianceMapper;
 import br.com.kirgh.app.mappers.UserMapper;
 import br.com.kirgh.app.projections.AddressProjection;
-import br.com.kirgh.app.projections.ApplianceProjection;
 import br.com.kirgh.app.projections.UserCompleteProjection;
 import br.com.kirgh.app.repositories.AddressRepository;
 import br.com.kirgh.app.repositories.ApplianceRepository;
@@ -16,7 +12,6 @@ import br.com.kirgh.app.repositories.UserRelationRepository;
 import br.com.kirgh.app.repositories.UserRepository;
 import br.com.kirgh.app.utils.Utils;
 import jakarta.persistence.EntityNotFoundException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -79,17 +74,17 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-     public UserCompleteDTO getAllUserInfoById(UUID id) {
-         if (!userRepository.existsById(id)) {
-             throw new EntityNotFoundException("user not found");
-         }
+    public UserCompleteDTO getAllUserInfoById(UUID id) {
+        if (!userRepository.existsById(id)) {
+            throw new EntityNotFoundException("user not found");
+        }
 
-         UserCompleteProjection userCompleteProjection = userRepository.getAllUserInfoById(id);
-       return UserMapper.userCompleteProjectionToUserCompleteDTO(userCompleteProjection);
+        UserCompleteProjection userCompleteProjection = userRepository.getAllUserInfoById(id);
+        return UserMapper.userCompleteProjectionToUserCompleteDTO(userCompleteProjection);
     }
 
     @Transactional(readOnly = true)
-    public UserCompDTO getAllAddressesBoundUser(UUID id){
+    public UserCompDTO getAllAddressesBoundUser(UUID id) {
 
         if (!userRepository.existsById(id)) {
             throw new EntityNotFoundException("user not found");
@@ -104,7 +99,7 @@ public class UserService {
         userCompDTO.setUserData(UserMapper.userCompleteProjectionToUserCompleteDTO(userCompleteProjection));
 
         for (AddressProjection addressItem : addressProjection) {
-             addressList.add(addressService.getAllAppliancesBoundAddress(Utils.convertBytesToUUID(addressItem.getId())));
+            addressList.add(addressService.getAllAppliancesBoundAddress(Utils.convertBytesToUUID(addressItem.getId())));
         }
 
         userCompDTO.setAddresses(addressList);
@@ -113,20 +108,20 @@ public class UserService {
     }
 
     @Transactional
-    public User updateUserInfoById(UUID id, UserUpdateDTO userUpdateDTO){
+    public User updateUserInfoById(UUID id, UserUpdateDTO userUpdateDTO) {
         if (userUpdateDTO.toString().replace("UserUpdateDTO[", "").replace("]", "").split("null").length == 5) {
             throw new IllegalArgumentException("at least one attribute needs to be valid");
         }
 
-        User updateUser = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found"));;
+        User updateUser = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found"));
 
         userRepository.save(UserMapper.userUpdateDTOToUser(userUpdateDTO, updateUser));
         return updateUser;
     }
 
     @Transactional
-    public void deleteUserById(UUID id){
-        if(!userRepository.existsById(id)){
+    public void deleteUserById(UUID id) {
+        if (!userRepository.existsById(id)) {
             throw new EntityNotFoundException("user not found");
         }
 
@@ -134,5 +129,4 @@ public class UserService {
         userRepository.deleteAddressRelationById(id);
         userRepository.deleteUserById(id);
     }
-    
 }
