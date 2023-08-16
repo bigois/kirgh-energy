@@ -114,7 +114,12 @@ public class UserService {
 
     @Transactional
     public User updateUserInfoById(UUID id, UserUpdateDTO userUpdateDTO){
+        if (userUpdateDTO.toString().replace("UserUpdateDTO[", "").replace("]", "").split("null").length == 5) {
+            throw new IllegalArgumentException("at least one attribute needs to be valid");
+        }
+
         User updateUser = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found"));;
+
         userRepository.save(UserMapper.userUpdateDTOToUser(userUpdateDTO, updateUser));
         return updateUser;
     }
