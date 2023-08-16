@@ -96,8 +96,8 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userCompDTO);
     }
 
-    @PutMapping(name = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> updateUserInfoById(@PathVariable UUID id, @RequestBody @Valid UserUpdateDTO userUpdateDTO) {
+    @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<User> updateUserInfoById(@PathVariable UUID id, @RequestBody UserUpdateDTO userUpdateDTO) {
         User user = userService.updateUserInfoById(id, userUpdateDTO);
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
