@@ -1,7 +1,9 @@
 package br.com.kirgh.app.controllers;
 
-import br.com.kirgh.app.dtos.*;
-import br.com.kirgh.app.entities.Appliance;
+import br.com.kirgh.app.dtos.UserCompDTO;
+import br.com.kirgh.app.dtos.UserCompleteDTO;
+import br.com.kirgh.app.dtos.UserDTO;
+import br.com.kirgh.app.dtos.UserUpdateDTO;
 import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.services.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -72,7 +74,7 @@ public class UserController {
                             value = "{\"name\": \"@\", \"birthDate\": \"@\", \"gender\": \"@\", \"cpf\": \"@\", \"email\": \"@\", \"relation\": { \"ownerId\": \"@\", \"relaionType\": \"@\"} }")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> userRegister(@RequestBody @Valid UserDTO userDTO) {
         JSONObject response = new JSONObject();
         User user = userService.createUser(userDTO);
@@ -82,11 +84,11 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
     }
 
-     @GetMapping("/{id}")
-     public ResponseEntity<UserCompleteDTO> getAllUserInfoById(@PathVariable UUID id) {
-         UserCompleteDTO userCompleteDTO = userService.getAllUserInfoById(id);
-         return ResponseEntity.status(HttpStatus.OK).body(userCompleteDTO);
-     }
+    @GetMapping("/{id}")
+    public ResponseEntity<UserCompleteDTO> getAllUserInfoById(@PathVariable UUID id) {
+        UserCompleteDTO userCompleteDTO = userService.getAllUserInfoById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(userCompleteDTO);
+    }
 
     @GetMapping("/{id}/addresses")
     public ResponseEntity<UserCompDTO> getAllAddressesBoundUser(@PathVariable UUID id) {
@@ -94,18 +96,18 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userCompDTO);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(name = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> updateUserInfoById(@PathVariable UUID id, @RequestBody @Valid UserUpdateDTO userUpdateDTO) {
         User user = userService.updateUserInfoById(id, userUpdateDTO);
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUserById(@NonNull @PathVariable UUID id) {
+    public ResponseEntity<String> deleteUserById(@NonNull @PathVariable UUID id) {
         JSONObject response = new JSONObject();
         userService.deleteUserById(id);
 
         response.put("message", "user successfully deleted");
-        return ResponseEntity.status(HttpStatus.OK).body(response.toString());
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(response.toString());
     }
 }

@@ -1,6 +1,9 @@
 package br.com.kirgh.app.controllers;
 
-import br.com.kirgh.app.dtos.*;
+import br.com.kirgh.app.dtos.AddressCompDTO;
+import br.com.kirgh.app.dtos.AddressCompleteDTO;
+import br.com.kirgh.app.dtos.AddressDTO;
+import br.com.kirgh.app.dtos.AddressUpdateDTO;
 import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.services.AddressService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -10,9 +13,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-
-import java.util.UUID;
-
 import lombok.NonNull;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +20,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 /**
  * The AddressController class is a Java REST controller that handles POST requests to create a new address using an
@@ -69,7 +71,7 @@ public class AddressController {
                             value = "{\"street\": \"@\", \"zipCode\":\"@\", \"number\": \"@\", \"city\":\"@\", \"state\":\"@\", \"parentId\":\"@\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> addressRegister(@RequestBody @Valid AddressDTO addressDTO) {
         JSONObject response = new JSONObject();
         Address address = addressService.createAddress(addressDTO);
@@ -91,18 +93,18 @@ public class AddressController {
         return ResponseEntity.status(HttpStatus.OK).body(addressCompDTO);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(name = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Address> updateAddressInfoById(@PathVariable UUID id, @RequestBody @Valid AddressUpdateDTO addressUpdateDto) {
         Address address = addressService.updateAddressInfoById(id, addressUpdateDto);
         return ResponseEntity.status(HttpStatus.OK).body(address);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteAddressById(@NonNull @PathVariable UUID id) {
+    public ResponseEntity<String> deleteAddressById(@NonNull @PathVariable UUID id) {
         JSONObject response = new JSONObject();
         addressService.deleteAddressById(id);
 
         response.put("message", "address successfully deleted");
-        return ResponseEntity.status(HttpStatus.OK).body(response.toString());
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(response.toString());
     }
 }
