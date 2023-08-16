@@ -1,6 +1,6 @@
 package br.com.kirgh.app.controllers;
 
-import br.com.kirgh.app.dtos.ApplianceCompleteDTO;
+import br.com.kirgh.app.dtos.ApplianceInfoDTO;
 import br.com.kirgh.app.dtos.ApplianceDTO;
 import br.com.kirgh.app.dtos.ApplianceUpdateDTO;
 import br.com.kirgh.app.entities.Appliance;
@@ -77,9 +77,9 @@ public class ApplianceController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ApplianceCompleteDTO> getAllUserInfoById(@PathVariable UUID id) {
-        ApplianceCompleteDTO applianceCompleteDTO = applianceService.getAllApplianceInfoById(id);
-        return ResponseEntity.status(HttpStatus.OK).body(applianceCompleteDTO);
+    public ResponseEntity<Appliance> getAllUserInfoById(@PathVariable UUID id) {
+        Appliance appliance = applianceService.getAllApplianceInfoById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(appliance);
     }
 
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)

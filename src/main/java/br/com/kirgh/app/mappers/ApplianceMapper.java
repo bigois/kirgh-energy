@@ -1,9 +1,10 @@
 package br.com.kirgh.app.mappers;
 
-import br.com.kirgh.app.dtos.ApplianceCompleteDTO;
+import br.com.kirgh.app.dtos.ApplianceInfoDTO;
 import br.com.kirgh.app.dtos.ApplianceDTO;
 import br.com.kirgh.app.dtos.ApplianceUpdateDTO;
 import br.com.kirgh.app.entities.Appliance;
+import br.com.kirgh.app.enums.Power;
 import br.com.kirgh.app.projections.ApplianceProjection;
 import br.com.kirgh.app.utils.Utils;
 
@@ -30,16 +31,28 @@ public abstract class ApplianceMapper {
         return appliance;
     }
 
-    public static Appliance applianceUpdateDTOToAppliance(ApplianceUpdateDTO ApplianceUpdateDTO, Appliance updateAppliance) {
-        updateAppliance.setName(ApplianceUpdateDTO.name());
-        updateAppliance.setBrand(ApplianceUpdateDTO.brand());
-        updateAppliance.setModel(ApplianceUpdateDTO.model());
-        updateAppliance.setPower(ApplianceUpdateDTO.power());
+    public static Appliance applianceUpdateDTOToAppliance(ApplianceUpdateDTO applianceUpdateDTO, Appliance updateAppliance) {
+        if (applianceUpdateDTO.name() != null) {
+            updateAppliance.setName(applianceUpdateDTO.name());
+        }
+
+        if (applianceUpdateDTO.brand() != null) {
+            updateAppliance.setBrand(applianceUpdateDTO.brand());
+        }
+
+        if (applianceUpdateDTO.model() != null) {
+            updateAppliance.setModel(applianceUpdateDTO.model());
+        }
+
+        if (applianceUpdateDTO.power() != null) {
+            updateAppliance.setPower(Power.valueOf(applianceUpdateDTO.power()));
+        }
+
         return updateAppliance;
     }
 
-    public static ApplianceCompleteDTO applianceCompleteProjectionToApplianceCompleteDTO(ApplianceProjection applianceProjection) {
-        return new ApplianceCompleteDTO(Utils.convertBytesToUUID(applianceProjection.getId()),
-                applianceProjection.getName(), applianceProjection.getBrand(), applianceProjection.getModel(), applianceProjection.getPower());
+    public static ApplianceInfoDTO applianceProjectionToApplianceInfoDTO(ApplianceProjection applianceProjection) {
+        return new ApplianceInfoDTO(Utils.convertBytesToUUID(applianceProjection.getId()),
+        applianceProjection.getName(), applianceProjection.getBrand(), applianceProjection.getModel(), applianceProjection.getPower());
     }
 }

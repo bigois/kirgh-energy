@@ -2,7 +2,7 @@ package br.com.kirgh.app.repositories;
 
 import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.projections.ApplianceProjection;
-import br.com.kirgh.app.projections.UserCompleteProjection;
+import br.com.kirgh.app.projections.UserProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -60,7 +60,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
                             id = :id
                     """
     )
-    UserCompleteProjection getAllUserInfoById(@Param("id") UUID id);
+    UserProjection getAllUserInfoById(@Param("id") UUID id);
 
     @Query(nativeQuery = true,
             value = """

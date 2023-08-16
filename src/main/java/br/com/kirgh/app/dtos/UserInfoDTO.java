@@ -9,7 +9,7 @@ import java.util.UUID;
 
 
 @Schema(title = "UserComplete", description = "Object that represents a data transfer object for all user data")
-public record UserCompleteDTO(
+public record UserInfoDTO(
     @NotBlank(message = "cannot be null or empty")
     @Pattern(regexp = "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$", message = "invalid user id")
     @Size(min = 36, max = 36, message = "size must be {max}")

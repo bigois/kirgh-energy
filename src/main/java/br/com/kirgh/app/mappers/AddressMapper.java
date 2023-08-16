@@ -1,9 +1,11 @@
 package br.com.kirgh.app.mappers;
 
-import br.com.kirgh.app.dtos.AddressCompleteDTO;
+import br.com.kirgh.app.dtos.AddressInfoDTO;
+
 import br.com.kirgh.app.dtos.AddressDTO;
 import br.com.kirgh.app.dtos.AddressUpdateDTO;
 import br.com.kirgh.app.entities.Address;
+import br.com.kirgh.app.enums.State;
 import br.com.kirgh.app.projections.AddressProjection;
 import br.com.kirgh.app.utils.Utils;
 
@@ -29,17 +31,32 @@ public abstract class AddressMapper {
         return address;
     }
 
-    public static Address addressUpdateDTOToAddress(AddressUpdateDTO addressUpdateDTO, Address updateAddress) {
-        updateAddress.setStreet(addressUpdateDTO.street());
-        updateAddress.setNumber(addressUpdateDTO.number());
-        updateAddress.setZipCode(addressUpdateDTO.zipCode());
-        updateAddress.setCity(addressUpdateDTO.city());
-        updateAddress.setState(addressUpdateDTO.state());
+     public static Address addressUpdateDTOToAddress(AddressUpdateDTO addressUpdateDTO, Address updateAddress) {
+        if (addressUpdateDTO.street() != null) {
+            updateAddress.setStreet(addressUpdateDTO.street());
+        }
+
+        if (addressUpdateDTO.number() != null) {
+            updateAddress.setNumber(addressUpdateDTO.number());
+        }
+
+        if (addressUpdateDTO.zipCode() != null) {
+            updateAddress.setZipCode(addressUpdateDTO.zipCode());
+        }
+
+        if (addressUpdateDTO.city() != null) {
+            updateAddress.setCity(addressUpdateDTO.city());
+        }
+
+        if (addressUpdateDTO.state() != null) {
+            updateAddress.setState(State.valueOf(addressUpdateDTO.state()));
+        }
+
         return updateAddress;
     }
 
-    public static AddressCompleteDTO addressCompleteProjectionToAddressCompleteDTO(AddressProjection addressProjection) {
-        return new AddressCompleteDTO(Utils.convertBytesToUUID(addressProjection.getId()),
-                addressProjection.getZipCode(), addressProjection.getStreet(), addressProjection.getNumber(), addressProjection.getCity(), addressProjection.getState());
+    public static AddressInfoDTO addressProjectionToAddressInfoDTO(AddressProjection addressProjection) {
+        return new AddressInfoDTO(Utils.convertBytesToUUID(addressProjection.getId()),
+        addressProjection.getZipCode(), addressProjection.getStreet(), addressProjection.getNumber(), addressProjection.getCity(), addressProjection.getState());
     }
 }

@@ -68,39 +68,40 @@ public class AddressService {
     }
 
     @Transactional(readOnly = true)
-    public AddressCompleteDTO getAllAddressInfoById(UUID id) {
-        if (!addressRepository.existsById(id)) {
-            throw new EntityNotFoundException("address not found");
-        }
-        AddressProjection addressProjection = addressRepository.getAllAddressInfoById(id);
-        return AddressMapper.addressCompleteProjectionToAddressCompleteDTO(addressProjection);
+    public Address getAllAddressInfoById(UUID id) {
+        Address address = addressRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("address not found"));
+        return address;
     }
 
     @Transactional(readOnly = true)
-    public AddressCompDTO getAllAppliancesBoundAddress(UUID id) {
+    public AddressCompleteInfoDTO getAllAppliancesBoundAddress(UUID id) {
         if (!addressRepository.existsById(id)) {
             throw new EntityNotFoundException("address not found");
         }
 
-        AddressProjection addressProjection = addressRepository.getAllAddressInfoById(id);
+        Address address = addressRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("address not found"));
         List<ApplianceProjection> applianceProjection = applianceRepository.getAllAppliancesBoundAddress(id);
 
-        List<ApplianceCompleteDTO> applianceList = new ArrayList<>();
+        List<ApplianceInfoDTO> applianceList = new ArrayList<>();
 
-        AddressCompDTO addressCompDTO = new AddressCompDTO();
+        AddressCompleteInfoDTO addressCompleteInfoDTO = new AddressCompleteInfoDTO();
 
         for (ApplianceProjection applianceItem : applianceProjection) {
-            applianceList.add(ApplianceMapper.applianceCompleteProjectionToApplianceCompleteDTO(applianceItem));
+            applianceList.add(ApplianceMapper.applianceProjectionToApplianceInfoDTO(applianceItem));
         }
 
-        addressCompDTO.setAddressData(AddressMapper.addressCompleteProjectionToAddressCompleteDTO(addressProjection));
-        addressCompDTO.setAppliances(applianceList);
+        addressCompleteInfoDTO.setAddressData(address);
+        addressCompleteInfoDTO.setAppliances(applianceList);
 
-        return addressCompDTO;
+        return addressCompleteInfoDTO;
     }
 
     @Transactional
     public Address updateAddressInfoById(UUID id, AddressUpdateDTO addressUpdateDTO) {
+         if (addressUpdateDTO.toString().replace("AddressUpdateDTO[", "").replace("]", "").split("null").length == 5) {
+            throw new IllegalArgumentException("at least one attribute needs to be valid");
+        }
+        
         Address updateAddress = addressRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("address not found"));
         addressRepository.save(AddressMapper.addressUpdateDTOToAddress(addressUpdateDTO, updateAddress));
         return updateAddress;
@@ -111,7 +112,6 @@ public class AddressService {
         if (!addressRepository.existsById(id)) {
             throw new EntityNotFoundException("address not found");
         }
-
 
         addressRepository.deleteAddressRelationById(id);
         addressRepository.deleteApplianceRelationById(id);

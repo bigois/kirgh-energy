@@ -1,11 +1,11 @@
 package br.com.kirgh.app.mappers;
 
-import br.com.kirgh.app.dtos.UserCompleteDTO;
+import br.com.kirgh.app.dtos.UserInfoDTO;
 import br.com.kirgh.app.dtos.UserDTO;
 import br.com.kirgh.app.dtos.UserUpdateDTO;
 import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.enums.UserGender;
-import br.com.kirgh.app.projections.UserCompleteProjection;
+import br.com.kirgh.app.projections.UserProjection;
 import br.com.kirgh.app.utils.Utils;
 import lombok.SneakyThrows;
 
@@ -61,9 +61,8 @@ public abstract class UserMapper {
         return updateUser;
     }
 
-    public static UserCompleteDTO userCompleteProjectionToUserCompleteDTO(UserCompleteProjection userCompleteProjection) {
-        return new UserCompleteDTO(Utils.convertBytesToUUID(userCompleteProjection.getId()),
-                userCompleteProjection.getName(), userCompleteProjection.getBirthDate(), userCompleteProjection.getGender(), userCompleteProjection.getCpf(), userCompleteProjection.getEmail());
+    public static UserInfoDTO userCompleteProjectionToUserInfoDTO(UserProjection userProjection) {
+        return new UserInfoDTO(Utils.convertBytesToUUID(userProjection.getId()),
+        userProjection.getName(), userProjection.getBirthDate(), userProjection.getGender(), userProjection.getCpf(), userProjection.getEmail());
     }
-
 }

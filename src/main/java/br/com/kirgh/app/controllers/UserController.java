@@ -1,7 +1,7 @@
 package br.com.kirgh.app.controllers;
 
-import br.com.kirgh.app.dtos.UserCompDTO;
-import br.com.kirgh.app.dtos.UserCompleteDTO;
+import br.com.kirgh.app.dtos.UserCompleteInfoDTO;
+import br.com.kirgh.app.dtos.UserInfoDTO;
 import br.com.kirgh.app.dtos.UserDTO;
 import br.com.kirgh.app.dtos.UserUpdateDTO;
 import br.com.kirgh.app.entities.User;
@@ -85,15 +85,15 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserCompleteDTO> getAllUserInfoById(@PathVariable UUID id) {
-        UserCompleteDTO userCompleteDTO = userService.getAllUserInfoById(id);
-        return ResponseEntity.status(HttpStatus.OK).body(userCompleteDTO);
+    public ResponseEntity<User> getAllUserInfoById(@PathVariable UUID id) {
+        User user = userService.getAllUserInfoById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 
     @GetMapping("/{id}/addresses")
-    public ResponseEntity<UserCompDTO> getAllAddressesBoundUser(@PathVariable UUID id) {
-        UserCompDTO userCompDTO = userService.getAllAddressesBoundUser(id);
-        return ResponseEntity.status(HttpStatus.OK).body(userCompDTO);
+    public ResponseEntity<UserCompleteInfoDTO> getAllAddressesBoundUser(@PathVariable UUID id) {
+        UserCompleteInfoDTO userCompleteInfoDTO = userService.getAllAddressesBoundUser(id);
+        return ResponseEntity.status(HttpStatus.OK).body(userCompleteInfoDTO);
     }
 
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)

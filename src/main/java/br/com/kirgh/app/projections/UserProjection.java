@@ -2,7 +2,7 @@ package br.com.kirgh.app.projections;
 
 import java.util.Date;
 
-public interface UserCompleteProjection {
+public interface UserProjection {
     byte[] getId();
     String getName();
     Date getBirthDate();

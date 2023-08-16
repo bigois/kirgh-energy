@@ -5,7 +5,7 @@ import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.entities.UserRelation;
 import br.com.kirgh.app.mappers.UserMapper;
 import br.com.kirgh.app.projections.AddressProjection;
-import br.com.kirgh.app.projections.UserCompleteProjection;
+import br.com.kirgh.app.projections.UserProjection;
 import br.com.kirgh.app.repositories.AddressRepository;
 import br.com.kirgh.app.repositories.ApplianceRepository;
 import br.com.kirgh.app.repositories.UserRelationRepository;
@@ -74,37 +74,29 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public UserCompleteDTO getAllUserInfoById(UUID id) {
-        if (!userRepository.existsById(id)) {
-            throw new EntityNotFoundException("user not found");
-        }
+    public User getAllUserInfoById(UUID id) {
+        User user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found"));
 
-        UserCompleteProjection userCompleteProjection = userRepository.getAllUserInfoById(id);
-        return UserMapper.userCompleteProjectionToUserCompleteDTO(userCompleteProjection);
+        return user;
     }
 
     @Transactional(readOnly = true)
-    public UserCompDTO getAllAddressesBoundUser(UUID id) {
-
-        if (!userRepository.existsById(id)) {
-            throw new EntityNotFoundException("user not found");
-        }
-
-        UserCompleteProjection userCompleteProjection = userRepository.getAllUserInfoById(id);
+    public UserCompleteInfoDTO getAllAddressesBoundUser(UUID id) {
+        User user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found"));
         List<AddressProjection> addressProjection = addressRepository.getAllAddressesBoundUser(id);
 
-        List<AddressCompDTO> addressList = new ArrayList<>();
+        List<AddressCompleteInfoDTO> addressList = new ArrayList<>();
 
-        UserCompDTO userCompDTO = new UserCompDTO();
-        userCompDTO.setUserData(UserMapper.userCompleteProjectionToUserCompleteDTO(userCompleteProjection));
+        UserCompleteInfoDTO userCompleteInfoDTO = new UserCompleteInfoDTO();
+        userCompleteInfoDTO.setUserData(user);
 
         for (AddressProjection addressItem : addressProjection) {
             addressList.add(addressService.getAllAppliancesBoundAddress(Utils.convertBytesToUUID(addressItem.getId())));
         }
 
-        userCompDTO.setAddresses(addressList);
+        userCompleteInfoDTO.setAddresses(addressList);
 
-        return userCompDTO;
+        return userCompleteInfoDTO;
     }
 
     @Transactional
@@ -112,9 +104,8 @@ public class UserService {
         if (userUpdateDTO.toString().replace("UserUpdateDTO[", "").replace("]", "").split("null").length == 5) {
             throw new IllegalArgumentException("at least one attribute needs to be valid");
         }
-
+        
         User updateUser = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found"));
-
         userRepository.save(UserMapper.userUpdateDTOToUser(userUpdateDTO, updateUser));
         return updateUser;
     }

@@ -1,7 +1,7 @@
 package br.com.kirgh.app.controllers;
 
-import br.com.kirgh.app.dtos.AddressCompDTO;
-import br.com.kirgh.app.dtos.AddressCompleteDTO;
+import br.com.kirgh.app.dtos.AddressCompleteInfoDTO;
+import br.com.kirgh.app.dtos.AddressInfoDTO;
 import br.com.kirgh.app.dtos.AddressDTO;
 import br.com.kirgh.app.dtos.AddressUpdateDTO;
 import br.com.kirgh.app.entities.Address;
@@ -82,15 +82,15 @@ public class AddressController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AddressCompleteDTO> getAllAddressInfoById(@PathVariable UUID id) {
-        AddressCompleteDTO addressCompleteDTO = addressService.getAllAddressInfoById(id);
-        return ResponseEntity.status(HttpStatus.OK).body(addressCompleteDTO);
+    public ResponseEntity<Address> getAllAddressInfoById(@PathVariable UUID id) {
+        Address address = addressService.getAllAddressInfoById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(address);
     }
 
     @GetMapping("/{id}/appliances")
-    public ResponseEntity<AddressCompDTO> getAllAppliancesBoundAddress(@PathVariable UUID id) {
-        AddressCompDTO addressCompDTO = addressService.getAllAppliancesBoundAddress(id);
-        return ResponseEntity.status(HttpStatus.OK).body(addressCompDTO);
+    public ResponseEntity<AddressCompleteInfoDTO> getAllAppliancesBoundAddress(@PathVariable UUID id) {
+        AddressCompleteInfoDTO addressCompleteInfoDTO = addressService.getAllAppliancesBoundAddress(id);
+        return ResponseEntity.status(HttpStatus.OK).body(addressCompleteInfoDTO);
     }
 
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)

@@ -1,6 +1,6 @@
 package br.com.kirgh.app.services;
 
-import br.com.kirgh.app.dtos.ApplianceCompleteDTO;
+import br.com.kirgh.app.dtos.ApplianceInfoDTO;
 import br.com.kirgh.app.dtos.ApplianceDTO;
 import br.com.kirgh.app.dtos.ApplianceUpdateDTO;
 import br.com.kirgh.app.entities.Appliance;
@@ -57,13 +57,17 @@ public class ApplianceService {
     }
 
     @Transactional(readOnly = true)
-    public ApplianceCompleteDTO getAllApplianceInfoById(UUID id) {
-        ApplianceProjection applianceProjection = applianceRepository.getAllApplianceInfoById(id);
-        return ApplianceMapper.applianceCompleteProjectionToApplianceCompleteDTO(applianceProjection);
+    public Appliance getAllApplianceInfoById(UUID id) {
+        Appliance appliance = applianceRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("appliance not found"));
+        return appliance;
     }
 
     @Transactional
     public Appliance updateApplianceInfoById(UUID id, ApplianceUpdateDTO applianceUpdateDTO) {
+        if (applianceUpdateDTO.toString().replace("ApplianceUpdateDTO[", "").replace("]", "").split("null").length == 4) {
+            throw new IllegalArgumentException("at least one attribute needs to be valid");
+        }
+        
         Appliance updateAppliance = applianceRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("appliance not found"));
         applianceRepository.save(ApplianceMapper.applianceUpdateDTOToAppliance(applianceUpdateDTO, updateAppliance));
         return updateAppliance;

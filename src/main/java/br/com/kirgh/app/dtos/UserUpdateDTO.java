@@ -21,7 +21,6 @@ public record UserUpdateDTO(
     @Schema(description = "Biological human genders based on chromosome", example = "F")
     String gender,
 
-    // @NotBlank(message = "cannot be null or empty")
     @Size(min = 11, max = 11, message = "must have {min} characters")
     @CPF
     @Schema(description = "Brazilian individual taxpayer registry number (CPF)", example = "24705216377")

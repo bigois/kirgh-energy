@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 
 import java.util.UUID;
 
-public record AddressCompleteDTO(
+public record AddressInfoDTO(
     @Pattern(regexp = "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$", message = "invalid user id")
     @Size(min = 36, max = 36, message = "size must be {max}")
     @Schema(description = "UUID from an existent user", example = "67459848-3af5-4c99-9276-543c331adcc1")
