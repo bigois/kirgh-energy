@@ -82,7 +82,7 @@ public class ApplianceController {
         return ResponseEntity.status(HttpStatus.OK).body(applianceCompleteDTO);
     }
 
-    @PutMapping(name = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Appliance> updateApplianceInfoById(@PathVariable UUID id, @RequestBody @Valid ApplianceUpdateDTO applianceUpdateDTO) {
         Appliance appliance = applianceService.updateApplianceInfoById(id, applianceUpdateDTO);
         return ResponseEntity.status(HttpStatus.OK).body(appliance);

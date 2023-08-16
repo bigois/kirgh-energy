@@ -93,7 +93,7 @@ public class AddressController {
         return ResponseEntity.status(HttpStatus.OK).body(addressCompDTO);
     }
 
-    @PutMapping(name = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Address> updateAddressInfoById(@PathVariable UUID id, @RequestBody @Valid AddressUpdateDTO addressUpdateDto) {
         Address address = addressService.updateAddressInfoById(id, addressUpdateDto);
         return ResponseEntity.status(HttpStatus.OK).body(address);
