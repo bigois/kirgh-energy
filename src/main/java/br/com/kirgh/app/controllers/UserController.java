@@ -4,6 +4,7 @@ import br.com.kirgh.app.dtos.UserCompleteInfoDTO;
 import br.com.kirgh.app.dtos.UserInfoDTO;
 import br.com.kirgh.app.dtos.UserDTO;
 import br.com.kirgh.app.dtos.UserUpdateDTO;
+import br.com.kirgh.app.entities.Appliance;
 import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.services.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -16,11 +17,14 @@ import jakarta.validation.Valid;
 import lombok.NonNull;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -82,6 +86,20 @@ public class UserController {
         response.put("resourceId", user.getId());
         response.put("message", "user successfully registered");
         return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<User>> getAllUsers(Pageable pageable) {
+        Page<User> user = userService.getAllUsers(pageable);
+        return ResponseEntity.status(HttpStatus.OK).body(user);
+    }
+
+    @GetMapping("/filter")
+    public ResponseEntity<Page<User>> getFilteredAppliances(
+            @RequestParam Map<String, String> filters,
+            Pageable pageable) {
+        Page<User> users = userService.getFilteredUsers(filters, pageable);
+        return ResponseEntity.status(HttpStatus.OK).body(users);
     }
 
     @GetMapping("/{id}")

@@ -5,6 +5,7 @@ import br.com.kirgh.app.dtos.AddressInfoDTO;
 import br.com.kirgh.app.dtos.AddressDTO;
 import br.com.kirgh.app.dtos.AddressUpdateDTO;
 import br.com.kirgh.app.entities.Address;
+import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.services.AddressService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -16,11 +17,14 @@ import jakarta.validation.Valid;
 import lombok.NonNull;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -79,6 +83,20 @@ public class AddressController {
         response.put("resourceId", address.getId());
         response.put("message", "address successfully registered");
         return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<Address>> getAllAddresses(Pageable pageable) {
+        Page<Address> address = addressService.getAddresses(pageable);
+        return ResponseEntity.status(HttpStatus.OK).body(address);
+    }
+
+    @GetMapping("/filter")
+    public ResponseEntity<Page<Address>> getFilteredAppliances(
+            @RequestParam Map<String, String> filters,
+            Pageable pageable) {
+        Page<Address> addresses = addressService.getFilteredAddresses(filters, pageable);
+        return ResponseEntity.status(HttpStatus.OK).body(addresses);
     }
 
     @GetMapping("/{id}")

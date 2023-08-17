@@ -2,6 +2,10 @@ package br.com.kirgh.app.repositories;
 
 import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.projections.AddressProjection;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -29,6 +33,9 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
      * @param number  The parameter "number" is a String representing the street number of an address.
      * @return A boolean value is being returned.
      */
+
+    Page<Address> findAll(Pageable pageable);
+    Page<Address> findAll(Specification spec, Pageable pageRequest);
     @Query(nativeQuery = true,
             value = """
                         SELECT

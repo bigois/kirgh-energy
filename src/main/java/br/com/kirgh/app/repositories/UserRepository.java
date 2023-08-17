@@ -2,7 +2,10 @@ package br.com.kirgh.app.repositories;
 
 import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.projections.ApplianceProjection;
-import br.com.kirgh.app.projections.UserProjection;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -45,22 +48,8 @@ public interface UserRepository extends JpaRepository<User, UUID> {
      */
     boolean existsByCpf(String cpf);
 
-    @Query(nativeQuery = true,
-            value = """
-                        SELECT
-                            id,
-                            name,
-                            birth_date,
-                            gender,
-                            cpf,
-                            email
-                        FROM
-                            users
-                        WHERE
-                            id = :id
-                    """
-    )
-    UserProjection getAllUserInfoById(@Param("id") UUID id);
+    Page<User> findAll(Pageable pageable);
+    Page<User> findAll(Specification spec ,Pageable pageable);
 
     @Query(nativeQuery = true,
             value = """

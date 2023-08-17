@@ -11,10 +11,18 @@ import br.com.kirgh.app.repositories.AddressRepository;
 import br.com.kirgh.app.repositories.ApplianceRelationRepository;
 import br.com.kirgh.app.repositories.ApplianceRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.criteria.Predicate;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -54,6 +62,24 @@ public class ApplianceService {
         applianceRelationRepository.save(applianceRelation);
 
         return appliance;
+    }
+
+    @Transactional(readOnly = true)
+    public Page<Appliance> getAppliances(Pageable pageable) {
+        return applianceRepository.findAll(pageable);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<Appliance> getFilteredAppliances(Map<String, String> filters, Pageable pageable) {
+        Specification<Appliance> spec = (root, query, builder) -> {
+            List<Predicate> predicates = new ArrayList<>();
+            filters.forEach((key, value) -> {
+                predicates.add(builder.like(root.get(key), "%" + value + "%"));
+            });
+            return builder.and(predicates.toArray(new Predicate[0]));
+        };
+        
+        return applianceRepository.findAll(spec, pageable);
     }
 
     @Transactional(readOnly = true)

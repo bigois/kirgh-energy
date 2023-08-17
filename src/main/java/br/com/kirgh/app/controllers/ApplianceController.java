@@ -3,6 +3,7 @@ package br.com.kirgh.app.controllers;
 import br.com.kirgh.app.dtos.ApplianceInfoDTO;
 import br.com.kirgh.app.dtos.ApplianceDTO;
 import br.com.kirgh.app.dtos.ApplianceUpdateDTO;
+import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.entities.Appliance;
 import br.com.kirgh.app.services.ApplianceService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -15,11 +16,15 @@ import jakarta.validation.Valid;
 import lombok.NonNull;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -76,8 +81,22 @@ public class ApplianceController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
     }
 
+//     @GetMapping
+//     public ResponseEntity<Page<Appliance>> getAllAppliances(Pageable pageable) {
+//         Page<Appliance> appliance = applianceService.getAppliances(pageable);
+//         return ResponseEntity.status(HttpStatus.OK).body(appliance);
+//     }
+
+    @GetMapping("/filter")
+    public ResponseEntity<Page<Appliance>> getFilteredAppliances(
+            @RequestParam Map<String, String> filters,
+            Pageable pageable) {
+        Page<Appliance> appliances = applianceService.getFilteredAppliances(filters, pageable);
+        return ResponseEntity.ok(appliances);
+    }
+
     @GetMapping("/{id}")
-    public ResponseEntity<Appliance> getAllUserInfoById(@PathVariable UUID id) {
+    public ResponseEntity<Appliance> getAllApplianceInfoById(@PathVariable UUID id) {
         Appliance appliance = applianceService.getAllApplianceInfoById(id);
         return ResponseEntity.status(HttpStatus.OK).body(appliance);
     }
