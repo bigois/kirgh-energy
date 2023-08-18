@@ -10,8 +10,10 @@ import br.com.kirgh.app.projections.AddressProjection;
 import br.com.kirgh.app.projections.ApplianceProjection;
 import br.com.kirgh.app.repositories.AddressRelationRepository;
 import br.com.kirgh.app.repositories.AddressRepository;
+import br.com.kirgh.app.repositories.ApplianceRelationRepository;
 import br.com.kirgh.app.repositories.ApplianceRepository;
 import br.com.kirgh.app.repositories.UserRepository;
+import br.com.kirgh.app.utils.Utils;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.criteria.Predicate;
 
@@ -39,6 +41,9 @@ public class AddressService {
 
     @Autowired
     private ApplianceRepository applianceRepository;
+
+    @Autowired
+    private ApplianceRelationRepository applianceRelationRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -96,7 +101,7 @@ public class AddressService {
                         predicates.add(builder.like(root.get(key), "%" + value + "%"));
                     }
                 } catch (IllegalArgumentException | NullPointerException e) {
-                    // Handle exceptions if the field or enum value doesn't exist
+                    throw new IllegalArgumentException("field not found");
                 }
             });
             return builder.and(predicates.toArray(new Predicate[0]));
@@ -112,10 +117,6 @@ public class AddressService {
 
     @Transactional(readOnly = true)
     public AddressCompleteInfoDTO getAllAppliancesBoundAddress(UUID id) {
-        if (!addressRepository.existsById(id)) {
-            throw new EntityNotFoundException("address not found");
-        }
-
         Address address = addressRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("address not found"));
         List<ApplianceProjection> applianceProjection = applianceRepository.getAllAppliancesBoundAddress(id);
 
@@ -123,9 +124,7 @@ public class AddressService {
 
         AddressCompleteInfoDTO addressCompleteInfoDTO = new AddressCompleteInfoDTO();
 
-        for (ApplianceProjection applianceItem : applianceProjection) {
-            applianceList.add(ApplianceMapper.applianceProjectionToApplianceInfoDTO(applianceItem));
-        }
+        applianceProjection.stream().forEach(applianceItem -> applianceList.add(ApplianceMapper.applianceProjectionToApplianceInfoDTO(applianceItem)));
 
         addressCompleteInfoDTO.setAddressData(address);
         addressCompleteInfoDTO.setAppliances(applianceList);
@@ -145,24 +144,18 @@ public class AddressService {
     }
 
     @Transactional
-    public void deleteAddressById(UUID id) {
-        if (!addressRepository.existsById(id)) {
+    public void deleteAddressById(UUID id){
+        if(!addressRepository.existsById(id)){
             throw new EntityNotFoundException("address not found");
         }
 
-        addressRepository.deleteAddressRelationById(id);
-        /*addressRepository.deleteApplianceRelationById(id);*/
+        List<ApplianceProjection> applianceProjections =  applianceRepository.getAllAppliancesBoundAddress(id);
+        applianceProjections.stream().forEach(applianceItem -> {
+            applianceRelationRepository.deleteApplianceRelationByAddressId(id);
+            applianceService.deleteApplianceById(Utils.convertBytesToUUID(applianceItem.getId()));
+        });
+        
+        addressRelationRepository.deleteAddressesByAddressId(id);
         addressRepository.deleteAddressById(id);
-    }
-
-    @Transactional
-    public void deleteAddressByParentId(UUID id) {
-        if (!userRepository.existsById(id)) {
-            throw new EntityNotFoundException("user not found");
-        }
-
-        addressRepository.deleteAddressRelationById(id);
-        addressRepository.deleteAddressesByParentId(id);
-        applianceService.deleteApplianceByAddressId(id);
     }
 }

@@ -7,6 +7,7 @@ import br.com.kirgh.app.entities.UserRelation;
 import br.com.kirgh.app.mappers.UserMapper;
 import br.com.kirgh.app.projections.AddressProjection;
 import br.com.kirgh.app.projections.UserProjection;
+import br.com.kirgh.app.repositories.AddressRelationRepository;
 import br.com.kirgh.app.repositories.AddressRepository;
 import br.com.kirgh.app.repositories.ApplianceRepository;
 import br.com.kirgh.app.repositories.UserRelationRepository;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * The UserService class creates a new user and saves it to the database, along with a user relation if specified, and
@@ -39,6 +41,9 @@ public class UserService {
 
     @Autowired
     private AddressRepository addressRepository;
+
+    @Autowired
+    private AddressRelationRepository addressRelationRepository;
 
     @Autowired
     private ApplianceRepository applianceRepository;
@@ -94,7 +99,7 @@ public class UserService {
                         predicates.add(builder.like(root.get(key), "%" + value + "%"));
                     }
                 } catch (IllegalArgumentException | NullPointerException e) {
-                    // Handle exceptions if the field or enum value doesn't exist
+                    throw new IllegalArgumentException("field not found");
                 }
             });
             return builder.and(predicates.toArray(new Predicate[0]));
@@ -111,17 +116,27 @@ public class UserService {
     @Transactional(readOnly = true)
     public UserCompleteInfoDTO getAllAddressesBoundUser(UUID id) {
         User user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found"));
-        List<AddressProjection> addressProjection = addressRepository.getAllAddressesBoundUser(id);
+        List<UserRelation> userRelationData = userRelationRepository.getAllUsersRelationBoundUser(id);
+        List<UserRelationInfoDTO> userRelationInfoDTOList = userRelationData
+            .stream().map(userItem -> new UserRelationInfoDTO(
+                userItem.getUserRelationPK().getChild().getId(),
+                userItem.getRelationType()
+            ))
+            .collect(Collectors.toList());
 
+        List<AddressProjection> addressProjection = addressRepository.getAllAddressesBoundUser(id);
         List<AddressCompleteInfoDTO> addressList = new ArrayList<>();
 
         UserCompleteInfoDTO userCompleteInfoDTO = new UserCompleteInfoDTO();
         userCompleteInfoDTO.setUserData(user);
 
-        for (AddressProjection addressItem : addressProjection) {
-            addressList.add(addressService.getAllAppliancesBoundAddress(Utils.convertBytesToUUID(addressItem.getId())));
-        }
+        addressProjection.stream().forEach(addressItem -> 
+            addressList.add(
+                addressService.getAllAppliancesBoundAddress(
+                Utils.convertBytesToUUID(addressItem.getId()))
+        ));
 
+        userCompleteInfoDTO.setUserRelation(userRelationInfoDTOList);
         userCompleteInfoDTO.setAddresses(addressList);
 
         return userCompleteInfoDTO;
@@ -138,13 +153,23 @@ public class UserService {
         return updateUser;
     }
 
-    @Transactional
-    public void deleteUserById(UUID id) {
-        if (!userRepository.existsById(id)) {
-            throw new EntityNotFoundException("user not found");
-        }
-        userRepository.deleteParentRelationById(id);
-        addressService.deleteAddressByParentId(id);
+   @Transactional
+    public void deleteUserById(UUID id){
+        User user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found"));
+        List<AddressProjection> addressesRelations =  addressRepository.getAllAddressesBoundUser(user.getId());
+        
+        addressesRelations.stream().forEach(addressItem -> {
+            addressRelationRepository.deleteAddressesByParentId(user.getId()); 
+            addressService.deleteAddressById(Utils.convertBytesToUUID(addressItem.getId()));
+        });
+
+        List<UserRelation> userRelationData = userRelationRepository.getAllUsersRelationBoundUser(id);
+        
+        userRelationData.stream().forEach(userRelationItem -> {
+            userRelationRepository.deleteParentRelationByChildId(userRelationItem.getUserRelationPK().getChild().getId());
+            deleteUserById(userRelationItem.getUserRelationPK().getChild().getId());
+        });
+
         userRepository.deleteUserById(id);
     }
 }

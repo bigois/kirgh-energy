@@ -26,23 +26,7 @@ public interface ApplianceRepository extends JpaRepository<Appliance, UUID> {
 
     Page<Appliance> findAll(Pageable pageable);
     Page<Appliance> findAll(Specification spec, Pageable pageRequest);
-
-    @Query(nativeQuery = true,
-            value = """
-                        SELECT
-                            id,
-                            name,
-                            brand,
-                            model,
-                            power
-                        FROM
-                            appliances
-                        WHERE
-                            id = :id
-                    """
-    )
-    ApplianceProjection getAllApplianceInfoById(@Param("id") UUID id);
-
+    
     @Query(nativeQuery = true,
             value = """
                         SELECT
@@ -81,18 +65,6 @@ public interface ApplianceRepository extends JpaRepository<Appliance, UUID> {
                     """
     )
     void deleteAppliancesByAddressId(@Param("addressId") UUID addressId);
-
-    @Transactional
-    @Modifying
-    @Query(nativeQuery = true,
-            value = """
-                        DELETE FROM
-                            appliance_relations
-                        WHERE
-                            appliance_id = :applianceId
-                    """
-    )
-    void deleteApplianceRelationById(@Param("applianceId") UUID applianceId);
 
     @Transactional
     @Modifying

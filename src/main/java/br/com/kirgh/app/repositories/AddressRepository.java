@@ -62,23 +62,6 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
     @Query(nativeQuery = true,
             value = """
                         SELECT
-                            id,
-                            street,
-                            number,
-                            zip_code,
-                            city,
-                            state
-                        FROM
-                            addresses
-                        WHERE
-                            id = :id
-                    """
-    )
-    AddressProjection getAllAddressInfoById(@Param("id") UUID id);
-
-    @Query(nativeQuery = true,
-            value = """
-                        SELECT
                             addresses.id, addresses.zip_code, addresses.street, addresses.number, addresses.city, addresses.state
                         FROM
                             addresses
@@ -91,39 +74,6 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
                     """
     )
     List<AddressProjection> getAllAddressesBoundUser(@Param("parentId") UUID parentId);
-
-    @Transactional
-    @Modifying
-    @Query(nativeQuery = true,
-            value = """
-                        DELETE FROM
-                            address_relations
-                        WHERE
-                            address_id = :addressId
-                    """
-    )
-    void deleteAddressRelationById(@Param("addressId") UUID addressId);
-
-    @Transactional
-    @Modifying
-    @Query(nativeQuery = true,
-            value = """
-                         DELETE FROM 
-                            addresses 
-                        WHERE id 
-                            IN(
-                            SELECT 
-                                addresses.id 
-                            FROM 
-                                addresses 
-                            INNER JOIN 
-                                address_relations
-                            ON addresses.id = address_relations.address_id
-                            WHERE address_relations.parent_id = :parentId
-                            )
-                    """
-    )
-    void deleteAddressesByParentId(@Param("parentId") UUID parentId);
 
     @Transactional
     @Modifying

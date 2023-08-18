@@ -2,7 +2,14 @@ package br.com.kirgh.app.repositories;
 
 import br.com.kirgh.app.entities.ApplianceRelation;
 import br.com.kirgh.app.pks.ApplianceRelationPK;
+
+import java.util.UUID;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * This code is defining an interface called {@code ApplianceRelationRepository} that extends the
@@ -12,4 +19,29 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * {@code ApplianceRelationPK}.
  */
 public interface ApplianceRelationRepository extends JpaRepository<ApplianceRelation, ApplianceRelationPK> {
+
+    @Transactional
+    @Modifying
+    @Query(nativeQuery = true,
+            value = """
+                        DELETE FROM
+                            appliance_relations
+                        WHERE
+                            address_id = :addressId
+                    """
+    )
+    void deleteApplianceRelationByAddressId(@Param("addressId") UUID addressId);
+
+    @Transactional
+    @Modifying
+    @Query(nativeQuery = true,
+            value = """
+                        DELETE FROM
+                            appliance_relations
+                        WHERE
+                            appliance_id = :applianceId
+                    """
+    )
+    void deleteApplianceRelationById(@Param("applianceId") UUID applianceId);
+
 }

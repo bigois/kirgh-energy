@@ -78,7 +78,7 @@ public class ApplianceService {
                         predicates.add(builder.like(root.get(key), "%" + value + "%"));
                     }
                 } catch (IllegalArgumentException | NullPointerException e) {
-                    // Handle exceptions if the field or enum value doesn't exist
+                    throw new IllegalArgumentException("field not found");
                 }
             });
             return builder.and(predicates.toArray(new Predicate[0]));
@@ -104,23 +104,12 @@ public class ApplianceService {
     }
 
     @Transactional
-    public void deleteApplianceById(UUID id) {
-        if (!applianceRepository.existsById(id)) {
+    public void deleteApplianceById(UUID id){
+        if(!applianceRepository.existsById(id)){
             throw new EntityNotFoundException("appliance not found");
         }
 
-        applianceRepository.deleteApplianceRelationById(id);
-        applianceRepository.deleteApplianceById(id);
-    }
-
-    @Transactional
-    public void deleteApplianceByAddressId(UUID id) {
-        if (!addressRepository.existsById(id)) {
-            throw new EntityNotFoundException("address not found");
-        }
-
-        applianceRepository.deleteAppliancesByAddressId(id);
-        applianceRepository.deleteApplianceRelationById(id);
+        applianceRelationRepository.deleteApplianceRelationById(id);
         applianceRepository.deleteApplianceById(id);
     }
 }

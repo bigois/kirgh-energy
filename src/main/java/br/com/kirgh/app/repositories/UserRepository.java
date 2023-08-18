@@ -1,6 +1,7 @@
 package br.com.kirgh.app.repositories;
 
 import br.com.kirgh.app.entities.User;
+import br.com.kirgh.app.projections.AddressProjection;
 import br.com.kirgh.app.projections.ApplianceProjection;
 
 import org.springframework.data.domain.Page;
@@ -49,30 +50,6 @@ public interface UserRepository extends JpaRepository<User, UUID> {
 
     Page<User> findAll(Pageable pageable);
     Page<User> findAll(Specification spec, Pageable pageable);
-
-    @Transactional
-    @Modifying
-    @Query(nativeQuery = true,
-            value = """
-                        DELETE FROM
-                            user_relations
-                        WHERE
-                            owner_id = :ownerId
-                    """
-    )
-    void deleteParentRelationById(@Param("ownerId") UUID ownerId);
-
-    @Transactional
-    @Modifying
-    @Query(nativeQuery = true,
-            value = """
-                        DELETE FROM
-                            address_relations
-                        WHERE
-                            parent_id = :parentId
-                    """
-    )
-    void deleteAddressRelationById(@Param("parentId") UUID parentId);
 
     @Transactional
     @Modifying
