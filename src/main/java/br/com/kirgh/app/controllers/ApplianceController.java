@@ -81,13 +81,7 @@ public class ApplianceController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
     }
 
-//     @GetMapping
-//     public ResponseEntity<Page<Appliance>> getAllAppliances(Pageable pageable) {
-//         Page<Appliance> appliance = applianceService.getAppliances(pageable);
-//         return ResponseEntity.status(HttpStatus.OK).body(appliance);
-//     }
-
-    @GetMapping("/filter")
+    @GetMapping()
     public ResponseEntity<Page<Appliance>> getFilteredAppliances(
             @RequestParam Map<String, String> filters,
             Pageable pageable) {

@@ -35,7 +35,6 @@ public interface UserRepository extends JpaRepository<User, UUID> {
      */
     boolean existsByEmail(String email);
 
-
     /**
      * The function checks if a record exists in a database by its CPF (Brazilian ID) number.
      *
@@ -49,23 +48,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     boolean existsByCpf(String cpf);
 
     Page<User> findAll(Pageable pageable);
-    Page<User> findAll(Specification spec ,Pageable pageable);
-
-    @Query(nativeQuery = true,
-            value = """
-                        SELECT
-                            appliances.id, appliances.name, appliances.brand, appliances.model, appliances.power
-                        FROM
-                            appliances
-                        INNER JOIN
-                            appliance_relations
-                        ON
-                            appliances.id = appliance_relations.appliance_id
-                        WHERE
-                            appliance_relations.address_id = :addressId
-                    """
-    )
-    List<ApplianceProjection> getAllAppliancesBoundAddress(@Param("addressId") UUID addressId);
+    Page<User> findAll(Specification spec, Pageable pageable);
 
     @Transactional
     @Modifying

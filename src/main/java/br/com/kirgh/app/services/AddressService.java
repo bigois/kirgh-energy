@@ -44,6 +44,9 @@ public class AddressService {
     private UserRepository userRepository;
 
     @Autowired
+    private ApplianceService applianceService;
+
+    @Autowired
     private AddressRelationRepository addressRelationRepository;
 
     /**
@@ -84,18 +87,27 @@ public class AddressService {
         Specification<Address> spec = (root, query, builder) -> {
             List<Predicate> predicates = new ArrayList<>();
             filters.forEach((key, value) -> {
-                predicates.add(builder.like(root.get(key), "%" + value + "%"));
+                try {
+                    Class<?> fieldType = root.get(key).getJavaType();
+                    if (Enum.class.isAssignableFrom(fieldType)) {
+                        Enum<?> enumValue = Enum.valueOf((Class<Enum>) fieldType, value);
+                        predicates.add(builder.equal(root.get(key), enumValue));
+                    } else {
+                        predicates.add(builder.like(root.get(key), "%" + value + "%"));
+                    }
+                } catch (IllegalArgumentException | NullPointerException e) {
+                    // Handle exceptions if the field or enum value doesn't exist
+                }
             });
             return builder.and(predicates.toArray(new Predicate[0]));
         };
-        
+
         return addressRepository.findAll(spec, pageable);
     }
 
     @Transactional(readOnly = true)
     public Address getAllAddressInfoById(UUID id) {
-        Address address = addressRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("address not found"));
-        return address;
+        return  addressRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("address not found"));
     }
 
     @Transactional(readOnly = true)
@@ -139,7 +151,18 @@ public class AddressService {
         }
 
         addressRepository.deleteAddressRelationById(id);
-        addressRepository.deleteApplianceRelationById(id);
+        /*addressRepository.deleteApplianceRelationById(id);*/
         addressRepository.deleteAddressById(id);
+    }
+
+    @Transactional
+    public void deleteAddressByParentId(UUID id) {
+        if (!userRepository.existsById(id)) {
+            throw new EntityNotFoundException("user not found");
+        }
+
+        addressRepository.deleteAddressRelationById(id);
+        addressRepository.deleteAddressesByParentId(id);
+        applianceService.deleteApplianceByAddressId(id);
     }
 }

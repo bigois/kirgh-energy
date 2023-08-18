@@ -84,14 +84,7 @@ public class AddressController {
         response.put("message", "address successfully registered");
         return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
     }
-
-    @GetMapping
-    public ResponseEntity<Page<Address>> getAllAddresses(Pageable pageable) {
-        Page<Address> address = addressService.getAddresses(pageable);
-        return ResponseEntity.status(HttpStatus.OK).body(address);
-    }
-
-    @GetMapping("/filter")
+    @GetMapping()
     public ResponseEntity<Page<Address>> getFilteredAppliances(
             @RequestParam Map<String, String> filters,
             Pageable pageable) {

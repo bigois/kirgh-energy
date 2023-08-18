@@ -89,12 +89,6 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<User>> getAllUsers(Pageable pageable) {
-        Page<User> user = userService.getAllUsers(pageable);
-        return ResponseEntity.status(HttpStatus.OK).body(user);
-    }
-
-    @GetMapping("/filter")
     public ResponseEntity<Page<User>> getFilteredAppliances(
             @RequestParam Map<String, String> filters,
             Pageable pageable) {

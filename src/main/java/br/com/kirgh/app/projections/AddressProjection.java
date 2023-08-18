@@ -6,7 +6,7 @@ public interface AddressProjection {
     byte[] getId();
     String getStreet();
     String getNumber();
-    String getZipCode();
+    String getZip_code();
     String getCity();
     State getState();
 }

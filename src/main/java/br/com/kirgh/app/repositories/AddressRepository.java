@@ -108,13 +108,22 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
     @Modifying
     @Query(nativeQuery = true,
             value = """
-                        DELETE FROM
-                            appliance_relations
-                        WHERE
-                            address_id = :addressId
+                         DELETE FROM 
+                            addresses 
+                        WHERE id 
+                            IN(
+                            SELECT 
+                                addresses.id 
+                            FROM 
+                                addresses 
+                            INNER JOIN 
+                                address_relations
+                            ON addresses.id = address_relations.address_id
+                            WHERE address_relations.parent_id = :parentId
+                            )
                     """
     )
-    void deleteApplianceRelationById(@Param("addressId") UUID addressId);
+    void deleteAddressesByParentId(@Param("parentId") UUID parentId);
 
     @Transactional
     @Modifying

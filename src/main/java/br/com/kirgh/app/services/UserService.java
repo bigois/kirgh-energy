@@ -81,28 +81,31 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public Page<User> getAllUsers(Pageable pageable) {
-        return userRepository.findAll(pageable);
-    }
-
-    @Transactional(readOnly = true)
     public Page<User> getFilteredUsers(Map<String, String> filters, Pageable pageable) {
         Specification<User> spec = (root, query, builder) -> {
             List<Predicate> predicates = new ArrayList<>();
             filters.forEach((key, value) -> {
-                predicates.add(builder.like(root.get(key), "%" + value + "%"));
+                try {
+                    Class<?> fieldType = root.get(key).getJavaType();
+                    if (Enum.class.isAssignableFrom(fieldType)) {
+                        Enum<?> enumValue = Enum.valueOf((Class<Enum>) fieldType, value);
+                        predicates.add(builder.equal(root.get(key), enumValue));
+                    } else {
+                        predicates.add(builder.like(root.get(key), "%" + value + "%"));
+                    }
+                } catch (IllegalArgumentException | NullPointerException e) {
+                    // Handle exceptions if the field or enum value doesn't exist
+                }
             });
             return builder.and(predicates.toArray(new Predicate[0]));
         };
-        
+
         return userRepository.findAll(spec, pageable);
     }
 
     @Transactional(readOnly = true)
     public User getAllUserInfoById(UUID id) {
-        User user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found"));
-
-        return user;
+        return userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found"));
     }
 
     @Transactional(readOnly = true)
@@ -140,9 +143,8 @@ public class UserService {
         if (!userRepository.existsById(id)) {
             throw new EntityNotFoundException("user not found");
         }
-
         userRepository.deleteParentRelationById(id);
-        userRepository.deleteAddressRelationById(id);
+        addressService.deleteAddressByParentId(id);
         userRepository.deleteUserById(id);
     }
 }

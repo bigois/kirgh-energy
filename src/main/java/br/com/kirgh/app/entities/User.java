@@ -7,7 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -22,6 +24,7 @@ import java.util.UUID;
 @Table(name = "users")
 @SuppressWarnings("JpaDataSourceORMInspection")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -41,6 +44,7 @@ public class User {
     @Column(nullable = false, length = 10, columnDefinition = "varchar(1)")
     @Enumerated(EnumType.STRING)
     private UserGender gender;
+
 
     /**
      * This is an implementation of the equals method in Java that checks if two User objects have the same CPF (a unique

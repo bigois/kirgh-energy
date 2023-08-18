@@ -63,6 +63,29 @@ public interface ApplianceRepository extends JpaRepository<Appliance, UUID> {
     @Modifying
     @Query(nativeQuery = true,
             value = """
+                         DELETE FROM 
+                            appliances 
+                        WHERE id 
+                            IN(
+                            SELECT 
+                                appliances.id 
+                            FROM 
+                                appliances 
+                            INNER JOIN 
+                                appliance_relations 
+                            ON 
+                                appliances.id = appliance_relations.appliance_id
+                            WHERE 
+                                appliance_relations.address_id = :addressId
+                            )
+                    """
+    )
+    void deleteAppliancesByAddressId(@Param("addressId") UUID addressId);
+
+    @Transactional
+    @Modifying
+    @Query(nativeQuery = true,
+            value = """
                         DELETE FROM
                             appliance_relations
                         WHERE

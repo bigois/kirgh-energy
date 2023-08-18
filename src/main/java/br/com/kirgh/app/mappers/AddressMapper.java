@@ -57,6 +57,6 @@ public abstract class AddressMapper {
 
     public static AddressInfoDTO addressProjectionToAddressInfoDTO(AddressProjection addressProjection) {
         return new AddressInfoDTO(Utils.convertBytesToUUID(addressProjection.getId()),
-        addressProjection.getZipCode(), addressProjection.getStreet(), addressProjection.getNumber(), addressProjection.getCity(), addressProjection.getState());
+        addressProjection.getZip_code(), addressProjection.getStreet(), addressProjection.getNumber(), addressProjection.getCity(), addressProjection.getState());
     }
 }

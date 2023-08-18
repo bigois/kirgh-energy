@@ -65,27 +65,31 @@ public class ApplianceService {
     }
 
     @Transactional(readOnly = true)
-    public Page<Appliance> getAppliances(Pageable pageable) {
-        return applianceRepository.findAll(pageable);
-    }
-
-    @Transactional(readOnly = true)
     public Page<Appliance> getFilteredAppliances(Map<String, String> filters, Pageable pageable) {
         Specification<Appliance> spec = (root, query, builder) -> {
             List<Predicate> predicates = new ArrayList<>();
             filters.forEach((key, value) -> {
-                predicates.add(builder.like(root.get(key), "%" + value + "%"));
+                try {
+                    Class<?> fieldType = root.get(key).getJavaType();
+                    if (Enum.class.isAssignableFrom(fieldType)) {
+                        Enum<?> enumValue = Enum.valueOf((Class<Enum>) fieldType, value);
+                        predicates.add(builder.equal(root.get(key), enumValue));
+                    } else {
+                        predicates.add(builder.like(root.get(key), "%" + value + "%"));
+                    }
+                } catch (IllegalArgumentException | NullPointerException e) {
+                    // Handle exceptions if the field or enum value doesn't exist
+                }
             });
             return builder.and(predicates.toArray(new Predicate[0]));
         };
-        
+
         return applianceRepository.findAll(spec, pageable);
     }
 
     @Transactional(readOnly = true)
     public Appliance getAllApplianceInfoById(UUID id) {
-        Appliance appliance = applianceRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("appliance not found"));
-        return appliance;
+        return applianceRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("appliance not found"));
     }
 
     @Transactional
@@ -105,6 +109,17 @@ public class ApplianceService {
             throw new EntityNotFoundException("appliance not found");
         }
 
+        applianceRepository.deleteApplianceRelationById(id);
+        applianceRepository.deleteApplianceById(id);
+    }
+
+    @Transactional
+    public void deleteApplianceByAddressId(UUID id) {
+        if (!addressRepository.existsById(id)) {
+            throw new EntityNotFoundException("address not found");
+        }
+
+        applianceRepository.deleteAppliancesByAddressId(id);
         applianceRepository.deleteApplianceRelationById(id);
         applianceRepository.deleteApplianceById(id);
     }
