@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * This is a Java class representing a composite primary key for a many-to-one relationship between an Address and an
@@ -54,9 +55,7 @@ public class ApplianceRelationPK implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ApplianceRelationPK that = (ApplianceRelationPK) o;
-
-        if (!address.equals(that.address)) return false;
-        return appliance.equals(that.appliance);
+        return Objects.equals(address, that.address) && Objects.equals(appliance, that.appliance);
     }
 
     /**
@@ -69,8 +68,7 @@ public class ApplianceRelationPK implements Serializable {
      */
     @Override
     public int hashCode() {
-        int result = address.hashCode();
-        result = 31 * result + appliance.hashCode();
-        return result;
+        return Objects.hash(address, appliance);
     }
+
 }

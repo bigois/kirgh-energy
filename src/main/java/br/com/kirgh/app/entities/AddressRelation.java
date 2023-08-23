@@ -22,7 +22,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Table(name = "address_relations")
 @SuppressWarnings({"JpaDataSourceORMInspection", "SpringJavaInjectionPointsAutowiringInspection"})
 public class AddressRelation {
-
     @Autowired
     @EmbeddedId
     AddressRelationPK addressRelationPK = new AddressRelationPK();

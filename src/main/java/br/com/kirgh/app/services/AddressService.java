@@ -1,22 +1,18 @@
 package br.com.kirgh.app.services;
 
-import br.com.kirgh.app.dtos.*;
+import br.com.kirgh.app.dtos.AddressCompleteInfoDTO;
+import br.com.kirgh.app.dtos.AddressDTO;
+import br.com.kirgh.app.dtos.AddressUpdateDTO;
+import br.com.kirgh.app.dtos.ApplianceInfoDTO;
 import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.entities.AddressRelation;
-import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.mappers.AddressMapper;
 import br.com.kirgh.app.mappers.ApplianceMapper;
-import br.com.kirgh.app.projections.AddressProjection;
 import br.com.kirgh.app.projections.ApplianceProjection;
-import br.com.kirgh.app.repositories.AddressRelationRepository;
-import br.com.kirgh.app.repositories.AddressRepository;
-import br.com.kirgh.app.repositories.ApplianceRelationRepository;
-import br.com.kirgh.app.repositories.ApplianceRepository;
-import br.com.kirgh.app.repositories.UserRepository;
+import br.com.kirgh.app.repositories.*;
 import br.com.kirgh.app.utils.Utils;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.criteria.Predicate;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -112,7 +108,7 @@ public class AddressService {
 
     @Transactional(readOnly = true)
     public Address getAllAddressInfoById(UUID id) {
-        return  addressRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("address not found"));
+        return addressRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("address not found"));
     }
 
     @Transactional(readOnly = true)
@@ -134,27 +130,27 @@ public class AddressService {
 
     @Transactional
     public Address updateAddressInfoById(UUID id, AddressUpdateDTO addressUpdateDTO) {
-         if (addressUpdateDTO.toString().replace("AddressUpdateDTO[", "").replace("]", "").split("null").length == 5) {
+        if (addressUpdateDTO.toString().replace("AddressUpdateDTO[", "").replace("]", "").split("null").length == 5) {
             throw new IllegalArgumentException("at least one attribute needs to be valid");
         }
-        
+
         Address updateAddress = addressRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("address not found"));
         addressRepository.save(AddressMapper.addressUpdateDTOToAddress(addressUpdateDTO, updateAddress));
         return updateAddress;
     }
 
     @Transactional
-    public void deleteAddressById(UUID id){
-        if(!addressRepository.existsById(id)){
+    public void deleteAddressById(UUID id) {
+        if (!addressRepository.existsById(id)) {
             throw new EntityNotFoundException("address not found");
         }
 
-        List<ApplianceProjection> applianceProjections =  applianceRepository.getAllAppliancesBoundAddress(id);
+        List<ApplianceProjection> applianceProjections = applianceRepository.getAllAppliancesBoundAddress(id);
         applianceProjections.stream().forEach(applianceItem -> {
             applianceRelationRepository.deleteApplianceRelationByAddressId(id);
             applianceService.deleteApplianceById(Utils.convertBytesToUUID(applianceItem.getId()));
         });
-        
+
         addressRelationRepository.deleteAddressesByAddressId(id);
         addressRepository.deleteAddressById(id);
     }

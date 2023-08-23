@@ -1,13 +1,11 @@
 package br.com.kirgh.app.dtos;
 
+import br.com.kirgh.app.entities.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
-
-import br.com.kirgh.app.entities.User;
-import br.com.kirgh.app.entities.UserRelation;
 
 @Getter
 @Setter

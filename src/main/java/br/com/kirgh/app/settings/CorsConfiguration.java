@@ -6,13 +6,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * The CorsConfiguration class is a Java configuration class that allows cross-origin resource sharing (CORS) for all
- * origins and only allows GET and POST HTTP methods.
+ * origins and only allows all CRUD basic HTTP methods.
  */
 @Configuration
 public class CorsConfiguration implements WebMvcConfigurer {
     /**
-     * The addCorsMappings function allows cross-origin resource sharing (CORS) for all origins and only allows GET and
-     * POST methods.
+     * The addCorsMappings function allows cross-origin resource sharing (CORS) for all origins and only allows all
+     * CRUD basic methods.
      *
      * @param registry The registry parameter is an instance of the CorsRegistry class. It is used to configure
      *                 Cross-Origin Resource Sharing (CORS) for the application.
@@ -21,6 +21,6 @@ public class CorsConfiguration implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("*")
-                .allowedMethods("GET", "POST");
+                .allowedMethods("GET", "POST", "DELETE", "PUT");
     }
 }

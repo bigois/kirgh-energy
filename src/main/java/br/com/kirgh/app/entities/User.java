@@ -7,13 +7,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 /**
- * The User class represents a user with attributes such as name, email, birth date, gender, and CPF,
+ * The User class represents a user with attributes such as name, email, birthdate, gender, and CPF,
  * and overrides the equals and hashCode methods to compare and hash based on the CPF attribute.
  */
 @NoArgsConstructor
@@ -24,7 +22,6 @@ import java.util.UUID;
 @Table(name = "users")
 @SuppressWarnings("JpaDataSourceORMInspection")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -44,7 +41,6 @@ public class User {
     @Column(nullable = false, length = 10, columnDefinition = "varchar(1)")
     @Enumerated(EnumType.STRING)
     private UserGender gender;
-
 
     /**
      * This is an implementation of the equals method in Java that checks if two User objects have the same CPF (a unique

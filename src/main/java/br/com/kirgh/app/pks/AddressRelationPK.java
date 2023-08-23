@@ -53,6 +53,7 @@ public class AddressRelationPK implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         AddressRelationPK that = (AddressRelationPK) o;
         return parent.equals(that.parent) && address.equals(that.address);
     }

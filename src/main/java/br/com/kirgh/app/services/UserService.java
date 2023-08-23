@@ -1,21 +1,13 @@
 package br.com.kirgh.app.services;
 
 import br.com.kirgh.app.dtos.*;
-import br.com.kirgh.app.entities.Appliance;
+import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.entities.UserRelation;
 import br.com.kirgh.app.mappers.UserMapper;
-import br.com.kirgh.app.projections.AddressProjection;
-import br.com.kirgh.app.projections.UserProjection;
-import br.com.kirgh.app.repositories.AddressRelationRepository;
-import br.com.kirgh.app.repositories.AddressRepository;
-import br.com.kirgh.app.repositories.ApplianceRepository;
-import br.com.kirgh.app.repositories.UserRelationRepository;
-import br.com.kirgh.app.repositories.UserRepository;
+import br.com.kirgh.app.repositories.*;
 import br.com.kirgh.app.utils.Utils;
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.persistence.criteria.Predicate;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -87,23 +79,8 @@ public class UserService {
 
     @Transactional(readOnly = true)
     public Page<User> getFilteredUsers(Map<String, String> filters, Pageable pageable) {
-        Specification<User> spec = (root, query, builder) -> {
-            List<Predicate> predicates = new ArrayList<>();
-            filters.forEach((key, value) -> {
-                try {
-                    Class<?> fieldType = root.get(key).getJavaType();
-                    if (Enum.class.isAssignableFrom(fieldType)) {
-                        Enum<?> enumValue = Enum.valueOf((Class<Enum>) fieldType, value);
-                        predicates.add(builder.equal(root.get(key), enumValue));
-                    } else {
-                        predicates.add(builder.like(root.get(key), "%" + value + "%"));
-                    }
-                } catch (IllegalArgumentException | NullPointerException e) {
-                    throw new IllegalArgumentException("field not found");
-                }
-            });
-            return builder.and(predicates.toArray(new Predicate[0]));
-        };
+        Utils.validateFilters(filters, User.class);
+        Specification spec = Utils.buildSpecification(filters);
 
         return userRepository.findAll(spec, pageable);
     }
@@ -118,23 +95,21 @@ public class UserService {
         User user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found"));
         List<UserRelation> userRelationData = userRelationRepository.getAllUsersRelationBoundUser(id);
         List<UserRelationInfoDTO> userRelationInfoDTOList = userRelationData
-            .stream().map(userItem -> new UserRelationInfoDTO(
-                userItem.getUserRelationPK().getChild().getId(),
-                userItem.getRelationType()
-            ))
-            .collect(Collectors.toList());
+                .stream().map(userItem -> new UserRelationInfoDTO(
+                        userItem.getUserRelationPK().getChild().getId(),
+                        userItem.getRelationType()
+                ))
+                .collect(Collectors.toList());
 
-        List<AddressProjection> addressProjection = addressRepository.getAllAddressesBoundUser(id);
+        List<Address> addresses = addressRepository.getAllAddressesBoundUser(id);
         List<AddressCompleteInfoDTO> addressList = new ArrayList<>();
 
         UserCompleteInfoDTO userCompleteInfoDTO = new UserCompleteInfoDTO();
         userCompleteInfoDTO.setUserData(user);
 
-        addressProjection.stream().forEach(addressItem -> 
-            addressList.add(
-                addressService.getAllAppliancesBoundAddress(
-                Utils.convertBytesToUUID(addressItem.getId()))
-        ));
+        addresses.forEach(addressItem ->
+                addressList.add(addressService.getAllAppliancesBoundAddress(addressItem.getId())
+                ));
 
         userCompleteInfoDTO.setUserRelation(userRelationInfoDTOList);
         userCompleteInfoDTO.setAddresses(addressList);
@@ -147,25 +122,25 @@ public class UserService {
         if (userUpdateDTO.toString().replace("UserUpdateDTO[", "").replace("]", "").split("null").length == 5) {
             throw new IllegalArgumentException("at least one attribute needs to be valid");
         }
-        
+
         User updateUser = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found"));
         userRepository.save(UserMapper.userUpdateDTOToUser(userUpdateDTO, updateUser));
         return updateUser;
     }
 
-   @Transactional
-    public void deleteUserById(UUID id){
+    @Transactional
+    public void deleteUserById(UUID id) {
         User user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found"));
-        List<AddressProjection> addressesRelations =  addressRepository.getAllAddressesBoundUser(user.getId());
-        
-        addressesRelations.stream().forEach(addressItem -> {
-            addressRelationRepository.deleteAddressesByParentId(user.getId()); 
-            addressService.deleteAddressById(Utils.convertBytesToUUID(addressItem.getId()));
+        List<Address> addresses = addressRepository.getAllAddressesBoundUser(user.getId());
+
+        addresses.forEach(addressItem -> {
+            addressRelationRepository.deleteAddressesByParentId(user.getId());
+            addressService.deleteAddressById(addressItem.getId());
         });
 
         List<UserRelation> userRelationData = userRelationRepository.getAllUsersRelationBoundUser(id);
-        
-        userRelationData.stream().forEach(userRelationItem -> {
+
+        userRelationData.forEach(userRelationItem -> {
             userRelationRepository.deleteParentRelationByChildId(userRelationItem.getUserRelationPK().getChild().getId());
             deleteUserById(userRelationItem.getUserRelationPK().getChild().getId());
         });

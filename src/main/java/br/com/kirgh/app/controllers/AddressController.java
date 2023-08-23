@@ -1,11 +1,9 @@
 package br.com.kirgh.app.controllers;
 
 import br.com.kirgh.app.dtos.AddressCompleteInfoDTO;
-import br.com.kirgh.app.dtos.AddressInfoDTO;
 import br.com.kirgh.app.dtos.AddressDTO;
 import br.com.kirgh.app.dtos.AddressUpdateDTO;
 import br.com.kirgh.app.entities.Address;
-import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.services.AddressService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -84,6 +82,7 @@ public class AddressController {
         response.put("message", "address successfully registered");
         return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
     }
+
     @GetMapping()
     public ResponseEntity<Page<Address>> getFilteredAppliances(
             @RequestParam Map<String, String> filters,

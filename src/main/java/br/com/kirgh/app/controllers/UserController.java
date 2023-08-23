@@ -1,12 +1,11 @@
 package br.com.kirgh.app.controllers;
 
 import br.com.kirgh.app.dtos.UserCompleteInfoDTO;
-import br.com.kirgh.app.dtos.UserInfoDTO;
 import br.com.kirgh.app.dtos.UserDTO;
 import br.com.kirgh.app.dtos.UserUpdateDTO;
-import br.com.kirgh.app.entities.Appliance;
 import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.services.UserService;
+import br.com.kirgh.app.utils.Utils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -89,9 +88,9 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<User>> getFilteredAppliances(
-            @RequestParam Map<String, String> filters,
-            Pageable pageable) {
+    public ResponseEntity<Page<User>> getFilteredAppliances(Pageable pageable, @RequestParam Map<String, String> filters) {
+        Utils.removePageableKeysFromFilter(filters);
+
         Page<User> users = userService.getFilteredUsers(filters, pageable);
         return ResponseEntity.status(HttpStatus.OK).body(users);
     }

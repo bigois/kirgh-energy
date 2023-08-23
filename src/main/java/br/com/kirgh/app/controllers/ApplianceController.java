@@ -1,9 +1,7 @@
 package br.com.kirgh.app.controllers;
 
-import br.com.kirgh.app.dtos.ApplianceInfoDTO;
 import br.com.kirgh.app.dtos.ApplianceDTO;
 import br.com.kirgh.app.dtos.ApplianceUpdateDTO;
-import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.entities.Appliance;
 import br.com.kirgh.app.services.ApplianceService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -16,7 +14,6 @@ import jakarta.validation.Valid;
 import lombok.NonNull;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;

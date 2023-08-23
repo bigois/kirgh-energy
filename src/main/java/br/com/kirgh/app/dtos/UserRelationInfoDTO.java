@@ -1,17 +1,17 @@
 package br.com.kirgh.app.dtos;
 
-import java.util.UUID;
-
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Getter
 @Setter
-public class UserRelationInfoDTO{
+public class UserRelationInfoDTO {
     private UUID id;
     private String relationType;
 
-    public UserRelationInfoDTO(UUID child_id, String relation_type){
+    public UserRelationInfoDTO(UUID child_id, String relation_type) {
         id = child_id;
         relationType = relation_type;
     }

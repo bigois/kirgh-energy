@@ -1,6 +1,6 @@
 package br.com.kirgh.app.validators;
 
-import br.com.kirgh.app.constraints.CustomValidation;
+import br.com.kirgh.app.constraints.DateValidation;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CustomValidator implements ConstraintValidator<CustomValidation, String> {
+public class DateValidator implements ConstraintValidator<DateValidation, String> {
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
         if (value != null) {
@@ -27,6 +27,7 @@ public class CustomValidator implements ConstraintValidator<CustomValidation, St
 
             try {
                 Date date = dateFormat.parse(value);
+
                 if (!date.before(Calendar.getInstance().getTime())) {
                     return false;
                 }

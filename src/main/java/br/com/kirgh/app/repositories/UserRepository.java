@@ -1,9 +1,6 @@
 package br.com.kirgh.app.repositories;
 
 import br.com.kirgh.app.entities.User;
-import br.com.kirgh.app.projections.AddressProjection;
-import br.com.kirgh.app.projections.ApplianceProjection;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -13,7 +10,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -48,7 +44,6 @@ public interface UserRepository extends JpaRepository<User, UUID> {
      */
     boolean existsByCpf(String cpf);
 
-    Page<User> findAll(Pageable pageable);
     Page<User> findAll(Specification spec, Pageable pageable);
 
     @Transactional
@@ -62,4 +57,6 @@ public interface UserRepository extends JpaRepository<User, UUID> {
                     """
     )
     void deleteUserById(@Param("userId") UUID userId);
+
+
 }

@@ -1,8 +1,6 @@
 package br.com.kirgh.app.repositories;
 
 import br.com.kirgh.app.entities.Address;
-import br.com.kirgh.app.projections.AddressProjection;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -35,7 +33,9 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
      */
 
     Page<Address> findAll(Pageable pageable);
+
     Page<Address> findAll(Specification spec, Pageable pageRequest);
+
     @Query(nativeQuery = true,
             value = """
                         SELECT
@@ -73,7 +73,7 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
                             address_relations.parent_id = :parentId
                     """
     )
-    List<AddressProjection> getAllAddressesBoundUser(@Param("parentId") UUID parentId);
+    List<Address> getAllAddressesBoundUser(@Param("parentId") UUID parentId);
 
     @Transactional
     @Modifying

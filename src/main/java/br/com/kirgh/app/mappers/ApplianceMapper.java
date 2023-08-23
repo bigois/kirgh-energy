@@ -1,7 +1,7 @@
 package br.com.kirgh.app.mappers;
 
-import br.com.kirgh.app.dtos.ApplianceInfoDTO;
 import br.com.kirgh.app.dtos.ApplianceDTO;
+import br.com.kirgh.app.dtos.ApplianceInfoDTO;
 import br.com.kirgh.app.dtos.ApplianceUpdateDTO;
 import br.com.kirgh.app.entities.Appliance;
 import br.com.kirgh.app.enums.Power;
@@ -53,6 +53,6 @@ public abstract class ApplianceMapper {
 
     public static ApplianceInfoDTO applianceProjectionToApplianceInfoDTO(ApplianceProjection applianceProjection) {
         return new ApplianceInfoDTO(Utils.convertBytesToUUID(applianceProjection.getId()),
-        applianceProjection.getName(), applianceProjection.getBrand(), applianceProjection.getModel(), applianceProjection.getPower());
+                applianceProjection.getName(), applianceProjection.getBrand(), applianceProjection.getModel(), applianceProjection.getPower());
     }
 }

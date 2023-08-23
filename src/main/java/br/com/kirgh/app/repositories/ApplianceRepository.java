@@ -2,7 +2,6 @@ package br.com.kirgh.app.repositories;
 
 import br.com.kirgh.app.entities.Appliance;
 import br.com.kirgh.app.projections.ApplianceProjection;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -25,8 +24,9 @@ import java.util.UUID;
 public interface ApplianceRepository extends JpaRepository<Appliance, UUID> {
 
     Page<Appliance> findAll(Pageable pageable);
+
     Page<Appliance> findAll(Specification spec, Pageable pageRequest);
-    
+
     @Query(nativeQuery = true,
             value = """
                         SELECT

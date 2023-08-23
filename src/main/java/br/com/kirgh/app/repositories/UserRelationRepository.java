@@ -2,15 +2,14 @@ package br.com.kirgh.app.repositories;
 
 import br.com.kirgh.app.entities.UserRelation;
 import br.com.kirgh.app.pks.UserRelationPK;
-
-import java.util.List;
-import java.util.UUID;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.UUID;
 
 /**
  * This code is defining a Spring Data JPA repository interface for the {@code UserRelation} entity. The interface extends the

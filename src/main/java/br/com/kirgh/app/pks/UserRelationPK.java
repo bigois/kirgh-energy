@@ -52,6 +52,7 @@ public class UserRelationPK implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         UserRelationPK that = (UserRelationPK) o;
         return owner.equals(that.owner) && child.equals(that.child);
     }

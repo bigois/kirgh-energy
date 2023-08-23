@@ -2,14 +2,13 @@ package br.com.kirgh.app.repositories;
 
 import br.com.kirgh.app.entities.AddressRelation;
 import br.com.kirgh.app.pks.AddressRelationPK;
-
-import java.util.UUID;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.UUID;
 
 /**
  * This code is defining an interface called {@code AddressRelationRepository} that extends the {@code JpaRepository} interface. The
@@ -20,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 public interface AddressRelationRepository extends JpaRepository<AddressRelation, AddressRelationPK> {
 
-   @Transactional
+    @Transactional
     @Modifying
     @Query(nativeQuery = true,
             value = """

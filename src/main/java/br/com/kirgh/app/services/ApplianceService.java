@@ -1,18 +1,15 @@
 package br.com.kirgh.app.services;
 
-import br.com.kirgh.app.dtos.ApplianceInfoDTO;
 import br.com.kirgh.app.dtos.ApplianceDTO;
 import br.com.kirgh.app.dtos.ApplianceUpdateDTO;
 import br.com.kirgh.app.entities.Appliance;
 import br.com.kirgh.app.entities.ApplianceRelation;
 import br.com.kirgh.app.mappers.ApplianceMapper;
-import br.com.kirgh.app.projections.ApplianceProjection;
 import br.com.kirgh.app.repositories.AddressRepository;
 import br.com.kirgh.app.repositories.ApplianceRelationRepository;
 import br.com.kirgh.app.repositories.ApplianceRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.criteria.Predicate;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -97,15 +94,15 @@ public class ApplianceService {
         if (applianceUpdateDTO.toString().replace("ApplianceUpdateDTO[", "").replace("]", "").split("null").length == 4) {
             throw new IllegalArgumentException("at least one attribute needs to be valid");
         }
-        
+
         Appliance updateAppliance = applianceRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("appliance not found"));
         applianceRepository.save(ApplianceMapper.applianceUpdateDTOToAppliance(applianceUpdateDTO, updateAppliance));
         return updateAppliance;
     }
 
     @Transactional
-    public void deleteApplianceById(UUID id){
-        if(!applianceRepository.existsById(id)){
+    public void deleteApplianceById(UUID id) {
+        if (!applianceRepository.existsById(id)) {
             throw new EntityNotFoundException("appliance not found");
         }
 
