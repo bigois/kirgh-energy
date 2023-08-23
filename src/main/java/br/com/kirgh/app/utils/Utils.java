@@ -19,13 +19,17 @@ public abstract class Utils {
     }
 
     public static void removePageableKeysFromFilter(Map<String, String> filter) {
-        while (filter.get("page") != null || filter.get("size") != null) {
+        while (filter.get("page") != null || filter.get("size") != null || filter.get("sort") != null) {
             if (filter.get("page") != null) {
                 filter.remove("page");
             }
 
             if (filter.get("size") != null) {
                 filter.remove("size");
+            }
+
+            if (filter.get("sort") != null) {
+                filter.remove("sort");
             }
         }
     }
