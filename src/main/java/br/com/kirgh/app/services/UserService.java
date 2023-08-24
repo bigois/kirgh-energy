@@ -107,9 +107,9 @@ public class UserService {
         UserCompleteInfoDTO userCompleteInfoDTO = new UserCompleteInfoDTO();
         userCompleteInfoDTO.setUserData(user);
 
-        addresses.forEach(addressItem ->
-                addressList.add(addressService.getAllAppliancesBoundAddress(addressItem.getId())
-                ));
+        addresses.forEach(addressItem -> addressList.add(
+                addressService.getAllAppliancesBoundAddress(addressItem.getId())
+        ));
 
         userCompleteInfoDTO.setUserRelation(userRelationInfoDTOList);
         userCompleteInfoDTO.setAddresses(addressList);

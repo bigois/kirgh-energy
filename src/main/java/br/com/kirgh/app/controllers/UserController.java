@@ -88,7 +88,7 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<User>> getFilteredAppliances(Pageable pageable, @RequestParam Map<String, String> filters) {
+    public ResponseEntity<Page<User>> getFilteredUsers(Pageable pageable, @RequestParam Map<String, String> filters) {
         Utils.removePageableKeysFromFilter(filters);
 
         Page<User> users = userService.getFilteredUsers(filters, pageable);

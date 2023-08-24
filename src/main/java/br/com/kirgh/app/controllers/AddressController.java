@@ -4,7 +4,9 @@ import br.com.kirgh.app.dtos.AddressCompleteInfoDTO;
 import br.com.kirgh.app.dtos.AddressDTO;
 import br.com.kirgh.app.dtos.AddressUpdateDTO;
 import br.com.kirgh.app.entities.Address;
+import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.services.AddressService;
+import br.com.kirgh.app.utils.Utils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -84,9 +86,9 @@ public class AddressController {
     }
 
     @GetMapping()
-    public ResponseEntity<Page<Address>> getFilteredAppliances(
-            @RequestParam Map<String, String> filters,
-            Pageable pageable) {
+    public ResponseEntity<Page<Address>> getFilteredAddresses(Pageable pageable, @RequestParam Map<String, String> filters) {
+        Utils.removePageableKeysFromFilter(filters);
+
         Page<Address> addresses = addressService.getFilteredAddresses(filters, pageable);
         return ResponseEntity.status(HttpStatus.OK).body(addresses);
     }

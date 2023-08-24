@@ -6,6 +6,7 @@ import br.com.kirgh.app.dtos.AddressUpdateDTO;
 import br.com.kirgh.app.dtos.ApplianceInfoDTO;
 import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.entities.AddressRelation;
+import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.mappers.AddressMapper;
 import br.com.kirgh.app.mappers.ApplianceMapper;
 import br.com.kirgh.app.projections.ApplianceProjection;
@@ -85,25 +86,10 @@ public class AddressService {
 
     @Transactional(readOnly = true)
     public Page<Address> getFilteredAddresses(Map<String, String> filters, Pageable pageable) {
-        Specification<Address> spec = (root, query, builder) -> {
-            List<Predicate> predicates = new ArrayList<>();
-            filters.forEach((key, value) -> {
-                try {
-                    Class<?> fieldType = root.get(key).getJavaType();
-                    if (Enum.class.isAssignableFrom(fieldType)) {
-                        Enum<?> enumValue = Enum.valueOf((Class<Enum>) fieldType, value);
-                        predicates.add(builder.equal(root.get(key), enumValue));
-                    } else {
-                        predicates.add(builder.like(root.get(key), "%" + value + "%"));
-                    }
-                } catch (IllegalArgumentException | NullPointerException e) {
-                    throw new IllegalArgumentException("field not found");
-                }
-            });
-            return builder.and(predicates.toArray(new Predicate[0]));
-        };
+       Utils.validateFilters(filters, Address.class);
+       Specification spec = Utils.buildSpecification(filters);
 
-        return addressRepository.findAll(spec, pageable);
+       return addressRepository.findAll(spec, pageable);
     }
 
     @Transactional(readOnly = true)
@@ -146,7 +132,7 @@ public class AddressService {
         }
 
         List<ApplianceProjection> applianceProjections = applianceRepository.getAllAppliancesBoundAddress(id);
-        applianceProjections.stream().forEach(applianceItem -> {
+        applianceProjections.forEach(applianceItem -> {
             applianceRelationRepository.deleteApplianceRelationByAddressId(id);
             applianceService.deleteApplianceById(Utils.convertBytesToUUID(applianceItem.getId()));
         });

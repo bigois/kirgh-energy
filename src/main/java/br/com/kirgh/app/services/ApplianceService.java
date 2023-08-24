@@ -4,10 +4,12 @@ import br.com.kirgh.app.dtos.ApplianceDTO;
 import br.com.kirgh.app.dtos.ApplianceUpdateDTO;
 import br.com.kirgh.app.entities.Appliance;
 import br.com.kirgh.app.entities.ApplianceRelation;
+import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.mappers.ApplianceMapper;
 import br.com.kirgh.app.repositories.AddressRepository;
 import br.com.kirgh.app.repositories.ApplianceRelationRepository;
 import br.com.kirgh.app.repositories.ApplianceRepository;
+import br.com.kirgh.app.utils.Utils;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,23 +65,8 @@ public class ApplianceService {
 
     @Transactional(readOnly = true)
     public Page<Appliance> getFilteredAppliances(Map<String, String> filters, Pageable pageable) {
-        Specification<Appliance> spec = (root, query, builder) -> {
-            List<Predicate> predicates = new ArrayList<>();
-            filters.forEach((key, value) -> {
-                try {
-                    Class<?> fieldType = root.get(key).getJavaType();
-                    if (Enum.class.isAssignableFrom(fieldType)) {
-                        Enum<?> enumValue = Enum.valueOf((Class<Enum>) fieldType, value);
-                        predicates.add(builder.equal(root.get(key), enumValue));
-                    } else {
-                        predicates.add(builder.like(root.get(key), "%" + value + "%"));
-                    }
-                } catch (IllegalArgumentException | NullPointerException e) {
-                    throw new IllegalArgumentException("field not found");
-                }
-            });
-            return builder.and(predicates.toArray(new Predicate[0]));
-        };
+        Utils.validateFilters(filters, Appliance.class);
+        Specification spec = Utils.buildSpecification(filters);
 
         return applianceRepository.findAll(spec, pageable);
     }

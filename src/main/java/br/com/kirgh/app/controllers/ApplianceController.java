@@ -4,6 +4,7 @@ import br.com.kirgh.app.dtos.ApplianceDTO;
 import br.com.kirgh.app.dtos.ApplianceUpdateDTO;
 import br.com.kirgh.app.entities.Appliance;
 import br.com.kirgh.app.services.ApplianceService;
+import br.com.kirgh.app.utils.Utils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -79,9 +80,9 @@ public class ApplianceController {
     }
 
     @GetMapping()
-    public ResponseEntity<Page<Appliance>> getFilteredAppliances(
-            @RequestParam Map<String, String> filters,
-            Pageable pageable) {
+    public ResponseEntity<Page<Appliance>> getFilteredAppliances(Pageable pageable, @RequestParam Map<String, String> filters) {
+        Utils.removePageableKeysFromFilter(filters);
+
         Page<Appliance> appliances = applianceService.getFilteredAppliances(filters, pageable);
         return ResponseEntity.ok(appliances);
     }
