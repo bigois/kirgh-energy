@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CPF;
 
+@Schema(title = "UserUpdate", description = "User data update object")
 public record UserUpdateDTO(
         @Size(min = 2, max = 150, message = "size must be between {min} and {max}")
         @Pattern(regexp = "[A-zÀ-ú]+", message = "must contain only letters")

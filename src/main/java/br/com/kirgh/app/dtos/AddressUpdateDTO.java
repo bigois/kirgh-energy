@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+@Schema(title = "AddressUpdate", description = "Address data update object")
 public record AddressUpdateDTO(
         @Schema(description = "Street name that identifies where you physically live", example = "Rua Alicante")
         @Size(min = 1, max = 150, message = "size must be between {min} and {max}")

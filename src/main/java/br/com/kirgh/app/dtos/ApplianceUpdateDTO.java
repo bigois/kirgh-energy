@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+@Schema(title = "ApplianceUpdate", description = "Appliance data update object")
 public record ApplianceUpdateDTO(
         @Schema(description = "Name for identifying an appliance in an address", example = "Ar Condicionado")
         @Size(min = 1, max = 150, message = "size must be between {min} and {max}")
