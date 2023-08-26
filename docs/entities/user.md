@@ -61,7 +61,113 @@ User related to other existing one (makes possible to extend parent user's addre
         "relationType": "Daughter"
     }
 }
+
+<span class="fs-5 lh-default">
+POST
+</span>
+{: .label .label-green }
+
+## Request examples
+
+### Parent user
+
+User without relationship to another user: 
+
+```json
+{
+    "name": "João Ferreira da Silva",
+    "birthDate": "2001-11-10",
+    "gender": "M",
+    "cpf": "39917627065",
+    "email": "joao.ferreira@gmail.com"
+}
 ```
+
+### Child user
+
+User related to other existing one (makes possible to extend parent user's addresses and appliances):
+
+```json
+{
+    "name": "Victória Oliveira da Silva",
+    "birthDate": "2008-11-10",
+    "gender": "F",
+    "cpf": "54793753000",
+    "email": "victoria.oliviera@outlook.com",
+    "relation": {
+        "ownerId": "26ead1cd-c0d6-47bd-bb79-f0aeb4b897bb", 
+        "relationType": "Daughter"
+    }
+}
+```
+###
+<span class="fs-5 lh-default">
+GET
+</span>
+{: .label .label-green }
+
+## Request examples
+
+### GET ALL
+
+Get all users based on the provided filter and pagination parameters:
+
+```url
+curl -X https://kirgh-energy.up.railway.app/api/v1/users
+```
+
+### GET by ID
+
+Get the user by ID:
+
+```url
+curl -X https://kirgh-energy.up.railway.app/api/v1/users/d2022974-1a2a-4005-a324-11a0614e2107
+```
+
+### GET user address
+
+Get all users based on the provided ID, and the associated address if it exists:
+
+```url
+curl -X https://kirgh-energy.up.railway.app/api/v1/users/d2022974-1a2a-4005-a324-11a0614e2107/addresses
+```
+
+##
+<span class="fs-5 lh-default">
+PUT
+</span>
+{: .label .label-green }
+
+## Request examples
+
+Updated fields of Name and Email for the user.
+
+```json
+{
+    "name": "João Ferreira da Silva",
+    "email": "joao.ferreira@gmail.com"
+}
+```
+
+##
+<span class="fs-5 lh-default">
+DELETE
+</span>
+{: .label .label-green }
+
+## Request examples
+
+To delete a user, you need to pass the ID as a parameter. Example:
+
+```url
+curl -X https://kirgh-energy.up.railway.app/api/v1/users/d2022974-1a2a-4005-a324-11a0614e2107
+```
+
+{: .highlight }
+User successfully deleted
+
+
+
 ## Diagrams
 
 ![diagram-user.png](https://github.com/bigois/kirgh-energy/blob/main/docs/images/diagram-user.png?raw=true)

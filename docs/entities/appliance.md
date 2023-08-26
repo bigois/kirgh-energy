@@ -42,6 +42,67 @@ Simple appliance creation linked to an existing address:
 }
 ```
 
+###
+<span class="fs-5 lh-default">
+GET
+</span>
+{: .label .label-green }
+
+## Request examples
+
+### GET
+
+Get all appliance:
+
+```url
+curl -X https://kirgh-energy.up.railway.app/api/v1/appliance
+```
+
+If filters are required, follow the template:
+
+```url
+curl -X https://kirgh-energy.up.railway.app/api/v1/appliance?page=0&size=2&sort=name,asc
+```
+
+### GET bye ID
+
+Get the appliance by ID:
+
+```url
+curl -X https://kirgh-energy.up.railway.app/api/v1/appliance/a818055c-24db-43a4-a6fc-7f02808fe1bb
+```
+
+##
+<span class="fs-5 lh-default">
+PUT
+</span>
+{: .label .label-green }
+
+## Request examples
+
+Name and brand fields of the appliance updated.
+
+```json
+{
+    "name": "Ar Condicionado",
+    "brand": "Samsung"
+}
+```
+
+##
+<span class="fs-5 lh-default">
+DELETE
+</span>
+{: .label .label-green }
+
+## Request examples
+
+Delete an appliance using the provided ID:
+
+```url
+curl -X https://kirgh-energy.up.railway.app/api/v1/appliance/a818055c-24db-43a4-a6fc-7f02808fe1bb
+```
+
 ## Diagrams
 
 ![diagram-appliance.png](https://github.com/bigois/kirgh-energy/blob/main/docs/images/diagram-appliance.png?raw=true)
