@@ -8,6 +8,7 @@ import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.services.AddressService;
 import br.com.kirgh.app.utils.Utils;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -100,7 +101,9 @@ public class AddressController {
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
     @GetMapping()
-    public ResponseEntity<Page<Address>> getFilteredAddresses(Pageable pageable, @RequestParam Map<String, String> filters) {
+    public ResponseEntity<Page<Address>> getFilteredAddresses(
+            @Parameter(description = "Pagination and sorting") Pageable pageable,
+            @Parameter(description = "Filters for search") @RequestParam Map<String, String> filters) {
         Utils.removePageableKeysFromFilter(filters);
 
         Page<Address> addresses = addressService.getFilteredAddresses(filters, pageable);

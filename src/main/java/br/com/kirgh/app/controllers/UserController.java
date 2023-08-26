@@ -7,6 +7,7 @@ import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.services.UserService;
 import br.com.kirgh.app.utils.Utils;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -102,7 +103,9 @@ public class UserController {
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
     @GetMapping
-    public ResponseEntity<Page<User>> getFilteredUsers(Pageable pageable, @RequestParam Map<String, String> filters) {
+    public ResponseEntity<Page<User>> getFilteredUsers(
+            @Parameter(description = "Pagination and sorting") Pageable pageable,
+            @Parameter(description = "Filters for search") @RequestParam Map<String, String> filters) {
         Utils.removePageableKeysFromFilter(filters);
 
         Page<User> users = userService.getFilteredUsers(filters, pageable);

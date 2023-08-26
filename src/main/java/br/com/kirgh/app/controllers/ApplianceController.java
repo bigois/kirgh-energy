@@ -6,6 +6,7 @@ import br.com.kirgh.app.entities.Appliance;
 import br.com.kirgh.app.services.ApplianceService;
 import br.com.kirgh.app.utils.Utils;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -90,7 +91,9 @@ public class ApplianceController {
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
     @GetMapping()
-    public ResponseEntity<Page<Appliance>> getFilteredAppliances(Pageable pageable, @RequestParam Map<String, String> filters) {
+    public ResponseEntity<Page<Appliance>> getFilteredAppliances(
+            @Parameter(description = "Pagination and sorting") Pageable pageable,
+            @Parameter(description = "Filters for search") @RequestParam Map<String, String> filters) {
         Utils.removePageableKeysFromFilter(filters);
 
         Page<Appliance> appliances = applianceService.getFilteredAppliances(filters, pageable);
