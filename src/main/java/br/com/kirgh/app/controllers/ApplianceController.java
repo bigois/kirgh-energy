@@ -51,22 +51,18 @@ public class ApplianceController {
             description = "Method for creating a new appliance to an existent user address and returning a JSON response with the new appliance's ID"
     )
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "CREATED - Appliance successfully registered", content = @Content(examples = {
+            @ApiResponse(responseCode = "201", description = "CREATED", content = @Content(examples = {
                     @ExampleObject(summary = "Create an Appliance",
-                            value = "{\"name\": \"Ar Condicionado\", \"brand\":\"Samsung\", \"model\": \"AR12BVHZCWK\", \"power\":\"V110\", \"addressId\":\"26ead1cd-c0d6-47bd-bb79-f0aeb4b897bb\"}")
+                            value = "{\"resourceId\": \"9fec9a47-db88-41b9-8cbd-d12c075e262f\",\"message\": \"appliance successfully registered\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
 
             @ApiResponse(responseCode = "400", description = "BAD REQUEST - Invalid body content", content = @Content(examples = {
                     @ExampleObject(summary = "Invalid content",
-                            value = "")
-            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
-            @ApiResponse(responseCode = "404", description = "NOT FOUND - Address id not found", content = @Content(examples = {
-                    @ExampleObject(summary = "Invalid Address Id",
-                            value = "{\"name\": \"Ar Condicionado\", \"brand\":\"Samsung\", \"model\": \"AR12BVHZCWK\", \"power\":\"V110\", \"addressId\":\"26ead1cd-c0d6-47bd-bb79-f1aeb4b897bb\"}")
+                            value = "{\"name\": \"invalid address id\", \"timestamp\": \"2023-08-26T01:00:05.809350200Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
             @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR - Something goes wrong", content = @Content(examples = {
                     @ExampleObject(summary = "Internal Server Error",
-                            value = "{\"name\": \"@\", \"brand\":\"@\", \"model\": \"@\", \"power\":\"@\", \"addressId\":\"@\"}")
+                            value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -79,6 +75,20 @@ public class ApplianceController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
     }
 
+    @Operation(
+            summary = "Get a list of appliance's paginated",
+            description = "Method for getting a list of paginated appliance to an existent and returning a JSON response with the appliance's info"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK", content = @Content(examples = {
+                    @ExampleObject(summary = "Get an list paginated of Appliance's",
+                            value = "{\"content\": [{\"id\": \"a818055c-24db-43a4-a6fc-7f02808fe1bb\",\"name\": \"Ar Condicionado\",\"brand\": \"Samsung\",\"model\": \"AR12BVHZCWK\",\"power\": \"V110\"}],\"pageable\": {\"sort\": {\"empty\": false,\"sorted\": true,\"unsorted\": false},\"offset\": 0,\"pageNumber\": 0,\"pageSize\": 1,\"paged\": true,\"unpaged\": false},\"last\": false,\"totalPages\": 3,\"totalElements\": 3,\"size\": 1,\"number\": 0,\"sort\": {\"empty\": false,\"sorted\": true,\"unsorted\": false},\"first\": true,\"numberOfElements\": 1,\"empty\": false}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR - Something goes wrong", content = @Content(examples = {
+                    @ExampleObject(summary = "Internal Server Error",
+                            value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE))
+    })
     @GetMapping()
     public ResponseEntity<Page<Appliance>> getFilteredAppliances(Pageable pageable, @RequestParam Map<String, String> filters) {
         Utils.removePageableKeysFromFilter(filters);
@@ -87,18 +97,81 @@ public class ApplianceController {
         return ResponseEntity.ok(appliances);
     }
 
+    @Operation(
+            summary = "Get a appliance by Id",
+            description = "Method for getting a appliance and returning a JSON response with the appliance's info"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK", content = @Content(examples = {
+                    @ExampleObject(summary = "Get an Appliance by Id",
+                            value = "{\"content\": [{\"id\": \"a818055c-24db-43a4-a6fc-7f02808fe1bb\",\"name\": \"Ar Condicionado\",\"brand\": \"Samsung\",\"model\": \"AR12BVHZCWK\",\"power\": \"V110\"}],\"pageable\": {\"sort\": {\"empty\": false,\"sorted\": true,\"unsorted\": false},\"offset\": 0,\"pageNumber\": 0,\"pageSize\": 1,\"paged\": true,\"unpaged\": false},\"last\": false,\"totalPages\": 3,\"totalElements\": 3,\"size\": 1,\"number\": 0,\"sort\": {\"empty\": false,\"sorted\": true,\"unsorted\": false},\"first\": true,\"numberOfElements\": 1,\"empty\": false}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+
+
+            @ApiResponse(responseCode = "404", description = "NOT FOUND - Address id not found", content = @Content(examples = {
+                    @ExampleObject(summary = "Invalid Address Id",
+                            value = "{\"message\": \"appliance not found\", \"timestamp\": \"2023-08-26T00:23:12.454577100Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR - Something goes wrong", content = @Content(examples = {
+                    @ExampleObject(summary = "Internal Server Error",
+                            value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE))
+    })
     @GetMapping("/{id}")
     public ResponseEntity<Appliance> getAllApplianceInfoById(@PathVariable UUID id) {
         Appliance appliance = applianceService.getAllApplianceInfoById(id);
         return ResponseEntity.status(HttpStatus.OK).body(appliance);
     }
 
+    @Operation(
+            summary = "Update appliance",
+            description = "Method for updating a appliance and returning a JSON response with the new Appliance's info"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK", content = @Content(examples = {
+                    @ExampleObject(summary = "Create an Appliance",
+                            value = "{\"id\": \"0415be05-b5e9-49b1-a51b-60ac820fb2e6\",\"name\": \"Air Cond\",\"brand\": \"LG\",\"model\": \"AR205\",\"power\": \"V110\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+
+            @ApiResponse(responseCode = "404", description = "NOT FOUND - Address id not found", content = @Content(examples = {
+                    @ExampleObject(summary = "Invalid Address Id",
+                            value = "{\"message\": \"appliance not found\", \"timestamp\": \"2023-08-26T00:23:12.454577100Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+
+            @ApiResponse(responseCode = "400", description = "BAD REQUEST - Invalid body content", content = @Content(examples = {
+                    @ExampleObject(summary = "Invalid content",
+                            value = "{\"power\": \"incorrect format power, must be V110/V220\",\"timestamp\": \"2023-08-26T02:03:39.942949Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR - Something goes wrong", content = @Content(examples = {
+                    @ExampleObject(summary = "Internal Server Error",
+                            value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE))
+    })
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Appliance> updateApplianceInfoById(@PathVariable UUID id, @RequestBody @Valid ApplianceUpdateDTO applianceUpdateDTO) {
         Appliance appliance = applianceService.updateApplianceInfoById(id, applianceUpdateDTO);
         return ResponseEntity.status(HttpStatus.OK).body(appliance);
     }
 
+    @Operation(
+            summary = "Delete appliance",
+            description = "Method for deleting a appliance and returning a JSON response with no content"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "No content", content = @Content(examples = {
+                    @ExampleObject(summary = "Create an Appliance",
+                            value = "")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+
+            @ApiResponse(responseCode = "404", description = "NOT FOUND - Appliance id not found", content = @Content(examples = {
+                    @ExampleObject(summary = "Invalid Address Id",
+                            value = "{\"message\": \"appliance not found\", \"timestamp\": \"2023-08-26T00:23:12.454577100Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR - Something goes wrong", content = @Content(examples = {
+                    @ExampleObject(summary = "Internal Server Error",
+                            value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE))
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteApplianceById(@NonNull @PathVariable UUID id) {
         JSONObject response = new JSONObject();
