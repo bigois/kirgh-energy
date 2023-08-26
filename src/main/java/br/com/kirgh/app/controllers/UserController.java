@@ -55,14 +55,14 @@ public class UserController {
             description = "Method for creating a new user with an optional user parent relation and returning a JSON response with the new user's ID"
     )
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "CREATED - Address successfully registered", content = @Content(examples = {
+            @ApiResponse(responseCode = "201", description = "CREATED - User successfully registered", content = @Content(examples = {
                     @ExampleObject(summary = "Create an User.",
                             value = "{\"name\": \"Renata Luzia Francisca Porto\", \"birthDate\": \"2002-06-30\", \"gender\": \"F\", \"cpf\": \"29081928619\", \"email\": \"renataluziaporto@asconinternet.com.br\", \"relation\": { \"ownerId\": \"67459848-3af5-4c99-9276-543c331adcc1\", \"relaionType\": \"Daughter\"} }")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
 
             @ApiResponse(responseCode = "400", description = "BAD REQUEST - Invalid body content", content = @Content(examples = {
                     @ExampleObject(summary = "Invalid content",
-                            value = "")
+                            value = "{\"name\": \"must contain only letters\", \"timestamp\": \"2023-08-26T01:00:05.809350200Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
             @ApiResponse(responseCode = "404", description = "NOT FOUND - Owner id not found", content = @Content(examples = {
                     @ExampleObject(summary = "Invalid Parent Id",
@@ -70,11 +70,11 @@ public class UserController {
             }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
             @ApiResponse(responseCode = "409", description = "CONFLICT - address already exists to user", content = @Content(examples = {
                     @ExampleObject(summary = "Conflict user id",
-                            value = "{\"name\": \"Renata Luzia Francisca Porto\", \"birthDate\": \"2002-06-30\", \"gender\": \"F\", \"cpf\": \"29081928619\", \"email\": \"renataluziaporto@asconinternet.com.br\", \"relation\": { \"ownerId\": \"67459848-3af5-4c99-9276-543c331adcc1\", \"relaionType\": \"Daughter\"} }")
+                            value = "{\"message\": \"at least one attribute needs to be valid\", \"timestamp\": \"2023-08-26T00:58:41.439908900Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
             @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR - Something goes wrong", content = @Content(examples = {
                     @ExampleObject(summary = "Internal Server Error",
-                            value = "{\"name\": \"@\", \"birthDate\": \"@\", \"gender\": \"@\", \"cpf\": \"@\", \"email\": \"@\", \"relation\": { \"ownerId\": \"@\", \"relaionType\": \"@\"} }")
+                            value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -87,6 +87,20 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
     }
 
+    @Operation(
+            summary = "Get user's paginated ",
+            description = "Method to get a list of user's paginated with JSON response with the user's info"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK", content = @Content(examples = {
+                    @ExampleObject(summary = "Get an User.",
+                            value = "{\"content\": [{\"id\": \"85b9a0b6-6cb1-4f18-8d95-f0a0bc99c20a\",\"cpf\": \"14358166415\",\"name\": \"Liz Cristiane Alves\",\"email\": \"lizcristianealves@alvesbarcelos.com.br\",\"birthDate\": \"1943-03-21T03:00:00.000+00:00\",\"gender\": \"F\"}],\"pageable\": {\"sort\": {\"empty\": false,\"sorted\": true,\"unsorted\": false},\"offset\": 0,\"pageNumber\": 0,\"pageSize\": 1,\"unpaged\": false,\"paged\": true},\"last\": false,\"totalPages\": 15,\"totalElements\": 15,\"size\": 1,\"number\": 0,\"sort\": {\"empty\": false,\"sorted\": true,\"unsorted\": false},\"first\": true,\"numberOfElements\": 1,\"empty\": false}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR - Something goes wrong", content = @Content(examples = {
+                    @ExampleObject(summary = "Internal Server Error",
+                            value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE))
+    })
     @GetMapping
     public ResponseEntity<Page<User>> getFilteredUsers(Pageable pageable, @RequestParam Map<String, String> filters) {
         Utils.removePageableKeysFromFilter(filters);
@@ -95,24 +109,114 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(users);
     }
 
+    @Operation(
+            summary = "Get user information by id ",
+            description = "Method to get a user by id returning a JSON response with the user's info"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK", content = @Content(examples = {
+                    @ExampleObject(summary = "Get an User.",
+                            value = "{\"id\": \"6f007644-5bdf-4483-bf42-fb7412f66a45\", \"cpf\": \"29081928619\", \"name\": \"Renata Luzia Francisca Porto\", \"email\": \"renataluziaporto@asconinternet.com.br\", \"birthDate\": \"1957-04-08T03:00:00.000+00:00\", \"gender\": \"F\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(responseCode = "404", description = "NOT FOUND - User id not found", content = @Content(examples = {
+                    @ExampleObject(summary = "Invalid Parent Id",
+                            value = "{\"message\": \"user not found\", \"timestamp\": \"2023-08-26T00:23:12.454577100Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR - Something goes wrong", content = @Content(examples = {
+                    @ExampleObject(summary = "Internal Server Error",
+                            value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE))
+    })
     @GetMapping("/{id}")
     public ResponseEntity<User> getAllUserInfoById(@PathVariable UUID id) {
         User user = userService.getAllUserInfoById(id);
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 
+    @Operation(
+            summary = "Get user by id (with or without parent relation)",
+            description = "Method to get a user by id returning a JSON response with the user's and addresses info"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK", content = @Content(examples = {
+                    @ExampleObject(summary = "Get an User.",
+                            value = "{\"userData\": {\"id\": \"ab8ea442-d9bb-466d-8d47-3853091d545d\",\"cpf\": \"25276887560\",\"name\": \"Caroline Larissa Assunção\",\"email\": \"caroline_larissa_assuncao@infonet.com.br\",\"birthDate\": \"1983-02-09T03:00:00.000+00:00\",\"gender\": \"F\"},\"userRelation\": [],\"addresses\": [{\"addressData\": {\"id\": \"4f509dc1-3517-4dd3-b7d6-8bd21fc9e732\",\"zipCode\": \"08423555\",\"street\": \"Rua dsa\",\"number\": \"555\",\"city\": \"Sao Paulo\",\"state\": \"SP\"},\"appliances\": [{\"id\": \"4ab28223-a87d-46bd-a55d-164604450454\",\"name\": \"Air conditioning\",\"brand\": \"Samsung\",\"model\": \"AR415\",\"power\": \"V220\"}]}]}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(responseCode = "404", description = "NOT FOUND - User id not found", content = @Content(examples = {
+                    @ExampleObject(summary = "Invalid Parent Id",
+                            value = "{\"message\": \"user not found\", \"timestamp\": \"2023-08-26T00:23:12.454577100Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR - Something goes wrong", content = @Content(examples = {
+                    @ExampleObject(summary = "Internal Server Error",
+                            value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE))
+    })
     @GetMapping("/{id}/addresses")
     public ResponseEntity<UserCompleteInfoDTO> getAllAddressesBoundUser(@PathVariable UUID id) {
         UserCompleteInfoDTO userCompleteInfoDTO = userService.getAllAddressesBoundUser(id);
         return ResponseEntity.status(HttpStatus.OK).body(userCompleteInfoDTO);
     }
 
+    @Operation(
+            summary = "Update user (with or without parent relation)",
+            description = "Method for updating a user and returning a JSON response with the new user's Info"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK - User successfully updated", content = @Content(examples = {
+                    @ExampleObject(summary = "Update an User.",
+                            value = "{\"name\": \"Renata Luzia Francisca Porto\", \"birthDate\": \"2002-06-30\", \"gender\": \"F\", \"cpf\": \"29081928619\", \"email\": \"renataluziaporto@asconinternet.com.br\", \"relation\": { \"ownerId\": \"67459848-3af5-4c99-9276-543c331adcc1\", \"relaionType\": \"Daughter\"} }")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+
+            @ApiResponse(responseCode = "400", description = "BAD REQUEST - Invalid body content", content = @Content(examples = {
+                    @ExampleObject(summary = "Invalid content",
+                            value = "{\"name\": \"must contain only letters\", \"timestamp\": \"2023-08-26T01:00:05.809350200Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(responseCode = "404", description = "NOT FOUND - Owner id not found", content = @Content(examples = {
+                    @ExampleObject(summary = "Invalid Parent Id",
+                            value = "{\"message\": \"user not found\", \"timestamp\": \"2023-08-26T00:23:12.454577100Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(responseCode = "409", description = "CONFLICT - address already exists to user", content = @Content(examples = {
+                    @ExampleObject(summary = "Conflict user id",
+                            value = "{\"message\": \"at least one attribute needs to be valid\", \"timestamp\": \"2023-08-26T00:58:41.439908900Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR - Something goes wrong", content = @Content(examples = {
+                    @ExampleObject(summary = "Internal Server Error",
+                            value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE))
+    })
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> updateUserInfoById(@PathVariable UUID id, @RequestBody @Valid UserUpdateDTO userUpdateDTO) {
         User user = userService.updateUserInfoById(id, userUpdateDTO);
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 
+    @Operation(
+            summary = "Delete user (with or without parent relation)",
+            description = "Method for delete a user and returning a JSON response with no content"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "OK - User successfully deleted", content = @Content(examples = {
+                    @ExampleObject(summary = "Delete an User.",
+                            value = "")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+
+            @ApiResponse(responseCode = "400", description = "BAD REQUEST - Invalid body content", content = @Content(examples = {
+                    @ExampleObject(summary = "Invalid content",
+                            value = "{\"name\": \"must contain only letters\", \"timestamp\": \"2023-08-26T01:00:05.809350200Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(responseCode = "404", description = "NOT FOUND - Owner id not found", content = @Content(examples = {
+                    @ExampleObject(summary = "Invalid Parent Id",
+                            value = "{\"message\": \"user not found\", \"timestamp\": \"2023-08-26T00:23:12.454577100Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(responseCode = "409", description = "CONFLICT - address already exists to user", content = @Content(examples = {
+                    @ExampleObject(summary = "Conflict user id",
+                            value = "{\"message\": \"at least one attribute needs to be valid\", \"timestamp\": \"2023-08-26T00:58:41.439908900Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR - Something goes wrong", content = @Content(examples = {
+                    @ExampleObject(summary = "Internal Server Error",
+                            value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
+            }, mediaType = MediaType.APPLICATION_JSON_VALUE))
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUserById(@NonNull @PathVariable UUID id) {
         JSONObject response = new JSONObject();
