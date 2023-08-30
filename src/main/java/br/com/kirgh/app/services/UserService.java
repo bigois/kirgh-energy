@@ -145,6 +145,7 @@ public class UserService {
             deleteUserById(userRelationItem.getUserRelationPK().getChild().getId());
         });
 
+        userRelationRepository.deleteParentRelationByChildId(id);
         userRepository.deleteUserById(id);
     }
 }

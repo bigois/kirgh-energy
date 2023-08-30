@@ -42,16 +42,4 @@ public interface UserRelationRepository extends JpaRepository<UserRelation, User
                     """
     )
     List<UserRelation> getAllUsersRelationBoundUser(@Param("ownerId") UUID ownerId);
-
-    @Transactional
-    @Modifying
-    @Query(nativeQuery = true,
-            value = """
-                        DELETE FROM
-                            user_relations
-                        WHERE
-                            owner_id = :ownerId
-                    """
-    )
-    void deleteParentRelationByOwnerId(@Param("ownerId") UUID ownerId);
 }
