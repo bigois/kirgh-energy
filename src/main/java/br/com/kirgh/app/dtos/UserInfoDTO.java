@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.br.CPF;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -25,7 +26,7 @@ public record UserInfoDTO(
         @NotNull(message = "cannot be null or empty")
         @Past(message = "must be before the current date")
         @Schema(description = "The date on which the person was born", example = "1986-12-01")
-        Date birthDate,
+        LocalDate birthDate,
 
         @NotNull(message = "cannot be null or empty")
         @Schema(description = "Biological human genders based on chromosome", example = "F")

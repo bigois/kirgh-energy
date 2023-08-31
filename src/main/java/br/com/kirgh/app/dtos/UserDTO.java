@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.br.CPF;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -28,7 +29,7 @@ public record UserDTO(
         @NotNull(message = "cannot be null or empty")
         @Past(message = "must be before the current date")
         @Schema(description = "The date on which the person was born", example = "1986-12-01")
-        Date birthDate,
+        LocalDate birthDate,
 
         @NotNull(message = "cannot be null or empty")
         /*@Pattern(regexp = "^[FM]$", message = "only basic biological human gender based on chromosome are allowed")*/

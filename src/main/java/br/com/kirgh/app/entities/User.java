@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -36,7 +37,7 @@ public class User {
     private String email;
 
     @Column(nullable = false, columnDefinition = "date")
-    private Date birthDate;
+    private LocalDate birthDate;
 
     @Column(nullable = false, length = 10, columnDefinition = "varchar(1)")
     @Enumerated(EnumType.STRING)

@@ -52,7 +52,7 @@ public abstract class UserMapper {
         }
 
         if (userUpdateDTO.birthDate() != null) {
-            updateUser.setBirthDate(new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH).parse(userUpdateDTO.birthDate()));
+            updateUser.setBirthDate(userUpdateDTO.birthDate());
         }
 
         return updateUser;
