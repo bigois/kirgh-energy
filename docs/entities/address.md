@@ -23,7 +23,22 @@ The address entity identifies a specific location, (e.g.: residence, building, o
 ## Supported HTTP methods
 
 <span class="fs-5 lh-default">
+GET
+</span>
+{: .label .label-green }
+
+<span class="fs-5 lh-default">
 POST
+</span>
+{: .label .label-green }
+
+<span class="fs-5 lh-default">
+PUT
+</span>
+{: .label .label-green }
+
+<span class="fs-5 lh-default">
+DELETE
 </span>
 {: .label .label-green }
 
@@ -43,25 +58,6 @@ Simple address creation linked to an existing user (parent or not):
 ```
 
 ---
-<span class="fs-5 lh-default">
-GET
-</span>
-{: .label .label-green }
-
-<span class="fs-5 lh-default">
-POST
-</span>
-{: .label .label-green }
-
-<span class="fs-5 lh-default">
-PUT
-</span>
-{: .label .label-green }
-
-<span class="fs-5 lh-default">
-DELETE
-</span>
-{: .label .label-green }
 
 **GET ALL**
 

@@ -200,11 +200,11 @@ public class UserController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-// The above code is a Java method that handles a PUT request to update user information by ID. It
-// takes in the ID of the user to be updated as a path variable and the updated user information as a
-// JSON object in the request body. The method then calls the `updateUserInfoById` method of the
-// `userService` to update the user information and returns a ResponseEntity with the updated user
-// object and an HTTP status code of 200 (OK).
+    // The above code is a Java method that handles a PUT request to update user information by ID. It
+    // takes in the ID of the user to be updated as a path variable and the updated user information as a
+    // JSON object in the request body. The method then calls the `updateUserInfoById` method of the
+    // `userService` to update the user information and returns a ResponseEntity with the updated user
+    // object and an HTTP status code of 200 (OK).
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> updateUserInfoById(@PathVariable UUID id, @RequestBody @Valid UserUpdateDTO userUpdateDTO) {
         User user = userService.updateUserInfoById(id, userUpdateDTO);
@@ -238,8 +238,8 @@ public class UserController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-// The above code is a Java method that handles a DELETE request to delete a user by their ID. It takes
-// in a UUID parameter representing the user ID.
+    // The above code is a Java method that handles a DELETE request to delete a user by their ID. It takes
+    // in a UUID parameter representing the user ID.
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUserById(@NonNull @PathVariable UUID id) {
         JSONObject response = new JSONObject();

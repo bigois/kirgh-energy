@@ -76,9 +76,9 @@ public class AddressController {
                             value = "{\"street\": \"@\", \"zipCode\":\"@\", \"number\": \"@\", \"city\":\"@\", \"state\":\"@\", \"parentId\":\"@\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-// The above code is a Java method that handles a POST request for registering an address. It takes in
-// a JSON object representing an address as the request body. The address is validated using the @Valid
-// annotation.
+    // The above code is a Java method that handles a POST request for registering an address. It takes in
+    // a JSON object representing an address as the request body. The address is validated using the @Valid
+    // annotation.
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> addressRegister(@RequestBody @Valid AddressDTO addressDTO) {
         JSONObject response = new JSONObject();
@@ -103,8 +103,8 @@ public class AddressController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-// The above code is a Java method that handles a GET request. It retrieves a list of filtered
-// addresses based on the provided filters and pagination/sorting parameters.
+    // The above code is a Java method that handles a GET request. It retrieves a list of filtered
+    // addresses based on the provided filters and pagination/sorting parameters.
     @GetMapping()
     public ResponseEntity<Page<Address>> getFilteredAddresses(
             @Parameter(description = "Pagination and sorting") Pageable pageable,
@@ -133,11 +133,11 @@ public class AddressController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-// The above code is a Java method that handles a GET request to retrieve address information by its
-// ID. It takes in a UUID parameter called "id" from the path, and calls a method called
-// "getAllAddressInfoById" from the "addressService" object to retrieve the address information. It
-// then returns a ResponseEntity object with a status of OK (200) and the retrieved address information
-// in the response body.
+    // The above code is a Java method that handles a GET request to retrieve address information by its
+    // ID. It takes in a UUID parameter called "id" from the path, and calls a method called
+    // "getAllAddressInfoById" from the "addressService" object to retrieve the address information. It
+    // then returns a ResponseEntity object with a status of OK (200) and the retrieved address information
+    // in the response body.
     @GetMapping("/{id}")
     public ResponseEntity<Address> getAllAddressInfoById(@PathVariable UUID id) {
         Address address = addressService.getAllAddressInfoById(id);
@@ -162,11 +162,11 @@ public class AddressController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-// The above code is a Java method that handles a GET request to retrieve all appliances bound to a
-// specific address. It takes a UUID parameter "id" representing the address ID. It calls the
-// "getAllAppliancesBoundAddress" method from the "addressService" to retrieve the complete information
-// of the address along with the appliances bound to it. It then returns a ResponseEntity object with
-// the HTTP status set to OK (200) and the body containing the addressCompleteInfoDTO object.
+    // The above code is a Java method that handles a GET request to retrieve all appliances bound to a
+    // specific address. It takes a UUID parameter "id" representing the address ID. It calls the
+    // "getAllAppliancesBoundAddress" method from the "addressService" to retrieve the complete information
+    // of the address along with the appliances bound to it. It then returns a ResponseEntity object with
+    // the HTTP status set to OK (200) and the body containing the addressCompleteInfoDTO object.
     @GetMapping("/{id}/appliances")
     public ResponseEntity<AddressCompleteInfoDTO> getAllAppliancesBoundAddress(@PathVariable UUID id) {
         AddressCompleteInfoDTO addressCompleteInfoDTO = addressService.getAllAppliancesBoundAddress(id);
@@ -200,10 +200,10 @@ public class AddressController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-// The above code is a Java method that handles a PUT request to update an address by its ID. It takes
-// in the ID as a path variable and the updated address information as a JSON request body. The method
-// then calls the addressService to update the address information and returns a ResponseEntity with
-// the updated address and an HTTP status code of 200 (OK).
+    // The above code is a Java method that handles a PUT request to update an address by its ID. It takes
+    // in the ID as a path variable and the updated address information as a JSON request body. The method
+    // then calls the addressService to update the address information and returns a ResponseEntity with
+    // the updated address and an HTTP status code of 200 (OK).
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Address> updateAddressInfoById(@PathVariable UUID id, @RequestBody @Valid AddressUpdateDTO addressUpdateDto) {
         Address address = addressService.updateAddressInfoById(id, addressUpdateDto);
@@ -233,8 +233,8 @@ public class AddressController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-// The above code is a Java method that handles a DELETE request to delete an address by its ID. It
-// takes in a UUID parameter representing the ID of the address to be deleted.
+    // The above code is a Java method that handles a DELETE request to delete an address by its ID. It
+    // takes in a UUID parameter representing the ID of the address to be deleted.
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteAddressById(@NonNull @PathVariable UUID id) {
         JSONObject response = new JSONObject();

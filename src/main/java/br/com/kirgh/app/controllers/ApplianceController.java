@@ -90,8 +90,8 @@ public class ApplianceController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-// The above code is a Java method that handles a GET request. It retrieves a list of filtered
-// appliances based on the provided filters and pagination/sorting parameters.
+    // The above code is a Java method that handles a GET request. It retrieves a list of filtered
+    // appliances based on the provided filters and pagination/sorting parameters.
     @GetMapping()
     public ResponseEntity<Page<Appliance>> getFilteredAppliances(
             @Parameter(description = "Pagination and sorting") Pageable pageable,
@@ -122,11 +122,11 @@ public class ApplianceController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-// The above code is a Java method that handles a GET request to retrieve information about an
-// appliance by its ID. It takes in a UUID parameter called "id" from the path, and calls the
-// "getAllApplianceInfoById" method from the "applianceService" object to retrieve the appliance
-// information. It then returns a ResponseEntity object with the appliance information in the response
-// body and a status code of 200 (OK).
+    // The above code is a Java method that handles a GET request to retrieve information about an
+    // appliance by its ID. It takes in a UUID parameter called "id" from the path, and calls the
+    // "getAllApplianceInfoById" method from the "applianceService" object to retrieve the appliance
+    // information. It then returns a ResponseEntity object with the appliance information in the response
+    // body and a status code of 200 (OK).
     @GetMapping("/{id}")
     public ResponseEntity<Appliance> getAllApplianceInfoById(@PathVariable UUID id) {
         Appliance appliance = applianceService.getAllApplianceInfoById(id);
@@ -157,8 +157,8 @@ public class ApplianceController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-// The above code is a Java method that handles a PUT request to update the information of an appliance
-// identified by its ID.
+    // The above code is a Java method that handles a PUT request to update the information of an appliance
+    // identified by its ID.
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Appliance> updateApplianceInfoById(@PathVariable UUID id, @RequestBody @Valid ApplianceUpdateDTO applianceUpdateDTO) {
         Appliance appliance = applianceService.updateApplianceInfoById(id, applianceUpdateDTO);
@@ -184,8 +184,8 @@ public class ApplianceController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-// The above code is a Java method that handles a DELETE request to delete an appliance by its ID. It
-// takes in a UUID parameter representing the ID of the appliance to be deleted.
+    // The above code is a Java method that handles a DELETE request to delete an appliance by its ID. It
+    // takes in a UUID parameter representing the ID of the appliance to be deleted.
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteApplianceById(@NonNull @PathVariable UUID id) {
         JSONObject response = new JSONObject();
