@@ -79,11 +79,34 @@ public class AddressService {
         return address;
     }
 
+   /**
+    * This function retrieves a page of addresses from the address repository in a read-only
+    * transaction.
+    * 
+    * @param pageable The `pageable` parameter is an object of type `Pageable` which represents the
+    * pagination information for the query. It contains details such as the page number, page size,
+    * sorting criteria, etc.
+    * @return The method is returning a Page object containing a list of Address entities.
+    */
     @Transactional(readOnly = true)
     public Page<Address> getAddresses(Pageable pageable) {
         return addressRepository.findAll(pageable);
     }
 
+    /**
+     * The function retrieves filtered addresses based on the provided filters and pageable
+     * information.
+     * 
+     * @param filters A map containing the filters to be applied to the addresses. The keys of the map
+     * represent the field names of the Address entity, and the values represent the filter values for
+     * those fields.
+     * @param pageable The `pageable` parameter is used to specify the pagination settings for the
+     * query. It includes information such as the page number, page size, and sorting criteria. This
+     * allows the method to return a specific page of results instead of retrieving all addresses at
+     * once.
+     * @return The method is returning a Page object containing a list of Address entities that match
+     * the specified filters and are paginated according to the provided Pageable object.
+     */
     @Transactional(readOnly = true)
     public Page<Address> getFilteredAddresses(Map<String, String> filters, Pageable pageable) {
        Utils.validateFilters(filters, Address.class);
@@ -92,11 +115,26 @@ public class AddressService {
        return addressRepository.findAll(spec, pageable);
     }
 
+    /**
+     * The function retrieves address information by its ID from the address repository, throwing an
+     * exception if the address is not found.
+     * 
+     * @param id The id parameter is of type UUID and represents the unique identifier of the address
+     * that we want to retrieve information for.
+     * @return The method is returning an instance of the Address class.
+     */
     @Transactional(readOnly = true)
     public Address getAllAddressInfoById(UUID id) {
         return addressRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("address not found"));
     }
 
+   /**
+    * This function retrieves an address and a list of appliances associated with that address, and
+    * returns them as a DTO object.
+    * 
+    * @param id The parameter "id" is of type UUID and represents the unique identifier of an address.
+    * @return The method is returning an instance of the AddressCompleteInfoDTO class.
+    */
     @Transactional(readOnly = true)
     public AddressCompleteInfoDTO getAllAppliancesBoundAddress(UUID id) {
         Address address = addressRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("address not found"));
@@ -114,6 +152,17 @@ public class AddressService {
         return addressCompleteInfoDTO;
     }
 
+   /**
+    * The function updates an address by its ID using the information provided in the AddressUpdateDTO
+    * object.
+    * 
+    * @param id The id parameter is of type UUID and represents the unique identifier of the address to
+    * be updated.
+    * @param addressUpdateDTO The addressUpdateDTO parameter is an object of type AddressUpdateDTO. It
+    * contains the updated information for an address, such as the street, city, state, postal code,
+    * etc.
+    * @return The method is returning an instance of the Address class.
+    */
     @Transactional
     public Address updateAddressInfoById(UUID id, AddressUpdateDTO addressUpdateDTO) {
         if (addressUpdateDTO.toString().replace("AddressUpdateDTO[", "").replace("]", "").split("null").length == 5) {
@@ -125,6 +174,13 @@ public class AddressService {
         return updateAddress;
     }
 
+    /**
+     * This function deletes an address by its ID, along with its related appliances and address
+     * relations.
+     * 
+     * @param id The `id` parameter is a UUID (Universally Unique Identifier) that represents the
+     * unique identifier of the address to be deleted.
+     */
     @Transactional
     public void deleteAddressById(UUID id) {
         if (!addressRepository.existsById(id)) {

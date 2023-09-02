@@ -5,6 +5,9 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 @Schema(title = "ApplianceUpdate", description = "Appliance data update object")
+// The code snippet is defining a Java record class called `ApplianceUpdateDTO`. A record is a new
+// feature introduced in Java 14 that combines the features of a class and a data class. It is used to
+// create simple classes that mainly hold data.
 public record ApplianceUpdateDTO(
         @Schema(description = "Name for identifying an appliance in an address", example = "Ar Condicionado")
         @Size(min = 1, max = 150, message = "size must be between {min} and {max}")

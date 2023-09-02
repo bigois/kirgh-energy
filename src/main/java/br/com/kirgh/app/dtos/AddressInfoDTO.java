@@ -7,6 +7,9 @@ import jakarta.validation.constraints.Size;
 
 import java.util.UUID;
 
+// The code snippet is defining a Java record class called `AddressInfoDTO`. A record is a new feature
+// introduced in Java 14 that combines the features of a class and a data class. It is used to create
+// simple classes that mainly hold data.
 public record AddressInfoDTO(
         @Pattern(regexp = "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$", message = "invalid user id")
         @Size(min = 36, max = 36, message = "size must be {max}")

@@ -31,6 +31,16 @@ public abstract class ApplianceMapper {
         return appliance;
     }
 
+    /**
+     * The function takes an ApplianceUpdateDTO object and updates the corresponding Appliance object
+     * with the values from the DTO.
+     * 
+     * @param applianceUpdateDTO An object of type ApplianceUpdateDTO, which contains the updated
+     * information for an appliance.
+     * @param updateAppliance The `updateAppliance` parameter is an instance of the `Appliance` class
+     * that needs to be updated with the values from the `applianceUpdateDTO` parameter.
+     * @return The method is returning the updated Appliance object.
+     */
     public static Appliance applianceUpdateDTOToAppliance(ApplianceUpdateDTO applianceUpdateDTO, Appliance updateAppliance) {
         if (applianceUpdateDTO.name() != null) {
             updateAppliance.setName(applianceUpdateDTO.name());
@@ -51,6 +61,15 @@ public abstract class ApplianceMapper {
         return updateAppliance;
     }
 
+    /**
+     * The function `applianceProjectionToApplianceInfoDTO` converts an `ApplianceProjection` object
+     * into an `ApplianceInfoDTO` object.
+     * 
+     * @param applianceProjection The parameter "applianceProjection" is of type "ApplianceProjection".
+     * It represents an object that contains information about an appliance, such as its id, name,
+     * brand, model, and power.
+     * @return The method is returning an instance of the ApplianceInfoDTO class.
+     */
     public static ApplianceInfoDTO applianceProjectionToApplianceInfoDTO(ApplianceProjection applianceProjection) {
         return new ApplianceInfoDTO(Utils.convertBytesToUUID(applianceProjection.getId()),
                 applianceProjection.getName(), applianceProjection.getBrand(), applianceProjection.getModel(), applianceProjection.getPower());

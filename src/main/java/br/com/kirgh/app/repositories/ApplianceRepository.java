@@ -23,10 +23,38 @@ import java.util.UUID;
  */
 public interface ApplianceRepository extends JpaRepository<Appliance, UUID> {
 
+    /**
+     * The function returns a paginated list of all Appliance objects.
+     * 
+     * @param pageable The `pageable` parameter is an object that represents the pagination information
+     * for the query. It allows you to specify the page number, the number of items per page, and the
+     * sorting criteria for the query results.
+     * @return The method `findAll` returns a `Page` object containing a list of `Appliance` objects.
+     */
     Page<Appliance> findAll(Pageable pageable);
 
+    /**
+     * The function returns a page of Appliance objects that match the given Specification and are
+     * paginated according to the given Pageable object.
+     * 
+     * @param spec The "spec" parameter is a Specification object that represents the criteria or
+     * conditions to be used for filtering the results of the query. It allows you to dynamically build
+     * complex queries by combining multiple conditions using logical operators such as AND and OR.
+     * @param pageRequest Pageable is an interface that represents a request for a specific page of
+     * data. It includes information such as the page number, page size, and sorting criteria.
+     * @return The method is returning a Page object containing a list of Appliance objects that match
+     * the given Specification, with pagination applied according to the provided Pageable object.
+     */
     Page<Appliance> findAll(Specification spec, Pageable pageRequest);
 
+    /**
+     * The function retrieves a list of appliances that are bound to a specific address.
+     * 
+     * @param addressId The addressId parameter is a UUID (Universally Unique Identifier) that is used
+     * to identify a specific address. It is used in the query to filter the appliances based on the
+     * address they are bound to.
+     * @return The query is returning a list of ApplianceProjection objects.
+     */
     @Query(nativeQuery = true,
             value = """
                         SELECT
@@ -43,6 +71,9 @@ public interface ApplianceRepository extends JpaRepository<Appliance, UUID> {
     )
     List<ApplianceProjection> getAllAppliancesBoundAddress(@Param("addressId") UUID addressId);
 
+    // The code snippet you provided is a method declaration in the `ApplianceRepository` interface.
+    // This method is using Spring Data's `@Transactional`, `@Modifying`, and `@Query` annotations to
+    // define a custom delete operation.
     @Transactional
     @Modifying
     @Query(nativeQuery = true,
@@ -66,6 +97,9 @@ public interface ApplianceRepository extends JpaRepository<Appliance, UUID> {
     )
     void deleteAppliancesByAddressId(@Param("addressId") UUID addressId);
 
+    // The code snippet you provided is a method declaration in the `ApplianceRepository` interface.
+    // This method is using Spring Data's `@Transactional`, `@Modifying`, and `@Query` annotations to
+    // define a custom delete operation.
     @Transactional
     @Modifying
     @Query(nativeQuery = true,

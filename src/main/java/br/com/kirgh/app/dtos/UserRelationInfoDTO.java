@@ -7,6 +7,10 @@ import java.util.UUID;
 
 @Getter
 @Setter
+/**
+ * The UserRelationInfoDTO class represents information about a user's relation, including an ID and a
+ * relation type.
+ */
 public class UserRelationInfoDTO {
     private UUID id;
     private String relationType;

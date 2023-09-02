@@ -4,10 +4,6 @@ import br.com.kirgh.app.dtos.UserDTO;
 import br.com.kirgh.app.dtos.UserUpdateDTO;
 import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.enums.UserGender;
-import lombok.SneakyThrows;
-
-import java.text.SimpleDateFormat;
-import java.util.Locale;
 
 /**
  * The {@code UserMapper} class provides a static method to convert a {@code UserDTO} object to a {@code User} object in Java.
@@ -33,7 +29,14 @@ public abstract class UserMapper {
         return user;
     }
 
-    @SneakyThrows
+    /**
+     * The function takes a UserUpdateDTO object and updates the corresponding fields in a User object.
+     * 
+     * @param userUpdateDTO UserUpdateDTO object containing the updated user information.
+     * @param updateUser The `updateUser` parameter is an instance of the `User` class. It represents
+     * the user object that needs to be updated with the values from the `UserUpdateDTO` object.
+     * @return The method is returning the updated User object.
+     */
     public static User userUpdateDTOToUser(UserUpdateDTO userUpdateDTO, User updateUser) {
         if (userUpdateDTO.cpf() != null) {
             updateUser.setCpf(userUpdateDTO.cpf());

@@ -29,6 +29,16 @@ public abstract class AddressMapper {
         return address;
     }
 
+    /**
+     * The function takes an AddressUpdateDTO object and updates an existing Address object with the
+     * values from the DTO.
+     * 
+     * @param addressUpdateDTO An object of type AddressUpdateDTO, which contains the updated address
+     * information.
+     * @param updateAddress The `updateAddress` parameter is an instance of the `Address` class that
+     * needs to be updated with the values from the `AddressUpdateDTO` object.
+     * @return The method is returning the updated address object.
+     */
     public static Address addressUpdateDTOToAddress(AddressUpdateDTO addressUpdateDTO, Address updateAddress) {
         if (addressUpdateDTO.street() != null) {
             updateAddress.setStreet(addressUpdateDTO.street());

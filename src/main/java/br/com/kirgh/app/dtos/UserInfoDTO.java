@@ -5,10 +5,10 @@ import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.UUID;
 
-
+// The code snippet is defining a Java record class called `UserInfoDTO` which represents a data
+// transfer object for user data.
 @Schema(title = "UserComplete", description = "Object that represents a data transfer object for all user data")
 public record UserInfoDTO(
         @NotBlank(message = "cannot be null or empty")
@@ -44,5 +44,4 @@ public record UserInfoDTO(
         @Schema(description = "Field used to define the customer's email", example = "sophie.giovanna@sprintrental.com.br")
         String email
 ) {
-
 }

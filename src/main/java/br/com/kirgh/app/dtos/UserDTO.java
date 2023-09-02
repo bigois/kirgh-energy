@@ -7,7 +7,6 @@ import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * This is a Java record class called {@code UserDTO} that represents a data transfer object for a user. It has six fields:
