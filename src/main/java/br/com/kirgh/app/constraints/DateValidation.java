@@ -12,6 +12,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = DateValidator.class)
+// The code snippet is defining a custom annotation called `DateValidation`.
 public @interface DateValidation {
     String message() default "not a valid representation of a past date [yyyy-MM-dd]";
 

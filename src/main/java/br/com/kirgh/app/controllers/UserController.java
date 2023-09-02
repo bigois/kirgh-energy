@@ -102,6 +102,9 @@ public class UserController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
+// The above code is a Java method that handles a GET request to retrieve a filtered list of users. It
+// takes two parameters: `pageable`, which is used for pagination and sorting, and `filters`, which is
+// a map of key-value pairs representing the filters for the search.
     @GetMapping
     public ResponseEntity<Page<User>> getFilteredUsers(
             @Parameter(description = "Pagination and sorting") Pageable pageable,
@@ -130,6 +133,11 @@ public class UserController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
+// The above code is a Java method that handles a GET request to retrieve user information by their ID.
+// It takes in a UUID parameter called "id" from the path, and calls a method called
+// "getAllUserInfoById" from a service class called "userService" to retrieve the user information. It
+// then returns a ResponseEntity object with the user information in the response body and a status
+// code of 200 (OK).
     @GetMapping("/{id}")
     public ResponseEntity<User> getAllUserInfoById(@PathVariable UUID id) {
         User user = userService.getAllUserInfoById(id);
@@ -154,6 +162,11 @@ public class UserController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
+// The above code is a Java method that handles a GET request to retrieve all addresses bound to a user
+// with a specific ID. It takes the ID as a path variable and calls the `getAllAddressesBoundUser`
+// method from the `userService` to get the complete information of the user, including all their
+// addresses. It then returns a ResponseEntity with the user's complete information in the response
+// body and a status code of 200 (OK).
     @GetMapping("/{id}/addresses")
     public ResponseEntity<UserCompleteInfoDTO> getAllAddressesBoundUser(@PathVariable UUID id) {
         UserCompleteInfoDTO userCompleteInfoDTO = userService.getAllAddressesBoundUser(id);
@@ -187,6 +200,11 @@ public class UserController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
+// The above code is a Java method that handles a PUT request to update user information by ID. It
+// takes in the ID of the user to be updated as a path variable and the updated user information as a
+// JSON object in the request body. The method then calls the `updateUserInfoById` method of the
+// `userService` to update the user information and returns a ResponseEntity with the updated user
+// object and an HTTP status code of 200 (OK).
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> updateUserInfoById(@PathVariable UUID id, @RequestBody @Valid UserUpdateDTO userUpdateDTO) {
         User user = userService.updateUserInfoById(id, userUpdateDTO);
@@ -220,6 +238,8 @@ public class UserController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
+// The above code is a Java method that handles a DELETE request to delete a user by their ID. It takes
+// in a UUID parameter representing the user ID.
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUserById(@NonNull @PathVariable UUID id) {
         JSONObject response = new JSONObject();
