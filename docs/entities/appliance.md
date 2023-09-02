@@ -24,9 +24,26 @@ This entity must be associated with an already created address.
 ## Supported HTTP methods
 
 <span class="fs-5 lh-default">
+GET
+</span>
+{: .label .label-green }
+
+<span class="fs-5 lh-default">
 POST
 </span>
 {: .label .label-green }
+
+<span class="fs-5 lh-default">
+PUT
+</span>
+{: .label .label-green }
+
+<span class="fs-5 lh-default">
+DELETE
+</span>
+{: .label .label-green }
+
+
 
 ## Request examples
 

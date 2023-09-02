@@ -25,7 +25,22 @@ The user represents the main entity of the application. It can be associated wit
 ## Supported HTTP methods
 
 <span class="fs-5 lh-default">
+GET
+</span>
+{: .label .label-green }
+
+<span class="fs-5 lh-default">
 POST
+</span>
+{: .label .label-green }
+
+<span class="fs-5 lh-default">
+PUT
+</span>
+{: .label .label-green }
+
+<span class="fs-5 lh-default">
+DELETE
 </span>
 {: .label .label-green }
 
