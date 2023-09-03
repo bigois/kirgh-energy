@@ -1,0 +1,26 @@
+logging:
+  level:
+    org:
+      hibernate:
+        orm:
+          jdbc:
+            bind: trace
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    password: admin
+    url: jdbc:h2:mem:kirgh-energy
+    username: h2
+  h2:
+    console:
+      enabled: true
+      path: /database
+      settings:
+        web-allow-others: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true

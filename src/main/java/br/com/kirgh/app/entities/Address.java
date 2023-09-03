@@ -21,7 +21,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "addresses")
 @Schema(title = "Address", description = "Object that represents a entity address")
-@SuppressWarnings("JpaDataSourceORMInspection")
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

@@ -20,7 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Setter
 @Entity
 @Table(name = "address_relations")
-@SuppressWarnings({"JpaDataSourceORMInspection", "SpringJavaInjectionPointsAutowiringInspection"})
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 public class AddressRelation {
     @Autowired
     @EmbeddedId

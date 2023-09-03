@@ -20,7 +20,6 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "users")
-@SuppressWarnings("JpaDataSourceORMInspection")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

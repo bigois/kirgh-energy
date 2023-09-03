@@ -1,0 +1,31 @@
+logging:
+  level:
+    org:
+      hibernate:
+        orm:
+          jdbc:
+            bind: trace
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    password: admin
+    url: jdbc:postgresql://localhost:5432/kirgh-energy
+    username: postgres
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        hbm2ddl:
+          delimiter: ;
+      jakarta:
+        persistence:
+          schema-generation:
+            create-source: metadata
+            scripts:
+              action: create
+              create-target: create.sql
+    show-sql: true
