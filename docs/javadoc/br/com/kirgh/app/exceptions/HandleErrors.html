@@ -115,12 +115,12 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleConflict(java.lang.IllegalArgumentException)" class="member-name-link">handleConflict</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a>&nbsp;ex)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">This function handles the IllegalArgumentException and returns a map of error messages.</div>
+<div class="block">This function handles the <code>IllegalArgumentException</code> and returns a map of error messages.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleConflict(org.springframework.web.HttpMediaTypeNotSupportedException)" class="member-name-link">handleConflict</a><wbr>(org.springframework.web.HttpMediaTypeNotSupportedException&nbsp;ex)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">This function handles the HttpMediaTypeNotSupportedException and returns a map of error messages.</div>
+<div class="block">This function handles the <code>HttpMediaTypeNotSupportedException</code> and returns a map of error messages.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleNotFound(jakarta.persistence.EntityNotFoundException)" class="member-name-link">handleNotFound</a><wbr>(jakarta.persistence.EntityNotFoundException&nbsp;ex)</code></div>
@@ -172,13 +172,13 @@ loadScripts(document, 'script');</script>
 <div class="block">This function handles validation exceptions by creating a map of field names and error messages.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>ex</code> - "ex" is an instance of the "MethodArgumentNotValidException" class, which is thrown when the validation of
+<dd><code>ex</code> - <code>ex</code> is an instance of the <code>MethodArgumentNotValidException</code> class, which is thrown when the validation of
            a method argument fails. This exception contains information about the validation errors that occurred.</dd>
 <dt>Returns:</dt>
 <dd>A map of field names and their corresponding error messages, along with a timestamp. This is the result of
- handling a MethodArgumentNotValidException, which occurs when a request parameter fails validation. The map is
- created by iterating through all errors in the exception's BindingResult and extracting the field name and error
- message for each FieldError.</dd>
+ handling a <code>MethodArgumentNotValidException</code>, which occurs when a request parameter fails validation. The map is
+ created by iterating through all errors in the exception's <code>BindingResult</code> and extracting the field name and error
+ message for each <code>FieldError</code>.</dd>
 </dl>
 </section>
 </li>
@@ -188,10 +188,10 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="annotations">@ResponseStatus(CONFLICT)
 @ExceptionHandler(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">java.lang.IllegalArgumentException.class</a>)
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">handleConflict</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a>&nbsp;ex)</span></div>
-<div class="block">This function handles the IllegalArgumentException and returns a map of error messages.</div>
+<div class="block">This function handles the <code>IllegalArgumentException</code> and returns a map of error messages.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>ex</code> - "ex" is the variable name for the IllegalArgumentException object that is being caught by this exception
+<dd><code>ex</code> - <code>ex</code> is the variable name for the <code>IllegalArgumentException</code> object that is being caught by this exception
            handler method. It is used to access the properties and methods of the exception object, such as the error message.</dd>
 <dt>Returns:</dt>
 <dd>A <code>Map&lt;String, String&gt;</code> containing the timestamp and error message is being returned. This is the result of
@@ -206,10 +206,10 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="annotations">@ResponseStatus(BAD_REQUEST)
 @ExceptionHandler(org.springframework.web.HttpMediaTypeNotSupportedException.class)
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">handleConflict</span><wbr><span class="parameters">(org.springframework.web.HttpMediaTypeNotSupportedException&nbsp;ex)</span></div>
-<div class="block">This function handles the HttpMediaTypeNotSupportedException and returns a map of error messages.</div>
+<div class="block">This function handles the <code>HttpMediaTypeNotSupportedException</code> and returns a map of error messages.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>ex</code> - "ex" is the variable name for the HttpMediaTypeNotSupportedException object that is being caught by this exception
+<dd><code>ex</code> - <code>ex</code> is the variable name for the <code>HttpMediaTypeNotSupportedException</code> object that is being caught by this exception
            handler method. It is used to access the properties and methods of the exception object, such as the error message.</dd>
 <dt>Returns:</dt>
 <dd>A <code>Map&lt;String, String&gt;</code> containing the timestamp and error message is being returned. This is the result of
@@ -244,11 +244,11 @@ loadScripts(document, 'script');</script>
 <div class="block">This is an exception handler that returns a map of error details for internal server errors.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>ex</code> - "ex" is a variable representing the exception that was thrown. It is used in the method to catch any type
+<dd><code>ex</code> - <code>ex</code> is a variable representing the exception that was thrown. It is used in the method to catch any type
            of exception that may occur during the execution of the code.</dd>
 <dt>Returns:</dt>
 <dd>A <code>Map</code> object containing the timestamp and an error message is being returned. This is the result of
- handling an exception of type <code>Exception</code> with the <code>@ExceptionHandler</code> annotation and the <code>@ResponseStatus</code>
+ handling an exception with the <code>@ExceptionHandler</code> annotation and the <code>@ResponseStatus</code>
  annotation indicating that the HTTP status code should be set to <code>INTERNAL_SERVER_ERROR</code>. The method logs the
  exception stack trace and returns a map with the timestamp and error message.</dd>
 </dl>

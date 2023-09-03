@@ -11,7 +11,7 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * The AddressRelation class in Java defines methods for checking equality and generating hash codes
+ * The {@code AddressRelation} class in Java defines methods for checking equality and generating hash codes
  * based on its embedded ID field.
  */
 @NoArgsConstructor
@@ -28,10 +28,10 @@ public class AddressRelation {
 
     /**
      * This is an implementation of the equals method in Java that checks if two AddressRelation objects
-     * are equal based on their addressRelationPK field.
+     * are equal based on their {@code addressRelationPK} field.
      *
-     * @param o The parameter "o" is an Object type, which is the object being compared to the current
-     *          object for equality in the equals() method.
+     * @param o The parameter "o" is an {@code Object} type, which is the object being compared to the current
+     *          object for equality in the {@code equals()} method.
      * @return A boolean value indicating whether the current object is equal to the object passed as a
      * parameter.
      */
@@ -46,7 +46,7 @@ public class AddressRelation {
     }
 
     /**
-     * This function returns the hash code of the addressRelationPK object.
+     * This function returns the hash code of the {@code addressRelationPK} object.
      *
      * @return The {@code hashCode()} method is returning the hash code value of the {@code addressRelationPK} object.
      */

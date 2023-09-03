@@ -77,12 +77,11 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="annotations">@RestController
 @RequestMapping(path="/api/v1/users",
-                consumes="application/json",
                 produces="application/json")
 </span><span class="modifiers">public class </span><span class="element-name type-name-label">UserController</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">The UserController class defines a REST API endpoint for creating a new user by taking in a validated userDTO object and
- returning a ResponseEntity.</div>
+<div class="block">The <code>UserController</code> class defines a REST API endpoint for creating a new user by taking in a validated <code>userDTO</code> object and
+ returning a <code>ResponseEntity</code>.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -111,10 +110,40 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#userRegister(br.com.kirgh.app.dtos.UserDTO)" class="member-name-link">userRegister</a><wbr>(@Valid <a href="../dtos/UserDTO.html" title="class in br.com.kirgh.app.dtos">UserDTO</a>&nbsp;userDTO)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#deleteUserById(java.util.UUID)" class="member-name-link">deleteUserById</a><wbr>(@NonNull <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">This is a Java function that creates a new user by taking in a validated userDTO object and returns a
- ResponseEntity.</div>
+<div class="block">This function is used to delete a user by their ID and return a JSON response with a success
+ message.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="../dtos/UserCompleteInfoDTO.html" title="class in br.com.kirgh.app.dtos">UserCompleteInfoDTO</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAllAddressesBoundUser(java.util.UUID)" class="member-name-link">getAllAddressesBoundUser</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">This function retrieves all addresses associated with a user by their ID.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAllUserInfoById(java.util.UUID)" class="member-name-link">getAllUserInfoById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">This function retrieves user information by their ID and returns a JSON response with the user's
+ info.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;org.springframework.data.domain.Page&lt;<a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a>&gt;&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getFilteredUsers(org.springframework.data.domain.Pageable,java.util.Map)" class="member-name-link">getFilteredUsers</a><wbr>(org.springframework.data.domain.Pageable&nbsp;pageable,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;filters)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">This function retrieves a paginated list of users based on specified filters and returns it as a
+ JSON response.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateUserInfoById(java.util.UUID,br.com.kirgh.app.dtos.UserUpdateDTO)" class="member-name-link">updateUserInfoById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id,
+ @Valid <a href="../dtos/UserUpdateDTO.html" title="class in br.com.kirgh.app.dtos">UserUpdateDTO</a>&nbsp;userUpdateDTO)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">This function updates a user's information and returns a JSON response with the new user's info.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#userRegister(br.com.kirgh.app.dtos.UserDTO)" class="member-name-link">userRegister</a><wbr>(@Valid <a href="../dtos/UserDTO.html" title="class in br.com.kirgh.app.dtos">UserDTO</a>&nbsp;userDTO)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">This is a Java function that creates a new user by taking in a validated <code>userDTO</code> object and returns a
+ <code>ResponseEntity</code>.</div>
 </div>
 </div>
 </div>
@@ -150,20 +179,116 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="userRegister(br.com.kirgh.app.dtos.UserDTO)">
 <h3>userRegister</h3>
-<div class="member-signature"><span class="annotations">@PostMapping
+<div class="member-signature"><span class="annotations">@PostMapping(consumes="application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">userRegister</span><wbr><span class="parameters">(@RequestBody @Valid
  @Valid <a href="../dtos/UserDTO.html" title="class in br.com.kirgh.app.dtos">UserDTO</a>&nbsp;userDTO)</span></div>
-<div class="block">This is a Java function that creates a new user by taking in a validated userDTO object and returns a
- ResponseEntity.</div>
+<div class="block">This is a Java function that creates a new user by taking in a validated <code>userDTO</code> object and returns a
+ <code>ResponseEntity</code>.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>userDTO</code> - userDTO is an object of the class UserDTO which is annotated with @Valid to indicate that the object
-                should be validated before processing. It is passed as a request body in a POST request to the userRegister()
-                method. The method then calls the createUser() method of the userService object and returns the</dd>
+<dd><code>userDTO</code> - <code>userDTO</code> is an object of the class <code>UserDTO</code> which is annotated with <code>@Valid</code> to indicate that the object
+                should be validated before processing. It is passed as a request body in a POST request to the <code>userRegister()</code>
+                method. The method then calls the <code>createUser()</code> method of the <code>userService</code> object and returns the</dd>
 <dt>Returns:</dt>
 <dd>The method <code>userRegister</code> is returning a <code>ResponseEntity</code> object, which can contain any type of response
  data along with an HTTP status code. The actual response data being returned depends on the implementation of the
  <code>createUser</code> method in the <code>userService</code> object.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getFilteredUsers(org.springframework.data.domain.Pageable,java.util.Map)">
+<h3>getFilteredUsers</h3>
+<div class="member-signature"><span class="annotations">@GetMapping
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;org.springframework.data.domain.Page&lt;<a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a>&gt;&gt;</span>&nbsp;<span class="element-name">getFilteredUsers</span><wbr><span class="parameters">(org.springframework.data.domain.Pageable&nbsp;pageable,
+ @RequestParam
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;filters)</span></div>
+<div class="block">This function retrieves a paginated list of users based on specified filters and returns it as a
+ JSON response.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>pageable</code> - The <code>pageable</code> parameter is used for pagination and sorting. It allows you to
+                 specify the page number, page size, and sorting criteria for the returned list of users.</dd>
+<dd><code>filters</code> - A map containing the filters for searching. The keys in the map represent the filter
+                 criteria, and the values represent the filter values.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a <code>ResponseEntity</code> object with a JSON response body containing a
+ <code>Page&lt;User&gt;</code> object.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getAllUserInfoById(java.util.UUID)">
+<h3>getAllUserInfoById</h3>
+<div class="member-signature"><span class="annotations">@GetMapping("/{id}")
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a>&gt;</span>&nbsp;<span class="element-name">getAllUserInfoById</span><wbr><span class="parameters">(@PathVariable
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
+<div class="block">This function retrieves user information by their ID and returns a JSON response with the user's
+ info.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The <code>id</code> parameter is a UUID (Universally Unique Identifier) that represents the unique
+           identifier of a user.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a <code>ResponseEntity</code> object with the HTTP status code 200 (OK) and the
+ user's information in the response body.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getAllAddressesBoundUser(java.util.UUID)">
+<h3>getAllAddressesBoundUser</h3>
+<div class="member-signature"><span class="annotations">@GetMapping("/{id}/addresses")
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="../dtos/UserCompleteInfoDTO.html" title="class in br.com.kirgh.app.dtos">UserCompleteInfoDTO</a>&gt;</span>&nbsp;<span class="element-name">getAllAddressesBoundUser</span><wbr><span class="parameters">(@PathVariable
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
+<div class="block">This function retrieves all addresses associated with a user by their ID.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The id parameter is a UUID (Universally Unique Identifier) that represents the unique
+           identifier of a user.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a <code>ResponseEntity</code> object with the status code 200 (OK) and the body
+ containing a <code>UserCompleteInfoDTO</code> object.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="updateUserInfoById(java.util.UUID,br.com.kirgh.app.dtos.UserUpdateDTO)">
+<h3>updateUserInfoById</h3>
+<div class="member-signature"><span class="annotations">@PutMapping(path="/{id}",
+            consumes="application/json")
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a>&gt;</span>&nbsp;<span class="element-name">updateUserInfoById</span><wbr><span class="parameters">(@PathVariable
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id,
+ @RequestBody @Valid
+ @Valid <a href="../dtos/UserUpdateDTO.html" title="class in br.com.kirgh.app.dtos">UserUpdateDTO</a>&nbsp;userUpdateDTO)</span></div>
+<div class="block">This function updates a user's information and returns a JSON response with the new user's info.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The id parameter is a UUID (Universally Unique Identifier) that represents the unique
+                      identifier of the user to be updated.</dd>
+<dd><code>userUpdateDTO</code> - The <code>userUpdateDTO</code> is a data transfer object that contains the updated
+                      information for the user. It is annotated with <code>@Valid</code> to perform validation on the request body. The
+                      fields in the <code>userUpdateDTO</code> include:</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a <code>ResponseEntity</code> object with the updated User object in the body.
+ The HTTP status code of the response is 200 (OK).</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="deleteUserById(java.util.UUID)">
+<h3>deleteUserById</h3>
+<div class="member-signature"><span class="annotations">@DeleteMapping("/{id}")
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">deleteUserById</span><wbr><span class="parameters">(@NonNull @PathVariable
+ @NonNull <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
+<div class="block">This function is used to delete a user by their ID and return a JSON response with a success
+ message.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The <code>id</code> parameter is a UUID (Universally Unique Identifier) that represents the unique
+           identifier of the user to be deleted.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a <code>ResponseEntity&lt;String&gt;</code> object.</dd>
 </dl>
 </section>
 </li>

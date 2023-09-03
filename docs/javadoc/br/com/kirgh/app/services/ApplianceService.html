@@ -109,8 +109,34 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createAppliance(br.com.kirgh.app.dtos.ApplianceDTO)" class="member-name-link">createAppliance</a><wbr>(<a href="../dtos/ApplianceDTO.html" title="class in br.com.kirgh.app.dtos">ApplianceDTO</a>&nbsp;applianceDTO)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">This Java function creates a new Appliance object and saves it to the database with a
- corresponding ApplianceRelation object.</div>
+<div class="block">This <code>Java</code> function creates a new <code>Appliance</code> object and saves it to the database with a
+ corresponding <code>ApplianceRelation</code> object.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#deleteApplianceById(java.util.UUID)" class="member-name-link">deleteApplianceById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">This function deletes an appliance by its ID, throwing an exception if the appliance is not
+ found.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAllApplianceInfoById(java.util.UUID)" class="member-name-link">getAllApplianceInfoById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">The function retrieves all information about an appliance by its ID from the appliance
+ repository, and throws an exception if the appliance is not found.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.data.domain.Page&lt;<a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getFilteredAppliances(java.util.Map,org.springframework.data.domain.Pageable)" class="member-name-link">getFilteredAppliances</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;filters,
+ org.springframework.data.domain.Pageable&nbsp;pageable)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">This function retrieves a page of filtered appliances based on the provided filters and pageable
+ information.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateApplianceInfoById(java.util.UUID,br.com.kirgh.app.dtos.ApplianceUpdateDTO)" class="member-name-link">updateApplianceInfoById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id,
+ <a href="../dtos/ApplianceUpdateDTO.html" title="class in br.com.kirgh.app.dtos">ApplianceUpdateDTO</a>&nbsp;applianceUpdateDTO)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">The function updates the information of an appliance based on the provided ID and returns the
+ updated appliance.</div>
 </div>
 </div>
 </div>
@@ -148,14 +174,84 @@ loadScripts(document, 'script');</script>
 <h3>createAppliance</h3>
 <div class="member-signature"><span class="annotations">@Transactional
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a></span>&nbsp;<span class="element-name">createAppliance</span><wbr><span class="parameters">(<a href="../dtos/ApplianceDTO.html" title="class in br.com.kirgh.app.dtos">ApplianceDTO</a>&nbsp;applianceDTO)</span></div>
-<div class="block">This Java function creates a new Appliance object and saves it to the database with a
- corresponding ApplianceRelation object.</div>
+<div class="block">This <code>Java</code> function creates a new <code>Appliance</code> object and saves it to the database with a
+ corresponding <code>ApplianceRelation</code> object.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>applianceDTO</code> - An object of type ApplianceDTO, which contains information about the
+<dd><code>applianceDTO</code> - An object of type <code>ApplianceDTO</code>, which contains information about the
                      appliance to be created.</dd>
 <dt>Returns:</dt>
-<dd>The method is returning an instance of the Appliance class.</dd>
+<dd>The method is returning an instance of the <code>Appliance</code> class.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getFilteredAppliances(java.util.Map,org.springframework.data.domain.Pageable)">
+<h3>getFilteredAppliances</h3>
+<div class="member-signature"><span class="annotations">@Transactional(readOnly=true)
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.data.domain.Page&lt;<a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a>&gt;</span>&nbsp;<span class="element-name">getFilteredAppliances</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;filters,
+ org.springframework.data.domain.Pageable&nbsp;pageable)</span></div>
+<div class="block">This function retrieves a page of filtered appliances based on the provided filters and pageable
+ information.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>filters</code> - A map containing the filters to be applied to the query. The keys represent the
+                 field names and the values represent the filter values.</dd>
+<dd><code>pageable</code> - The <code>pageable</code> parameter is used to specify the pagination settings for the
+                 query. It includes information such as the page number, page size, and sorting criteria. It
+                 allows you to retrieve a specific page of results from the query.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a <code>Page</code> object containing a list of <code>Appliance</code> objects that match
+ the specified filters and are paginated according to the provided <code>Pageable</code> object.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getAllApplianceInfoById(java.util.UUID)">
+<h3>getAllApplianceInfoById</h3>
+<div class="member-signature"><span class="annotations">@Transactional(readOnly=true)
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a></span>&nbsp;<span class="element-name">getAllApplianceInfoById</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
+<div class="block">The function retrieves all information about an appliance by its ID from the appliance
+ repository, and throws an exception if the appliance is not found.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The id parameter is of type UUID and represents the unique identifier of the appliance
+           for which the information is being retrieved.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning an instance of the <code>Appliance</code> class.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="updateApplianceInfoById(java.util.UUID,br.com.kirgh.app.dtos.ApplianceUpdateDTO)">
+<h3>updateApplianceInfoById</h3>
+<div class="member-signature"><span class="annotations">@Transactional
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a></span>&nbsp;<span class="element-name">updateApplianceInfoById</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id,
+ <a href="../dtos/ApplianceUpdateDTO.html" title="class in br.com.kirgh.app.dtos">ApplianceUpdateDTO</a>&nbsp;applianceUpdateDTO)</span></div>
+<div class="block">The function updates the information of an appliance based on the provided ID and returns the
+ updated appliance.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The id parameter is of type UUID and represents the unique identifier of the appliance
+                           that needs to be updated.</dd>
+<dd><code>applianceUpdateDTO</code> - The <code>applianceUpdateDTO</code> parameter is an object of type
+                           <code>ApplianceUpdateDTO</code>. It is used to update the information of an appliance.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning an instance of the <code>Appliance</code> class.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="deleteApplianceById(java.util.UUID)">
+<h3>deleteApplianceById</h3>
+<div class="member-signature"><span class="annotations">@Transactional
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">deleteApplianceById</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
+<div class="block">This function deletes an appliance by its ID, throwing an exception if the appliance is not
+ found.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The id parameter is of type UUID and represents the unique identifier of the appliance
+           that needs to be deleted.</dd>
 </dl>
 </section>
 </li>

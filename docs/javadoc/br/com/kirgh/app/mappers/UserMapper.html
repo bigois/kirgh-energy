@@ -108,7 +108,13 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#userDTOToUser(br.com.kirgh.app.dtos.UserDTO)" class="member-name-link">userDTOToUser</a><wbr>(<a href="../dtos/UserDTO.html" title="class in br.com.kirgh.app.dtos">UserDTO</a>&nbsp;userDTO)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">The function converts a UserDTO object to a User object in Java.</div>
+<div class="block">The function converts a <code>UserDTO</code> object to a <code>User</code> object in Java.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#userUpdateDTOToUser(br.com.kirgh.app.dtos.UserUpdateDTO,br.com.kirgh.app.entities.User)" class="member-name-link">userUpdateDTOToUser</a><wbr>(<a href="../dtos/UserUpdateDTO.html" title="class in br.com.kirgh.app.dtos">UserUpdateDTO</a>&nbsp;userUpdateDTO,
+ <a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a>&nbsp;updateUser)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">The function takes a <code>UserUpdateDTO</code> object and updates the corresponding fields in a <code>User</code> object.</div>
 </div>
 </div>
 </div>
@@ -145,14 +151,30 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="userDTOToUser(br.com.kirgh.app.dtos.UserDTO)">
 <h3>userDTOToUser</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a></span>&nbsp;<span class="element-name">userDTOToUser</span><wbr><span class="parameters">(<a href="../dtos/UserDTO.html" title="class in br.com.kirgh.app.dtos">UserDTO</a>&nbsp;userDTO)</span></div>
-<div class="block">The function converts a UserDTO object to a User object in Java.</div>
+<div class="block">The function converts a <code>UserDTO</code> object to a <code>User</code> object in Java.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>userDTO</code> - userDTO is an object of type UserDTO, which is a data transfer object that contains information about
+<dd><code>userDTO</code> - <code>userDTO</code> is an object of type <code>UserDTO</code>, which is a data transfer object that contains information about
                 a user.</dd>
 <dt>Returns:</dt>
 <dd>The method <code>userDTOToUser</code> is returning an instance of the <code>User</code> class, which is created based on the
  information provided in the <code>UserDTO</code> object passed as a parameter.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="userUpdateDTOToUser(br.com.kirgh.app.dtos.UserUpdateDTO,br.com.kirgh.app.entities.User)">
+<h3>userUpdateDTOToUser</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a></span>&nbsp;<span class="element-name">userUpdateDTOToUser</span><wbr><span class="parameters">(<a href="../dtos/UserUpdateDTO.html" title="class in br.com.kirgh.app.dtos">UserUpdateDTO</a>&nbsp;userUpdateDTO,
+ <a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a>&nbsp;updateUser)</span></div>
+<div class="block">The function takes a <code>UserUpdateDTO</code> object and updates the corresponding fields in a <code>User</code> object.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>userUpdateDTO</code> - <code>UserUpdateDTO</code> object containing the updated user information.</dd>
+<dd><code>updateUser</code> - The <code>updateUser</code> parameter is an instance of the <code>User</code> class. It represents
+                      the user object that needs to be updated with the values from the <code>UserUpdateDTO</code> object.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning the updated User object.</dd>
 </dl>
 </section>
 </li>

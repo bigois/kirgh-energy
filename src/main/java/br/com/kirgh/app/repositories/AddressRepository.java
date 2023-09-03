@@ -1,10 +1,9 @@
 package br.com.kirgh.app.repositories;
 
-import br.com.kirgh.app.dtos.AddressCompleteDTO;
 import br.com.kirgh.app.entities.Address;
-import br.com.kirgh.app.projections.AddressProjection;
-import br.com.kirgh.app.projections.UserCompleteProjection;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,7 +16,7 @@ import java.util.UUID;
 /**
  * This code is defining an interface called {@code AddressRepository} that extends the {@code JpaRepository}
  * interface. The {@code JpaRepository} interface is a Spring Data interface that provides methods for
- * performing CRUD (Create, Read, Update, Delete) operations on a specific entity type (`Address` in
+ * performing CRUD (Create, Read, Update, Delete) operations on a specific entity type ({@code Address} in
  * this case) in a database. The {@code UUID} parameter specifies the type of the primary key for the
  * {@code Address} entity.
  */
@@ -29,7 +28,7 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
      *
      * @param userId  a String representing the ID of a user
      * @param zipCode The zip code of an address.
-     * @param number  The parameter "number" is a String representing the street number of an address.
+     * @param number  The parameter {@code number} is a {@code String} representing the street number of an address.
      * @return A boolean value is being returned.
      */
     @Query(nativeQuery = true,
@@ -55,71 +54,59 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
     )
     boolean existsToUserByUnique(@Param("userId") UUID userId, @Param("zipCode") String zipCode, @Param("number") String number);
 
+    /**
+     * The function returns a page of addresses that match the given specification and pageable
+     * parameters.
+     *
+     * @param spec        The {@code spec} parameter is a {@code Specification} object that represents the criteria or
+     *                    conditions to be used for filtering the addresses. It can be used to specify conditions such as
+     *                    filtering by certain fields or properties of the {@code Address} entity.
+     * @param pageRequest {@code Pageable} is an interface that represents a request for a specific page of
+     *                    data. It includes information such as the page number, the number of items per page, and sorting
+     *                    options.
+     * @return The method is returning a {@code Page} object containing a list of {@code Address} objects that match
+     * the given {@code Specification}, with pagination applied according to the provided {@code Pageable} object.
+     */
+    Page<Address> findAll(Specification spec, Pageable pageRequest);
+
+    /**
+     * The function retrieves all addresses associated with a specific parent ID.
+     *
+     * @param parentId The {@code parentId} parameter is a UUID (Universally Unique Identifier) that is used
+     *                 to filter the addresses based on the parent ID.
+     * @return The query is returning a list of {@code Address} objects.
+     */
     @Query(nativeQuery = true,
             value = """
                         SELECT
-                            id,
-                            street,
-                            number,
-                            zip_code,
-                            city,
-                            state
+                            addresses.id, addresses.zip_code, addresses.street, addresses.number, addresses.city, addresses.state
                         FROM
                             addresses
+                        INNER JOIN
+                            address_relations
+                        ON
+                            addresses.id = address_relations.address_id
                         WHERE
-                            id = :id
+                            address_relations.parent_id = :parentId
                     """
     )
-    AddressProjection getAllAddressInfoById(@Param("id") UUID id);
+    List<Address> getAllAddressesBoundUser(@Param("parentId") UUID parentId);
 
-    @Query(nativeQuery = true,
-            value = """
-                    SELECT 
-                         addresses.id, addresses.zip_code, addresses.street, addresses.number, addresses.city, addresses.state
-                    FROM 
-                         addresses 
-                    INNER JOIN 
-                         address_relations 
-                    ON 
-                         addresses.id = address_relations.address_id 
-                    WHERE  
-                         address_relations.parent_id = :parentId
-                    """
-    )
-    List<AddressProjection> getAllAddressesBoundUser(@Param("parentId") UUID parentId);
-
+    /**
+     * The function deletes an address from the {@code addresses} table in the database based on the provided
+     * {@code addressId}.
+     *
+     * @param addressId The {@code addressId} parameter is a UUID (Universally Unique Identifier) that
+     *                  represents the unique identifier of the address to be deleted.
+     */
     @Transactional
     @Modifying
     @Query(nativeQuery = true,
             value = """
-                DELETE FROM 
-                    address_relations
-                WHERE 
-                    address_id = :addressId
-                    """
-    )
-    void deleteAddressRelationById(@Param("addressId") UUID addressId);
-
-    @Transactional
-    @Modifying
-    @Query(nativeQuery = true,
-            value = """
-                DELETE FROM 
-                    appliance_relations
-                WHERE 
-                    address_id = :addressId
-                    """
-    )
-    void deleteApplianceRelationById(@Param("addressId") UUID addressId);
-
-    @Transactional
-    @Modifying
-    @Query(nativeQuery = true,
-            value = """
-                DELETE FROM 
-                    addresses
-                WHERE 
-                    id  = :addressId
+                        DELETE FROM
+                            addresses
+                        WHERE
+                            id  = :addressId
                     """
     )
     void deleteAddressById(@Param("addressId") UUID addressId);

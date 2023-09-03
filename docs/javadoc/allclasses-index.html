@@ -54,72 +54,89 @@ loadScripts(document, 'script');</script>
 <h1 title="All Classes and Interfaces" class="title">All Classes and Interfaces</h1>
 </div>
 <div id="all-classes-table">
-<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="all-classes-table-tab0" role="tab" aria-selected="true" aria-controls="all-classes-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table', 2)" class="active-table-tab">All Classes and Interfaces</button><button id="all-classes-table-tab1" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab1', 2)" class="table-tab">Interfaces</button><button id="all-classes-table-tab2" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab2', 2)" class="table-tab">Classes</button><button id="all-classes-table-tab3" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab3', 2)" class="table-tab">Enum Classes</button><button id="all-classes-table-tab4" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab4', 2)" class="table-tab">Record Classes</button></div>
+<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="all-classes-table-tab0" role="tab" aria-selected="true" aria-controls="all-classes-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table', 2)" class="active-table-tab">All Classes and Interfaces</button><button id="all-classes-table-tab1" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab1', 2)" class="table-tab">Interfaces</button><button id="all-classes-table-tab2" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab2', 2)" class="table-tab">Classes</button><button id="all-classes-table-tab3" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab3', 2)" class="table-tab">Enum Classes</button><button id="all-classes-table-tab4" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab4', 2)" class="table-tab">Record Classes</button><button id="all-classes-table-tab7" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab7', 2)" class="table-tab">Annotation Interfaces</button></div>
 <div id="all-classes-table.tabpanel" role="tabpanel">
 <div class="summary-table two-column-summary" aria-labelledby="all-classes-table-tab0">
 <div class="table-header col-first">Class</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">The Address class represents a physical address with fields for zip code, street, number, city, and
+<div class="block">The <code>Address</code> class represents a physical address with fields for zip code, street, number, city, and
  state, and includes methods for checking equality and generating hash codes based on the id field.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/controllers/AddressController.html" title="class in br.com.kirgh.app.controllers">AddressController</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/dtos/AddressCompleteInfoDTO.html" title="class in br.com.kirgh.app.dtos">AddressCompleteInfoDTO</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">The AddressController class is a Java REST controller that handles POST requests to create a new address using an
- AddressDTO object.</div>
+<div class="block">The <code>AddressCompleteInfoDTO</code> class represents complete information about an address, including the
+ address data and a list of appliance information.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab4"><a href="br/com/kirgh/app/dtos/AddressDTO.html" title="class in br.com.kirgh.app.dtos">AddressDTO</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab4">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/controllers/AddressController.html" title="class in br.com.kirgh.app.controllers">AddressController</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">The <code>AddressController</code> class is a Java REST controller that handles POST requests to create a new address using an
+ <code>AddressDTO</code> object.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab4"><a href="br/com/kirgh/app/dtos/AddressDTO.html" title="class in br.com.kirgh.app.dtos">AddressDTO</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab4">
 <div class="block">This is a Java record class named <code>AddressDTO</code> that represents a data transfer object for an
  address.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/mappers/AddressMapper.html" title="class in br.com.kirgh.app.mappers">AddressMapper</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">The AddressMapper class provides a static method to convert an AddressDTO object to an Address
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/mappers/AddressMapper.html" title="class in br.com.kirgh.app.mappers">AddressMapper</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">The <code>AddressMapper</code> class provides a static method to convert an <code>AddressDTO</code> object to an <code>Address</code>
  object in Java.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/entities/AddressRelation.html" title="class in br.com.kirgh.app.entities">AddressRelation</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">The AddressRelation class in Java defines methods for checking equality and generating hash codes
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/entities/AddressRelation.html" title="class in br.com.kirgh.app.entities">AddressRelation</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">The <code>AddressRelation</code> class in Java defines methods for checking equality and generating hash codes
  based on its embedded ID field.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/pks/AddressRelationPK.html" title="class in br.com.kirgh.app.pks">AddressRelationPK</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">The AddressRelationPK class is a Java implementation of a composite primary key for a database table, with a custom
- equals() and hashCode() method.</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/pks/AddressRelationPK.html" title="class in br.com.kirgh.app.pks">AddressRelationPK</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">The <code>AddressRelationPK</code> class is a Java implementation of a composite primary key for a database table, with a custom
+ <code>equals()</code> and <code>hashCode()</code> method.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="br/com/kirgh/app/repositories/AddressRelationRepository.html" title="interface in br.com.kirgh.app.repositories">AddressRelationRepository</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="br/com/kirgh/app/repositories/AddressRelationRepository.html" title="interface in br.com.kirgh.app.repositories">AddressRelationRepository</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">This code is defining an interface called <code>AddressRelationRepository</code> that extends the <code>JpaRepository</code> interface.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="br/com/kirgh/app/repositories/AddressRepository.html" title="interface in br.com.kirgh.app.repositories">AddressRepository</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="br/com/kirgh/app/repositories/AddressRepository.html" title="interface in br.com.kirgh.app.repositories">AddressRepository</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
 <div class="block">This code is defining an interface called <code>AddressRepository</code> that extends the <code>JpaRepository</code>
  interface.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/services/AddressService.html" title="class in br.com.kirgh.app.services">AddressService</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">The AddressService class creates and saves a new address to the database, along with its relation to a parent user, and
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/services/AddressService.html" title="class in br.com.kirgh.app.services">AddressService</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">The <code>AddressService</code> class creates and saves a new address to the database, along with its relation to a parent user, and
  returns a response with the new address's ID and a success message.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab4"><a href="br/com/kirgh/app/dtos/AddressUpdateDTO.html" title="class in br.com.kirgh.app.dtos">AddressUpdateDTO</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab4">
+<div class="block">The code snippet is defining a Java record class called <code>AddressUpdateDTO</code>.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">The Appliance class defines attributes and methods for an appliance object, including an ID, name,
+<div class="block">The <code>Appliance</code> class defines attributes and methods for an appliance object, including an ID, name,
  brand, model, and power.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/controllers/ApplianceController.html" title="class in br.com.kirgh.app.controllers">ApplianceController</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">The ApplianceController class is a Java REST controller that handles requests related to creating new appliances.</div>
+<div class="block">The <code>ApplianceController</code> class is a Java REST controller that handles requests related to creating new appliances.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab4"><a href="br/com/kirgh/app/dtos/ApplianceDTO.html" title="class in br.com.kirgh.app.dtos">ApplianceDTO</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab4">
 <div class="block">This is a Java record class named <code>ApplianceDTO</code> that represents a data transfer object for an appliance.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/mappers/ApplianceMapper.html" title="class in br.com.kirgh.app.mappers">ApplianceMapper</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">The ApplianceMapper class converts an ApplianceDTO object to an Appliance object by setting the corresponding
+<div class="col-first even-row-color all-classes-table all-classes-table-tab4"><a href="br/com/kirgh/app/dtos/ApplianceInfoDTO.html" title="class in br.com.kirgh.app.dtos">ApplianceInfoDTO</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab4">
+<div class="block">The code snippet is defining a Java record class called <code>ApplianceInfoDTO</code>.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/mappers/ApplianceMapper.html" title="class in br.com.kirgh.app.mappers">ApplianceMapper</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">The <code>ApplianceMapper</code> class converts an <code>ApplianceDTO</code> object to an <code>Appliance</code> object by setting the corresponding
  attributes.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="br/com/kirgh/app/projections/ApplianceProjection.html" title="interface in br.com.kirgh.app.projections">ApplianceProjection</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="block">The code is defining a Java interface called <code>ApplianceProjection</code>.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/entities/ApplianceRelation.html" title="class in br.com.kirgh.app.entities">ApplianceRelation</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
@@ -128,8 +145,8 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/pks/ApplianceRelationPK.html" title="class in br.com.kirgh.app.pks">ApplianceRelationPK</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">This is a Java class representing a composite primary key for a many-to-one relationship between an Address and an
- Appliance entity.</div>
+<div class="block">This is a Java class representing a composite primary key for a many-to-one relationship between an <code>Address</code> and an
+ <code>Appliance</code> entity.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="br/com/kirgh/app/repositories/ApplianceRelationRepository.html" title="interface in br.com.kirgh.app.repositories">ApplianceRelationRepository</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
@@ -144,37 +161,54 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">This is a Java class that creates an appliance and saves it to a repository, along with its relation to an address.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/settings/CorsConfiguration.html" title="class in br.com.kirgh.app.settings">CorsConfiguration</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">The CorsConfiguration class is a Java configuration class that allows cross-origin resource sharing (CORS) for all
- origins and only allows GET and POST HTTP methods.</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab4"><a href="br/com/kirgh/app/dtos/ApplianceUpdateDTO.html" title="class in br.com.kirgh.app.dtos">ApplianceUpdateDTO</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab4">
+<div class="block">The code snippet is defining a Java record class called <code>ApplianceUpdateDTO</code>.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/exceptions/HandleErrors.html" title="class in br.com.kirgh.app.exceptions">HandleErrors</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/settings/CorsConfiguration.html" title="class in br.com.kirgh.app.settings">CorsConfiguration</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">The <code>CorsConfiguration</code> class is a Java configuration class that allows cross-origin resource sharing (CORS) for all
+ origins and only allows all CRUD basic HTTP methods.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab7"><a href="br/com/kirgh/app/constraints/DateValidation.html" title="annotation interface in br.com.kirgh.app.constraints">DateValidation</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab7">
+<div class="block">The code snippet is defining a custom annotation called <code>DateValidation</code>.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/validators/DateValidator.html" title="class in br.com.kirgh.app.validators">DateValidator</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">The <code>DateValidator</code> class is a custom constraint validator for validating date strings.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/exceptions/HandleErrors.html" title="class in br.com.kirgh.app.exceptions">HandleErrors</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">This class contains exception handlers for various types of exceptions and returns a map of error details for each
  exception.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/KirghEnergyApplication.html" title="class in br.com.kirgh.app">KirghEnergyApplication</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/KirghEnergyApplication.html" title="class in br.com.kirgh.app">KirghEnergyApplication</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">This is the main class for running KIRGH Energy REST application in Java.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab3"><a href="br/com/kirgh/app/enums/Power.html" title="enum class in br.com.kirgh.app.enums">Power</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab3">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="br/com/kirgh/app/enums/Power.html" title="enum class in br.com.kirgh.app.enums">Power</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab3">
 <div class="block">This is an enum class that represents the power voltages from general appliances in Brazil.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="br/com/kirgh/app/enums/State.html" title="enum class in br.com.kirgh.app.enums">State</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab3">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab3"><a href="br/com/kirgh/app/enums/State.html" title="enum class in br.com.kirgh.app.enums">State</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab3">
 <div class="block">This is an enum class that represents the states of Brazil.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/entities/User.html" title="class in br.com.kirgh.app.entities">User</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/entities/User.html" title="class in br.com.kirgh.app.entities">User</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">The <code>User</code> class represents a user with attributes such as name, email, birthdate, gender, and CPF,
+ and overrides the <code>equals</code> and <code>hashCode</code> methods to compare and hash based on the CPF attribute.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/dtos/UserCompleteInfoDTO.html" title="class in br.com.kirgh.app.dtos">UserCompleteInfoDTO</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">The User class represents a user with attributes such as name, email, birth date, gender, and CPF,
- and overrides the equals and hashCode methods to compare and hash based on the CPF attribute.</div>
+<div class="block">The <code>UserCompleteInfoDTO</code> class is a data transfer object that contains information about a user,
+ their relations, and their addresses.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/controllers/UserController.html" title="class in br.com.kirgh.app.controllers">UserController</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">The UserController class defines a REST API endpoint for creating a new user by taking in a validated userDTO object and
- returning a ResponseEntity.</div>
+<div class="block">The <code>UserController</code> class defines a REST API endpoint for creating a new user by taking in a validated <code>userDTO</code> object and
+ returning a <code>ResponseEntity</code>.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab4"><a href="br/com/kirgh/app/dtos/UserDTO.html" title="class in br.com.kirgh.app.dtos">UserDTO</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab4">
@@ -182,7 +216,7 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="br/com/kirgh/app/enums/UserGender.html" title="enum class in br.com.kirgh.app.enums">UserGender</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab3">
-<div class="block">This is an  enum class that represents the biological human genders.</div>
+<div class="block">This is an enum class that represents the biological human genders.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/mappers/UserMapper.html" title="class in br.com.kirgh.app.mappers">UserMapper</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
@@ -197,24 +231,37 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab4">
 <div class="block">This is a Java record class named <code>UserRelationDTO</code> that represents a data transfer object for a user relation.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/pks/UserRelationPK.html" title="class in br.com.kirgh.app.pks">UserRelationPK</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/dtos/UserRelationInfoDTO.html" title="class in br.com.kirgh.app.dtos">UserRelationInfoDTO</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">The UserRelationPK class in Java defines a primary key for a user relation and overrides the equals and hashCode methods
+<div class="block">The <code>UserRelationInfoDTO</code> class represents information about a user's relation, including an ID and a
+ relation type.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/pks/UserRelationPK.html" title="class in br.com.kirgh.app.pks">UserRelationPK</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">The <code>UserRelationPK class</code> in Java defines a primary key for a user relation and overrides the <code>equals</code> and <code>hashCode</code> methods
  to compare objects based on their owner and child attributes.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="br/com/kirgh/app/repositories/UserRelationRepository.html" title="interface in br.com.kirgh.app.repositories">UserRelationRepository</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="br/com/kirgh/app/repositories/UserRelationRepository.html" title="interface in br.com.kirgh.app.repositories">UserRelationRepository</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
 <div class="block">This code is defining a Spring Data JPA repository interface for the <code>UserRelation</code> entity.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="br/com/kirgh/app/repositories/UserRepository.html" title="interface in br.com.kirgh.app.repositories">UserRepository</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="br/com/kirgh/app/repositories/UserRepository.html" title="interface in br.com.kirgh.app.repositories">UserRepository</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">This line of code is defining an interface called <code>UserRepository</code> that extends the <code>JpaRepository</code>
  interface.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/services/UserService.html" title="class in br.com.kirgh.app.services">UserService</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">The UserService class creates a new user and saves it to the database, along with a user relation if specified, and
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/services/UserService.html" title="class in br.com.kirgh.app.services">UserService</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">The <code>UserService</code> class creates a new user and saves it to the database, along with a user relation if specified, and
  returns a success message.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab4"><a href="br/com/kirgh/app/dtos/UserUpdateDTO.html" title="class in br.com.kirgh.app.dtos">UserUpdateDTO</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab4">
+<div class="block">The code snippet is defining a Java record class called <code>UserUpdateDTO</code>.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="br/com/kirgh/app/utils/Utils.html" title="class in br.com.kirgh.app.utils">Utils</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">The Utils class is an abstract class that provides utility methods.</div>
 </div>
 </div>
 </div>

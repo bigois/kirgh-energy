@@ -80,7 +80,7 @@ loadScripts(document, 'script');</script>
 extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&gt;</span></div>
 <div class="block">This code is defining an interface called <code>AddressRepository</code> that extends the <code>JpaRepository</code>
  interface. The <code>JpaRepository</code> interface is a Spring Data interface that provides methods for
- performing CRUD (Create, Read, Update, Delete) operations on a specific entity type (`Address` in
+ performing CRUD (Create, Read, Update, Delete) operations on a specific entity type (<code>Address</code> in
  this case) in a database. The <code>UUID</code> parameter specifies the type of the primary key for the
  <code>Address</code> entity.</div>
 </section>
@@ -97,13 +97,31 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#existsToUserByUnique(java.util.UUID,java.lang.String,java.lang.String)" class="member-name-link">existsToUserByUnique</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;userId,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#deleteAddressById(java.util.UUID)" class="member-name-link">deleteAddressById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;addressId)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">The function deletes an address from the <code>addresses</code> table in the database based on the provided
+ <code>addressId</code>.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#existsToUserByUnique(java.util.UUID,java.lang.String,java.lang.String)" class="member-name-link">existsToUserByUnique</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;userId,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;zipCode,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;number)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">This is a Java function that checks if a specific address exists for a given user based on their ID, zip code, and
  number.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>org.springframework.data.domain.Page&lt;<a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#findAll(org.springframework.data.jpa.domain.Specification,org.springframework.data.domain.Pageable)" class="member-name-link">findAll</a><wbr>(org.springframework.data.jpa.domain.Specification&nbsp;spec,
+ org.springframework.data.domain.Pageable&nbsp;pageRequest)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">The function returns a page of addresses that match the given specification and pageable
+ parameters.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getAllAddressesBoundUser(java.util.UUID)" class="member-name-link">getAllAddressesBoundUser</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;parentId)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">The function retrieves all addresses associated with a specific parent ID.</div>
 </div>
 </div>
 </div>
@@ -154,9 +172,65 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <dt>Parameters:</dt>
 <dd><code>userId</code> - a String representing the ID of a user</dd>
 <dd><code>zipCode</code> - The zip code of an address.</dd>
-<dd><code>number</code> - The parameter "number" is a String representing the street number of an address.</dd>
+<dd><code>number</code> - The parameter <code>number</code> is a <code>String</code> representing the street number of an address.</dd>
 <dt>Returns:</dt>
 <dd>A boolean value is being returned.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="findAll(org.springframework.data.jpa.domain.Specification,org.springframework.data.domain.Pageable)">
+<h3>findAll</h3>
+<div class="member-signature"><span class="return-type">org.springframework.data.domain.Page&lt;<a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a>&gt;</span>&nbsp;<span class="element-name">findAll</span><wbr><span class="parameters">(org.springframework.data.jpa.domain.Specification&nbsp;spec,
+ org.springframework.data.domain.Pageable&nbsp;pageRequest)</span></div>
+<div class="block">The function returns a page of addresses that match the given specification and pageable
+ parameters.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>spec</code> - The <code>spec</code> parameter is a <code>Specification</code> object that represents the criteria or
+                    conditions to be used for filtering the addresses. It can be used to specify conditions such as
+                    filtering by certain fields or properties of the <code>Address</code> entity.</dd>
+<dd><code>pageRequest</code> - <code>Pageable</code> is an interface that represents a request for a specific page of
+                    data. It includes information such as the page number, the number of items per page, and sorting
+                    options.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a <code>Page</code> object containing a list of <code>Address</code> objects that match
+ the given <code>Specification</code>, with pagination applied according to the provided <code>Pageable</code> object.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getAllAddressesBoundUser(java.util.UUID)">
+<h3>getAllAddressesBoundUser</h3>
+<div class="member-signature"><span class="annotations">@Query(nativeQuery=true,
+       value="    SELECT\n        addresses.id, addresses.zip_code, addresses.street, addresses.number, addresses.city, addresses.state\n    FROM\n        addresses\n    INNER JOIN\n        address_relations\n    ON\n        addresses.id = address_relations.address_id\n    WHERE\n        address_relations.parent_id = :parentId\n")
+</span><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a>&gt;</span>&nbsp;<span class="element-name">getAllAddressesBoundUser</span><wbr><span class="parameters">(@Param("parentId")
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;parentId)</span></div>
+<div class="block">The function retrieves all addresses associated with a specific parent ID.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>parentId</code> - The <code>parentId</code> parameter is a UUID (Universally Unique Identifier) that is used
+                 to filter the addresses based on the parent ID.</dd>
+<dt>Returns:</dt>
+<dd>The query is returning a list of <code>Address</code> objects.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="deleteAddressById(java.util.UUID)">
+<h3>deleteAddressById</h3>
+<div class="member-signature"><span class="annotations">@Transactional
+@Modifying
+@Query(nativeQuery=true,
+       value="    DELETE FROM\n        addresses\n    WHERE\n        id  = :addressId\n")
+</span><span class="return-type">void</span>&nbsp;<span class="element-name">deleteAddressById</span><wbr><span class="parameters">(@Param("addressId")
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;addressId)</span></div>
+<div class="block">The function deletes an address from the <code>addresses</code> table in the database based on the provided
+ <code>addressId</code>.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>addressId</code> - The <code>addressId</code> parameter is a UUID (Universally Unique Identifier) that
+                  represents the unique identifier of the address to be deleted.</dd>
 </dl>
 </section>
 </li>

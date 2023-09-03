@@ -83,8 +83,8 @@ loadScripts(document, 'script');</script>
 </span><span class="modifiers">public class </span><span class="element-name type-name-label">CorsConfiguration</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements org.springframework.web.servlet.config.annotation.WebMvcConfigurer</span></div>
-<div class="block">The CorsConfiguration class is a Java configuration class that allows cross-origin resource sharing (CORS) for all
- origins and only allows GET and POST HTTP methods.</div>
+<div class="block">The <code>CorsConfiguration</code> class is a Java configuration class that allows cross-origin resource sharing (CORS) for all
+ origins and only allows all CRUD basic HTTP methods.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -115,8 +115,8 @@ implements org.springframework.web.servlet.config.annotation.WebMvcConfigurer</s
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addCorsMappings(org.springframework.web.servlet.config.annotation.CorsRegistry)" class="member-name-link">addCorsMappings</a><wbr>(org.springframework.web.servlet.config.annotation.CorsRegistry&nbsp;registry)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">The addCorsMappings function allows cross-origin resource sharing (CORS) for all origins and only allows GET and
- POST methods.</div>
+<div class="block">The <code>addCorsMappings</code> function allows cross-origin resource sharing (CORS) for all origins and only allows all
+ CRUD basic methods.</div>
 </div>
 </div>
 </div>
@@ -156,14 +156,14 @@ implements org.springframework.web.servlet.config.annotation.WebMvcConfigurer</s
 <section class="detail" id="addCorsMappings(org.springframework.web.servlet.config.annotation.CorsRegistry)">
 <h3>addCorsMappings</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addCorsMappings</span><wbr><span class="parameters">(org.springframework.web.servlet.config.annotation.CorsRegistry&nbsp;registry)</span></div>
-<div class="block">The addCorsMappings function allows cross-origin resource sharing (CORS) for all origins and only allows GET and
- POST methods.</div>
+<div class="block">The <code>addCorsMappings</code> function allows cross-origin resource sharing (CORS) for all origins and only allows all
+ CRUD basic methods.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code>addCorsMappings</code>&nbsp;in interface&nbsp;<code>org.springframework.web.servlet.config.annotation.WebMvcConfigurer</code></dd>
 <dt>Parameters:</dt>
-<dd><code>registry</code> - The registry parameter is an instance of the CorsRegistry class. It is used to configure
- Cross-Origin Resource Sharing (CORS) for the application.</dd>
+<dd><code>registry</code> - The registry parameter is an instance of the <code>CorsRegistry</code> class. It is used to configure
+                 Cross-Origin Resource Sharing (CORS) for the application.</dd>
 </dl>
 </section>
 </li>

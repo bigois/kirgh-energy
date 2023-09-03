@@ -16,11 +16,11 @@ insert into users (id, cpf, email, name, birth_date, gender) values ('85b9a0b6-6
 insert into users (id, cpf, email, name, birth_date, gender) values ('7049f9a7-05ec-4c4f-9bbf-44648d87e7a8', '36927710612', 'luizjorgepeixoto@omnibrasil.com.br', 'Luiz Jorge Osvaldo Peixoto', '1971-05-10', 'M');
 
 -- Database seeding for USER_RELATIONS
-insert into user_relations (child_id, owner_id, relation_type) values ('6f007644-5bdf-4483-bf42-fb7412f66a45', '67459848-3af5-4c99-9276-543c331adcc1', 'Daughter');
-insert into user_relations (child_id, owner_id, relation_type) values ('6f007644-5bdf-4483-bf42-fb7412f66a45', '7049f9a7-05ec-4c4f-9bbf-44648d87e7a8', 'Husband');
-insert into user_relations (child_id, owner_id, relation_type) values ('6f007644-5bdf-4483-bf42-fb7412f66a45', '6d25d927-0199-4123-ba73-877d161bf98e', 'Son');
-insert into user_relations (child_id, owner_id, relation_type) values ('d8535003-7f96-448e-9bbd-7d9026a696f6', 'f9fde553-945f-483a-b38b-4e3c9968112c', 'Wife');
-insert into user_relations (child_id, owner_id, relation_type) values ('d8535003-7f96-448e-9bbd-7d9026a696f6', 'd2022974-1a2a-4005-a324-11a0614e2107', 'Son');
+insert into user_relations (child_id, owner_id, relation_type) values ('67459848-3af5-4c99-9276-543c331adcc1','6f007644-5bdf-4483-bf42-fb7412f66a45', 'Daughter');
+insert into user_relations (child_id, owner_id, relation_type) values ('85b9a0b6-6cb1-4f18-8d95-f0a0bc99c20a','6f007644-5bdf-4483-bf42-fb7412f66a45', 'Husband');
+insert into user_relations (child_id, owner_id, relation_type) values ('6d25d927-0199-4123-ba73-877d161bf98e','6f007644-5bdf-4483-bf42-fb7412f66a45', 'Son');
+insert into user_relations (child_id, owner_id, relation_type) values ('f9fde553-945f-483a-b38b-4e3c9968112c','d8535003-7f96-448e-9bbd-7d9026a696f6', 'Wife');
+insert into user_relations (child_id, owner_id, relation_type) values ('d2022974-1a2a-4005-a324-11a0614e2107','d8535003-7f96-448e-9bbd-7d9026a696f6', 'Son');
 insert into user_relations (child_id, owner_id, relation_type) values ('7049f9a7-05ec-4c4f-9bbf-44648d87e7a8', 'efeddbec-07d1-4cea-bbea-4b1bf96b9e8d', 'Cousin');
 
 -- Database seeding for ADDRESSES

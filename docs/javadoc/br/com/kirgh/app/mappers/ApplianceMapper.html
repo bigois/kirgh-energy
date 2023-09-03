@@ -77,7 +77,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public abstract class </span><span class="element-name type-name-label">ApplianceMapper</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">The ApplianceMapper class converts an ApplianceDTO object to an Appliance object by setting the corresponding
+<div class="block">The <code>ApplianceMapper</code> class converts an <code>ApplianceDTO</code> object to an <code>Appliance</code> object by setting the corresponding
  attributes.</div>
 </section>
 <section class="summary">
@@ -109,7 +109,20 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#applianceDTOToAppliance(br.com.kirgh.app.dtos.ApplianceDTO)" class="member-name-link">applianceDTOToAppliance</a><wbr>(<a href="../dtos/ApplianceDTO.html" title="class in br.com.kirgh.app.dtos">ApplianceDTO</a>&nbsp;applianceDTO)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">The function converts an ApplianceDTO object to an Appliance object by setting the corresponding attributes.</div>
+<div class="block">The function converts an <code>ApplianceDTO</code> object to an <code>Appliance</code> object by setting the corresponding attributes.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../dtos/ApplianceInfoDTO.html" title="class in br.com.kirgh.app.dtos">ApplianceInfoDTO</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#applianceProjectionToApplianceInfoDTO(br.com.kirgh.app.projections.ApplianceProjection)" class="member-name-link">applianceProjectionToApplianceInfoDTO</a><wbr>(<a href="../projections/ApplianceProjection.html" title="interface in br.com.kirgh.app.projections">ApplianceProjection</a>&nbsp;applianceProjection)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">The function <code>applianceProjectionToApplianceInfoDTO</code> converts an <code>ApplianceProjection</code> object
+ into an <code>ApplianceInfoDTO</code> object.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#applianceUpdateDTOToAppliance(br.com.kirgh.app.dtos.ApplianceUpdateDTO,br.com.kirgh.app.entities.Appliance)" class="member-name-link">applianceUpdateDTOToAppliance</a><wbr>(<a href="../dtos/ApplianceUpdateDTO.html" title="class in br.com.kirgh.app.dtos">ApplianceUpdateDTO</a>&nbsp;applianceUpdateDTO,
+ <a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a>&nbsp;updateAppliance)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">The function takes an <code>ApplianceUpdateDTO</code> object and updates the corresponding Appliance object
+ with the values from the DTO.</div>
 </div>
 </div>
 </div>
@@ -146,13 +159,47 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="applianceDTOToAppliance(br.com.kirgh.app.dtos.ApplianceDTO)">
 <h3>applianceDTOToAppliance</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a></span>&nbsp;<span class="element-name">applianceDTOToAppliance</span><wbr><span class="parameters">(<a href="../dtos/ApplianceDTO.html" title="class in br.com.kirgh.app.dtos">ApplianceDTO</a>&nbsp;applianceDTO)</span></div>
-<div class="block">The function converts an ApplianceDTO object to an Appliance object by setting the corresponding attributes.</div>
+<div class="block">The function converts an <code>ApplianceDTO</code> object to an <code>Appliance</code> object by setting the corresponding attributes.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>applianceDTO</code> - An object of type ApplianceDTO, which contains information about an appliance such as its name,
+<dd><code>applianceDTO</code> - An object of type <code>ApplianceDTO</code>, which contains information about an appliance such as its name,
                      brand, model, and power consumption.</dd>
 <dt>Returns:</dt>
 <dd>An instance of the <code>Appliance</code> class is being returned.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="applianceUpdateDTOToAppliance(br.com.kirgh.app.dtos.ApplianceUpdateDTO,br.com.kirgh.app.entities.Appliance)">
+<h3>applianceUpdateDTOToAppliance</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a></span>&nbsp;<span class="element-name">applianceUpdateDTOToAppliance</span><wbr><span class="parameters">(<a href="../dtos/ApplianceUpdateDTO.html" title="class in br.com.kirgh.app.dtos">ApplianceUpdateDTO</a>&nbsp;applianceUpdateDTO,
+ <a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a>&nbsp;updateAppliance)</span></div>
+<div class="block">The function takes an <code>ApplianceUpdateDTO</code> object and updates the corresponding Appliance object
+ with the values from the DTO.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>applianceUpdateDTO</code> - An object of type <code>ApplianceUpdateDTO</code>, which contains the updated
+                           information for an appliance.</dd>
+<dd><code>updateAppliance</code> - The <code>updateAppliance</code> parameter is an instance of the <code>Appliance</code> class
+                           that needs to be updated with the values from the <code>ApplianceUpdateDTO</code> parameter.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning the updated <code>Appliance</code> object.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="applianceProjectionToApplianceInfoDTO(br.com.kirgh.app.projections.ApplianceProjection)">
+<h3>applianceProjectionToApplianceInfoDTO</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../dtos/ApplianceInfoDTO.html" title="class in br.com.kirgh.app.dtos">ApplianceInfoDTO</a></span>&nbsp;<span class="element-name">applianceProjectionToApplianceInfoDTO</span><wbr><span class="parameters">(<a href="../projections/ApplianceProjection.html" title="interface in br.com.kirgh.app.projections">ApplianceProjection</a>&nbsp;applianceProjection)</span></div>
+<div class="block">The function <code>applianceProjectionToApplianceInfoDTO</code> converts an <code>ApplianceProjection</code> object
+ into an <code>ApplianceInfoDTO</code> object.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>applianceProjection</code> - The parameter <code>applianceProjection</code> is of type <code>ApplianceProjection</code>.
+                            It represents an object that contains information about an appliance, such as its id, name,
+                            brand, model, and power.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning an instance of the <code>ApplianceInfoDTO</code> class.</dd>
 </dl>
 </section>
 </li>

@@ -1,5 +1,6 @@
 package br.com.kirgh.app;
 
+import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.info.License;
@@ -14,12 +15,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @OpenAPIDefinition(
         info = @Info(
                 title = "KIRGH Energy",
-                version = "0.0.1",
+                version = "1.0.1",
                 description = "Solution for tracking appliance and home electronic energy use through web APIs",
                 license = @License(
                         name = "MIT License",
                         url = "https://github.com/bigois/kirgh-energy/blob/main/LICENSE"
                 )
+        ),
+        externalDocs = @ExternalDocumentation(
+                url = "https://github.com/bigois/kirgh-energy",
+                description = "Code Repository"
         ),
         servers = {@Server(
                 url = "https://kirgh-energy.up.railway.app")}

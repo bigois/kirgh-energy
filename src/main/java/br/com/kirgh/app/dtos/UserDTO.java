@@ -6,7 +6,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.br.CPF;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * This is a Java record class called {@code UserDTO} that represents a data transfer object for a user. It has six fields:
@@ -21,14 +21,14 @@ import java.util.Date;
 public record UserDTO(
         @NotBlank(message = "cannot be null or empty")
         @Size(min = 2, max = 150, message = "size must be between {min} and {max}")
-        @Pattern(regexp = "[A-zÀ-ú\s]+", message = "must contain only letters")
+        @Pattern(regexp = "[A-zÀ-ú ]+", message = "must contain only letters")
         @Schema(description = "Name to identify an user", example = "Sophie Giovanna da Rocha")
         String name,
 
         @NotNull(message = "cannot be null or empty")
         @Past(message = "must be before the current date")
         @Schema(description = "The date on which the person was born", example = "1986-12-01")
-        Date birthDate,
+        LocalDate birthDate,
 
         @NotNull(message = "cannot be null or empty")
         @Schema(description = "Biological human genders based on chromosome", example = "F")

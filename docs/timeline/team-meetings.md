@@ -10,6 +10,8 @@ parent: Timeline
 This section describes a summarized record of information, decisions, and actions made during the develop meetings.
 {: .fs-6 .fw-300 }
 
+## Module 1
+
 ### 05/03/2023
 - Created a WhatsApp group to establish communication within the team;
 - Conducted team introductions and shared knowledge among team members;
@@ -87,3 +89,62 @@ This section describes a summarized record of information, decisions, and action
 ### 07/03/2023
 - Described the "timeline" wiki section;
 - Create a PDF file to contains all required challenge links. 
+
+---
+## Module 2
+
+### 07/11/2023
+- We had the addition of two new members (Fernando Loi and Matheus Diefenthaeler) and the voluntary departure of member Guilherme Franco.
+- We introduced the team, analyzed LinkedIn profiles, shared experiences, and presented the project board.
+- We showcased the code developed so far and the technologies used.
+
+### 07/15/2023
+- We had a quick meeting to make adjustments to the project board and decided to reserve the month of July to focus on FIAP ON platform classes.
+
+### 08/01/2023
+- We returned to the project and refined each of the activities and their delivery dates.
+
+### 08/03/2023
+- We went over each of the project board activities.
+- We decided which relational database to use and the web request response structure.
+
+### 08/08/2023
+- We defined the priority of project tasks.
+- We initiated the GET requests for the entities.
+
+### 08/10/2023
+- We performed GET All, GET by id, and GET bound User for the User entity.
+- We began to perform GET requests for the other entities (Address, Appliance).
+
+### 08/15/2023
+- Completed GETs for all entities.
+- We decided to use Spring Data's Pageable for filtering.
+- We started implementing Pageable in the User entity's GET requests.
+
+### 08/17/2023
+- We finished implementing Pageable for GET requests in the User entity.
+- We applied Pageable to the other entities.
+- We decided that the user can change only what they want, without the need for all information in the JSON.
+- We began programming the PUT method for the User entity.
+
+### 08/22/2023
+- Completed the PUT method for the User entity.
+- We performed PUT for the other entities (Address, Appliance).
+- We started the DELETE operation for the User entity and defined cascading deletion of relationships.
+
+### 08/24/2023
+- Finished the DELETE method for the User entity.
+- Implemented the Delete method for the other entities following the cascade pattern.
+
+### 08/29/2023
+- We started testing each method for documentation and validation.
+- During the testing of the DELETE method for the User entity, we identified an error when trying to delete a child user due to the relationship, and we fixed it.
+- Completed testing for all methods, including error handling and successful returns.
+
+### 08/31/2023
+- We documented the codes built in phase 2 using Mintilify.
+- Updated the Swagger documentation, adding the GET, PUT, DELETE methods, and their returns.
+
+### 09/02/2023
+- Updated the project's Wiki, including all modifications and methods implemented in this phase, with examples of requests and responses.
+- Reviewed the project as a whole before delivery.

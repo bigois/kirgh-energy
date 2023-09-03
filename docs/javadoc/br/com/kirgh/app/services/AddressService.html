@@ -78,7 +78,7 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="annotations">@Service
 </span><span class="modifiers">public class </span><span class="element-name type-name-label">AddressService</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">The AddressService class creates and saves a new address to the database, along with its relation to a parent user, and
+<div class="block">The <code>AddressService</code> class creates and saves a new address to the database, along with its relation to a parent user, and
  returns a response with the new address's ID and a success message.</div>
 </section>
 <section class="summary">
@@ -112,6 +112,44 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">This function creates a new address and saves it to the database, while also checking if
  the parent user exists and if the address already exists for that user.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#deleteAddressById(java.util.UUID)" class="member-name-link">deleteAddressById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">This function deletes an address by its ID, along with its related appliances and address
+ relations.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.data.domain.Page&lt;<a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAddresses(org.springframework.data.domain.Pageable)" class="member-name-link">getAddresses</a><wbr>(org.springframework.data.domain.Pageable&nbsp;pageable)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">This function retrieves a page of addresses from the address repository in a read-only
+ transaction.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAllAddressInfoById(java.util.UUID)" class="member-name-link">getAllAddressInfoById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">The function retrieves address information by its ID from the address repository, throwing an
+ exception if the address is not found.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../dtos/AddressCompleteInfoDTO.html" title="class in br.com.kirgh.app.dtos">AddressCompleteInfoDTO</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAllAppliancesBoundAddress(java.util.UUID)" class="member-name-link">getAllAppliancesBoundAddress</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">This function retrieves an address and a list of appliances associated with that address, and
+ returns them as a <code>DTO</code> object.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.data.domain.Page&lt;<a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getFilteredAddresses(java.util.Map,org.springframework.data.domain.Pageable)" class="member-name-link">getFilteredAddresses</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;filters,
+ org.springframework.data.domain.Pageable&nbsp;pageable)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">The function retrieves filtered addresses based on the provided filters and pageable
+ information.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateAddressInfoById(java.util.UUID,br.com.kirgh.app.dtos.AddressUpdateDTO)" class="member-name-link">updateAddressInfoById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id,
+ <a href="../dtos/AddressUpdateDTO.html" title="class in br.com.kirgh.app.dtos">AddressUpdateDTO</a>&nbsp;addressUpdateDTO)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">The function updates an address by its ID using the information provided in the <code>AddressUpdateDTO</code>
+ object.</div>
 </div>
 </div>
 </div>
@@ -153,10 +191,115 @@ loadScripts(document, 'script');</script>
  the parent user exists and if the address already exists for that user.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>addressDTO</code> - An object of type AddressDTO that contains the information needed to create a
+<dd><code>addressDTO</code> - An object of type <code>AddressDTO</code> that contains the information needed to create a
                    new address.</dd>
 <dt>Returns:</dt>
 <dd>The method is returning an instance of the Address class.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getAddresses(org.springframework.data.domain.Pageable)">
+<h3>getAddresses</h3>
+<div class="member-signature"><span class="annotations">@Transactional(readOnly=true)
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.data.domain.Page&lt;<a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a>&gt;</span>&nbsp;<span class="element-name">getAddresses</span><wbr><span class="parameters">(org.springframework.data.domain.Pageable&nbsp;pageable)</span></div>
+<div class="block">This function retrieves a page of addresses from the address repository in a read-only
+ transaction.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>pageable</code> - The <code>pageable</code> parameter is an object of type <code>Pageable</code> which represents the
+                 pagination information for the query. It contains details such as the page number, page size,
+                 sorting criteria, etc.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a Page object containing a list of Address entities.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getFilteredAddresses(java.util.Map,org.springframework.data.domain.Pageable)">
+<h3>getFilteredAddresses</h3>
+<div class="member-signature"><span class="annotations">@Transactional(readOnly=true)
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.data.domain.Page&lt;<a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a>&gt;</span>&nbsp;<span class="element-name">getFilteredAddresses</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;filters,
+ org.springframework.data.domain.Pageable&nbsp;pageable)</span></div>
+<div class="block">The function retrieves filtered addresses based on the provided filters and pageable
+ information.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>filters</code> - A map containing the filters to be applied to the addresses. The keys of the map
+                 represent the field names of the <code>Address</code> entity, and the values represent the filter values for
+                 those fields.</dd>
+<dd><code>pageable</code> - The <code>pageable</code> parameter is used to specify the pagination settings for the
+                 query. It includes information such as the page number, page size, and sorting criteria. This
+                 allows the method to return a specific page of results instead of retrieving all addresses at
+                 once.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a Page object containing a list of <code>Address</code> entities that match
+ the specified filters and are paginated according to the provided Pageable object.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getAllAddressInfoById(java.util.UUID)">
+<h3>getAllAddressInfoById</h3>
+<div class="member-signature"><span class="annotations">@Transactional(readOnly=true)
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a></span>&nbsp;<span class="element-name">getAllAddressInfoById</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
+<div class="block">The function retrieves address information by its ID from the address repository, throwing an
+ exception if the address is not found.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The id parameter is of type <code>UUID</code> and represents the unique identifier of the address
+           that we want to retrieve information for.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning an instance of the <code>Address</code> class.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getAllAppliancesBoundAddress(java.util.UUID)">
+<h3>getAllAppliancesBoundAddress</h3>
+<div class="member-signature"><span class="annotations">@Transactional(readOnly=true)
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../dtos/AddressCompleteInfoDTO.html" title="class in br.com.kirgh.app.dtos">AddressCompleteInfoDTO</a></span>&nbsp;<span class="element-name">getAllAppliancesBoundAddress</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
+<div class="block">This function retrieves an address and a list of appliances associated with that address, and
+ returns them as a <code>DTO</code> object.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The parameter <code>id</code> is of type <code>UUID</code> and represents the unique identifier of an address.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning an instance of the <code>AddressCompleteInfoDTO</code> class.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="updateAddressInfoById(java.util.UUID,br.com.kirgh.app.dtos.AddressUpdateDTO)">
+<h3>updateAddressInfoById</h3>
+<div class="member-signature"><span class="annotations">@Transactional
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a></span>&nbsp;<span class="element-name">updateAddressInfoById</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id,
+ <a href="../dtos/AddressUpdateDTO.html" title="class in br.com.kirgh.app.dtos">AddressUpdateDTO</a>&nbsp;addressUpdateDTO)</span></div>
+<div class="block">The function updates an address by its ID using the information provided in the <code>AddressUpdateDTO</code>
+ object.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The <code>id</code> parameter is of type <code>UUID</code> and represents the unique identifier of the address to
+                         be updated.</dd>
+<dd><code>addressUpdateDTO</code> - The <code>addressUpdateDTO</code> parameter is an object of type <code>AddressUpdateDTO</code>. It
+                         contains the updated information for an address, such as the street, city, state, postal code,
+                         etc.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning an instance of the <code>Address</code> class.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="deleteAddressById(java.util.UUID)">
+<h3>deleteAddressById</h3>
+<div class="member-signature"><span class="annotations">@Transactional
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">deleteAddressById</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
+<div class="block">This function deletes an address by its ID, along with its related appliances and address
+ relations.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The <code>id</code> parameter is a <code>UUID</code> (Universally Unique Identifier) that represents the
+           unique identifier of the address to be deleted.</dd>
 </dl>
 </section>
 </li>

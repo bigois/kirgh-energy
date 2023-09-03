@@ -77,11 +77,10 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="annotations">@RestController
 @RequestMapping(path="/api/v1/appliances",
-                consumes="application/json",
                 produces="application/json")
 </span><span class="modifiers">public class </span><span class="element-name type-name-label">ApplianceController</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">The ApplianceController class is a Java REST controller that handles requests related to creating new appliances.</div>
+<div class="block">The <code>ApplianceController</code> class is a Java REST controller that handles requests related to creating new appliances.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -112,7 +111,33 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#applianceRegister(br.com.kirgh.app.dtos.ApplianceDTO)" class="member-name-link">applianceRegister</a><wbr>(@Valid <a href="../dtos/ApplianceDTO.html" title="class in br.com.kirgh.app.dtos">ApplianceDTO</a>&nbsp;applianceDTO)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">This is a Java function that creates a new appliance using the data provided in the ApplianceDTO object.</div>
+<div class="block">This is a Java function that creates a new appliance using the data provided in the <code>ApplianceDTO</code> object.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#deleteApplianceById(java.util.UUID)" class="member-name-link">deleteApplianceById</a><wbr>(@NonNull <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">The function is a DELETE endpoint for deleting an appliance and returning a JSON response with no
+ content.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAllApplianceInfoById(java.util.UUID)" class="member-name-link">getAllApplianceInfoById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">This function retrieves appliance information by its ID and returns a JSON response with the
+ appliance's info.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;org.springframework.data.domain.Page&lt;<a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a>&gt;&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getFilteredAppliances(org.springframework.data.domain.Pageable,java.util.Map)" class="member-name-link">getFilteredAppliances</a><wbr>(org.springframework.data.domain.Pageable&nbsp;pageable,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;filters)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">This Java function retrieves a paginated list of appliances based on filters and returns a JSON
+ response with the appliance information.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateApplianceInfoById(java.util.UUID,br.com.kirgh.app.dtos.ApplianceUpdateDTO)" class="member-name-link">updateApplianceInfoById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id,
+ @Valid <a href="../dtos/ApplianceUpdateDTO.html" title="class in br.com.kirgh.app.dtos">ApplianceUpdateDTO</a>&nbsp;applianceUpdateDTO)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">The function updates the information of an appliance and returns a JSON response with the updated
+ appliance's information.</div>
 </div>
 </div>
 </div>
@@ -148,10 +173,10 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="applianceRegister(br.com.kirgh.app.dtos.ApplianceDTO)">
 <h3>applianceRegister</h3>
-<div class="member-signature"><span class="annotations">@PostMapping
+<div class="member-signature"><span class="annotations">@PostMapping(consumes="application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">applianceRegister</span><wbr><span class="parameters">(@RequestBody @Valid
  @Valid <a href="../dtos/ApplianceDTO.html" title="class in br.com.kirgh.app.dtos">ApplianceDTO</a>&nbsp;applianceDTO)</span></div>
-<div class="block">This is a Java function that creates a new appliance using the data provided in the ApplianceDTO object.</div>
+<div class="block">This is a Java function that creates a new appliance using the data provided in the <code>ApplianceDTO</code> object.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>applianceDTO</code> - The parameter <code>applianceDTO</code> is of type <code>ApplianceDTO</code> and is annotated with <code>@RequestBody</code> and
@@ -161,6 +186,86 @@ loadScripts(document, 'script');</script>
 <dd>The method <code>applianceRegister</code> is returning a <code>ResponseEntity</code> object, which can contain any type of
  response data along with an HTTP status code. The actual response data being returned depends on the implementation
  of the <code>createAppliance</code> method in the <code>applianceService</code> class.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getFilteredAppliances(org.springframework.data.domain.Pageable,java.util.Map)">
+<h3>getFilteredAppliances</h3>
+<div class="member-signature"><span class="annotations">@GetMapping
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;org.springframework.data.domain.Page&lt;<a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a>&gt;&gt;</span>&nbsp;<span class="element-name">getFilteredAppliances</span><wbr><span class="parameters">(org.springframework.data.domain.Pageable&nbsp;pageable,
+ @RequestParam
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;filters)</span></div>
+<div class="block">This Java function retrieves a paginated list of appliances based on filters and returns a JSON
+ response with the appliance information.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>pageable</code> - The <code>pageable</code> parameter is used for pagination and sorting. It allows you to
+                 specify the page number, page size, and sorting criteria for the list of appliances. This parameter
+                 is of type <code>Pageable</code>, which is a Spring Data interface that provides convenient methods for
+                 pagination and sorting.</dd>
+<dd><code>filters</code> - A map of filters for searching appliances. The keys in the map represent the filter
+                 criteria, and the values represent the filter values.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a <code>ResponseEntity</code> object containing a Page of <code>Appliance</code> objects.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getAllApplianceInfoById(java.util.UUID)">
+<h3>getAllApplianceInfoById</h3>
+<div class="member-signature"><span class="annotations">@GetMapping("/{id}")
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a>&gt;</span>&nbsp;<span class="element-name">getAllApplianceInfoById</span><wbr><span class="parameters">(@PathVariable
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
+<div class="block">This function retrieves appliance information by its ID and returns a JSON response with the
+ appliance's info.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The <code>id</code> parameter is a UUID (Universally Unique Identifier) that represents the unique
+           identifier of the appliance.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a <code>ResponseEntity</code> object with the HTTP status code 200 (OK) and the
+ body containing the Appliance object.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="updateApplianceInfoById(java.util.UUID,br.com.kirgh.app.dtos.ApplianceUpdateDTO)">
+<h3>updateApplianceInfoById</h3>
+<div class="member-signature"><span class="annotations">@PutMapping(path="/{id}",
+            consumes="application/json")
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="../entities/Appliance.html" title="class in br.com.kirgh.app.entities">Appliance</a>&gt;</span>&nbsp;<span class="element-name">updateApplianceInfoById</span><wbr><span class="parameters">(@PathVariable
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id,
+ @RequestBody @Valid
+ @Valid <a href="../dtos/ApplianceUpdateDTO.html" title="class in br.com.kirgh.app.dtos">ApplianceUpdateDTO</a>&nbsp;applianceUpdateDTO)</span></div>
+<div class="block">The function updates the information of an appliance and returns a JSON response with the updated
+ appliance's information.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The id parameter is a UUID (Universally Unique Identifier) that represents the unique
+                           identifier of the appliance to be updated.</dd>
+<dd><code>applianceUpdateDTO</code> - The <code>applianceUpdateDTO</code> parameter is of type <code>ApplianceUpdateDTO</code> and is
+                           annotated with <code>@RequestBody</code> and <code>@Valid</code>. It represents the updated information for the appliance.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a ResponseEntity object with the updated Appliance information in
+ the body. The HTTP status code is set to 200 (OK).</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="deleteApplianceById(java.util.UUID)">
+<h3>deleteApplianceById</h3>
+<div class="member-signature"><span class="annotations">@DeleteMapping("/{id}")
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">deleteApplianceById</span><wbr><span class="parameters">(@NonNull @PathVariable
+ @NonNull <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
+<div class="block">The function is a DELETE endpoint for deleting an appliance and returning a JSON response with no
+ content.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The <code>id</code> parameter is a UUID (Universally Unique Identifier) that represents the unique
+           identifier of the appliance to be deleted.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a <code>ResponseEntity&lt;String&gt;</code> object.</dd>
 </dl>
 </section>
 </li>

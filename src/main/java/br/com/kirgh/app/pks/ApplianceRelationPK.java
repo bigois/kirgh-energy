@@ -12,10 +12,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
- * This is a Java class representing a composite primary key for a many-to-one relationship between an Address and an
- * Appliance entity.
+ * This is a Java class representing a composite primary key for a many-to-one relationship between an {@code Address} and an
+ * {@code Appliance} entity.
  */
 @NoArgsConstructor
 @AllArgsConstructor
@@ -33,7 +34,7 @@ public class ApplianceRelationPK implements Serializable {
     private Address address;
 
     /**
-     * This code is defining a many-to-one relationship between the `ApplianceRelationPK` entity and
+     * This code is defining a many-to-one relationship between the {@code ApplianceRelationPK} entity and
      * the {@code Appliance} entity.
      */
     @ManyToOne
@@ -41,10 +42,10 @@ public class ApplianceRelationPK implements Serializable {
     private Appliance appliance;
 
     /**
-     * This is an implementation of the equals method for a class called ApplianceRelationPK that checks if two objects are
+     * This is an implementation of the {@code equals} method for a class called {@code ApplianceRelationPK} that checks if two objects are
      * equal based on their address and appliance attributes.
      *
-     * @param o The parameter "o" is an object of type Object, which is the superclass of all other classes in Java. In
+     * @param o The parameter {@code o} is an object of type {@code Object}, which is the superclass of all other classes in Java. In
      *          this case, it is used to compare the current object with another object to check if they are equal.
      * @return A boolean value indicating whether the object being compared to is equal to the current object or not.
      */
@@ -54,14 +55,12 @@ public class ApplianceRelationPK implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ApplianceRelationPK that = (ApplianceRelationPK) o;
-
-        if (!address.equals(that.address)) return false;
-        return appliance.equals(that.appliance);
+        return Objects.equals(address, that.address) && Objects.equals(appliance, that.appliance);
     }
 
     /**
-     * This is an implementation of the hashCode() method in Java that returns a unique hash code based on the combination
-     * of the hash codes of the address and appliance objects.
+     * This is an implementation of the {@code hashCode()} method in Java that returns a unique hash code based on the combination
+     * of the hash codes of the {@code address} and {@code appliance} objects.
      *
      * @return The {@code hashCode()} method is returning an integer value that is calculated based on the hash codes of the
      * {@code address} and {@code appliance} objects. The calculation involves multiplying the hash code of {@code address} by 31 and adding
@@ -69,8 +68,7 @@ public class ApplianceRelationPK implements Serializable {
      */
     @Override
     public int hashCode() {
-        int result = address.hashCode();
-        result = 31 * result + appliance.hashCode();
-        return result;
+        return Objects.hash(address, appliance);
     }
+
 }

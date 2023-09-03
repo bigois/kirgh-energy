@@ -23,11 +23,11 @@ public class ApplianceRelation {
     ApplianceRelationPK applianceRelationPK = new ApplianceRelationPK();
 
     /**
-     * This is an implementation of the equals method in Java that checks if two objects of the same class have equal
+     * This is an implementation of the {@code equals} method in Java that checks if two objects of the same class have equal
      * primary keys.
      *
-     * @param o The parameter "o" is an object of type Object, which is the superclass of all other classes in Java. It is
-     *          used to compare the equality of two objects of the ApplianceRelation class.
+     * @param o The parameter {@code o} is an object of type {@code Object}, which is the superclass of all other classes in Java. It is
+     *          used to compare the equality of two objects of the {@code ApplianceRelation} class.
      * @return The {@code equals} method is returning a boolean value, which indicates whether the current object is equal to the
      * object passed as an argument.
      */
@@ -42,7 +42,7 @@ public class ApplianceRelation {
     }
 
     /**
-     * This function returns the hash code of the applianceRelationPK object.
+     * This function returns the hash code of the {@code applianceRelationPK} object.
      *
      * @return The {@code hashCode()} method is returning the hash code value of the {@code applianceRelationPK} object.
      */

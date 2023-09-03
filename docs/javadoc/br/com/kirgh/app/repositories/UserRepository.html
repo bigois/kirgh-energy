@@ -81,7 +81,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <div class="block">This line of code is defining an interface called <code>UserRepository</code> that extends the <code>JpaRepository</code>
  interface. The <code>JpaRepository</code> interface is a Spring Data interface that provides methods for
  performing common database operations on a specific entity type (<code>User</code> in this case). The second
- parameter of <code>JpaRepository</code> (<code>UUID</code>) specifies the type of the primary key for the <code>User</code> entity.
+ parameter of <code>JpaRepository</code> (UUID) specifies the type of the primary key for the <code>User</code> entity.
  Therefore, <code>UserRepository</code> inherits all the methods of <code>JpaRepository</code> and can also define
  additional methods specific to the <code>User</code> entity.</div>
 </section>
@@ -98,15 +98,27 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#existsByCpf(java.lang.String)" class="member-name-link">existsByCpf</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;cpf)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#deleteUserById(java.util.UUID)" class="member-name-link">deleteUserById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;userId)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
-<div class="block">The function checks if a record exists in a database by its CPF (Brazilian ID) number.</div>
+<div class="block">The function deletes a user from the database based on their ID.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#existsByEmail(java.lang.String)" class="member-name-link">existsByEmail</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;email)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#existsByCpf(java.lang.String)" class="member-name-link">existsByCpf</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;cpf)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">The function checks if a record exists in a database by its CPF (Brazilian ID) number.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#existsByEmail(java.lang.String)" class="member-name-link">existsByEmail</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;email)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">The function checks if an email exists in a database or list.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>org.springframework.data.domain.Page&lt;<a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#findAll(org.springframework.data.jpa.domain.Specification,org.springframework.data.domain.Pageable)" class="member-name-link">findAll</a><wbr>(org.springframework.data.jpa.domain.Specification&nbsp;spec,
+ org.springframework.data.domain.Pageable&nbsp;pageable)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">The function <code>findAll</code> returns a page of users that match the given specification and pageable
+ parameters.</div>
 </div>
 </div>
 </div>
@@ -147,7 +159,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <div class="block">The function checks if an email exists in a database or list.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>email</code> - The email parameter is a string that represents an email address. The method existsByEmail checks if
+<dd><code>email</code> - The email parameter is a string that represents an email address. The method <code>existsByEmail</code> checks if
               there is any record in a database or list that matches the given email address. It returns a boolean value, true if
               the email exists in the database or list, and false if it does not exist.</dd>
 <dt>Returns:</dt>
@@ -163,13 +175,51 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <div class="block">The function checks if a record exists in a database by its CPF (Brazilian ID) number.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>cpf</code> - The "cpf" parameter is a string representing a Brazilian individual taxpayer registry identification
+<dd><code>cpf</code> - The <code>cpf</code> parameter is a string representing a Brazilian individual taxpayer registry identification
             number, also known as "Cadastro de Pessoas FÃ­sicas" (CPF). It is a unique identifier assigned to each Brazilian
-            citizen or resident for tax and administrative purposes. The method "existsByCpf" is</dd>
+            citizen or resident for tax and administrative purposes. The method <code>existsByCpf</code> is</dd>
 <dt>Returns:</dt>
-<dd>A boolean value is being returned. The method name "existsByCpf" suggests that it checks whether a record
+<dd>A boolean value is being returned. The method name <code>existsByCpf</code> suggests that it checks whether a record
  exists in a database or collection based on a given CPF (Brazilian individual taxpayer registry identification)
  number. If a record with the given CPF exists, the method will return true, otherwise it will return false.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="findAll(org.springframework.data.jpa.domain.Specification,org.springframework.data.domain.Pageable)">
+<h3>findAll</h3>
+<div class="member-signature"><span class="return-type">org.springframework.data.domain.Page&lt;<a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a>&gt;</span>&nbsp;<span class="element-name">findAll</span><wbr><span class="parameters">(org.springframework.data.jpa.domain.Specification&nbsp;spec,
+ org.springframework.data.domain.Pageable&nbsp;pageable)</span></div>
+<div class="block">The function <code>findAll</code> returns a page of users that match the given specification and pageable
+ parameters.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>spec</code> - The <code>spec</code> parameter is a Specification object that defines the criteria for
+                 filtering the results. It allows you to dynamically build complex queries based on various
+                 conditions.</dd>
+<dd><code>pageable</code> - The pageable parameter is used to specify the pagination settings for the query
+                 results. It includes information such as the page number, the number of items per page, and the
+                 sorting criteria. This allows you to retrieve a specific page of results from the query.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a <code>Page</code> object containing a list of <code>User</code> objects that match the
+ given <code>Specification</code>, with pagination applied according to the provided <code>Pageable</code> object.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="deleteUserById(java.util.UUID)">
+<h3>deleteUserById</h3>
+<div class="member-signature"><span class="annotations">@Transactional
+@Modifying
+@Query(nativeQuery=true,
+       value="    DELETE FROM\n        users\n    WHERE\n        id  = :userId\n")
+</span><span class="return-type">void</span>&nbsp;<span class="element-name">deleteUserById</span><wbr><span class="parameters">(@Param("userId")
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;userId)</span></div>
+<div class="block">The function deletes a user from the database based on their ID.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>userId</code> - The <code>userId</code> parameter is of type <code>UUID</code> and represents the unique identifier of
+               the user that needs to be deleted from the <code>users</code> table.</dd>
 </dl>
 </section>
 </li>
