@@ -20,6 +20,7 @@ import java.util.UUID;
  * Therefore, {@code UserRepository} inherits all the methods of {@code JpaRepository} and can also define
  * additional methods specific to the {@code User} entity.
  */
+@SuppressWarnings("SqlResolve")
 public interface UserRepository extends JpaRepository<User, UUID> {
     /**
      * The function checks if an email exists in a database or list.

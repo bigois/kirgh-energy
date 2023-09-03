@@ -59,8 +59,7 @@ public class AddressController {
             }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
 
             @ApiResponse(responseCode = "400", description = "BAD REQUEST - Invalid body content", content = @Content(examples = {
-                    @ExampleObject(summary = "Invalid content",
-                            value = "")
+                    @ExampleObject(summary = "Invalid content")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
             @ApiResponse(responseCode = "404", description = "NOT FOUND - Parent id not found", content = @Content(examples = {
                     @ExampleObject(summary = "Invalid Parent Id",
@@ -68,7 +67,7 @@ public class AddressController {
             }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
             @ApiResponse(responseCode = "409", description = "CONFLICT - address already exists to user", content = @Content(examples = {
                     @ExampleObject(summary = "Conflict parent id",
-                            value = "{\"street\": \"Rua Jose\", \"zipCode\":\"08421520\", \"number\": 185, \"city\":\"S\u00E3o Paulo\", \"state\":\"SP\", \"parentId\":\"6f007644-5bdf-4483-bf42-fb7412f66a45\"}")
+                            value = "{\"street\": \"Rua Jose\", \"zipCode\":\"08421520\", \"number\": 185, \"city\":\"São Paulo\", \"state\":\"SP\", \"parentId\":\"6f007644-5bdf-4483-bf42-fb7412f66a45\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
             @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR - Something goes wrong", content = @Content(examples = {
                     @ExampleObject(summary = "Internal Server Error",
@@ -215,8 +214,7 @@ public class AddressController {
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK", content = @Content(examples = {
-                    @ExampleObject(summary = "Delete an Address.",
-                            value = "")
+                    @ExampleObject(summary = "Delete an Address.")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
 
             @ApiResponse(responseCode = "404", description = "NOT FOUND - Owner id not found", content = @Content(examples = {

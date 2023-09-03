@@ -17,6 +17,7 @@ import java.util.UUID;
  * the {@code AddressRelation} entity and its primary key {@code AddressRelationPK}. By extending the {@code JpaRepository} interface, the
  * {@code AddressRelationRepository} interface will inherit all the methods provided by {@code JpaRepository} for working with the
  */
+@SuppressWarnings("SqlResolve")
 public interface AddressRelationRepository extends JpaRepository<AddressRelation, AddressRelationPK> {
 
     @Transactional

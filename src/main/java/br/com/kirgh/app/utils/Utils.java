@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 /**
  * The Utils class is an abstract class that provides utility methods.
  */
+@SuppressWarnings("unchecked")
 public abstract class Utils {
     /**
      * The function converts a byte array to a UUID object in Java.
@@ -82,10 +83,10 @@ public abstract class Utils {
             List<Predicate> predicates = new ArrayList<>();
 
             filters.forEach((key, value) -> {
-                Class<?> fieldType = root.get(key).getJavaType();
+                Class fieldType = root.get(key).getJavaType();
 
                 if (Enum.class.isAssignableFrom(fieldType)) {
-                    Enum<?> enumValue = Enum.valueOf((Class<Enum>) fieldType, value);
+                    Enum<?> enumValue = Enum.valueOf(fieldType, value);
                     predicates.add(builder.equal(root.get(key), enumValue));
                 } else {
                     predicates.add(builder.like(root.get(key), "%" + value + "%"));

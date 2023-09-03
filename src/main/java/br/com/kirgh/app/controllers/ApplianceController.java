@@ -171,8 +171,7 @@ public class ApplianceController {
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "No content", content = @Content(examples = {
-                    @ExampleObject(summary = "Create an Appliance",
-                            value = "")
+                    @ExampleObject(summary = "Create an Appliance")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
 
             @ApiResponse(responseCode = "404", description = "NOT FOUND - Appliance id not found", content = @Content(examples = {

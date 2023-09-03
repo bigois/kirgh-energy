@@ -17,6 +17,7 @@ import java.util.UUID;
  * {@code UserRelationPK} is the primary key class for the {@code UserRelation} entity, and it is used as the second generic type
  * parameter of the {@code JpaRepository} interface. This allows the repository to handle composite primary keys.
  */
+@SuppressWarnings("SqlResolve")
 public interface UserRelationRepository extends JpaRepository<UserRelation, UserRelationPK> {
 
     /**
@@ -47,8 +48,8 @@ public interface UserRelationRepository extends JpaRepository<UserRelation, User
      */
     @Query(nativeQuery = true,
             value = """
-                        SELECT 
-                            user_relations.child_id, user_relations.owner_id, user_relations.relation_type 
+                        SELECT
+                            user_relations.child_id, user_relations.owner_id, user_relations.relation_type
                         FROM
                             user_relations
                         WHERE

@@ -21,18 +21,8 @@ import java.util.UUID;
  * entity and use a {@code UUID} as the type for the entity's ID. This interface will allow the application to perform database
  * operations on the {@code Appliance} entity using Spring Data's built-in methods.
  */
+@SuppressWarnings("SqlResolve")
 public interface ApplianceRepository extends JpaRepository<Appliance, UUID> {
-
-    /**
-     * The function returns a paginated list of all Appliance objects.
-     *
-     * @param pageable The `pageable` parameter is an object that represents the pagination information
-     *                 for the query. It allows you to specify the page number, the number of items per page, and the
-     *                 sorting criteria for the query results.
-     * @return The method `findAll` returns a `Page` object containing a list of `Appliance` objects.
-     */
-    Page<Appliance> findAll(Pageable pageable);
-
     /**
      * The function returns a page of Appliance objects that match the given Specification and are
      * paginated according to the given Pageable object.

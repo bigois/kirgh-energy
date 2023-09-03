@@ -53,17 +53,7 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
                     """
     )
     boolean existsToUserByUnique(@Param("userId") UUID userId, @Param("zipCode") String zipCode, @Param("number") String number);
-
-    /**
-     * The function returns a page of addresses based on the given pageable parameters.
-     *
-     * @param pageable The pageable parameter is an object that represents the pagination information
-     *                 for the query. It includes details such as the page number, page size, sorting criteria, and
-     *                 more. It allows you to retrieve a specific page of results from a larger dataset.
-     * @return The method is returning a Page object containing a list of Address objects.
-     */
-    Page<Address> findAll(Pageable pageable);
-
+    
     /**
      * The function returns a page of addresses that match the given specification and pageable
      * parameters.

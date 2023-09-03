@@ -119,7 +119,7 @@ public class HandleErrors {
      * @param ex "ex" is a variable representing the exception that was thrown. It is used in the method to catch any type
      *           of exception that may occur during the execution of the code.
      * @return A {@code Map} object containing the timestamp and an error message is being returned. This is the result of
-     * handling an exception of type {@code Exception} with the {@code @ExceptionHandler} annotation and the {@code @ResponseStatus}
+     * handling an exception with the {@code @ExceptionHandler} annotation and the {@code @ResponseStatus}
      * annotation indicating that the HTTP status code should be set to {@code INTERNAL_SERVER_ERROR}. The method logs the
      * exception stack trace and returns a map with the timestamp and error message.
      */

@@ -17,6 +17,7 @@ import java.util.UUID;
  * extending this interface, the {@code ApplianceRelationRepository} interface inherits these methods and can
  * {@code ApplianceRelationPK}.
  */
+@SuppressWarnings("SqlResolve")
 public interface ApplianceRelationRepository extends JpaRepository<ApplianceRelation, ApplianceRelationPK> {
 
     @Transactional

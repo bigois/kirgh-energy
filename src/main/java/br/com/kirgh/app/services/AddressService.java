@@ -142,7 +142,7 @@ public class AddressService {
 
         AddressCompleteInfoDTO addressCompleteInfoDTO = new AddressCompleteInfoDTO();
 
-        applianceProjection.stream().forEach(applianceItem -> applianceList.add(ApplianceMapper.applianceProjectionToApplianceInfoDTO(applianceItem)));
+        applianceProjection.forEach(applianceItem -> applianceList.add(ApplianceMapper.applianceProjectionToApplianceInfoDTO(applianceItem)));
 
         addressCompleteInfoDTO.setAddressData(address);
         addressCompleteInfoDTO.setAppliances(applianceList);

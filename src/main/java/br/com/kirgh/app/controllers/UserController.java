@@ -217,10 +217,8 @@ public class UserController {
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "OK - User successfully deleted", content = @Content(examples = {
-                    @ExampleObject(summary = "Delete an User.",
-                            value = "")
+                    @ExampleObject(summary = "Delete an User.")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
-
             @ApiResponse(responseCode = "400", description = "BAD REQUEST - Invalid body content", content = @Content(examples = {
                     @ExampleObject(summary = "Invalid content",
                             value = "{\"name\": \"must contain only letters\", \"timestamp\": \"2023-08-26T01:00:05.809350200Z\"}")
