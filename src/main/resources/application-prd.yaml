@@ -8,7 +8,7 @@ logging:
 spring:
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://${PGHOST}:${PGPORT}/${DBNAME}
+    url: jdbc:postgresql://${{kirgh-energy.PGHOST}}:${PGPORT}/${DBNAME}
     username: ${PGUSER}
     password: ${PGPASSWORD}
   jpa:
