@@ -17,7 +17,6 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "appliances")
-@SuppressWarnings("JpaDataSourceORMInspection")
 public class Appliance {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
