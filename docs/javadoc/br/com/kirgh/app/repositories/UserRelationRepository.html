@@ -15,7 +15,11 @@
 <script type="text/javascript" src="../../../../../script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="class-declaration-page">
-<script type="text/javascript">var pathtoroot = "../../../../../";
+<script type="text/javascript">var evenRowColor = "even-row-color";
+var oddRowColor = "odd-row-color";
+var tableTab = "table-tab";
+var activeTableTab = "active-table-tab";
+var pathtoroot = "../../../../../";
 loadScripts(document, 'script');</script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
@@ -48,7 +52,7 @@ loadScripts(document, 'script');</script>
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#method-detail">Method</a></li>
 </ul>
 </div>
 <div class="nav-list-search"><label for="search-input">SEARCH:</label>
@@ -85,6 +89,27 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <li>
 <section class="method-summary" id="method-summary">
 <h2>Method Summary</h2>
+<div id="method-summary-table">
+<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab3" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab3', 3)" class="table-tab">Abstract Methods</button></div>
+<div id="method-summary-table.tabpanel" role="tabpanel">
+<div class="summary-table three-column-summary" aria-labelledby="method-summary-table-tab0">
+<div class="table-header col-first">Modifier and Type</div>
+<div class="table-header col-second">Method</div>
+<div class="table-header col-last">Description</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#deleteParentRelationByChildId(java.util.UUID)" class="member-name-link">deleteParentRelationByChildId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;childId)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">The function deletes a parent-child relationship from the <code>user_relations</code> table based on the
+ child's ID.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../entities/UserRelation.html" title="class in br.com.kirgh.app.entities">UserRelation</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getAllUsersRelationBoundUser(java.util.UUID)" class="member-name-link">getAllUsersRelationBoundUser</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;ownerId)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">The function retrieves all user relations associated with a specific owner ID.</div>
+</div>
+</div>
+</div>
+</div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-org.springframework.data.repository.CrudRepository">Methods inherited from interface&nbsp;org.springframework.data.repository.CrudRepository</h3>
 <code>count, delete, deleteAll, deleteAll, deleteAllById, deleteById, existsById, findById, save</code></div>
@@ -103,6 +128,53 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-org.springframework.data.repository.query.QueryByExampleExecutor">Methods inherited from interface&nbsp;org.springframework.data.repository.query.QueryByExampleExecutor</h3>
 <code>count, exists, findAll, findBy, findOne</code></div>
+</section>
+</li>
+</ul>
+</section>
+<section class="details">
+<ul class="details-list">
+<!-- ============ METHOD DETAIL ========== -->
+<li>
+<section class="method-details" id="method-detail">
+<h2>Method Details</h2>
+<ul class="member-list">
+<li>
+<section class="detail" id="deleteParentRelationByChildId(java.util.UUID)">
+<h3>deleteParentRelationByChildId</h3>
+<div class="member-signature"><span class="annotations">@Transactional
+@Modifying
+@Query(nativeQuery=true,
+       value="    DELETE FROM\n        user_relations\n    WHERE\n        child_id = :childId\n")
+</span><span class="return-type">void</span>&nbsp;<span class="element-name">deleteParentRelationByChildId</span><wbr><span class="parameters">(@Param("childId")
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;childId)</span></div>
+<div class="block">The function deletes a parent-child relationship from the <code>user_relations</code> table based on the
+ child's ID.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>childId</code> - The <code>childId</code> parameter is a UUID (Universally Unique Identifier) that represents
+                the ID of the child for which the parent relation needs to be deleted.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getAllUsersRelationBoundUser(java.util.UUID)">
+<h3>getAllUsersRelationBoundUser</h3>
+<div class="member-signature"><span class="annotations">@Query(nativeQuery=true,
+       value="    SELECT\n        user_relations.child_id, user_relations.owner_id, user_relations.relation_type\n    FROM\n        user_relations\n    WHERE\n        owner_id = :ownerId\n")
+</span><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../entities/UserRelation.html" title="class in br.com.kirgh.app.entities">UserRelation</a>&gt;</span>&nbsp;<span class="element-name">getAllUsersRelationBoundUser</span><wbr><span class="parameters">(@Param("ownerId")
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;ownerId)</span></div>
+<div class="block">The function retrieves all user relations associated with a specific owner ID.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>ownerId</code> - The <code>ownerId</code> parameter is a UUID (Universally Unique Identifier) that represents
+                the ID of the owner user.</dd>
+<dt>Returns:</dt>
+<dd>The query is returning a list of <code>UserRelation</code> objects.</dd>
+</dl>
+</section>
+</li>
+</ul>
 </section>
 </li>
 </ul>

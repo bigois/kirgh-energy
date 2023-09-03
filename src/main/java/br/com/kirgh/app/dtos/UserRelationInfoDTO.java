@@ -5,18 +5,25 @@ import lombok.Setter;
 
 import java.util.UUID;
 
+/**
+ * The {@code UserRelationInfoDTO} class represents information about a user's relation, including an ID and a
+ * relation type.
+ */
 @Getter
 @Setter
-/*
-  The UserRelationInfoDTO class represents information about a user's relation, including an ID and a
-  relation type.
- */
 public class UserRelationInfoDTO {
     private UUID id;
     private String relationType;
 
-    public UserRelationInfoDTO(UUID child_id, String relation_type) {
-        id = child_id;
-        relationType = relation_type;
+    /**
+     * This method is a constructor for the {@code UserRelationInfoDTO} class.
+     *
+     * @param id           The {@code id} parameter is a UUID (Universally Unique Identifier) that represents the unique
+     *                     identifier of an existing user.
+     * @param relationType The {@code relationType} parameter is a text that represents the relations between the parent user and child user (e.g.: "Son", "Daughter")
+     */
+    public UserRelationInfoDTO(UUID id, String relationType) {
+        this.id = id;
+        this.relationType = relationType;
     }
 }

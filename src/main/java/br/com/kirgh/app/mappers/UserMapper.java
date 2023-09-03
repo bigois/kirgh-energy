@@ -10,9 +10,9 @@ import br.com.kirgh.app.enums.UserGender;
  */
 public abstract class UserMapper {
     /**
-     * The function converts a UserDTO object to a User object in Java.
+     * The function converts a {@code UserDTO} object to a {@code User} object in Java.
      *
-     * @param userDTO userDTO is an object of type UserDTO, which is a data transfer object that contains information about
+     * @param userDTO {@code userDTO} is an object of type {@code UserDTO}, which is a data transfer object that contains information about
      *                a user.
      * @return The method {@code userDTOToUser} is returning an instance of the {@code User} class, which is created based on the
      * information provided in the {@code UserDTO} object passed as a parameter.
@@ -30,11 +30,11 @@ public abstract class UserMapper {
     }
 
     /**
-     * The function takes a UserUpdateDTO object and updates the corresponding fields in a User object.
+     * The function takes a {@code UserUpdateDTO} object and updates the corresponding fields in a {@code User} object.
      *
-     * @param userUpdateDTO UserUpdateDTO object containing the updated user information.
-     * @param updateUser    The `updateUser` parameter is an instance of the `User` class. It represents
-     *                      the user object that needs to be updated with the values from the `UserUpdateDTO` object.
+     * @param userUpdateDTO {@code UserUpdateDTO} object containing the updated user information.
+     * @param updateUser    The {@code updateUser} parameter is an instance of the {@code User} class. It represents
+     *                      the user object that needs to be updated with the values from the {@code UserUpdateDTO} object.
      * @return The method is returning the updated User object.
      */
     public static User userUpdateDTOToUser(UserUpdateDTO userUpdateDTO, User updateUser) {

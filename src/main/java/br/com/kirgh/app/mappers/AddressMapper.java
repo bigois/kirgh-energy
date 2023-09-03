@@ -6,15 +6,15 @@ import br.com.kirgh.app.entities.Address;
 import br.com.kirgh.app.enums.State;
 
 /**
- * The AddressMapper class provides a static method to convert an AddressDTO object to an Address
+ * The {@code AddressMapper} class provides a static method to convert an {@code AddressDTO} object to an {@code Address}
  * object in Java.
  */
 public abstract class AddressMapper {
     /**
-     * The function converts an AddressDTO object to an Address object in Java.
+     * The function converts an {@code AddressDTO} object to an {@code Address} object in Java.
      *
-     * @param addressDTO AddressDTO is an object that represents an address in a data transfer object (DTO) format. It
-     *                   contains the following properties: street, zipCode, number, city, and state.
+     * @param addressDTO {@code AddressDTO} is an object that represents an address in a data transfer object (DTO) format. It
+     *                   contains the following properties: {@code street}, {@code zipCode}, {@code number}, {@code city}, and {@code state}.
      * @return An instance of the {@code Address} class is being returned.
      */
     public static Address addressDTOToAddress(AddressDTO addressDTO) {
@@ -30,13 +30,13 @@ public abstract class AddressMapper {
     }
 
     /**
-     * The function takes an AddressUpdateDTO object and updates an existing Address object with the
+     * The function takes an {@code AddressUpdateDTO} object and updates an existing {@code Address} object with the
      * values from the DTO.
      *
-     * @param addressUpdateDTO An object of type AddressUpdateDTO, which contains the updated address
+     * @param addressUpdateDTO An object of type {@code AddressUpdateDTO}, which contains the updated address
      *                         information.
-     * @param updateAddress    The `updateAddress` parameter is an instance of the `Address` class that
-     *                         needs to be updated with the values from the `AddressUpdateDTO` object.
+     * @param updateAddress    The {@code updateAddress} parameter is an instance of the {@code Address} class that
+     *                         needs to be updated with the values from the {@code AddressUpdateDTO} object.
      * @return The method is returning the updated address object.
      */
     public static Address addressUpdateDTOToAddress(AddressUpdateDTO addressUpdateDTO, Address updateAddress) {

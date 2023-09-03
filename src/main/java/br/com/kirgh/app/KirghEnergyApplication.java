@@ -21,7 +21,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
                         name = "MIT License",
                         url = "https://github.com/bigois/kirgh-energy/blob/main/LICENSE"
                 )
-        ),externalDocs = @ExternalDocumentation(
+        ),
+        externalDocs = @ExternalDocumentation(
                 url = "https://github.com/bigois/kirgh-energy",
                 description = "Code Repository"
         ),

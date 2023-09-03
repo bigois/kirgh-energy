@@ -36,12 +36,12 @@ public class ApplianceService {
     private ApplianceRelationRepository applianceRelationRepository;
 
     /**
-     * This Java function creates a new Appliance object and saves it to the database with a
-     * corresponding ApplianceRelation object.
+     * This {@code Java} function creates a new {@code Appliance} object and saves it to the database with a
+     * corresponding {@code ApplianceRelation} object.
      *
-     * @param applianceDTO An object of type ApplianceDTO, which contains information about the
+     * @param applianceDTO An object of type {@code ApplianceDTO}, which contains information about the
      *                     appliance to be created.
-     * @return The method is returning an instance of the Appliance class.
+     * @return The method is returning an instance of the {@code Appliance} class.
      */
     @Transactional
     public Appliance createAppliance(ApplianceDTO applianceDTO) {
@@ -65,11 +65,11 @@ public class ApplianceService {
      *
      * @param filters  A map containing the filters to be applied to the query. The keys represent the
      *                 field names and the values represent the filter values.
-     * @param pageable The `pageable` parameter is used to specify the pagination settings for the
+     * @param pageable The {@code pageable} parameter is used to specify the pagination settings for the
      *                 query. It includes information such as the page number, page size, and sorting criteria. It
      *                 allows you to retrieve a specific page of results from the query.
-     * @return The method is returning a Page object containing a list of Appliance objects that match
-     * the specified filters and are paginated according to the provided Pageable object.
+     * @return The method is returning a {@code Page} object containing a list of {@code Appliance} objects that match
+     * the specified filters and are paginated according to the provided {@code Pageable} object.
      */
     @Transactional(readOnly = true)
     public Page<Appliance> getFilteredAppliances(Map<String, String> filters, Pageable pageable) {
@@ -85,7 +85,7 @@ public class ApplianceService {
      *
      * @param id The id parameter is of type UUID and represents the unique identifier of the appliance
      *           for which the information is being retrieved.
-     * @return The method is returning an instance of the Appliance class.
+     * @return The method is returning an instance of the {@code Appliance} class.
      */
     @Transactional(readOnly = true)
     public Appliance getAllApplianceInfoById(UUID id) {
@@ -98,9 +98,9 @@ public class ApplianceService {
      *
      * @param id                 The id parameter is of type UUID and represents the unique identifier of the appliance
      *                           that needs to be updated.
-     * @param applianceUpdateDTO The `applianceUpdateDTO` parameter is an object of type
-     *                           `ApplianceUpdateDTO`. It is used to update the information of an appliance.
-     * @return The method is returning an instance of the Appliance class.
+     * @param applianceUpdateDTO The {@code applianceUpdateDTO} parameter is an object of type
+     *                           {@code ApplianceUpdateDTO}. It is used to update the information of an appliance.
+     * @return The method is returning an instance of the {@code Appliance} class.
      */
     @Transactional
     public Appliance updateApplianceInfoById(UUID id, ApplianceUpdateDTO applianceUpdateDTO) {

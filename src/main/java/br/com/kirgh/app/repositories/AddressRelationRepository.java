@@ -20,6 +20,12 @@ import java.util.UUID;
 @SuppressWarnings("SqlResolve")
 public interface AddressRelationRepository extends JpaRepository<AddressRelation, AddressRelationPK> {
 
+    /**
+     * The function deletes address relations based on the parent ID.
+     *
+     * @param parentId The {@code parentId} parameter is a UUID (Universally Unique Identifier) that represents the identifier of
+     *                 the parent entity for which the addresses need to be deleted.
+     */
     @Transactional
     @Modifying
     @Query(nativeQuery = true,
@@ -32,6 +38,12 @@ public interface AddressRelationRepository extends JpaRepository<AddressRelation
     )
     void deleteAddressesByParentId(@Param("parentId") UUID parentId);
 
+    /**
+     * The function deletes address relations based on the given address ID.
+     *
+     * @param addressId The {@code addressId} parameter is a UUID (Universally Unique Identifier) that represents the unique
+     *                  identifier of an address.
+     */
     @Transactional
     @Modifying
     @Query(nativeQuery = true,

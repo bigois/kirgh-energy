@@ -16,7 +16,7 @@ public abstract class Utils {
     /**
      * The function converts a byte array to a UUID object in Java.
      *
-     * @param bytes The "bytes" parameter is an array of bytes that represents a UUID.
+     * @param bytes The {@code bytes} parameter is an array of bytes that represents a UUID.
      * @return The method is returning a UUID (Universally Unique Identifier) object.
      */
     public static UUID convertBytesToUUID(byte[] bytes) {
@@ -29,7 +29,7 @@ public abstract class Utils {
     }
 
     /**
-     * The function removes the keys "page", "size", and "sort" from a given map.
+     * The function removes the keys {@code page}, {@code size}, and {@code sort} from a given map.
      *
      * @param filter A map containing key-value pairs.
      */
@@ -55,7 +55,7 @@ public abstract class Utils {
      *
      * @param filters     A map containing the filters to be validated. The keys represent the field names
      *                    and the values represent the filter values.
-     * @param entityClass The `entityClass` parameter is the class of the entity for which the filters
+     * @param entityClass The {@code entityClass} parameter is the class of the entity for which the filters
      *                    are being validated. It is used to determine the allowed fields for the filters.
      */
     public static void validateFilters(Map<String, String> filters, Class entityClass) {
@@ -76,7 +76,7 @@ public abstract class Utils {
      *
      * @param filters A map containing the filters to be applied to the query. The keys represent the
      *                field names in the entity, and the values represent the filter values to be matched.
-     * @return The method is returning a Specification object.
+     * @return The method is returning a {@code Specification} object.
      */
     public static Specification buildSpecification(Map<String, String> filters) {
         return (root, query, builder) -> {

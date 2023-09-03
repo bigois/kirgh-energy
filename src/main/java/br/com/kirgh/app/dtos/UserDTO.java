@@ -31,7 +31,6 @@ public record UserDTO(
         LocalDate birthDate,
 
         @NotNull(message = "cannot be null or empty")
-        /*@Pattern(regexp = "^[FM]$", message = "only basic biological human gender based on chromosome are allowed")*/
         @Schema(description = "Biological human genders based on chromosome", example = "F")
         UserGender gender,
 

@@ -77,7 +77,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public abstract class </span><span class="element-name type-name-label">AddressMapper</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">The AddressMapper class provides a static method to convert an AddressDTO object to an Address
+<div class="block">The <code>AddressMapper</code> class provides a static method to convert an <code>AddressDTO</code> object to an <code>Address</code>
  object in Java.</div>
 </section>
 <section class="summary">
@@ -109,7 +109,14 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#addressDTOToAddress(br.com.kirgh.app.dtos.AddressDTO)" class="member-name-link">addressDTOToAddress</a><wbr>(<a href="../dtos/AddressDTO.html" title="class in br.com.kirgh.app.dtos">AddressDTO</a>&nbsp;addressDTO)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">The function converts an AddressDTO object to an Address object in Java.</div>
+<div class="block">The function converts an <code>AddressDTO</code> object to an <code>Address</code> object in Java.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#addressUpdateDTOToAddress(br.com.kirgh.app.dtos.AddressUpdateDTO,br.com.kirgh.app.entities.Address)" class="member-name-link">addressUpdateDTOToAddress</a><wbr>(<a href="../dtos/AddressUpdateDTO.html" title="class in br.com.kirgh.app.dtos">AddressUpdateDTO</a>&nbsp;addressUpdateDTO,
+ <a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a>&nbsp;updateAddress)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">The function takes an <code>AddressUpdateDTO</code> object and updates an existing <code>Address</code> object with the
+ values from the DTO.</div>
 </div>
 </div>
 </div>
@@ -146,13 +153,31 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="addressDTOToAddress(br.com.kirgh.app.dtos.AddressDTO)">
 <h3>addressDTOToAddress</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a></span>&nbsp;<span class="element-name">addressDTOToAddress</span><wbr><span class="parameters">(<a href="../dtos/AddressDTO.html" title="class in br.com.kirgh.app.dtos">AddressDTO</a>&nbsp;addressDTO)</span></div>
-<div class="block">The function converts an AddressDTO object to an Address object in Java.</div>
+<div class="block">The function converts an <code>AddressDTO</code> object to an <code>Address</code> object in Java.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>addressDTO</code> - AddressDTO is an object that represents an address in a data transfer object (DTO) format. It
-                   contains the following properties: street, zipCode, number, city, and state.</dd>
+<dd><code>addressDTO</code> - <code>AddressDTO</code> is an object that represents an address in a data transfer object (DTO) format. It
+                   contains the following properties: <code>street</code>, <code>zipCode</code>, <code>number</code>, <code>city</code>, and <code>state</code>.</dd>
 <dt>Returns:</dt>
 <dd>An instance of the <code>Address</code> class is being returned.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="addressUpdateDTOToAddress(br.com.kirgh.app.dtos.AddressUpdateDTO,br.com.kirgh.app.entities.Address)">
+<h3>addressUpdateDTOToAddress</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a></span>&nbsp;<span class="element-name">addressUpdateDTOToAddress</span><wbr><span class="parameters">(<a href="../dtos/AddressUpdateDTO.html" title="class in br.com.kirgh.app.dtos">AddressUpdateDTO</a>&nbsp;addressUpdateDTO,
+ <a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a>&nbsp;updateAddress)</span></div>
+<div class="block">The function takes an <code>AddressUpdateDTO</code> object and updates an existing <code>Address</code> object with the
+ values from the DTO.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>addressUpdateDTO</code> - An object of type <code>AddressUpdateDTO</code>, which contains the updated address
+                         information.</dd>
+<dd><code>updateAddress</code> - The <code>updateAddress</code> parameter is an instance of the <code>Address</code> class that
+                         needs to be updated with the values from the <code>AddressUpdateDTO</code> object.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning the updated address object.</dd>
 </dl>
 </section>
 </li>

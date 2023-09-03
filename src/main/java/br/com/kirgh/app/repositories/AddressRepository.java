@@ -16,7 +16,7 @@ import java.util.UUID;
 /**
  * This code is defining an interface called {@code AddressRepository} that extends the {@code JpaRepository}
  * interface. The {@code JpaRepository} interface is a Spring Data interface that provides methods for
- * performing CRUD (Create, Read, Update, Delete) operations on a specific entity type (`Address` in
+ * performing CRUD (Create, Read, Update, Delete) operations on a specific entity type ({@code Address} in
  * this case) in a database. The {@code UUID} parameter specifies the type of the primary key for the
  * {@code Address} entity.
  */
@@ -28,7 +28,7 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
      *
      * @param userId  a String representing the ID of a user
      * @param zipCode The zip code of an address.
-     * @param number  The parameter "number" is a String representing the street number of an address.
+     * @param number  The parameter {@code number} is a {@code String} representing the street number of an address.
      * @return A boolean value is being returned.
      */
     @Query(nativeQuery = true,
@@ -53,29 +53,28 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
                     """
     )
     boolean existsToUserByUnique(@Param("userId") UUID userId, @Param("zipCode") String zipCode, @Param("number") String number);
-    
+
     /**
      * The function returns a page of addresses that match the given specification and pageable
      * parameters.
      *
-     * @param spec        The "spec" parameter is a Specification object that represents the criteria or
+     * @param spec        The {@code spec} parameter is a {@code Specification} object that represents the criteria or
      *                    conditions to be used for filtering the addresses. It can be used to specify conditions such as
-     *                    filtering by certain fields or properties of the Address entity.
-     * @param pageRequest Pageable is an interface that represents a request for a specific page of
+     *                    filtering by certain fields or properties of the {@code Address} entity.
+     * @param pageRequest {@code Pageable} is an interface that represents a request for a specific page of
      *                    data. It includes information such as the page number, the number of items per page, and sorting
      *                    options.
-     * @return The method is returning a Page object containing a list of Address objects that match
-     * the given Specification, with pagination applied according to the provided Pageable object.
+     * @return The method is returning a {@code Page} object containing a list of {@code Address} objects that match
+     * the given {@code Specification}, with pagination applied according to the provided {@code Pageable} object.
      */
     Page<Address> findAll(Specification spec, Pageable pageRequest);
-
 
     /**
      * The function retrieves all addresses associated with a specific parent ID.
      *
-     * @param parentId The `parentId` parameter is a UUID (Universally Unique Identifier) that is used
+     * @param parentId The {@code parentId} parameter is a UUID (Universally Unique Identifier) that is used
      *                 to filter the addresses based on the parent ID.
-     * @return The query is returning a list of Address objects.
+     * @return The query is returning a list of {@code Address} objects.
      */
     @Query(nativeQuery = true,
             value = """
@@ -94,10 +93,10 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
     List<Address> getAllAddressesBoundUser(@Param("parentId") UUID parentId);
 
     /**
-     * The function deletes an address from the "addresses" table in the database based on the provided
-     * addressId.
+     * The function deletes an address from the {@code addresses} table in the database based on the provided
+     * {@code addressId}.
      *
-     * @param addressId The addressId parameter is a UUID (Universally Unique Identifier) that
+     * @param addressId The {@code addressId} parameter is a UUID (Universally Unique Identifier) that
      *                  represents the unique identifier of the address to be deleted.
      */
     @Transactional

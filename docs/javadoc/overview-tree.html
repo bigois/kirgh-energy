@@ -51,6 +51,7 @@ loadScripts(document, 'script');</script>
 <span class="package-hierarchy-label">Package Hierarchies:</span>
 <ul class="horizontal">
 <li><a href="br/com/kirgh/app/package-tree.html">br.com.kirgh.app</a>, </li>
+<li><a href="br/com/kirgh/app/constraints/package-tree.html">br.com.kirgh.app.constraints</a>, </li>
 <li><a href="br/com/kirgh/app/controllers/package-tree.html">br.com.kirgh.app.controllers</a>, </li>
 <li><a href="br/com/kirgh/app/dtos/package-tree.html">br.com.kirgh.app.dtos</a>, </li>
 <li><a href="br/com/kirgh/app/entities/package-tree.html">br.com.kirgh.app.entities</a>, </li>
@@ -58,9 +59,12 @@ loadScripts(document, 'script');</script>
 <li><a href="br/com/kirgh/app/exceptions/package-tree.html">br.com.kirgh.app.exceptions</a>, </li>
 <li><a href="br/com/kirgh/app/mappers/package-tree.html">br.com.kirgh.app.mappers</a>, </li>
 <li><a href="br/com/kirgh/app/pks/package-tree.html">br.com.kirgh.app.pks</a>, </li>
+<li><a href="br/com/kirgh/app/projections/package-tree.html">br.com.kirgh.app.projections</a>, </li>
 <li><a href="br/com/kirgh/app/repositories/package-tree.html">br.com.kirgh.app.repositories</a>, </li>
 <li><a href="br/com/kirgh/app/services/package-tree.html">br.com.kirgh.app.services</a>, </li>
-<li><a href="br/com/kirgh/app/settings/package-tree.html">br.com.kirgh.app.settings</a></li>
+<li><a href="br/com/kirgh/app/settings/package-tree.html">br.com.kirgh.app.settings</a>, </li>
+<li><a href="br/com/kirgh/app/utils/package-tree.html">br.com.kirgh.app.utils</a>, </li>
+<li><a href="br/com/kirgh/app/validators/package-tree.html">br.com.kirgh.app.validators</a></li>
 </ul>
 </div>
 <section class="hierarchy">
@@ -69,6 +73,7 @@ loadScripts(document, 'script');</script>
 <li class="circle">java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" class="type-name-link external-link" title="class or interface in java.lang">Object</a>
 <ul>
 <li class="circle">br.com.kirgh.app.entities.<a href="br/com/kirgh/app/entities/Address.html" class="type-name-link" title="class in br.com.kirgh.app.entities">Address</a></li>
+<li class="circle">br.com.kirgh.app.dtos.<a href="br/com/kirgh/app/dtos/AddressCompleteInfoDTO.html" class="type-name-link" title="class in br.com.kirgh.app.dtos">AddressCompleteInfoDTO</a></li>
 <li class="circle">br.com.kirgh.app.controllers.<a href="br/com/kirgh/app/controllers/AddressController.html" class="type-name-link" title="class in br.com.kirgh.app.controllers">AddressController</a></li>
 <li class="circle">br.com.kirgh.app.mappers.<a href="br/com/kirgh/app/mappers/AddressMapper.html" class="type-name-link" title="class in br.com.kirgh.app.mappers">AddressMapper</a></li>
 <li class="circle">br.com.kirgh.app.entities.<a href="br/com/kirgh/app/entities/AddressRelation.html" class="type-name-link" title="class in br.com.kirgh.app.entities">AddressRelation</a></li>
@@ -81,22 +86,30 @@ loadScripts(document, 'script');</script>
 <li class="circle">br.com.kirgh.app.pks.<a href="br/com/kirgh/app/pks/ApplianceRelationPK.html" class="type-name-link" title="class in br.com.kirgh.app.pks">ApplianceRelationPK</a> (implements java.io.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/Serializable.html" title="class or interface in java.io" class="external-link">Serializable</a>)</li>
 <li class="circle">br.com.kirgh.app.services.<a href="br/com/kirgh/app/services/ApplianceService.html" class="type-name-link" title="class in br.com.kirgh.app.services">ApplianceService</a></li>
 <li class="circle">br.com.kirgh.app.settings.<a href="br/com/kirgh/app/settings/CorsConfiguration.html" class="type-name-link" title="class in br.com.kirgh.app.settings">CorsConfiguration</a> (implements org.springframework.web.servlet.config.annotation.WebMvcConfigurer)</li>
+<li class="circle">br.com.kirgh.app.validators.<a href="br/com/kirgh/app/validators/DateValidator.html" class="type-name-link" title="class in br.com.kirgh.app.validators">DateValidator</a> (implements jakarta.validation.ConstraintValidator&lt;A,<wbr>T&gt;)</li>
 <li class="circle">br.com.kirgh.app.exceptions.<a href="br/com/kirgh/app/exceptions/HandleErrors.html" class="type-name-link" title="class in br.com.kirgh.app.exceptions">HandleErrors</a></li>
 <li class="circle">br.com.kirgh.app.<a href="br/com/kirgh/app/KirghEnergyApplication.html" class="type-name-link" title="class in br.com.kirgh.app">KirghEnergyApplication</a></li>
 <li class="circle">java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Record.html" class="type-name-link external-link" title="class or interface in java.lang">Record</a>
 <ul>
 <li class="circle">br.com.kirgh.app.dtos.<a href="br/com/kirgh/app/dtos/AddressDTO.html" class="type-name-link" title="class in br.com.kirgh.app.dtos">AddressDTO</a></li>
+<li class="circle">br.com.kirgh.app.dtos.<a href="br/com/kirgh/app/dtos/AddressUpdateDTO.html" class="type-name-link" title="class in br.com.kirgh.app.dtos">AddressUpdateDTO</a></li>
 <li class="circle">br.com.kirgh.app.dtos.<a href="br/com/kirgh/app/dtos/ApplianceDTO.html" class="type-name-link" title="class in br.com.kirgh.app.dtos">ApplianceDTO</a></li>
+<li class="circle">br.com.kirgh.app.dtos.<a href="br/com/kirgh/app/dtos/ApplianceInfoDTO.html" class="type-name-link" title="class in br.com.kirgh.app.dtos">ApplianceInfoDTO</a></li>
+<li class="circle">br.com.kirgh.app.dtos.<a href="br/com/kirgh/app/dtos/ApplianceUpdateDTO.html" class="type-name-link" title="class in br.com.kirgh.app.dtos">ApplianceUpdateDTO</a></li>
 <li class="circle">br.com.kirgh.app.dtos.<a href="br/com/kirgh/app/dtos/UserDTO.html" class="type-name-link" title="class in br.com.kirgh.app.dtos">UserDTO</a></li>
 <li class="circle">br.com.kirgh.app.dtos.<a href="br/com/kirgh/app/dtos/UserRelationDTO.html" class="type-name-link" title="class in br.com.kirgh.app.dtos">UserRelationDTO</a></li>
+<li class="circle">br.com.kirgh.app.dtos.<a href="br/com/kirgh/app/dtos/UserUpdateDTO.html" class="type-name-link" title="class in br.com.kirgh.app.dtos">UserUpdateDTO</a></li>
 </ul>
 </li>
 <li class="circle">br.com.kirgh.app.entities.<a href="br/com/kirgh/app/entities/User.html" class="type-name-link" title="class in br.com.kirgh.app.entities">User</a></li>
+<li class="circle">br.com.kirgh.app.dtos.<a href="br/com/kirgh/app/dtos/UserCompleteInfoDTO.html" class="type-name-link" title="class in br.com.kirgh.app.dtos">UserCompleteInfoDTO</a></li>
 <li class="circle">br.com.kirgh.app.controllers.<a href="br/com/kirgh/app/controllers/UserController.html" class="type-name-link" title="class in br.com.kirgh.app.controllers">UserController</a></li>
 <li class="circle">br.com.kirgh.app.mappers.<a href="br/com/kirgh/app/mappers/UserMapper.html" class="type-name-link" title="class in br.com.kirgh.app.mappers">UserMapper</a></li>
 <li class="circle">br.com.kirgh.app.entities.<a href="br/com/kirgh/app/entities/UserRelation.html" class="type-name-link" title="class in br.com.kirgh.app.entities">UserRelation</a></li>
+<li class="circle">br.com.kirgh.app.dtos.<a href="br/com/kirgh/app/dtos/UserRelationInfoDTO.html" class="type-name-link" title="class in br.com.kirgh.app.dtos">UserRelationInfoDTO</a></li>
 <li class="circle">br.com.kirgh.app.pks.<a href="br/com/kirgh/app/pks/UserRelationPK.html" class="type-name-link" title="class in br.com.kirgh.app.pks">UserRelationPK</a> (implements java.io.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/Serializable.html" title="class or interface in java.io" class="external-link">Serializable</a>)</li>
 <li class="circle">br.com.kirgh.app.services.<a href="br/com/kirgh/app/services/UserService.html" class="type-name-link" title="class in br.com.kirgh.app.services">UserService</a></li>
+<li class="circle">br.com.kirgh.app.utils.<a href="br/com/kirgh/app/utils/Utils.html" class="type-name-link" title="class in br.com.kirgh.app.utils">Utils</a></li>
 </ul>
 </li>
 </ul>
@@ -104,6 +117,7 @@ loadScripts(document, 'script');</script>
 <section class="hierarchy">
 <h2 title="Interface Hierarchy">Interface Hierarchy</h2>
 <ul>
+<li class="circle">br.com.kirgh.app.projections.<a href="br/com/kirgh/app/projections/ApplianceProjection.html" class="type-name-link" title="interface in br.com.kirgh.app.projections">ApplianceProjection</a></li>
 <li class="circle">org.springframework.data.repository.query.QueryByExampleExecutor&lt;T&gt;
 <ul>
 <li class="circle">org.springframework.data.jpa.repository.JpaRepository&lt;T,<wbr>ID&gt; (also extends org.springframework.data.repository.ListCrudRepository&lt;T,<wbr>ID&gt;, org.springframework.data.repository.ListPagingAndSortingRepository&lt;T,<wbr>ID&gt;)
@@ -158,6 +172,12 @@ loadScripts(document, 'script');</script>
 </li>
 </ul>
 </li>
+</ul>
+</section>
+<section class="hierarchy">
+<h2 title="Annotation Interface Hierarchy">Annotation Interface Hierarchy</h2>
+<ul>
+<li class="circle">br.com.kirgh.app.constraints.<a href="br/com/kirgh/app/constraints/DateValidation.html" class="type-name-link" title="annotation interface in br.com.kirgh.app.constraints">DateValidation</a> (implements java.lang.annotation.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/annotation/Annotation.html" title="class or interface in java.lang.annotation" class="external-link">Annotation</a>)</li>
 </ul>
 </section>
 <section class="hierarchy">

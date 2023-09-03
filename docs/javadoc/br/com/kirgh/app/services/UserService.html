@@ -78,7 +78,7 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="annotations">@Service
 </span><span class="modifiers">public class </span><span class="element-name type-name-label">UserService</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">The UserService class creates a new user and saves it to the database, along with a user relation if specified, and
+<div class="block">The <code>UserService</code> class creates a new user and saves it to the database, along with a user relation if specified, and
  returns a success message.</div>
 </section>
 <section class="summary">
@@ -112,6 +112,34 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">This Java function creates a new user and saves it to the database, along with a user relation
  if specified, while checking for existing users and owner IDs.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#deleteUserById(java.util.UUID)" class="member-name-link">deleteUserById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">This function deletes a user and all related data, including addresses and user relations.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../dtos/UserCompleteInfoDTO.html" title="class in br.com.kirgh.app.dtos">UserCompleteInfoDTO</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAllAddressesBoundUser(java.util.UUID)" class="member-name-link">getAllAddressesBoundUser</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">The function retrieves all addresses and related user information for a given user ID.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAllUserInfoById(java.util.UUID)" class="member-name-link">getAllUserInfoById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">The function retrieves all information of a user by their ID from the user repository.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.data.domain.Page&lt;<a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getFilteredUsers(java.util.Map,org.springframework.data.domain.Pageable)" class="member-name-link">getFilteredUsers</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;filters,
+ org.springframework.data.domain.Pageable&nbsp;pageable)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">This function retrieves a filtered list of users based on the provided filters and pagination
+ settings.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateUserInfoById(java.util.UUID,br.com.kirgh.app.dtos.UserUpdateDTO)" class="member-name-link">updateUserInfoById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id,
+ <a href="../dtos/UserUpdateDTO.html" title="class in br.com.kirgh.app.dtos">UserUpdateDTO</a>&nbsp;userUpdateDTO)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">The function updates a user's information by their ID using the provided UserUpdateDTO object.</div>
 </div>
 </div>
 </div>
@@ -156,7 +184,89 @@ loadScripts(document, 'script');</script>
 <dd><code>userDTO</code> - A data transfer object (DTO) representing a user, containing fields such as name,
                 email, CPF (Brazilian tax ID), and a relation object (if applicable).</dd>
 <dt>Returns:</dt>
-<dd>The method is returning a User object.</dd>
+<dd>The method is returning a <code>User</code> object.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getFilteredUsers(java.util.Map,org.springframework.data.domain.Pageable)">
+<h3>getFilteredUsers</h3>
+<div class="member-signature"><span class="annotations">@Transactional(readOnly=true)
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.data.domain.Page&lt;<a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a>&gt;</span>&nbsp;<span class="element-name">getFilteredUsers</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;filters,
+ org.springframework.data.domain.Pageable&nbsp;pageable)</span></div>
+<div class="block">This function retrieves a filtered list of users based on the provided filters and pagination
+ settings.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>filters</code> - A map containing the filters to be applied to the query. The keys represent the
+                 field names and the values represent the filter values.</dd>
+<dd><code>pageable</code> - The <code>pageable</code> parameter is used to specify the pagination settings for the
+                 query. It includes information such as the page number, page size, and sorting criteria. It
+                 allows you to retrieve a specific page of results from the query.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a <code>Page</code> object containing a list of User entities that match the
+ specified filters and are paginated according to the provided Pageable object.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getAllUserInfoById(java.util.UUID)">
+<h3>getAllUserInfoById</h3>
+<div class="member-signature"><span class="annotations">@Transactional(readOnly=true)
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a></span>&nbsp;<span class="element-name">getAllUserInfoById</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
+<div class="block">The function retrieves all information of a user by their ID from the user repository.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The id parameter is of type UUID and represents the unique identifier of the user
+           whose information is being retrieved.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a <code>User</code> object.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getAllAddressesBoundUser(java.util.UUID)">
+<h3>getAllAddressesBoundUser</h3>
+<div class="member-signature"><span class="annotations">@Transactional(readOnly=true)
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../dtos/UserCompleteInfoDTO.html" title="class in br.com.kirgh.app.dtos">UserCompleteInfoDTO</a></span>&nbsp;<span class="element-name">getAllAddressesBoundUser</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
+<div class="block">The function retrieves all addresses and related user information for a given user ID.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The id parameter is a UUID (Universally Unique Identifier) that represents the unique
+           identifier of a user.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a UserCompleteInfoDTO object.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="updateUserInfoById(java.util.UUID,br.com.kirgh.app.dtos.UserUpdateDTO)">
+<h3>updateUserInfoById</h3>
+<div class="member-signature"><span class="annotations">@Transactional
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../entities/User.html" title="class in br.com.kirgh.app.entities">User</a></span>&nbsp;<span class="element-name">updateUserInfoById</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id,
+ <a href="../dtos/UserUpdateDTO.html" title="class in br.com.kirgh.app.dtos">UserUpdateDTO</a>&nbsp;userUpdateDTO)</span></div>
+<div class="block">The function updates a user's information by their ID using the provided UserUpdateDTO object.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The id parameter is of type UUID and represents the unique identifier of the user
+                      whose information needs to be updated.</dd>
+<dd><code>userUpdateDTO</code> - The userUpdateDTO parameter is an object of type UserUpdateDTO, which is a
+                      data transfer object used to update user information.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning an updated User object.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="deleteUserById(java.util.UUID)">
+<h3>deleteUserById</h3>
+<div class="member-signature"><span class="annotations">@Transactional
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">deleteUserById</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
+<div class="block">This function deletes a user and all related data, including addresses and user relations.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The `id` parameter is a unique identifier (UUID) that represents the user to be
+           deleted.</dd>
 </dl>
 </section>
 </li>

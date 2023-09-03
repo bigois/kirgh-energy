@@ -9,9 +9,11 @@ import jakarta.validation.constraints.Size;
 
 import java.util.UUID;
 
-// The code snippet is defining a Java record class called `ApplianceInfoDTO`. A record is a new
-// feature introduced in Java 14 that provides a concise way to declare classes that are primarily used
-// to store data.
+/**
+ * The code snippet is defining a Java record class called {@code ApplianceInfoDTO}. A record is a new
+ * feature introduced in Java 14 that provides a concise way to declare classes that are primarily used
+ * to store data.
+ */
 public record ApplianceInfoDTO(
         @Schema(description = "UUID from an existent address", example = "26ead1cd-c0d6-47bd-bb79-f0aeb4b897bb")
         @NotBlank(message = "cannot be null or empty")

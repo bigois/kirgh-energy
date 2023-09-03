@@ -77,12 +77,11 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="annotations">@RestController
 @RequestMapping(path="/api/v1/addresses",
-                consumes="application/json",
                 produces="application/json")
 </span><span class="modifiers">public class </span><span class="element-name type-name-label">AddressController</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">The AddressController class is a Java REST controller that handles POST requests to create a new address using an
- AddressDTO object.</div>
+<div class="block">The <code>AddressController</code> class is a Java REST controller that handles POST requests to create a new address using an
+ <code>AddressDTO</code> object.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -113,8 +112,38 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addressRegister(br.com.kirgh.app.dtos.AddressDTO)" class="member-name-link">addressRegister</a><wbr>(@Valid <a href="../dtos/AddressDTO.html" title="class in br.com.kirgh.app.dtos">AddressDTO</a>&nbsp;addressDTO)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">This function registers a new address by creating an Address object from the provided AddressDTO and returning a
+<div class="block">This function registers a new address by creating an <code>Address</code> object from the provided <code>AddressDTO</code> and returning a
  JSON response with the new address's ID and a success message.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#deleteAddressById(java.util.UUID)" class="member-name-link">deleteAddressById</a><wbr>(@NonNull <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">The function is a Java method for deleting an address by its ID and returning a JSON response with a
+ success message.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAllAddressInfoById(java.util.UUID)" class="member-name-link">getAllAddressInfoById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">This function retrieves address information by ID and returns a JSON response with the address info.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="../dtos/AddressCompleteInfoDTO.html" title="class in br.com.kirgh.app.dtos">AddressCompleteInfoDTO</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAllAppliancesBoundAddress(java.util.UUID)" class="member-name-link">getAllAppliancesBoundAddress</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">The function <code>getAllAppliancesBoundAddress</code> retrieves address information by ID, including
+ associated appliances, and returns a JSON response.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;org.springframework.data.domain.Page&lt;<a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a>&gt;&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getFilteredAddresses(org.springframework.data.domain.Pageable,java.util.Map)" class="member-name-link">getFilteredAddresses</a><wbr>(org.springframework.data.domain.Pageable&nbsp;pageable,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;filters)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">This Java function retrieves a paginated list of addresses based on filters and returns it as a JSON
+ response.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateAddressInfoById(java.util.UUID,br.com.kirgh.app.dtos.AddressUpdateDTO)" class="member-name-link">updateAddressInfoById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id,
+ @Valid <a href="../dtos/AddressUpdateDTO.html" title="class in br.com.kirgh.app.dtos">AddressUpdateDTO</a>&nbsp;addressUpdateDTO)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">This function updates an address and returns a JSON response with the new address information.</div>
 </div>
 </div>
 </div>
@@ -150,18 +179,112 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="addressRegister(br.com.kirgh.app.dtos.AddressDTO)">
 <h3>addressRegister</h3>
-<div class="member-signature"><span class="annotations">@PostMapping
+<div class="member-signature"><span class="annotations">@PostMapping(consumes="application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">addressRegister</span><wbr><span class="parameters">(@RequestBody @Valid
  @Valid <a href="../dtos/AddressDTO.html" title="class in br.com.kirgh.app.dtos">AddressDTO</a>&nbsp;addressDTO)</span></div>
-<div class="block">This function registers a new address by creating an Address object from the provided AddressDTO and returning a
+<div class="block">This function registers a new address by creating an <code>Address</code> object from the provided <code>AddressDTO</code> and returning a
  JSON response with the new address's ID and a success message.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>addressDTO</code> - AddressDTO is an object that contains the details of an address such as street, city, state, and
-                   zip code. It is annotated with @Valid to ensure that the input data is valid and meets the required constraints. The</dd>
+<dd><code>addressDTO</code> - <code>AddressDTO</code> is an object that contains the details of an address such as street, city, state, and
+                   zip code. It is annotated with <code>@Valid</code> to ensure that the input data is valid and meets the required constraints. The</dd>
 <dt>Returns:</dt>
-<dd>A ResponseEntity object containing a JSON response with the resourceId and message of the newly created
- Address object. The HTTP status code of the response is set to 201 (CREATED).</dd>
+<dd>A <code>ResponseEntity</code> object containing a JSON response with the resourceId and message of the newly created
+ <code>Address</code> object. The HTTP status code of the response is set to 201 (CREATED).</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getFilteredAddresses(org.springframework.data.domain.Pageable,java.util.Map)">
+<h3>getFilteredAddresses</h3>
+<div class="member-signature"><span class="annotations">@GetMapping
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;org.springframework.data.domain.Page&lt;<a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a>&gt;&gt;</span>&nbsp;<span class="element-name">getFilteredAddresses</span><wbr><span class="parameters">(org.springframework.data.domain.Pageable&nbsp;pageable,
+ @RequestParam
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;filters)</span></div>
+<div class="block">This Java function retrieves a paginated list of addresses based on filters and returns it as a JSON
+ response.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>pageable</code> - The <code>pageable</code> parameter is used for pagination and sorting. It allows you to
+                 specify the page number, page size, and sorting criteria for the returned results.</dd>
+<dd><code>filters</code> - A map of filters for searching addresses. The keys in the map represent the fields to
+                 filter on, and the values represent the filter values.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a <code>ResponseEntity</code> object with a JSON response body containing a
+ <code>Page&lt;Address&gt;</code> object.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getAllAddressInfoById(java.util.UUID)">
+<h3>getAllAddressInfoById</h3>
+<div class="member-signature"><span class="annotations">@GetMapping("/{id}")
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a>&gt;</span>&nbsp;<span class="element-name">getAllAddressInfoById</span><wbr><span class="parameters">(@PathVariable
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
+<div class="block">This function retrieves address information by ID and returns a JSON response with the address info.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The <code>id</code> parameter is a UUID (Universally Unique Identifier) that represents the unique
+           identifier of the address.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a <code>ResponseEntity</code> object with the HTTP status code 200 (OK) and the
+ body containing the address information in JSON format.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getAllAppliancesBoundAddress(java.util.UUID)">
+<h3>getAllAppliancesBoundAddress</h3>
+<div class="member-signature"><span class="annotations">@GetMapping("/{id}/appliances")
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="../dtos/AddressCompleteInfoDTO.html" title="class in br.com.kirgh.app.dtos">AddressCompleteInfoDTO</a>&gt;</span>&nbsp;<span class="element-name">getAllAppliancesBoundAddress</span><wbr><span class="parameters">(@PathVariable
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
+<div class="block">The function <code>getAllAppliancesBoundAddress</code> retrieves address information by ID, including
+ associated appliances, and returns a JSON response.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The id parameter is a UUID (Universally Unique Identifier) that represents the unique
+           identifier of an address.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a <code>ResponseEntity</code> object with the HTTP status code 200 (OK) and the
+ body containing an <code>AddressCompleteInfoDTO</code> object.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="updateAddressInfoById(java.util.UUID,br.com.kirgh.app.dtos.AddressUpdateDTO)">
+<h3>updateAddressInfoById</h3>
+<div class="member-signature"><span class="annotations">@PutMapping(path="/{id}",
+            consumes="application/json")
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="../entities/Address.html" title="class in br.com.kirgh.app.entities">Address</a>&gt;</span>&nbsp;<span class="element-name">updateAddressInfoById</span><wbr><span class="parameters">(@PathVariable
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id,
+ @RequestBody @Valid
+ @Valid <a href="../dtos/AddressUpdateDTO.html" title="class in br.com.kirgh.app.dtos">AddressUpdateDTO</a>&nbsp;addressUpdateDTO)</span></div>
+<div class="block">This function updates an address and returns a JSON response with the new address information.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The ID of the address to be updated. It is a UUID (Universally Unique Identifier) type.</dd>
+<dd><code>addressUpdateDTO</code> - The <code>addressUpdateDTO</code> is a DTO (Data Transfer Object) that contains the
+                         updated information for the address. It is annotated with <code>@RequestBody</code> to indicate that it will be
+                         received as a JSON object in the request body. The @Valid annotation is used to validate the content
+                         of the DTO according to the validation</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a <code>ResponseEntity&lt;Address&gt;</code> object.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="deleteAddressById(java.util.UUID)">
+<h3>deleteAddressById</h3>
+<div class="member-signature"><span class="annotations">@DeleteMapping("/{id}")
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">deleteAddressById</span><wbr><span class="parameters">(@NonNull @PathVariable
+ @NonNull <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
+<div class="block">The function is a Java method for deleting an address by its ID and returning a JSON response with a
+ success message.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The <code>id</code> parameter is the unique identifier of the address that needs to be deleted.</dd>
+<dt>Returns:</dt>
+<dd>The method is returning a <code>ResponseEntity&lt;String&gt;</code> object.</dd>
 </dl>
 </section>
 </li>

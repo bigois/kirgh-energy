@@ -19,12 +19,11 @@ import java.util.UUID;
  */
 @SuppressWarnings("SqlResolve")
 public interface UserRelationRepository extends JpaRepository<UserRelation, UserRelationPK> {
-
     /**
-     * The function deletes a parent-child relationship from the user_relations table based on the
+     * The function deletes a parent-child relationship from the {@code user_relations} table based on the
      * child's ID.
      *
-     * @param childId The `childId` parameter is a UUID (Universally Unique Identifier) that represents
+     * @param childId The {@code childId} parameter is a UUID (Universally Unique Identifier) that represents
      *                the ID of the child for which the parent relation needs to be deleted.
      */
     @Transactional
@@ -42,9 +41,9 @@ public interface UserRelationRepository extends JpaRepository<UserRelation, User
     /**
      * The function retrieves all user relations associated with a specific owner ID.
      *
-     * @param ownerId The ownerId parameter is a UUID (Universally Unique Identifier) that represents
+     * @param ownerId The {@code ownerId} parameter is a UUID (Universally Unique Identifier) that represents
      *                the ID of the owner user.
-     * @return The query is returning a list of UserRelation objects.
+     * @return The query is returning a list of {@code UserRelation} objects.
      */
     @Query(nativeQuery = true,
             value = """

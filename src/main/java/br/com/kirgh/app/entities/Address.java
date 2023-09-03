@@ -11,7 +11,7 @@ import lombok.Setter;
 import java.util.UUID;
 
 /**
- * The Address class represents a physical address with fields for zip code, street, number, city, and
+ * The {@code Address} class represents a physical address with fields for zip code, street, number, city, and
  * state, and includes methods for checking equality and generating hash codes based on the id field.
  */
 @NoArgsConstructor
@@ -44,11 +44,11 @@ public class Address {
     private State state;
 
     /**
-     * This is an implementation of the equals method in Java that checks if two Address objects are equal based on their
+     * This is an implementation of the equals method in Java that checks if two {@code Address} objects are equal based on their
      * id field.
      *
-     * @param o The parameter "o" is an object of type Object, which is the superclass of all other classes in Java. It is
-     *          used to compare the equality of two Address objects in the equals() method.
+     * @param o The parameter "o" is an object of type {@code Object}, which is the superclass of all other classes in Java. It is
+     *          used to compare the equality of two {@code Address} objects in the equals() method.
      * @return The {@code equals} method is returning a boolean value that indicates whether the current {@code Address} object is
      * equal to the object passed as an argument. It checks if the argument is null or not an instance of {@code Address} class,
      * and then compares the {@code id} field of both objects to determine their equality. If the {@code id} fields are equal, it
