@@ -80,12 +80,12 @@ public class UserService {
     /**
      * This function retrieves a filtered list of users based on the provided filters and pagination
      * settings.
-     * 
-     * @param filters A map containing the filters to be applied to the query. The keys represent the
-     * field names and the values represent the filter values.
+     *
+     * @param filters  A map containing the filters to be applied to the query. The keys represent the
+     *                 field names and the values represent the filter values.
      * @param pageable The `pageable` parameter is used to specify the pagination settings for the
-     * query. It includes information such as the page number, page size, and sorting criteria. It
-     * allows you to retrieve a specific page of results from the query.
+     *                 query. It includes information such as the page number, page size, and sorting criteria. It
+     *                 allows you to retrieve a specific page of results from the query.
      * @return The method is returning a Page object containing a list of User entities that match the
      * specified filters and are paginated according to the provided Pageable object.
      */
@@ -99,9 +99,9 @@ public class UserService {
 
     /**
      * The function retrieves all information of a user by their ID from the user repository.
-     * 
+     *
      * @param id The id parameter is of type UUID and represents the unique identifier of the user
-     * whose information is being retrieved.
+     *           whose information is being retrieved.
      * @return The method is returning a User object.
      */
     @Transactional(readOnly = true)
@@ -111,9 +111,9 @@ public class UserService {
 
     /**
      * The function retrieves all addresses and related user information for a given user ID.
-     * 
+     *
      * @param id The id parameter is a UUID (Universally Unique Identifier) that represents the unique
-     * identifier of a user.
+     *           identifier of a user.
      * @return The method is returning a UserCompleteInfoDTO object.
      */
     @Transactional(readOnly = true)
@@ -145,11 +145,11 @@ public class UserService {
 
     /**
      * The function updates a user's information by their ID using the provided UserUpdateDTO object.
-     * 
-     * @param id The id parameter is of type UUID and represents the unique identifier of the user
-     * whose information needs to be updated.
+     *
+     * @param id            The id parameter is of type UUID and represents the unique identifier of the user
+     *                      whose information needs to be updated.
      * @param userUpdateDTO The userUpdateDTO parameter is an object of type UserUpdateDTO, which is a
-     * data transfer object used to update user information.
+     *                      data transfer object used to update user information.
      * @return The method is returning an updated User object.
      */
     @Transactional
@@ -165,9 +165,9 @@ public class UserService {
 
     /**
      * This function deletes a user and all related data, including addresses and user relations.
-     * 
+     *
      * @param id The `id` parameter is a unique identifier (UUID) that represents the user to be
-     * deleted.
+     *           deleted.
      */
     @Transactional
     public void deleteUserById(UUID id) {

@@ -4,7 +4,6 @@ import br.com.kirgh.app.dtos.AddressCompleteInfoDTO;
 import br.com.kirgh.app.dtos.AddressDTO;
 import br.com.kirgh.app.dtos.AddressUpdateDTO;
 import br.com.kirgh.app.entities.Address;
-import br.com.kirgh.app.entities.User;
 import br.com.kirgh.app.services.AddressService;
 import br.com.kirgh.app.utils.Utils;
 import io.swagger.v3.oas.annotations.Operation;

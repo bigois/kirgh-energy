@@ -44,26 +44,26 @@ public interface UserRepository extends JpaRepository<User, UUID> {
      */
     boolean existsByCpf(String cpf);
 
-   /**
-    * The function `findAll` returns a page of users that match the given specification and pageable
-    * parameters.
-    * 
-    * @param spec The "spec" parameter is a Specification object that defines the criteria for
-    * filtering the results. It allows you to dynamically build complex queries based on various
-    * conditions.
-    * @param pageable The pageable parameter is used to specify the pagination settings for the query
-    * results. It includes information such as the page number, the number of items per page, and the
-    * sorting criteria. This allows you to retrieve a specific page of results from the query.
-    * @return The method is returning a Page object containing a list of User objects that match the
-    * given Specification, with pagination applied according to the provided Pageable object.
-    */
+    /**
+     * The function `findAll` returns a page of users that match the given specification and pageable
+     * parameters.
+     *
+     * @param spec     The "spec" parameter is a Specification object that defines the criteria for
+     *                 filtering the results. It allows you to dynamically build complex queries based on various
+     *                 conditions.
+     * @param pageable The pageable parameter is used to specify the pagination settings for the query
+     *                 results. It includes information such as the page number, the number of items per page, and the
+     *                 sorting criteria. This allows you to retrieve a specific page of results from the query.
+     * @return The method is returning a Page object containing a list of User objects that match the
+     * given Specification, with pagination applied according to the provided Pageable object.
+     */
     Page<User> findAll(Specification spec, Pageable pageable);
 
     /**
      * The function deletes a user from the database based on their ID.
-     * 
+     *
      * @param userId The `userId` parameter is of type `UUID` and represents the unique identifier of
-     * the user that needs to be deleted from the `users` table.
+     *               the user that needs to be deleted from the `users` table.
      */
     @Transactional
     @Modifying

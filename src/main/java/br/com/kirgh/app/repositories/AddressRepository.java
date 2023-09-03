@@ -56,10 +56,10 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
 
     /**
      * The function returns a page of addresses based on the given pageable parameters.
-     * 
+     *
      * @param pageable The pageable parameter is an object that represents the pagination information
-     * for the query. It includes details such as the page number, page size, sorting criteria, and
-     * more. It allows you to retrieve a specific page of results from a larger dataset.
+     *                 for the query. It includes details such as the page number, page size, sorting criteria, and
+     *                 more. It allows you to retrieve a specific page of results from a larger dataset.
      * @return The method is returning a Page object containing a list of Address objects.
      */
     Page<Address> findAll(Pageable pageable);
@@ -67,25 +67,24 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
     /**
      * The function returns a page of addresses that match the given specification and pageable
      * parameters.
-     * 
-     * @param spec The "spec" parameter is a Specification object that represents the criteria or
-     * conditions to be used for filtering the addresses. It can be used to specify conditions such as
-     * filtering by certain fields or properties of the Address entity.
+     *
+     * @param spec        The "spec" parameter is a Specification object that represents the criteria or
+     *                    conditions to be used for filtering the addresses. It can be used to specify conditions such as
+     *                    filtering by certain fields or properties of the Address entity.
      * @param pageRequest Pageable is an interface that represents a request for a specific page of
-     * data. It includes information such as the page number, the number of items per page, and sorting
-     * options.
+     *                    data. It includes information such as the page number, the number of items per page, and sorting
+     *                    options.
      * @return The method is returning a Page object containing a list of Address objects that match
      * the given Specification, with pagination applied according to the provided Pageable object.
      */
     Page<Address> findAll(Specification spec, Pageable pageRequest);
 
-    
 
     /**
      * The function retrieves all addresses associated with a specific parent ID.
-     * 
+     *
      * @param parentId The `parentId` parameter is a UUID (Universally Unique Identifier) that is used
-     * to filter the addresses based on the parent ID.
+     *                 to filter the addresses based on the parent ID.
      * @return The query is returning a list of Address objects.
      */
     @Query(nativeQuery = true,
@@ -107,9 +106,9 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
     /**
      * The function deletes an address from the "addresses" table in the database based on the provided
      * addressId.
-     * 
+     *
      * @param addressId The addressId parameter is a UUID (Universally Unique Identifier) that
-     * represents the unique identifier of the address to be deleted.
+     *                  represents the unique identifier of the address to be deleted.
      */
     @Transactional
     @Modifying

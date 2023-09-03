@@ -31,10 +31,10 @@ public abstract class UserMapper {
 
     /**
      * The function takes a UserUpdateDTO object and updates the corresponding fields in a User object.
-     * 
+     *
      * @param userUpdateDTO UserUpdateDTO object containing the updated user information.
-     * @param updateUser The `updateUser` parameter is an instance of the `User` class. It represents
-     * the user object that needs to be updated with the values from the `UserUpdateDTO` object.
+     * @param updateUser    The `updateUser` parameter is an instance of the `User` class. It represents
+     *                      the user object that needs to be updated with the values from the `UserUpdateDTO` object.
      * @return The method is returning the updated User object.
      */
     public static User userUpdateDTOToUser(UserUpdateDTO userUpdateDTO, User updateUser) {
