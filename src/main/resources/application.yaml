@@ -2,6 +2,6 @@
 
 spring:
   profiles:
-    active: hom
+    active: prd
   web:
     locale: en_US
