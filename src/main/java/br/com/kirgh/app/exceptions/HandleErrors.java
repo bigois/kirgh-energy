@@ -25,12 +25,12 @@ public class HandleErrors {
     /**
      * This function handles validation exceptions by creating a map of field names and error messages.
      *
-     * @param ex "ex" is an instance of the "MethodArgumentNotValidException" class, which is thrown when the validation of
+     * @param ex {@code ex} is an instance of the {@code MethodArgumentNotValidException} class, which is thrown when the validation of
      *           a method argument fails. This exception contains information about the validation errors that occurred.
      * @return A map of field names and their corresponding error messages, along with a timestamp. This is the result of
-     * handling a MethodArgumentNotValidException, which occurs when a request parameter fails validation. The map is
-     * created by iterating through all errors in the exception's BindingResult and extracting the field name and error
-     * message for each FieldError.
+     * handling a {@code MethodArgumentNotValidException}, which occurs when a request parameter fails validation. The map is
+     * created by iterating through all errors in the exception's {@code BindingResult} and extracting the field name and error
+     * message for each {@code FieldError}.
      */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -51,9 +51,9 @@ public class HandleErrors {
     }
 
     /**
-     * This function handles the IllegalArgumentException and returns a map of error messages.
+     * This function handles the {@code IllegalArgumentException} and returns a map of error messages.
      *
-     * @param ex "ex" is the variable name for the IllegalArgumentException object that is being caught by this exception
+     * @param ex {@code ex} is the variable name for the {@code IllegalArgumentException} object that is being caught by this exception
      *           handler method. It is used to access the properties and methods of the exception object, such as the error message.
      * @return A {@code Map<String, String>} containing the timestamp and error message is being returned. This is the result of
      * handling a {@code IllegalArgumentException} with a {@code @ResponseStatus} annotation that sets the HTTP status code to
@@ -73,9 +73,9 @@ public class HandleErrors {
 
 
     /**
-     * This function handles the HttpMediaTypeNotSupportedException and returns a map of error messages.
+     * This function handles the {@code HttpMediaTypeNotSupportedException} and returns a map of error messages.
      *
-     * @param ex "ex" is the variable name for the HttpMediaTypeNotSupportedException object that is being caught by this exception
+     * @param ex {@code ex} is the variable name for the {@code HttpMediaTypeNotSupportedException} object that is being caught by this exception
      *           handler method. It is used to access the properties and methods of the exception object, such as the error message.
      * @return A {@code Map<String, String>} containing the timestamp and error message is being returned. This is the result of
      * handling a {@code HttpMediaTypeNotSupportedException} with a {@code @ResponseStatus} annotation that sets the HTTP status code to
@@ -116,7 +116,7 @@ public class HandleErrors {
     /**
      * This is an exception handler that returns a map of error details for internal server errors.
      *
-     * @param ex "ex" is a variable representing the exception that was thrown. It is used in the method to catch any type
+     * @param ex {@code ex} is a variable representing the exception that was thrown. It is used in the method to catch any type
      *           of exception that may occur during the execution of the code.
      * @return A {@code Map} object containing the timestamp and an error message is being returned. This is the result of
      * handling an exception with the {@code @ExceptionHandler} annotation and the {@code @ResponseStatus}

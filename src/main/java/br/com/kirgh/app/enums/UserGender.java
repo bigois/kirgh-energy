@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * This is an  enum class that represents the biological human genders.
+ * This is an enum class that represents the biological human genders.
  */
 @AllArgsConstructor
 @Getter

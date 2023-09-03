@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * The AddressService class creates and saves a new address to the database, along with its relation to a parent user, and
+ * The {@code AddressService} class creates and saves a new address to the database, along with its relation to a parent user, and
  * returns a response with the new address's ID and a success message.
  */
 @Service
@@ -53,7 +53,7 @@ public class AddressService {
      * This function creates a new address and saves it to the database, while also checking if
      * the parent user exists and if the address already exists for that user.
      *
-     * @param addressDTO An object of type AddressDTO that contains the information needed to create a
+     * @param addressDTO An object of type {@code AddressDTO} that contains the information needed to create a
      *                   new address.
      * @return The method is returning an instance of the Address class.
      */
@@ -81,7 +81,7 @@ public class AddressService {
      * This function retrieves a page of addresses from the address repository in a read-only
      * transaction.
      *
-     * @param pageable The `pageable` parameter is an object of type `Pageable` which represents the
+     * @param pageable The {@code pageable} parameter is an object of type {@code Pageable} which represents the
      *                 pagination information for the query. It contains details such as the page number, page size,
      *                 sorting criteria, etc.
      * @return The method is returning a Page object containing a list of Address entities.
@@ -96,13 +96,13 @@ public class AddressService {
      * information.
      *
      * @param filters  A map containing the filters to be applied to the addresses. The keys of the map
-     *                 represent the field names of the Address entity, and the values represent the filter values for
+     *                 represent the field names of the {@code Address} entity, and the values represent the filter values for
      *                 those fields.
-     * @param pageable The `pageable` parameter is used to specify the pagination settings for the
+     * @param pageable The {@code pageable} parameter is used to specify the pagination settings for the
      *                 query. It includes information such as the page number, page size, and sorting criteria. This
      *                 allows the method to return a specific page of results instead of retrieving all addresses at
      *                 once.
-     * @return The method is returning a Page object containing a list of Address entities that match
+     * @return The method is returning a Page object containing a list of {@code Address} entities that match
      * the specified filters and are paginated according to the provided Pageable object.
      */
     @Transactional(readOnly = true)
@@ -117,9 +117,9 @@ public class AddressService {
      * The function retrieves address information by its ID from the address repository, throwing an
      * exception if the address is not found.
      *
-     * @param id The id parameter is of type UUID and represents the unique identifier of the address
+     * @param id The id parameter is of type {@code UUID} and represents the unique identifier of the address
      *           that we want to retrieve information for.
-     * @return The method is returning an instance of the Address class.
+     * @return The method is returning an instance of the {@code Address} class.
      */
     @Transactional(readOnly = true)
     public Address getAllAddressInfoById(UUID id) {
@@ -128,10 +128,10 @@ public class AddressService {
 
     /**
      * This function retrieves an address and a list of appliances associated with that address, and
-     * returns them as a DTO object.
+     * returns them as a {@code DTO} object.
      *
-     * @param id The parameter "id" is of type UUID and represents the unique identifier of an address.
-     * @return The method is returning an instance of the AddressCompleteInfoDTO class.
+     * @param id The parameter {@code id} is of type {@code UUID} and represents the unique identifier of an address.
+     * @return The method is returning an instance of the {@code AddressCompleteInfoDTO} class.
      */
     @Transactional(readOnly = true)
     public AddressCompleteInfoDTO getAllAppliancesBoundAddress(UUID id) {
@@ -151,15 +151,15 @@ public class AddressService {
     }
 
     /**
-     * The function updates an address by its ID using the information provided in the AddressUpdateDTO
+     * The function updates an address by its ID using the information provided in the {@code AddressUpdateDTO}
      * object.
      *
-     * @param id               The id parameter is of type UUID and represents the unique identifier of the address to
+     * @param id               The {@code id} parameter is of type {@code UUID} and represents the unique identifier of the address to
      *                         be updated.
-     * @param addressUpdateDTO The addressUpdateDTO parameter is an object of type AddressUpdateDTO. It
+     * @param addressUpdateDTO The {@code addressUpdateDTO} parameter is an object of type {@code AddressUpdateDTO}. It
      *                         contains the updated information for an address, such as the street, city, state, postal code,
      *                         etc.
-     * @return The method is returning an instance of the Address class.
+     * @return The method is returning an instance of the {@code Address} class.
      */
     @Transactional
     public Address updateAddressInfoById(UUID id, AddressUpdateDTO addressUpdateDTO) {
@@ -176,7 +176,7 @@ public class AddressService {
      * This function deletes an address by its ID, along with its related appliances and address
      * relations.
      *
-     * @param id The `id` parameter is a UUID (Universally Unique Identifier) that represents the
+     * @param id The {@code id} parameter is a {@code UUID} (Universally Unique Identifier) that represents the
      *           unique identifier of the address to be deleted.
      */
     @Transactional

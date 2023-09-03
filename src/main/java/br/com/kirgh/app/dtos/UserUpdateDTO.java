@@ -9,10 +9,12 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
 
+/**
+ * The code snippet is defining a Java record class called {@code UserUpdateDTO}. A record is a class-like
+ * construct introduced in Java 14 that provides a concise way to declare classes that are primarily
+ * used to store data.
+ */
 @Schema(title = "UserUpdate", description = "User data update object")
-// The code snippet is defining a Java record class called `UserUpdateDTO`. A record is a class-like
-// construct introduced in Java 14 that provides a concise way to declare classes that are primarily
-// used to store data.
 public record UserUpdateDTO(
         @Size(min = 2, max = 150, message = "size must be between {min} and {max}")
         @Pattern(regexp = "[A-zÀ-ú]+", message = "must contain only letters")

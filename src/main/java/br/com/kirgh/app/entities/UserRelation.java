@@ -31,11 +31,11 @@ public class UserRelation {
     private String relationType;
 
     /**
-     * This is an implementation of the equals method in Java that checks if two UserRelation objects are equal based on
-     * their userRelationPK attribute.
+     * This is an implementation of the equals method in Java that checks if two {@code UserRelation} objects are equal based on
+     * their {@code userRelationPK} attribute.
      *
-     * @param o The parameter "o" is an object of type Object, which is the superclass of all other classes in Java. In
-     *          this case, it is used to compare the equality of two UserRelation objects.
+     * @param o The parameter {@code o} is an object of type {@code Object}, which is the superclass of all other classes in Java. In
+     *          this case, it is used to compare the equality of two {@code UserRelation} objects.
      * @return The {@code equals} method is returning a boolean value. It returns {@code true} if the object being compared is equal to
      * the current object, and {@code false} otherwise. The equality is determined based on whether the {@code userRelationPK} field of
      * the two objects is equal.

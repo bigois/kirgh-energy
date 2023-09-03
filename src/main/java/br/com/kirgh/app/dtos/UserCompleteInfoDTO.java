@@ -7,13 +7,13 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * The {@code UserCompleteInfoDTO} class is a data transfer object that contains information about a user,
+ * their relations, and their addresses.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
-/*
-  The UserCompleteInfoDTO class is a data transfer object that contains information about a user,
-  their relations, and their addresses.
- */
 public class UserCompleteInfoDTO {
     private User userData;
     private List<UserRelationInfoDTO> userRelation;

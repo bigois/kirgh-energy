@@ -27,7 +27,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * The ApplianceController class is a Java REST controller that handles requests related to creating new appliances.
+ * The {@code ApplianceController} class is a Java REST controller that handles requests related to creating new appliances.
  */
 @RestController
 @RequestMapping(path = "/api/v1/appliances", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -38,7 +38,7 @@ public class ApplianceController {
     private ApplianceService applianceService;
 
     /**
-     * This is a Java function that creates a new appliance using the data provided in the ApplianceDTO object.
+     * This is a Java function that creates a new appliance using the data provided in the {@code ApplianceDTO} object.
      *
      * @param applianceDTO The parameter {@code applianceDTO} is of type {@code ApplianceDTO} and is annotated with {@code @RequestBody} and
      *                     {@code @Valid}. It represents the data transfer object that contains the information needed to create a new appliance. The
@@ -76,6 +76,18 @@ public class ApplianceController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
     }
 
+    /**
+     * This Java function retrieves a paginated list of appliances based on filters and returns a JSON
+     * response with the appliance information.
+     *
+     * @param pageable The {@code pageable} parameter is used for pagination and sorting. It allows you to
+     *                 specify the page number, page size, and sorting criteria for the list of appliances. This parameter
+     *                 is of type {@code Pageable}, which is a Spring Data interface that provides convenient methods for
+     *                 pagination and sorting.
+     * @param filters  A map of filters for searching appliances. The keys in the map represent the filter
+     *                 criteria, and the values represent the filter values.
+     * @return The method is returning a {@code ResponseEntity} object containing a Page of {@code Appliance} objects.
+     */
     @Operation(
             summary = "Get a list of appliance's paginated",
             description = "Method for getting a list of paginated appliance to an existent and returning a JSON response with the appliance's info"
@@ -90,8 +102,6 @@ public class ApplianceController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-    // The above code is a Java method that handles a GET request. It retrieves a list of filtered
-    // appliances based on the provided filters and pagination/sorting parameters.
     @GetMapping()
     public ResponseEntity<Page<Appliance>> getFilteredAppliances(
             @Parameter(description = "Pagination and sorting") Pageable pageable,
@@ -102,6 +112,15 @@ public class ApplianceController {
         return ResponseEntity.ok(appliances);
     }
 
+    /**
+     * This function retrieves appliance information by its ID and returns a JSON response with the
+     * appliance's info.
+     *
+     * @param id The {@code id} parameter is a UUID (Universally Unique Identifier) that represents the unique
+     *           identifier of the appliance.
+     * @return The method is returning a {@code ResponseEntity} object with the HTTP status code 200 (OK) and the
+     * body containing the Appliance object.
+     */
     @Operation(
             summary = "Get a appliance by Id",
             description = "Method for getting a appliance and returning a JSON response with the appliance's info"
@@ -122,17 +141,23 @@ public class ApplianceController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-    // The above code is a Java method that handles a GET request to retrieve information about an
-    // appliance by its ID. It takes in a UUID parameter called "id" from the path, and calls the
-    // "getAllApplianceInfoById" method from the "applianceService" object to retrieve the appliance
-    // information. It then returns a ResponseEntity object with the appliance information in the response
-    // body and a status code of 200 (OK).
     @GetMapping("/{id}")
     public ResponseEntity<Appliance> getAllApplianceInfoById(@PathVariable UUID id) {
         Appliance appliance = applianceService.getAllApplianceInfoById(id);
         return ResponseEntity.status(HttpStatus.OK).body(appliance);
     }
 
+    /**
+     * The function updates the information of an appliance and returns a JSON response with the updated
+     * appliance's information.
+     *
+     * @param id                 The id parameter is a UUID (Universally Unique Identifier) that represents the unique
+     *                           identifier of the appliance to be updated.
+     * @param applianceUpdateDTO The {@code applianceUpdateDTO} parameter is of type {@code ApplianceUpdateDTO} and is
+     *                           annotated with {@code @RequestBody} and {@code @Valid}. It represents the updated information for the appliance.
+     * @return The method is returning a ResponseEntity object with the updated Appliance information in
+     * the body. The HTTP status code is set to 200 (OK).
+     */
     @Operation(
             summary = "Update appliance",
             description = "Method for updating a appliance and returning a JSON response with the new Appliance's info"
@@ -157,14 +182,20 @@ public class ApplianceController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-    // The above code is a Java method that handles a PUT request to update the information of an appliance
-    // identified by its ID.
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Appliance> updateApplianceInfoById(@PathVariable UUID id, @RequestBody @Valid ApplianceUpdateDTO applianceUpdateDTO) {
         Appliance appliance = applianceService.updateApplianceInfoById(id, applianceUpdateDTO);
         return ResponseEntity.status(HttpStatus.OK).body(appliance);
     }
 
+    /**
+     * The function is a DELETE endpoint for deleting an appliance and returning a JSON response with no
+     * content.
+     *
+     * @param id The {@code id} parameter is a UUID (Universally Unique Identifier) that represents the unique
+     *           identifier of the appliance to be deleted.
+     * @return The method is returning a {@code ResponseEntity<String>} object.
+     */
     @Operation(
             summary = "Delete appliance",
             description = "Method for deleting a appliance and returning a JSON response with no content"
@@ -173,7 +204,6 @@ public class ApplianceController {
             @ApiResponse(responseCode = "204", description = "No content", content = @Content(examples = {
                     @ExampleObject(summary = "Create an Appliance")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE)),
-
             @ApiResponse(responseCode = "404", description = "NOT FOUND - Appliance id not found", content = @Content(examples = {
                     @ExampleObject(summary = "Invalid Address Id",
                             value = "{\"message\": \"appliance not found\", \"timestamp\": \"2023-08-26T00:23:12.454577100Z\"}")
@@ -183,8 +213,6 @@ public class ApplianceController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-    // The above code is a Java method that handles a DELETE request to delete an appliance by its ID. It
-    // takes in a UUID parameter representing the ID of the appliance to be deleted.
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteApplianceById(@NonNull @PathVariable UUID id) {
         JSONObject response = new JSONObject();

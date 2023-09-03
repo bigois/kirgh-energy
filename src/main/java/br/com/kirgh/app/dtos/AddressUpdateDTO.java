@@ -4,10 +4,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+/**
+ * The code snippet is defining a Java record class called {@code AddressUpdateDTO}. A record is a new
+ * feature introduced in Java 14 that provides a concise way to declare classes that are primarily used
+ * to store data.
+ */
 @Schema(title = "AddressUpdate", description = "Address data update object")
-// The code snippet is defining a Java record class called `AddressUpdateDTO`. A record is a new
-// feature introduced in Java 14 that provides a concise way to declare classes that are primarily used
-// to store data.
 public record AddressUpdateDTO(
         @Schema(description = "Street name that identifies where you physically live", example = "Rua Alicante")
         @Size(min = 1, max = 150, message = "size must be between {min} and {max}")

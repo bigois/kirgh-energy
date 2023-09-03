@@ -28,8 +28,8 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * The UserController class defines a REST API endpoint for creating a new user by taking in a validated userDTO object and
- * returning a ResponseEntity.
+ * The {@code UserController} class defines a REST API endpoint for creating a new user by taking in a validated {@code userDTO} object and
+ * returning a {@code ResponseEntity}.
  */
 @RestController
 @RequestMapping(path = "/api/v1/users", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -40,17 +40,16 @@ public class UserController {
     private UserService userService;
 
     /**
-     * This is a Java function that creates a new user by taking in a validated userDTO object and returns a
-     * ResponseEntity.
+     * This is a Java function that creates a new user by taking in a validated {@code userDTO} object and returns a
+     * {@code ResponseEntity}.
      *
-     * @param userDTO userDTO is an object of the class UserDTO which is annotated with @Valid to indicate that the object
-     *                should be validated before processing. It is passed as a request body in a POST request to the userRegister()
-     *                method. The method then calls the createUser() method of the userService object and returns the
+     * @param userDTO {@code userDTO} is an object of the class {@code UserDTO} which is annotated with {@code @Valid} to indicate that the object
+     *                should be validated before processing. It is passed as a request body in a POST request to the {@code userRegister()}
+     *                method. The method then calls the {@code createUser()} method of the {@code userService} object and returns the
      * @return The method {@code userRegister} is returning a {@code ResponseEntity} object, which can contain any type of response
      * data along with an HTTP status code. The actual response data being returned depends on the implementation of the
      * {@code createUser} method in the {@code userService} object.
      */
-
     @Operation(
             summary = "Creates a new user (with or without parent relation)",
             description = "Method for creating a new user with an optional user parent relation and returning a JSON response with the new user's ID"
@@ -88,8 +87,19 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
     }
 
+    /**
+     * This function retrieves a paginated list of users based on specified filters and returns it as a
+     * JSON response.
+     *
+     * @param pageable The {@code pageable} parameter is used for pagination and sorting. It allows you to
+     *                 specify the page number, page size, and sorting criteria for the returned list of users.
+     * @param filters  A map containing the filters for searching. The keys in the map represent the filter
+     *                 criteria, and the values represent the filter values.
+     * @return The method is returning a {@code ResponseEntity} object with a JSON response body containing a
+     * {@code Page<User>} object.
+     */
     @Operation(
-            summary = "Get user's paginated ",
+            summary = "Get user's paginated",
             description = "Method to get a list of user's paginated with JSON response with the user's info"
     )
     @ApiResponses(value = {
@@ -102,9 +112,6 @@ public class UserController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-// The above code is a Java method that handles a GET request to retrieve a filtered list of users. It
-// takes two parameters: `pageable`, which is used for pagination and sorting, and `filters`, which is
-// a map of key-value pairs representing the filters for the search.
     @GetMapping
     public ResponseEntity<Page<User>> getFilteredUsers(
             @Parameter(description = "Pagination and sorting") Pageable pageable,
@@ -115,6 +122,15 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(users);
     }
 
+    /**
+     * This function retrieves user information by their ID and returns a JSON response with the user's
+     * info.
+     *
+     * @param id The {@code id} parameter is a UUID (Universally Unique Identifier) that represents the unique
+     *           identifier of a user.
+     * @return The method is returning a {@code ResponseEntity} object with the HTTP status code 200 (OK) and the
+     * user's information in the response body.
+     */
     @Operation(
             summary = "Get user information by id ",
             description = "Method to get a user by id returning a JSON response with the user's info"
@@ -133,17 +149,20 @@ public class UserController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-// The above code is a Java method that handles a GET request to retrieve user information by their ID.
-// It takes in a UUID parameter called "id" from the path, and calls a method called
-// "getAllUserInfoById" from a service class called "userService" to retrieve the user information. It
-// then returns a ResponseEntity object with the user information in the response body and a status
-// code of 200 (OK).
     @GetMapping("/{id}")
     public ResponseEntity<User> getAllUserInfoById(@PathVariable UUID id) {
         User user = userService.getAllUserInfoById(id);
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 
+    /**
+     * This function retrieves all addresses associated with a user by their ID.
+     *
+     * @param id The id parameter is a UUID (Universally Unique Identifier) that represents the unique
+     *           identifier of a user.
+     * @return The method is returning a {@code ResponseEntity} object with the status code 200 (OK) and the body
+     * containing a {@code UserCompleteInfoDTO} object.
+     */
     @Operation(
             summary = "Get user by id (with or without parent relation)",
             description = "Method to get a user by id returning a JSON response with the user's and addresses info"
@@ -162,17 +181,23 @@ public class UserController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-// The above code is a Java method that handles a GET request to retrieve all addresses bound to a user
-// with a specific ID. It takes the ID as a path variable and calls the `getAllAddressesBoundUser`
-// method from the `userService` to get the complete information of the user, including all their
-// addresses. It then returns a ResponseEntity with the user's complete information in the response
-// body and a status code of 200 (OK).
     @GetMapping("/{id}/addresses")
     public ResponseEntity<UserCompleteInfoDTO> getAllAddressesBoundUser(@PathVariable UUID id) {
         UserCompleteInfoDTO userCompleteInfoDTO = userService.getAllAddressesBoundUser(id);
         return ResponseEntity.status(HttpStatus.OK).body(userCompleteInfoDTO);
     }
 
+    /**
+     * This function updates a user's information and returns a JSON response with the new user's info.
+     *
+     * @param id            The id parameter is a UUID (Universally Unique Identifier) that represents the unique
+     *                      identifier of the user to be updated.
+     * @param userUpdateDTO The {@code userUpdateDTO} is a data transfer object that contains the updated
+     *                      information for the user. It is annotated with {@code @Valid} to perform validation on the request body. The
+     *                      fields in the {@code userUpdateDTO} include:
+     * @return The method is returning a {@code ResponseEntity} object with the updated User object in the body.
+     * The HTTP status code of the response is 200 (OK).
+     */
     @Operation(
             summary = "Update user (with or without parent relation)",
             description = "Method for updating a user and returning a JSON response with the new user's Info"
@@ -200,17 +225,20 @@ public class UserController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-    // The above code is a Java method that handles a PUT request to update user information by ID. It
-    // takes in the ID of the user to be updated as a path variable and the updated user information as a
-    // JSON object in the request body. The method then calls the `updateUserInfoById` method of the
-    // `userService` to update the user information and returns a ResponseEntity with the updated user
-    // object and an HTTP status code of 200 (OK).
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> updateUserInfoById(@PathVariable UUID id, @RequestBody @Valid UserUpdateDTO userUpdateDTO) {
         User user = userService.updateUserInfoById(id, userUpdateDTO);
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 
+    /**
+     * This function is used to delete a user by their ID and return a JSON response with a success
+     * message.
+     *
+     * @param id The {@code id} parameter is a UUID (Universally Unique Identifier) that represents the unique
+     *           identifier of the user to be deleted.
+     * @return The method is returning a {@code ResponseEntity<String>} object.
+     */
     @Operation(
             summary = "Delete user (with or without parent relation)",
             description = "Method for delete a user and returning a JSON response with no content"
@@ -236,8 +264,6 @@ public class UserController {
                             value = "{\"message\": \"something goes wrong\", \"timestamp\": \"2023-08-26T00:21:30.426833300Z\"}")
             }, mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-    // The above code is a Java method that handles a DELETE request to delete a user by their ID. It takes
-    // in a UUID parameter representing the user ID.
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUserById(@NonNull @PathVariable UUID id) {
         JSONObject response = new JSONObject();

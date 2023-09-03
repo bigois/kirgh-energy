@@ -22,7 +22,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 /**
- * The UserService class creates a new user and saves it to the database, along with a user relation if specified, and
+ * The {@code UserService} class creates a new user and saves it to the database, along with a user relation if specified, and
  * returns a success message.
  */
 @Service
@@ -52,7 +52,7 @@ public class UserService {
      *
      * @param userDTO A data transfer object (DTO) representing a user, containing fields such as name,
      *                email, CPF (Brazilian tax ID), and a relation object (if applicable).
-     * @return The method is returning a User object.
+     * @return The method is returning a {@code User} object.
      */
     @Transactional
     public User createUser(UserDTO userDTO) {
@@ -83,10 +83,10 @@ public class UserService {
      *
      * @param filters  A map containing the filters to be applied to the query. The keys represent the
      *                 field names and the values represent the filter values.
-     * @param pageable The `pageable` parameter is used to specify the pagination settings for the
+     * @param pageable The {@code pageable} parameter is used to specify the pagination settings for the
      *                 query. It includes information such as the page number, page size, and sorting criteria. It
      *                 allows you to retrieve a specific page of results from the query.
-     * @return The method is returning a Page object containing a list of User entities that match the
+     * @return The method is returning a {@code Page} object containing a list of User entities that match the
      * specified filters and are paginated according to the provided Pageable object.
      */
     @Transactional(readOnly = true)
@@ -102,7 +102,7 @@ public class UserService {
      *
      * @param id The id parameter is of type UUID and represents the unique identifier of the user
      *           whose information is being retrieved.
-     * @return The method is returning a User object.
+     * @return The method is returning a {@code User} object.
      */
     @Transactional(readOnly = true)
     public User getAllUserInfoById(UUID id) {

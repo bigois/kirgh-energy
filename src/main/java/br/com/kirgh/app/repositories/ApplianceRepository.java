@@ -24,8 +24,8 @@ import java.util.UUID;
 @SuppressWarnings("SqlResolve")
 public interface ApplianceRepository extends JpaRepository<Appliance, UUID> {
     /**
-     * The function returns a page of Appliance objects that match the given Specification and are
-     * paginated according to the given Pageable object.
+     * The function returns a page of {@code Appliance} objects that match the given Specification and are
+     * paginated according to the given {@code Pageable} object.
      *
      * @param spec        The "spec" parameter is a Specification object that represents the criteria or
      *                    conditions to be used for filtering the results of the query. It allows you to dynamically build
@@ -40,10 +40,10 @@ public interface ApplianceRepository extends JpaRepository<Appliance, UUID> {
     /**
      * The function retrieves a list of appliances that are bound to a specific address.
      *
-     * @param addressId The addressId parameter is a UUID (Universally Unique Identifier) that is used
+     * @param addressId The {@code addressId} parameter is a UUID (Universally Unique Identifier) that is used
      *                  to identify a specific address. It is used in the query to filter the appliances based on the
      *                  address they are bound to.
-     * @return The query is returning a list of ApplianceProjection objects.
+     * @return The query is returning a list of {@code ApplianceProjection} objects.
      */
     @Query(nativeQuery = true,
             value = """
@@ -61,35 +61,45 @@ public interface ApplianceRepository extends JpaRepository<Appliance, UUID> {
     )
     List<ApplianceProjection> getAllAppliancesBoundAddress(@Param("addressId") UUID addressId);
 
-    // The code snippet you provided is a method declaration in the `ApplianceRepository` interface.
-    // This method is using Spring Data's `@Transactional`, `@Modifying`, and `@Query` annotations to
-    // define a custom delete operation.
+    /**
+     * The code snippet you provided is a method declaration in the {@code ApplianceRepository} interface.
+     * This method is using Spring Data's {@code @Transactional}, {@code @Modifying}, and {@code @Query} annotations to
+     * define a custom delete operation.
+     *
+     * @param addressId The {@code addressId} parameter is a UUID (Universally Unique Identifier) that represents the unique
+     *                  identifier of the address to be deleted.
+     */
     @Transactional
     @Modifying
     @Query(nativeQuery = true,
             value = """
-                         DELETE FROM 
-                            appliances 
-                        WHERE id 
+                         DELETE FROM
+                            appliances
+                        WHERE id
                             IN(
-                            SELECT 
-                                appliances.id 
-                            FROM 
-                                appliances 
-                            INNER JOIN 
-                                appliance_relations 
-                            ON 
+                            SELECT
+                                appliances.id
+                            FROM
+                                appliances
+                            INNER JOIN
+                                appliance_relations
+                            ON
                                 appliances.id = appliance_relations.appliance_id
-                            WHERE 
+                            WHERE
                                 appliance_relations.address_id = :addressId
                             )
                     """
     )
     void deleteAppliancesByAddressId(@Param("addressId") UUID addressId);
 
-    // The code snippet you provided is a method declaration in the `ApplianceRepository` interface.
-    // This method is using Spring Data's `@Transactional`, `@Modifying`, and `@Query` annotations to
-    // define a custom delete operation.
+    /**
+     * The code snippet you provided is a method declaration in the {@code ApplianceRepository} interface.
+     * This method is using Spring Data's {@code @Transactional}, {@code @Modifying}, and {@code @Query} annotations to
+     * define a custom delete operation.
+     *
+     * @param applianceId The {@code applianceId} parameter is a UUID (Universally Unique Identifier) that represents the unique
+     *                    identifier of the appliance to be deleted.
+     */
     @Transactional
     @Modifying
     @Query(nativeQuery = true,

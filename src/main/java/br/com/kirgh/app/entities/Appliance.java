@@ -9,7 +9,7 @@ import lombok.Setter;
 import java.util.UUID;
 
 /**
- * The Appliance class defines attributes and methods for an appliance object, including an ID, name,
+ * The {@code Appliance} class defines attributes and methods for an appliance object, including an ID, name,
  * brand, model, and power.
  */
 @NoArgsConstructor
@@ -39,7 +39,7 @@ public class Appliance {
     /**
      * This is an implementation of the equals method in Java that checks if two objects are equal based on their ID.
      *
-     * @param o The parameter "o" is an object of type Object, which is the superclass of all Java classes. It is used to
+     * @param o The parameter {@code o} is an object of type {@code Object}, which is the superclass of all Java classes. It is used to
      *          compare the equality of the current object with another object.
      * @return The {@code equals} method is returning a boolean value that indicates whether the current {@code Appliance} object is
      * equal to the object passed as an argument. It checks if the argument is null, if it is of the same class as the
