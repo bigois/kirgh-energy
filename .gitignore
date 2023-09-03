@@ -47,3 +47,6 @@ out/
 # VS Code
 .vscode/
 *.code-workspace
+
+# Source related
+create.sql
